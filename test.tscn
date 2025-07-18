@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://uruq878d0lq0"]
+
+[sub_resource type="TileSet" id="TileSet_mf4mk"]
+
+[node name="TileMapLayer" type="TileMapLayer"]
+scale = Vector2(16, 16)
+tile_set = SubResource("TileSet_mf4mk")
