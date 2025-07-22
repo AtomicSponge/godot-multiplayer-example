@@ -1,9 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://uruq878d0lq0"]
 
-[ext_resource type="Texture2D" uid="uid://baly6pu4bbnal" path="res://gfx/Space Cave Tileset.png" id="1_37kl0"]
+[ext_resource type="Texture2D" uid="uid://baly6pu4bbnal" path="res://gfx/Space Cave Tileset.png" id="1_f0hoy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8uh7m"]
-texture = ExtResource("1_37kl0")
+texture = ExtResource("1_f0hoy")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
