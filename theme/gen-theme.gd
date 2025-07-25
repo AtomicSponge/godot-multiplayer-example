@@ -14,19 +14,27 @@ func setup():
 func define_theme():
 	define_default_font(ResourceLoader.load(default_font))
 	define_default_font_size(default_font_size)
+	
+	var border_width = 2
+	var border_radius = 8
+	var margins = 4
 
 	define_style("Panel", {
 		panel = stylebox_flat({
 			bg_color = background_color,
 			border_color = Color.WHITE,
-			border_width_bottom = 2,
-			border_width_left = 2,
-			border_width_right = 2,
-			border_width_top = 2,
-			corner_radius_bottom_left = 8,
-			corner_radius_bottom_right = 8,
-			corner_radius_top_left = 8,
-			corner_radius_top_right = 8
+			expand_margin_bottom = margins,
+			expand_margin_left = margins,
+			expand_margin_right = margins,
+			expand_margin_top = margins,
+			border_width_bottom = border_width,
+			border_width_left = border_width,
+			border_width_right = border_width,
+			border_width_top = border_width,
+			corner_radius_bottom_left = border_radius,
+			corner_radius_bottom_right = border_radius,
+			corner_radius_top_left = border_radius,
+			corner_radius_top_right = border_radius
 		})
 	})
 
@@ -35,19 +43,24 @@ func define_theme():
 	})
 
 	var button_border_stylebox = stylebox_flat({
-		border_width_bottom = 1,
-		border_width_left = 1,
-		border_width_right = 1,
-		border_width_top = 1,
-		corner_radius_bottom_left = 8,
-		corner_radius_bottom_right = 8,
-		corner_radius_top_left = 8,
-		corner_radius_top_right = 8
+		border_width_bottom = border_width / 2,
+		border_width_left = border_width / 2,
+		border_width_right = border_width / 2,
+		border_width_top = border_width / 2,
+		expand_margin_bottom = margins,
+		corner_radius_bottom_left = border_radius,
+		corner_radius_bottom_right = border_radius,
+		corner_radius_top_left = border_radius,
+		corner_radius_top_right = border_radius
 	})
 
 	define_style("Button", {
 		font_color = text_font_color,
-		normal = inherit(button_border_stylebox, {
+		disabled = inherit(button_border_stylebox, {
+			bg_color = Color(0, 0, 0, 0.2),
+			border_color = Color(0, 0, 0, 0.2)
+		}),
+		focus = inherit(button_border_stylebox, {
 			bg_color = Color(0, 0, 0, 0.6),
 			border_color = Color.WHITE
 		}),
@@ -55,7 +68,7 @@ func define_theme():
 			bg_color = Color(0, 0, 0, 0.6),
 			border_color = Color.AQUA
 		}),
-		focus = inherit(button_border_stylebox, {
+		normal = inherit(button_border_stylebox, {
 			bg_color = Color(0, 0, 0, 0.6),
 			border_color = Color.WHITE
 		}),
@@ -63,8 +76,4 @@ func define_theme():
 			bg_color = Color(255, 0, 0, 0.6),
 			border_color = Color.AQUA
 		}),
-		disabled = inherit(button_border_stylebox, {
-			bg_color = Color(0, 0, 0, 0.2),
-			border_color = Color(0, 0, 0, 0.2)
-		})
 	})
