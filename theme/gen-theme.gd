@@ -16,7 +16,7 @@ func define_theme():
 	define_default_font_size(default_font_size)
 
 	define_style("Panel", {
-		panel = stylebox_flat({
+		panel = inherit(border_stylebox, {
 			bg_color = background_color,
 			border_color = Color.WHITE,
 			border_width_bottom = 2,
@@ -31,20 +31,40 @@ func define_theme():
 	})
 
 	define_style("Label", {
-		font_color = text_font_color,
-		line_spacing = default_font_size / 4
+		font_color = text_font_color
+	})
+
+	var button_border_stylebox = stylebox_flat({
+		border_width_bottom = 1,
+		border_width_left = 1,
+		border_width_right = 1,
+		border_width_top = 1,
+		corner_radius_bottom_left = 8,
+		corner_radius_bottom_right = 8,
+		corner_radius_top_left = 8,
+		corner_radius_top_right = 8
 	})
 
 	define_style("Button", {
 		font_color = text_font_color,
-		line_spacing = default_font_size / 4,
-		#normal = stylebox_flat({
-		#	bg_color = Color(0, 0, 0, 0.3)
-		#}),
-		#hover = stylebox_flat({
-		#	bg_color = Color(0, 0, 0, 0.5)
-		#}),
-		#focus = stylebox_flat({
-		#	bg_color = Color(0, 0, 0, 0.5)
-		#})
+		normal = inherit(button_border_stylebox, {
+			bg_color = Color(0, 0, 0, 0.6),
+			border_color = Color.WHITE
+		}),
+		hover = inherit(button_border_stylebox, {
+			bg_color = Color(0, 0, 0, 0.6),
+			border_color = Color.AQUA
+		}),
+		focus = inherit(button_border_stylebox, {
+			bg_color = Color(0, 0, 0, 0.6),
+			border_color = Color.WHITE
+		}),
+		pressed = inherit(button_border_stylebox, {
+			bg_color = Color(255, 0, 0, 0.6),
+			border_color = Color.AQUA
+		}),
+		disabled = inherit(button_border_stylebox, {
+			bg_color = Color(0, 0, 0, 0.2),
+			border_color = Color(0, 0, 0, 0.2)
+		})
 	})
