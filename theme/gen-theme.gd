@@ -47,7 +47,7 @@ func define_theme():
 		border_width_left = border_width / 2,
 		border_width_right = border_width / 2,
 		border_width_top = border_width / 2,
-		expand_margin_bottom = margins,
+		expand_margin_bottom = margins * 2,
 		corner_radius_bottom_left = border_radius,
 		corner_radius_bottom_right = border_radius,
 		corner_radius_top_left = border_radius,
@@ -61,7 +61,7 @@ func define_theme():
 			border_color = Color(0, 0, 0, 0.2)
 		}),
 		focus = inherit(button_border_stylebox, {
-			bg_color = Color(0, 0, 0, 0.6),
+			bg_color = Color(0, 0, 0, 0.2),
 			border_color = Color.WHITE
 		}),
 		hover = inherit(button_border_stylebox, {
@@ -75,5 +75,5 @@ func define_theme():
 		pressed = inherit(button_border_stylebox, {
 			bg_color = Color(255, 0, 0, 0.6),
 			border_color = Color.AQUA
-		}),
+		})
 	})
