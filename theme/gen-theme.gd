@@ -16,7 +16,7 @@ func define_theme():
 	define_default_font_size(default_font_size)
 
 	define_style("Panel", {
-		panel = inherit(border_stylebox, {
+		panel = stylebox_flat({
 			bg_color = background_color,
 			border_color = Color.WHITE,
 			border_width_bottom = 2,
