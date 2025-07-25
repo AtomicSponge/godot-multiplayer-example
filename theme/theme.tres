@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://v54qa006qlk3"]
+
+[ext_resource type="FontFile" uid="uid://cvfux2s2sdl4v" path="res://theme/font/Poco.ttf" id="1_uvho4"]
+
+[resource]
+default_font = ExtResource("1_uvho4")
+default_font_size = 16
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/constants/line_spacing = 16

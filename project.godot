@@ -13,3 +13,13 @@ config_version=5
 config/name="Project Venus"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1024
+window/size/viewport_height=768
+
+[gui]
+
+theme/custom="uid://v54qa006qlk3"
+theme/custom_font="uid://cvfux2s2sdl4v"
