@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1024
 window/size/viewport_height=768
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/theme_gen_save_sync/plugin.cfg")
+
 [gui]
 
 theme/custom="uid://v54qa006qlk3"
