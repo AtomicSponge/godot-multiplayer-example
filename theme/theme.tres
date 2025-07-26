@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://v54qa006qlk3"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://v54qa006qlk3"]
 
 [ext_resource type="FontFile" uid="uid://cvfux2s2sdl4v" path="res://theme/font/Poco.ttf" id="1_uvho4"]
 
@@ -13,20 +13,18 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-expand_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kenci"]
-bg_color = Color(0, 0, 0, 0.2)
+bg_color = Color(0, 0, 0, 0)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(1, 1, 1, 1)
+border_color = Color(0, 1, 1, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-expand_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8nfg"]
 bg_color = Color(0, 0, 0, 0.6)
@@ -39,7 +37,6 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-expand_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fw28"]
 bg_color = Color(0, 0, 0, 0.6)
@@ -52,10 +49,9 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-expand_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdh44"]
-bg_color = Color(255, 0, 0, 0.6)
+bg_color = Color(0.545098, 0, 0.545098, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -65,9 +61,19 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-expand_margin_bottom = 8.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpecb"]
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0psj3"]
 bg_color = Color(0.282353, 0.239216, 0.545098, 1)
 border_width_left = 2
 border_width_top = 2
@@ -93,4 +99,5 @@ Button/styles/hover = SubResource("StyleBoxFlat_o8nfg")
 Button/styles/normal = SubResource("StyleBoxFlat_8fw28")
 Button/styles/pressed = SubResource("StyleBoxFlat_cdh44")
 Label/colors/font_color = Color(1, 1, 1, 1)
-Panel/styles/panel = SubResource("StyleBoxFlat_vpecb")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_vpecb")
+Panel/styles/panel = SubResource("StyleBoxFlat_0psj3")
