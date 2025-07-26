@@ -128,6 +128,8 @@ func define_theme():
 		})
 	})
 	
+	var slider_thickness = 4
+	
 	define_style("Slider", {
 		grabber_area = stylebox_flat({
 			bg_color = Color(0.11, 0.09, 0.22, 1.0)
@@ -137,8 +139,8 @@ func define_theme():
 		}),
 		slider = stylebox_flat({
 			bg_color = Color(0, 0, 0, 0),
-			content_margin_top = 4,
-			content_margin_bottom = 4
+			content_margin_top = slider_thickness,
+			content_margin_bottom = slider_thickness
 		})
 	})
 
@@ -151,7 +153,7 @@ func define_theme():
 		}),
 		slider = stylebox_flat({
 			bg_color = Color(0, 0, 0, 0),
-			content_margin_top = 4,
-			content_margin_bottom = 4
+			content_margin_top = slider_thickness,
+			content_margin_bottom = slider_thickness
 		})
 	})
