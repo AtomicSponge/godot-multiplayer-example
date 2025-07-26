@@ -15,8 +15,8 @@ const BORDER_RADIUS: int = 8
 
 const SLIDER_THICKNESS: int = 4
 
-const COLOR_DARK_PURPLE: Color = Color(0.11, 0.09, 0.22, 1.0)
-const COLOR_PURPLE: Color = Color(0.16, 0.14, 0.32, 1.0)
+const COLOR_MAIN: Color = Color(0.11, 0.09, 0.22, 1.0)
+const COLOR_BACKDROP: Color = Color(0.16, 0.14, 0.32, 1.0)
 const COLOR_DISABLED: Color = Color(0.11, 0.09, 0.22, 0.2)
 const COLOR_CLEAR: Color = Color(0.0, 0.0, 0.0, 0.0)
 
@@ -74,11 +74,11 @@ func define_theme():
 			border_color = BORDER_HIGHLIGHT_COLOR
 		}),
 		hover = inherit(curved_border_stylebox, {
-			bg_color = COLOR_DARK_PURPLE,
+			bg_color = COLOR_MAIN,
 			border_color = BORDER_HIGHLIGHT_COLOR
 		}),
 		normal = inherit(curved_border_stylebox, {
-			bg_color = COLOR_DARK_PURPLE,
+			bg_color = COLOR_MAIN,
 			border_color = BORDER_COLOR
 		}),
 		pressed = inherit(curved_border_stylebox, {
@@ -135,8 +135,8 @@ func define_theme():
 			border_color = BORDER_HIGHLIGHT_COLOR
 		}),
 		normal = inherit(square_border_stylebox, {
-			bg_color = COLOR_PURPLE,
-			border_color = COLOR_PURPLE
+			bg_color = COLOR_BACKDROP,
+			border_color = COLOR_BACKDROP
 		}),
 		read_only = inherit(square_border_stylebox, {
 			bg_color = COLOR_DISABLED,
@@ -151,8 +151,8 @@ func define_theme():
 			border_color = BORDER_HIGHLIGHT_COLOR
 		}),
 		normal = inherit(square_border_stylebox, {
-			bg_color = COLOR_PURPLE,
-			border_color = COLOR_PURPLE
+			bg_color = COLOR_BACKDROP,
+			border_color = COLOR_BACKDROP
 		}),
 		read_only = inherit(square_border_stylebox, {
 			bg_color = COLOR_DISABLED,
@@ -164,10 +164,10 @@ func define_theme():
 		grabber = ResourceLoader.load("res://theme/icons/memory--dot-octagon-fill.png"),
 		grabber_highlight = ResourceLoader.load("res://theme/icons/memory--dot-octagon-fill.png"),
 		grabber_area = stylebox_flat({
-			bg_color = COLOR_DARK_PURPLE
+			bg_color = COLOR_MAIN
 		}),
 		grabber_area_highlight = stylebox_flat({
-			bg_color = COLOR_DARK_PURPLE
+			bg_color = COLOR_MAIN
 		}),
 		slider = stylebox_flat({
 			bg_color = COLOR_CLEAR,
@@ -177,11 +177,11 @@ func define_theme():
 	})
 
 	var scroll_bar_grabber = stylebox_flat({
-		bg_color = COLOR_DARK_PURPLE
+		bg_color = COLOR_MAIN
 	})
 
 	var scroll_bar_background = stylebox_flat({
-		bg_color = COLOR_PURPLE,
+		bg_color = COLOR_BACKDROP,
 		content_margin_left = SLIDER_THICKNESS,
 		content_margin_right = SLIDER_THICKNESS,
 		content_margin_bottom = SLIDER_THICKNESS,
@@ -199,10 +199,10 @@ func define_theme():
 		grabber = ResourceLoader.load("res://theme/icons/memory--dot-octagon-fill.png"),
 		grabber_highlight = ResourceLoader.load("res://theme/icons/memory--dot-octagon-fill.png"),
 		grabber_area = stylebox_flat({
-			bg_color = COLOR_DARK_PURPLE
+			bg_color = COLOR_MAIN
 		}),
 		grabber_area_highlight = stylebox_flat({
-			bg_color = COLOR_DARK_PURPLE
+			bg_color = COLOR_MAIN
 		}),
 		slider = stylebox_flat({
 			bg_color = COLOR_CLEAR,
@@ -220,9 +220,9 @@ func define_theme():
 
 	define_style("ProgressBar", {
 		background = stylebox_flat({
-			bg_color = COLOR_PURPLE
+			bg_color = COLOR_BACKDROP
 		}),
 		fill = stylebox_flat({
-			bg_color = COLOR_DARK_PURPLE
+			bg_color = COLOR_MAIN
 		})
 	})
