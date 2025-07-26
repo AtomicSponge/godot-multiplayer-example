@@ -2,11 +2,18 @@
 extends ProgrammaticTheme
 const UPDATE_ON_SAVE = true
 
-var default_font = "res://theme/font/Poco.ttf"
-var default_font_size = 24
+const DEFAULT_FONT = "res://theme/font/Poco.ttf"
+const DEFAULT_FONT_SIZE = 24
 
-var text_font_color = Color.WHITE
-var background_color = Color.DARK_SLATE_BLUE
+const TEXT_FONT_COLOR = Color.WHITE
+const BACKGROUND_COLOR = Color.DARK_SLATE_BLUE
+
+const BORDER_COLOR = Color.WHITE
+const BORDER_HIGHLIGHT_COLOR = Color.AQUA
+const BORDER_WIDTH = 2
+const BORDER_RADIUS = 8
+
+const SLIDER_THICKNESS = 4
 
 const COLOR_DARK_PURPLE = Color(0.11, 0.09, 0.22, 1.0)
 const COLOR_PURPLE = Color(0.16, 0.14, 0.32, 1.0)
@@ -17,16 +24,13 @@ func setup():
 	set_save_path("res://theme//theme.tres")
 
 func define_theme():
-	define_default_font(ResourceLoader.load(default_font))
-	define_default_font_size(default_font_size)
-
-	const BORDER_WIDTH = 2
-	const BORDER_RADIUS = 8
+	define_default_font(ResourceLoader.load(DEFAULT_FONT))
+	define_default_font_size(DEFAULT_FONT_SIZE)
 
 	define_style("Panel", {
 		panel = stylebox_flat({
-			bg_color = background_color,
-			border_color = Color.WHITE,
+			bg_color = BACKGROUND_COLOR,
+			border_color = BORDER_COLOR,
 			border_width_bottom = BORDER_WIDTH,
 			border_width_left = BORDER_WIDTH,
 			border_width_right = BORDER_WIDTH,
@@ -39,7 +43,7 @@ func define_theme():
 	})
 
 	define_style("Label", {
-		font_color = text_font_color
+		font_color = TEXT_FONT_COLOR
 	})
 
 	var curved_border_stylebox = stylebox_flat({
@@ -54,37 +58,49 @@ func define_theme():
 	})
 
 	define_style("Button", {
-		font_color = text_font_color,
+		font_color = TEXT_FONT_COLOR,
 		disabled = inherit(curved_border_stylebox, {
 			bg_color = COLOR_DISABLED,
 			border_color = COLOR_DISABLED
 		}),
 		focus = inherit(curved_border_stylebox, {
 			bg_color = COLOR_CLEAR,
-			border_color = Color.AQUA
+			border_color = BORDER_HIGHLIGHT_COLOR
 		}),
 		hover = inherit(curved_border_stylebox, {
 			bg_color = COLOR_DARK_PURPLE,
-			border_color = Color.AQUA
+			border_color = BORDER_HIGHLIGHT_COLOR
 		}),
 		normal = inherit(curved_border_stylebox, {
 			bg_color = COLOR_DARK_PURPLE,
-			border_color = Color.WHITE
+			border_color = BORDER_COLOR
 		}),
 		pressed = inherit(curved_border_stylebox, {
 			bg_color = Color.DARK_MAGENTA,
-			border_color = Color.AQUA
+			border_color = BORDER_HIGHLIGHT_COLOR
 		})
+	})
+	
+	var CHECK_STYLE = stylebox_flat({
+		bg_color = BACKGROUND_COLOR
 	})
 
 	define_style("CheckButton", {
 		checked = ResourceLoader.load("res://theme/icons/memory--checkbox-intermediate.png"),
 		unchecked = ResourceLoader.load("res://theme/icons/memory--checkbox-blank.png"),
+		focus = CHECK_STYLE,
+		normal = CHECK_STYLE,
+		hover = CHECK_STYLE,
+		pressed = CHECK_STYLE
 	})
 	
 	define_style("CheckBox", {
 		checked = ResourceLoader.load("res://theme/icons/memory--checkbox-cross.png"),
-		unchecked = ResourceLoader.load("res://theme/icons/memory--checkbox-blank.png")
+		unchecked = ResourceLoader.load("res://theme/icons/memory--checkbox-blank.png"),
+		focus = CHECK_STYLE,
+		normal = CHECK_STYLE,
+		hover = CHECK_STYLE,
+		pressed = CHECK_STYLE
 	})
 
 	var square_border_stylebox = stylebox_flat({
@@ -96,21 +112,21 @@ func define_theme():
 
 	define_style("ColorPickerButton", {
 		focus = inherit(square_border_stylebox, {
-			border_color = Color.AQUA
+			border_color = BORDER_HIGHLIGHT_COLOR
 		}),
 		hover = inherit(square_border_stylebox, {
-			border_color = Color.AQUA
+			border_color = BORDER_HIGHLIGHT_COLOR
 		}),
 		normal = inherit(square_border_stylebox, {
-			border_color = Color.WHITE
+			border_color = BORDER_COLOR
 		})
 	})
 
 	define_style("LineEdit", {
-		font_color = text_font_color,
+		font_color = TEXT_FONT_COLOR,
 		focus = inherit(square_border_stylebox, {
 			bg_color = COLOR_CLEAR,
-			border_color = Color.AQUA
+			border_color = BORDER_HIGHLIGHT_COLOR
 		}),
 		normal = inherit(square_border_stylebox, {
 			bg_color = COLOR_PURPLE,
@@ -123,10 +139,10 @@ func define_theme():
 	})
 
 	define_style("TextEdit", {
-		font_color = text_font_color,
+		font_color = TEXT_FONT_COLOR,
 		focus = inherit(square_border_stylebox, {
 			bg_color = COLOR_CLEAR,
-			border_color = Color.AQUA
+			border_color = BORDER_HIGHLIGHT_COLOR
 		}),
 		normal = inherit(square_border_stylebox, {
 			bg_color = COLOR_PURPLE,
@@ -137,9 +153,7 @@ func define_theme():
 			border_color = COLOR_DISABLED
 		})
 	})
-	
-	var slider_thickness = 4
-	
+
 	define_style("VSlider", {
 		grabber = ResourceLoader.load("res://theme/icons/memory--dot-octagon-fill.png"),
 		grabber_highlight = ResourceLoader.load("res://theme/icons/memory--dot-octagon-fill.png"),
@@ -151,21 +165,21 @@ func define_theme():
 		}),
 		slider = stylebox_flat({
 			bg_color = COLOR_CLEAR,
-			content_margin_left = slider_thickness,
-			content_margin_right = slider_thickness
+			content_margin_left = SLIDER_THICKNESS,
+			content_margin_right = SLIDER_THICKNESS
 		})
 	})
-	
+
 	var scroll_bar_grabber = stylebox_flat({
 		bg_color = COLOR_DARK_PURPLE
 	})
-	
+
 	var scroll_bar_background = stylebox_flat({
 		bg_color = COLOR_PURPLE,
-		content_margin_left = slider_thickness,
-		content_margin_right = slider_thickness,
-		content_margin_bottom = slider_thickness,
-		content_margin_top = slider_thickness,
+		content_margin_left = SLIDER_THICKNESS,
+		content_margin_right = SLIDER_THICKNESS,
+		content_margin_bottom = SLIDER_THICKNESS,
+		content_margin_top = SLIDER_THICKNESS,
 	})
 	
 	define_style("VScrollBar", {
@@ -186,14 +200,23 @@ func define_theme():
 		}),
 		slider = stylebox_flat({
 			bg_color = COLOR_CLEAR,
-			content_margin_bottom = slider_thickness,
-			content_margin_top = slider_thickness,
+			content_margin_bottom = SLIDER_THICKNESS,
+			content_margin_top = SLIDER_THICKNESS,
 		})
 	})
-	
+
 	define_style("HScrollBar", {
 		grabber = scroll_bar_grabber,
 		grabber_highlight = scroll_bar_grabber,
 		grabber_pressed = scroll_bar_grabber,
 		scroll = scroll_bar_background
+	})
+
+	define_style("ProgressBar", {
+		background = stylebox_flat({
+			bg_color = COLOR_PURPLE
+		}),
+		fill = stylebox_flat({
+			bg_color = COLOR_DARK_PURPLE
+		})
 	})
