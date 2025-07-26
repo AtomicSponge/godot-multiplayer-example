@@ -22,16 +22,11 @@ func define_theme():
 
 	var border_width = 2
 	var border_radius = 8
-	var margins = 4
 
 	define_style("Panel", {
 		panel = stylebox_flat({
 			bg_color = background_color,
 			border_color = Color.WHITE,
-			expand_margin_bottom = margins,
-			expand_margin_left = margins,
-			expand_margin_right = margins,
-			expand_margin_top = margins,
 			border_width_bottom = border_width,
 			border_width_left = border_width,
 			border_width_right = border_width,
