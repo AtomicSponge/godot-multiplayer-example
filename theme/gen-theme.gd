@@ -76,7 +76,17 @@ func define_theme():
 			border_color = Color.AQUA
 		})
 	})
+
+	define_style("CheckButton", {
+		checked = ResourceLoader.load("res://theme/icons/memory--checkbox-intermediate.png"),
+		unchecked = ResourceLoader.load("res://theme/icons/memory--checkbox-blank.png"),
+	})
 	
+	define_style("CheckBox", {
+		checked = ResourceLoader.load("res://theme/icons/memory--checkbox-cross.png"),
+		unchecked = ResourceLoader.load("res://theme/icons/memory--checkbox-blank.png")
+	})
+
 	var square_border_stylebox = stylebox_flat({
 		border_width_bottom = border_width / 2,
 		border_width_left = border_width / 2,
@@ -131,6 +141,8 @@ func define_theme():
 	var slider_thickness = 4
 	
 	define_style("VSlider", {
+		grabber = ResourceLoader.load("res://theme/icons/memory--dot-octagon-fill.png"),
+		grabber_highlight = ResourceLoader.load("res://theme/icons/memory--dot-octagon-fill.png"),
 		grabber_area = stylebox_flat({
 			bg_color = COLOR_DARK_PURPLE
 		}),
@@ -145,6 +157,8 @@ func define_theme():
 	})
 
 	define_style("HSlider", {
+		grabber = ResourceLoader.load("res://theme/icons/memory--dot-octagon-fill.png"),
+		grabber_highlight = ResourceLoader.load("res://theme/icons/memory--dot-octagon-fill.png"),
 		grabber_area = stylebox_flat({
 			bg_color = COLOR_DARK_PURPLE
 		}),
