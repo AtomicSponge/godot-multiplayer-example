@@ -76,25 +76,37 @@ func define_theme():
 			border_color = Color.AQUA
 		})
 	})
-
-	var edit_border_stylebox = stylebox_flat({
+	
+	var square_border_stylebox = stylebox_flat({
 		border_width_bottom = border_width / 2,
 		border_width_left = border_width / 2,
 		border_width_right = border_width / 2,
 		border_width_top = border_width / 2
 	})
 
+	define_style("ColorPickerButton", {
+		focus = inherit(square_border_stylebox, {
+			border_color = Color.AQUA
+		}),
+		hover = inherit(square_border_stylebox, {
+			border_color = Color.AQUA
+		}),
+		normal = inherit(square_border_stylebox, {
+			border_color = Color.WHITE
+		})
+	})
+
 	define_style("LineEdit", {
 		font_color = text_font_color,
-		focus = inherit(edit_border_stylebox, {
+		focus = inherit(square_border_stylebox, {
 			bg_color = Color(0, 0, 0, 0.0),
 			border_color = Color.AQUA
 		}),
-		normal = inherit(edit_border_stylebox, {
+		normal = inherit(square_border_stylebox, {
 			bg_color = Color(0.16, 0.14, 0.32, 1.0),
 			border_color = Color(0.16, 0.14, 0.32, 1.0)
 		}),
-		read_only = inherit(edit_border_stylebox, {
+		read_only = inherit(square_border_stylebox, {
 			bg_color = Color(0.11, 0.09, 0.22, 0.2),
 			border_color = Color(0.11, 0.09, 0.22, 0.2)
 		})
@@ -102,15 +114,15 @@ func define_theme():
 
 	define_style("TextEdit", {
 		font_color = text_font_color,
-		focus = inherit(edit_border_stylebox, {
+		focus = inherit(square_border_stylebox, {
 			bg_color = Color(0, 0, 0, 0.0),
 			border_color = Color.AQUA
 		}),
-		normal = inherit(edit_border_stylebox, {
+		normal = inherit(square_border_stylebox, {
 			bg_color = Color(0.16, 0.14, 0.32, 1.0),
 			border_color = Color(0.16, 0.14, 0.32, 1.0)
 		}),
-		read_only = inherit(edit_border_stylebox, {
+		read_only = inherit(square_border_stylebox, {
 			bg_color = Color(0.11, 0.09, 0.22, 0.2),
 			border_color = Color(0.11, 0.09, 0.22, 0.2)
 		})

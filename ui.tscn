@@ -25,5 +25,7 @@ text = "Test Label"
 
 [node name="HSlider" type="HSlider" parent="Panel"]
 layout_mode = 0
-offset_right = 173.0
-offset_bottom = 156.0
+offset_left = 63.0
+offset_top = 46.0
+offset_right = 236.0
+offset_bottom = 202.0
