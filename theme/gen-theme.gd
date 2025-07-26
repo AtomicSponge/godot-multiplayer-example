@@ -27,19 +27,25 @@ func define_theme():
 	define_default_font(ResourceLoader.load(DEFAULT_FONT))
 	define_default_font_size(DEFAULT_FONT_SIZE)
 
+	var PANEL_STYLE = stylebox_flat({
+		bg_color = BACKGROUND_COLOR,
+		border_color = BORDER_COLOR,
+		border_width_bottom = BORDER_WIDTH,
+		border_width_left = BORDER_WIDTH,
+		border_width_right = BORDER_WIDTH,
+		border_width_top = BORDER_WIDTH,
+		corner_radius_bottom_left = BORDER_RADIUS,
+		corner_radius_bottom_right = BORDER_RADIUS,
+		corner_radius_top_left = BORDER_RADIUS,
+		corner_radius_top_right = BORDER_RADIUS
+	})
+
 	define_style("Panel", {
-		panel = stylebox_flat({
-			bg_color = BACKGROUND_COLOR,
-			border_color = BORDER_COLOR,
-			border_width_bottom = BORDER_WIDTH,
-			border_width_left = BORDER_WIDTH,
-			border_width_right = BORDER_WIDTH,
-			border_width_top = BORDER_WIDTH,
-			corner_radius_bottom_left = BORDER_RADIUS,
-			corner_radius_bottom_right = BORDER_RADIUS,
-			corner_radius_top_left = BORDER_RADIUS,
-			corner_radius_top_right = BORDER_RADIUS
-		})
+		panel = PANEL_STYLE
+	})
+	
+	define_style("AcceptDialog", {
+		panel = PANEL_STYLE
 	})
 
 	define_style("Label", {
