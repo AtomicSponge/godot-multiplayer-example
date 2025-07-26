@@ -77,25 +77,41 @@ func define_theme():
 		})
 	})
 	
-	var line_edit_border_stylebox = stylebox_flat({
+	var edit_border_stylebox = stylebox_flat({
 		border_width_bottom = border_width / 2,
 		border_width_left = border_width / 2,
 		border_width_right = border_width / 2,
-		border_width_top = border_width / 2,
-		corner_radius_bottom_left = border_radius / 4,
-		corner_radius_bottom_right = border_radius / 4,
-		corner_radius_top_left = border_radius / 4,
-		corner_radius_top_right = border_radius / 4
+		border_width_top = border_width / 2
 	})
 	
 	define_style("LineEdit", {
 		font_color = text_font_color,
-		disabled = inherit(line_edit_border_stylebox, {
-			bg_color = Color(0, 0, 0, 0.2),
-			border_color = Color(0, 0, 0, 0.2)
-		}),
-		focus = inherit(line_edit_border_stylebox, {
+		focus = inherit(edit_border_stylebox, {
 			bg_color = Color(0, 0, 0, 0.0),
 			border_color = Color.AQUA
+		}),
+		normal = inherit(edit_border_stylebox, {
+			bg_color = Color(0, 0, 0, 0.4),
+			border_color = Color(0, 0, 0, 0.4)
+		}),
+		read_only = inherit(edit_border_stylebox, {
+			bg_color = Color(0, 0, 0, 0.2),
+			border_color = Color(0, 0, 0, 0.2)
+		})
+	})
+	
+	define_style("TextEdit", {
+		font_color = text_font_color,
+		focus = inherit(edit_border_stylebox, {
+			bg_color = Color(0, 0, 0, 0.0),
+			border_color = Color.AQUA
+		}),
+		normal = inherit(edit_border_stylebox, {
+			bg_color = Color(0, 0, 0, 0.4),
+			border_color = Color(0, 0, 0, 0.4)
+		}),
+		read_only = inherit(edit_border_stylebox, {
+			bg_color = Color(0, 0, 0, 0.2),
+			border_color = Color(0, 0, 0, 0.0)
 		})
 	})
