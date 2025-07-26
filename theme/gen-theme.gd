@@ -77,7 +77,7 @@ func define_theme():
 		}),
 		pressed = inherit(curved_border_stylebox, {
 			bg_color = Color.DARK_MAGENTA,
-			border_color = BORDER_HIGHLIGHT_COLOR
+			border_color = Color.WHITE
 		})
 	})
 	
