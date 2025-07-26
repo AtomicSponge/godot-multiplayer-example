@@ -63,6 +63,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpecb"]
+bg_color = Color(0, 0, 0, 0)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -99,5 +100,6 @@ Button/styles/hover = SubResource("StyleBoxFlat_o8nfg")
 Button/styles/normal = SubResource("StyleBoxFlat_8fw28")
 Button/styles/pressed = SubResource("StyleBoxFlat_cdh44")
 Label/colors/font_color = Color(1, 1, 1, 1)
+LineEdit/colors/font_color = Color(1, 1, 1, 1)
 LineEdit/styles/focus = SubResource("StyleBoxFlat_vpecb")
 Panel/styles/panel = SubResource("StyleBoxFlat_0psj3")
