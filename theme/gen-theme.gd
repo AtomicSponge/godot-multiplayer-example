@@ -2,23 +2,23 @@
 extends ProgrammaticTheme
 const UPDATE_ON_SAVE = true
 
-const DEFAULT_FONT = "res://theme/font/Poco.ttf"
-const DEFAULT_FONT_SIZE = 24
+const DEFAULT_FONT: String = "res://theme/font/Poco.ttf"
+const DEFAULT_FONT_SIZE: int = 24
 
-const TEXT_FONT_COLOR = Color.WHITE
-const BACKGROUND_COLOR = Color.DARK_SLATE_BLUE
+const TEXT_FONT_COLOR: Color = Color.WHITE
+const BACKGROUND_COLOR: Color = Color.DARK_SLATE_BLUE
 
-const BORDER_COLOR = Color.WHITE
-const BORDER_HIGHLIGHT_COLOR = Color.AQUA
-const BORDER_WIDTH = 2
-const BORDER_RADIUS = 8
+const BORDER_COLOR: Color = Color.WHITE
+const BORDER_HIGHLIGHT_COLOR: Color = Color.AQUA
+const BORDER_WIDTH: int = 2
+const BORDER_RADIUS: int = 8
 
-const SLIDER_THICKNESS = 4
+const SLIDER_THICKNESS: int = 4
 
-const COLOR_DARK_PURPLE = Color(0.11, 0.09, 0.22, 1.0)
-const COLOR_PURPLE = Color(0.16, 0.14, 0.32, 1.0)
-const COLOR_DISABLED = Color(0.11, 0.09, 0.22, 0.2)
-const COLOR_CLEAR = Color(0.0, 0.0, 0.0, 0.0)
+const COLOR_DARK_PURPLE: Color = Color(0.11, 0.09, 0.22, 1.0)
+const COLOR_PURPLE: Color = Color(0.16, 0.14, 0.32, 1.0)
+const COLOR_DISABLED: Color = Color(0.11, 0.09, 0.22, 0.2)
+const COLOR_CLEAR: Color = Color(0.0, 0.0, 0.0, 0.0)
 
 func setup():
 	set_save_path("res://theme//theme.tres")
