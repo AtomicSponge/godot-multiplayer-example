@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cwhd1b7r3qh1h" path="res://theme/icons/memory--checkbox-intermediate.png" id="1_kenci"]
 [ext_resource type="Texture2D" uid="uid://d1vihe3d5ywaq" path="res://theme/icons/memory--checkbox-blank.png" id="1_o8nfg"]
 [ext_resource type="FontFile" uid="uid://cvfux2s2sdl4v" path="res://theme/font/Poco.ttf" id="1_uvho4"]
-[ext_resource type="Texture2D" uid="uid://bfdgd5efgmmww" path="res://theme/icons/memory--dot-octagon-fill.png" id="4_cdh44"]
+[ext_resource type="Texture2D" uid="uid://chgie4vo7pdqp" path="res://theme/icons/memory--fill.png" id="5_vpecb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdh44"]
 bg_color = Color(0.282353, 0.239216, 0.545098, 1)
@@ -272,8 +272,8 @@ HScrollBar/styles/grabber = SubResource("StyleBoxFlat_ifdwq")
 HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_053ew")
 HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_yj5q2")
 HScrollBar/styles/scroll = SubResource("StyleBoxFlat_wf1f4")
-HSlider/icons/grabber = ExtResource("4_cdh44")
-HSlider/icons/grabber_highlight = ExtResource("4_cdh44")
+HSlider/icons/grabber = ExtResource("5_vpecb")
+HSlider/icons/grabber_highlight = ExtResource("5_vpecb")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_etwfc")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_lfktr")
 HSlider/styles/slider = SubResource("StyleBoxFlat_mx60c")
@@ -293,8 +293,8 @@ VScrollBar/styles/grabber = SubResource("StyleBoxFlat_688u3")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_nchq3")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_626c1")
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_18ycs")
-VSlider/icons/grabber = ExtResource("4_cdh44")
-VSlider/icons/grabber_highlight = ExtResource("4_cdh44")
+VSlider/icons/grabber = ExtResource("5_vpecb")
+VSlider/icons/grabber_highlight = ExtResource("5_vpecb")
 VSlider/styles/grabber_area = SubResource("StyleBoxFlat_ok77r")
 VSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ummfo")
 VSlider/styles/slider = SubResource("StyleBoxFlat_p5hau")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfdgd5efgmmww"
-path="res://.godot/imported/memory--dot-octagon-fill.png-e2447dbe6237797c7f442103bfb8415b.ctex"
+uid="uid://chgie4vo7pdqp"
+path="res://.godot/imported/memory--fill.png-3a4d3c3002c7be1fb5a35c934163881e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://theme/icons/memory--dot-octagon-fill.png"
-dest_files=["res://.godot/imported/memory--dot-octagon-fill.png-e2447dbe6237797c7f442103bfb8415b.ctex"]
+source_file="res://theme/icons/memory--fill.png"
+dest_files=["res://.godot/imported/memory--fill.png-3a4d3c3002c7be1fb5a35c934163881e.ctex"]
 
 [params]
 

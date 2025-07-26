@@ -161,8 +161,8 @@ func define_theme():
 	})
 
 	define_style("VSlider", {
-		grabber = ResourceLoader.load("res://theme/icons/memory--dot-octagon-fill.png"),
-		grabber_highlight = ResourceLoader.load("res://theme/icons/memory--dot-octagon-fill.png"),
+		grabber = ResourceLoader.load("res://theme/icons/memory--fill.png"),
+		grabber_highlight = ResourceLoader.load("res://theme/icons/memory--fill.png"),
 		grabber_area = stylebox_flat({
 			bg_color = COLOR_MAIN
 		}),
@@ -196,8 +196,8 @@ func define_theme():
 	})
 
 	define_style("HSlider", {
-		grabber = ResourceLoader.load("res://theme/icons/memory--dot-octagon-fill.png"),
-		grabber_highlight = ResourceLoader.load("res://theme/icons/memory--dot-octagon-fill.png"),
+		grabber = ResourceLoader.load("res://theme/icons/memory--fill.png"),
+		grabber_highlight = ResourceLoader.load("res://theme/icons/memory--fill.png"),
 		grabber_area = stylebox_flat({
 			bg_color = COLOR_MAIN
 		}),
