@@ -10,13 +10,15 @@ grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_right = 663.0
-offset_bottom = 389.0
+offset_left = 37.0
+offset_top = 23.0
+offset_right = 700.0
+offset_bottom = 412.0
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 54.0
-offset_top = 45.0
-offset_right = 328.0
-offset_bottom = 151.0
+offset_left = 111.0
+offset_top = 98.0
+offset_right = 385.0
+offset_bottom = 204.0
 text = "test"
