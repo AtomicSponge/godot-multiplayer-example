@@ -8,6 +8,11 @@ var default_font_size = 24
 var text_font_color = Color.WHITE
 var background_color = Color.DARK_SLATE_BLUE
 
+const COLOR_DARK_PURPLE = Color(0.11, 0.09, 0.22, 1.0)
+const COLOR_PURPLE = Color(0.16, 0.14, 0.32, 1.0)
+const COLOR_DISABLED = Color(0.11, 0.09, 0.22, 0.2)
+const COLOR_CLEAR = Color(0.0, 0.0, 0.0, 0.0)
+
 func setup():
 	set_save_path("res://theme//theme.tres")
 
@@ -56,19 +61,19 @@ func define_theme():
 	define_style("Button", {
 		font_color = text_font_color,
 		disabled = inherit(button_border_stylebox, {
-			bg_color = Color(0.11, 0.09, 0.22, 0.2),
-			border_color = Color(0.11, 0.09, 0.22, 0.2)
+			bg_color = COLOR_DISABLED,
+			border_color = COLOR_DISABLED
 		}),
 		focus = inherit(button_border_stylebox, {
-			bg_color = Color(0, 0, 0, 0.0),
+			bg_color = COLOR_CLEAR,
 			border_color = Color.AQUA
 		}),
 		hover = inherit(button_border_stylebox, {
-			bg_color = Color(0.11, 0.09, 0.22, 1.0),
+			bg_color = COLOR_DARK_PURPLE,
 			border_color = Color.AQUA
 		}),
 		normal = inherit(button_border_stylebox, {
-			bg_color = Color(0.11, 0.09, 0.22, 1.0),
+			bg_color = COLOR_DARK_PURPLE,
 			border_color = Color.WHITE
 		}),
 		pressed = inherit(button_border_stylebox, {
@@ -99,32 +104,32 @@ func define_theme():
 	define_style("LineEdit", {
 		font_color = text_font_color,
 		focus = inherit(square_border_stylebox, {
-			bg_color = Color(0, 0, 0, 0.0),
+			bg_color = COLOR_CLEAR,
 			border_color = Color.AQUA
 		}),
 		normal = inherit(square_border_stylebox, {
-			bg_color = Color(0.16, 0.14, 0.32, 1.0),
-			border_color = Color(0.16, 0.14, 0.32, 1.0)
+			bg_color = COLOR_PURPLE,
+			border_color = COLOR_PURPLE
 		}),
 		read_only = inherit(square_border_stylebox, {
-			bg_color = Color(0.11, 0.09, 0.22, 0.2),
-			border_color = Color(0.11, 0.09, 0.22, 0.2)
+			bg_color = COLOR_DISABLED,
+			border_color = COLOR_DISABLED
 		})
 	})
 
 	define_style("TextEdit", {
 		font_color = text_font_color,
 		focus = inherit(square_border_stylebox, {
-			bg_color = Color(0, 0, 0, 0.0),
+			bg_color = COLOR_CLEAR,
 			border_color = Color.AQUA
 		}),
 		normal = inherit(square_border_stylebox, {
-			bg_color = Color(0.16, 0.14, 0.32, 1.0),
-			border_color = Color(0.16, 0.14, 0.32, 1.0)
+			bg_color = COLOR_PURPLE,
+			border_color = COLOR_PURPLE
 		}),
 		read_only = inherit(square_border_stylebox, {
-			bg_color = Color(0.11, 0.09, 0.22, 0.2),
-			border_color = Color(0.11, 0.09, 0.22, 0.2)
+			bg_color = COLOR_DISABLED,
+			border_color = COLOR_DISABLED
 		})
 	})
 	
@@ -132,13 +137,13 @@ func define_theme():
 	
 	define_style("Slider", {
 		grabber_area = stylebox_flat({
-			bg_color = Color(0.11, 0.09, 0.22, 1.0)
+			bg_color = COLOR_DARK_PURPLE
 		}),
 		grabber_area_highlight = stylebox_flat({
-			bg_color = Color(0.11, 0.09, 0.22, 1.0)
+			bg_color = COLOR_DARK_PURPLE
 		}),
 		slider = stylebox_flat({
-			bg_color = Color(0, 0, 0, 0),
+			bg_color = COLOR_CLEAR,
 			content_margin_top = slider_thickness,
 			content_margin_bottom = slider_thickness
 		})
@@ -146,13 +151,13 @@ func define_theme():
 
 	define_style("HSlider", {
 		grabber_area = stylebox_flat({
-			bg_color = Color(0.11, 0.09, 0.22, 1.0)
+			bg_color = COLOR_DARK_PURPLE
 		}),
 		grabber_area_highlight = stylebox_flat({
-			bg_color = Color(0.11, 0.09, 0.22, 1.0)
+			bg_color = COLOR_DARK_PURPLE
 		}),
 		slider = stylebox_flat({
-			bg_color = Color(0, 0, 0, 0),
+			bg_color = COLOR_CLEAR,
 			content_margin_top = slider_thickness,
 			content_margin_bottom = slider_thickness
 		})
