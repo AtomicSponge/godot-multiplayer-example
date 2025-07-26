@@ -115,3 +115,31 @@ func define_theme():
 			border_color = Color(0.11, 0.09, 0.22, 0.2)
 		})
 	})
+	
+	define_style("Slider", {
+		grabber_area = stylebox_flat({
+			bg_color = Color(0.11, 0.09, 0.22, 1.0)
+		}),
+		grabber_area_highlight = stylebox_flat({
+			bg_color = Color(0.11, 0.09, 0.22, 1.0)
+		}),
+		slider = stylebox_flat({
+			bg_color = Color(0, 0, 0, 0),
+			content_margin_top = 4,
+			content_margin_bottom = 4
+		})
+	})
+
+	define_style("HSlider", {
+		grabber_area = stylebox_flat({
+			bg_color = Color(0.11, 0.09, 0.22, 1.0)
+		}),
+		grabber_area_highlight = stylebox_flat({
+			bg_color = Color(0.11, 0.09, 0.22, 1.0)
+		}),
+		slider = stylebox_flat({
+			bg_color = Color(0, 0, 0, 0),
+			content_margin_top = 4,
+			content_margin_bottom = 4
+		})
+	})

@@ -23,10 +23,7 @@ offset_right = 238.0
 offset_bottom = 66.0
 text = "Test Label"
 
-[node name="Button" type="Button" parent="Panel"]
+[node name="HSlider" type="HSlider" parent="Panel"]
 layout_mode = 0
-offset_left = 108.0
-offset_top = 104.0
-offset_right = 461.0
-offset_bottom = 320.0
-text = "test"
+offset_right = 173.0
+offset_bottom = 156.0

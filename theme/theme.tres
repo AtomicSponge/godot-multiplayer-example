@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://v54qa006qlk3"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://v54qa006qlk3"]
 
 [ext_resource type="FontFile" uid="uid://cvfux2s2sdl4v" path="res://theme/font/Poco.ttf" id="1_uvho4"]
 
@@ -63,6 +63,17 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpecb"]
+bg_color = Color(0.11, 0.09, 0.22, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0psj3"]
+bg_color = Color(0.11, 0.09, 0.22, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpv6k"]
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmeh2"]
 bg_color = Color(0, 0, 0, 0)
 border_width_left = 1
 border_width_top = 1
@@ -70,7 +81,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 1, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0psj3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r41cb"]
 bg_color = Color(0.16, 0.14, 0.32, 1)
 border_width_left = 1
 border_width_top = 1
@@ -78,7 +89,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.16, 0.14, 0.32, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpv6k"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lj41j"]
 bg_color = Color(0.11, 0.09, 0.22, 0.2)
 border_width_left = 1
 border_width_top = 1
@@ -86,7 +97,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.11, 0.09, 0.22, 0.2)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmeh2"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_30odk"]
 bg_color = Color(0.282353, 0.239216, 0.545098, 1)
 border_width_left = 2
 border_width_top = 2
@@ -102,7 +113,7 @@ expand_margin_top = 4.0
 expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r41cb"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8k67y"]
 bg_color = Color(0, 0, 0, 0)
 border_width_left = 1
 border_width_top = 1
@@ -110,7 +121,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 1, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lj41j"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3xypp"]
 bg_color = Color(0.16, 0.14, 0.32, 1)
 border_width_left = 1
 border_width_top = 1
@@ -118,7 +129,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.16, 0.14, 0.32, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_30odk"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsp24"]
 bg_color = Color(0.11, 0.09, 0.22, 0.2)
 border_width_left = 1
 border_width_top = 1
@@ -135,13 +146,16 @@ Button/styles/focus = SubResource("StyleBoxFlat_kenci")
 Button/styles/hover = SubResource("StyleBoxFlat_o8nfg")
 Button/styles/normal = SubResource("StyleBoxFlat_8fw28")
 Button/styles/pressed = SubResource("StyleBoxFlat_cdh44")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_vpecb")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_0psj3")
+HSlider/styles/slider = SubResource("StyleBoxFlat_xpv6k")
 Label/colors/font_color = Color(1, 1, 1, 1)
 LineEdit/colors/font_color = Color(1, 1, 1, 1)
-LineEdit/styles/focus = SubResource("StyleBoxFlat_vpecb")
-LineEdit/styles/normal = SubResource("StyleBoxFlat_0psj3")
-LineEdit/styles/read_only = SubResource("StyleBoxFlat_xpv6k")
-Panel/styles/panel = SubResource("StyleBoxFlat_dmeh2")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_dmeh2")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_r41cb")
+LineEdit/styles/read_only = SubResource("StyleBoxFlat_lj41j")
+Panel/styles/panel = SubResource("StyleBoxFlat_30odk")
 TextEdit/colors/font_color = Color(1, 1, 1, 1)
-TextEdit/styles/focus = SubResource("StyleBoxFlat_r41cb")
-TextEdit/styles/normal = SubResource("StyleBoxFlat_lj41j")
-TextEdit/styles/read_only = SubResource("StyleBoxFlat_30odk")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_8k67y")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_3xypp")
+TextEdit/styles/read_only = SubResource("StyleBoxFlat_dsp24")
