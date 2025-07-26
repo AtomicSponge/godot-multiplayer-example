@@ -14,7 +14,7 @@ func setup():
 func define_theme():
 	define_default_font(ResourceLoader.load(default_font))
 	define_default_font_size(default_font_size)
-	
+
 	var border_width = 2
 	var border_radius = 8
 	var margins = 4
@@ -76,14 +76,14 @@ func define_theme():
 			border_color = Color.AQUA
 		})
 	})
-	
+
 	var edit_border_stylebox = stylebox_flat({
 		border_width_bottom = border_width / 2,
 		border_width_left = border_width / 2,
 		border_width_right = border_width / 2,
 		border_width_top = border_width / 2
 	})
-	
+
 	define_style("LineEdit", {
 		font_color = text_font_color,
 		focus = inherit(edit_border_stylebox, {
@@ -99,7 +99,7 @@ func define_theme():
 			border_color = Color(0, 0, 0, 0.2)
 		})
 	})
-	
+
 	define_style("TextEdit", {
 		font_color = text_font_color,
 		focus = inherit(edit_border_stylebox, {
