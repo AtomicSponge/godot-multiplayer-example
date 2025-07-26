@@ -20,21 +20,21 @@ func define_theme():
 	define_default_font(ResourceLoader.load(default_font))
 	define_default_font_size(default_font_size)
 
-	var border_width = 2
-	var border_radius = 8
+	const BORDER_WIDTH = 2
+	const BORDER_RADIUS = 8
 
 	define_style("Panel", {
 		panel = stylebox_flat({
 			bg_color = background_color,
 			border_color = Color.WHITE,
-			border_width_bottom = border_width,
-			border_width_left = border_width,
-			border_width_right = border_width,
-			border_width_top = border_width,
-			corner_radius_bottom_left = border_radius,
-			corner_radius_bottom_right = border_radius,
-			corner_radius_top_left = border_radius,
-			corner_radius_top_right = border_radius
+			border_width_bottom = BORDER_WIDTH,
+			border_width_left = BORDER_WIDTH,
+			border_width_right = BORDER_WIDTH,
+			border_width_top = BORDER_WIDTH,
+			corner_radius_bottom_left = BORDER_RADIUS,
+			corner_radius_bottom_right = BORDER_RADIUS,
+			corner_radius_top_left = BORDER_RADIUS,
+			corner_radius_top_right = BORDER_RADIUS
 		})
 	})
 
@@ -43,14 +43,14 @@ func define_theme():
 	})
 
 	var curved_border_stylebox = stylebox_flat({
-		border_width_bottom = border_width / 2,
-		border_width_left = border_width / 2,
-		border_width_right = border_width / 2,
-		border_width_top = border_width / 2,
-		corner_radius_bottom_left = border_radius,
-		corner_radius_bottom_right = border_radius,
-		corner_radius_top_left = border_radius,
-		corner_radius_top_right = border_radius
+		border_width_bottom = int(float(BORDER_WIDTH) / 2.0),
+		border_width_left = int(float(BORDER_WIDTH) / 2.0),
+		border_width_right = int(float(BORDER_WIDTH) / 2.0),
+		border_width_top = int(float(BORDER_WIDTH) / 2.0),
+		corner_radius_bottom_left = BORDER_RADIUS,
+		corner_radius_bottom_right = BORDER_RADIUS,
+		corner_radius_top_left = BORDER_RADIUS,
+		corner_radius_top_right = BORDER_RADIUS
 	})
 
 	define_style("Button", {
@@ -88,10 +88,10 @@ func define_theme():
 	})
 
 	var square_border_stylebox = stylebox_flat({
-		border_width_bottom = border_width / 2,
-		border_width_left = border_width / 2,
-		border_width_right = border_width / 2,
-		border_width_top = border_width / 2
+		border_width_bottom = int(float(BORDER_WIDTH) / 2.0),
+		border_width_left = int(float(BORDER_WIDTH) / 2.0),
+		border_width_right = int(float(BORDER_WIDTH) / 2.0),
+		border_width_top = int(float(BORDER_WIDTH) / 2.0),
 	})
 
 	define_style("ColorPickerButton", {
@@ -155,6 +155,25 @@ func define_theme():
 			content_margin_right = slider_thickness
 		})
 	})
+	
+	var scroll_bar_grabber = stylebox_flat({
+		bg_color = COLOR_DARK_PURPLE
+	})
+	
+	var scroll_bar_background = stylebox_flat({
+		bg_color = COLOR_PURPLE,
+		content_margin_left = slider_thickness,
+		content_margin_right = slider_thickness,
+		content_margin_bottom = slider_thickness,
+		content_margin_top = slider_thickness,
+	})
+	
+	define_style("VScrollBar", {
+		grabber = scroll_bar_grabber,
+		grabber_highlight = scroll_bar_grabber,
+		grabber_pressed = scroll_bar_grabber,
+		scroll = scroll_bar_background
+	})
 
 	define_style("HSlider", {
 		grabber = ResourceLoader.load("res://theme/icons/memory--dot-octagon-fill.png"),
@@ -170,4 +189,11 @@ func define_theme():
 			content_margin_bottom = slider_thickness,
 			content_margin_top = slider_thickness,
 		})
+	})
+	
+	define_style("HScrollBar", {
+		grabber = scroll_bar_grabber,
+		grabber_highlight = scroll_bar_grabber,
+		grabber_pressed = scroll_bar_grabber,
+		scroll = scroll_bar_background
 	})
