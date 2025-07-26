@@ -42,7 +42,7 @@ func define_theme():
 		font_color = text_font_color
 	})
 
-	var button_border_stylebox = stylebox_flat({
+	var curved_border_stylebox = stylebox_flat({
 		border_width_bottom = border_width / 2,
 		border_width_left = border_width / 2,
 		border_width_right = border_width / 2,
@@ -55,23 +55,23 @@ func define_theme():
 
 	define_style("Button", {
 		font_color = text_font_color,
-		disabled = inherit(button_border_stylebox, {
+		disabled = inherit(curved_border_stylebox, {
 			bg_color = COLOR_DISABLED,
 			border_color = COLOR_DISABLED
 		}),
-		focus = inherit(button_border_stylebox, {
+		focus = inherit(curved_border_stylebox, {
 			bg_color = COLOR_CLEAR,
 			border_color = Color.AQUA
 		}),
-		hover = inherit(button_border_stylebox, {
+		hover = inherit(curved_border_stylebox, {
 			bg_color = COLOR_DARK_PURPLE,
 			border_color = Color.AQUA
 		}),
-		normal = inherit(button_border_stylebox, {
+		normal = inherit(curved_border_stylebox, {
 			bg_color = COLOR_DARK_PURPLE,
 			border_color = Color.WHITE
 		}),
-		pressed = inherit(button_border_stylebox, {
+		pressed = inherit(curved_border_stylebox, {
 			bg_color = Color.DARK_MAGENTA,
 			border_color = Color.AQUA
 		})
@@ -130,7 +130,7 @@ func define_theme():
 	
 	var slider_thickness = 4
 	
-	define_style("Slider", {
+	define_style("VSlider", {
 		grabber_area = stylebox_flat({
 			bg_color = COLOR_DARK_PURPLE
 		}),
@@ -139,8 +139,8 @@ func define_theme():
 		}),
 		slider = stylebox_flat({
 			bg_color = COLOR_CLEAR,
-			content_margin_top = slider_thickness,
-			content_margin_bottom = slider_thickness
+			content_margin_left = slider_thickness,
+			content_margin_right = slider_thickness
 		})
 	})
 
@@ -153,7 +153,7 @@ func define_theme():
 		}),
 		slider = stylebox_flat({
 			bg_color = COLOR_CLEAR,
+			content_margin_bottom = slider_thickness,
 			content_margin_top = slider_thickness,
-			content_margin_bottom = slider_thickness
 		})
 	})

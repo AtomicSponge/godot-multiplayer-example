@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=20 format=3 uid="uid://v54qa006qlk3"]
+[gd_resource type="Theme" load_steps=23 format=3 uid="uid://v54qa006qlk3"]
 
 [ext_resource type="FontFile" uid="uid://cvfux2s2sdl4v" path="res://theme/font/Poco.ttf" id="1_uvho4"]
 
@@ -154,6 +154,17 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.11, 0.09, 0.22, 0.2)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bd8t5"]
+bg_color = Color(0.11, 0.09, 0.22, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lb87n"]
+bg_color = Color(0.11, 0.09, 0.22, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kt1bb"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(0, 0, 0, 0)
+
 [resource]
 default_font = ExtResource("1_uvho4")
 default_font_size = 24
@@ -179,3 +190,6 @@ TextEdit/colors/font_color = Color(1, 1, 1, 1)
 TextEdit/styles/focus = SubResource("StyleBoxFlat_pnu5m")
 TextEdit/styles/normal = SubResource("StyleBoxFlat_urgry")
 TextEdit/styles/read_only = SubResource("StyleBoxFlat_pl34t")
+VSlider/styles/grabber_area = SubResource("StyleBoxFlat_bd8t5")
+VSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_lb87n")
+VSlider/styles/slider = SubResource("StyleBoxFlat_kt1bb")
