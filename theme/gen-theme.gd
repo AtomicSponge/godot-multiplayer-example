@@ -56,19 +56,19 @@ func define_theme():
 	define_style("Button", {
 		font_color = text_font_color,
 		disabled = inherit(button_border_stylebox, {
-			bg_color = Color(0, 0, 0, 0.2),
-			border_color = Color(0, 0, 0, 0.2)
+			bg_color = Color(0.11, 0.09, 0.22, 0.2),
+			border_color = Color(0.11, 0.09, 0.22, 0.2)
 		}),
 		focus = inherit(button_border_stylebox, {
 			bg_color = Color(0, 0, 0, 0.0),
 			border_color = Color.AQUA
 		}),
 		hover = inherit(button_border_stylebox, {
-			bg_color = Color(0, 0, 0, 0.6),
+			bg_color = Color(0.11, 0.09, 0.22, 1.0),
 			border_color = Color.AQUA
 		}),
 		normal = inherit(button_border_stylebox, {
-			bg_color = Color(0, 0, 0, 0.6),
+			bg_color = Color(0.11, 0.09, 0.22, 1.0),
 			border_color = Color.WHITE
 		}),
 		pressed = inherit(button_border_stylebox, {
@@ -91,12 +91,12 @@ func define_theme():
 			border_color = Color.AQUA
 		}),
 		normal = inherit(edit_border_stylebox, {
-			bg_color = Color(0, 0, 0, 0.4),
-			border_color = Color(0, 0, 0, 0.4)
+			bg_color = Color(0.16, 0.14, 0.32, 1.0),
+			border_color = Color(0.16, 0.14, 0.32, 1.0)
 		}),
 		read_only = inherit(edit_border_stylebox, {
-			bg_color = Color(0, 0, 0, 0.2),
-			border_color = Color(0, 0, 0, 0.2)
+			bg_color = Color(0.11, 0.09, 0.22, 0.2),
+			border_color = Color(0.11, 0.09, 0.22, 0.2)
 		})
 	})
 
@@ -107,11 +107,11 @@ func define_theme():
 			border_color = Color.AQUA
 		}),
 		normal = inherit(edit_border_stylebox, {
-			bg_color = Color(0, 0, 0, 0.4),
-			border_color = Color(0, 0, 0, 0.4)
+			bg_color = Color(0.16, 0.14, 0.32, 1.0),
+			border_color = Color(0.16, 0.14, 0.32, 1.0)
 		}),
 		read_only = inherit(edit_border_stylebox, {
-			bg_color = Color(0, 0, 0, 0.2),
-			border_color = Color(0, 0, 0, 0.0)
+			bg_color = Color(0.11, 0.09, 0.22, 0.2),
+			border_color = Color(0.11, 0.09, 0.22, 0.2)
 		})
 	})

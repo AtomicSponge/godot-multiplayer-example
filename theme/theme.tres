@@ -3,12 +3,12 @@
 [ext_resource type="FontFile" uid="uid://cvfux2s2sdl4v" path="res://theme/font/Poco.ttf" id="1_uvho4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uvho4"]
-bg_color = Color(0, 0, 0, 0.2)
+bg_color = Color(0.11, 0.09, 0.22, 0.2)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0, 0, 0, 0.2)
+border_color = Color(0.11, 0.09, 0.22, 0.2)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -27,7 +27,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8nfg"]
-bg_color = Color(0, 0, 0, 0.6)
+bg_color = Color(0.11, 0.09, 0.22, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -39,7 +39,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fw28"]
-bg_color = Color(0, 0, 0, 0.6)
+bg_color = Color(0.11, 0.09, 0.22, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -71,20 +71,20 @@ border_width_bottom = 1
 border_color = Color(0, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0psj3"]
-bg_color = Color(0, 0, 0, 0.4)
+bg_color = Color(0.16, 0.14, 0.32, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0, 0, 0, 0.4)
+border_color = Color(0.16, 0.14, 0.32, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpv6k"]
-bg_color = Color(0, 0, 0, 0.2)
+bg_color = Color(0.11, 0.09, 0.22, 0.2)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0, 0, 0, 0.2)
+border_color = Color(0.11, 0.09, 0.22, 0.2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmeh2"]
 bg_color = Color(0.282353, 0.239216, 0.545098, 1)
@@ -111,20 +111,20 @@ border_width_bottom = 1
 border_color = Color(0, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lj41j"]
-bg_color = Color(0, 0, 0, 0.4)
+bg_color = Color(0.16, 0.14, 0.32, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0, 0, 0, 0.4)
+border_color = Color(0.16, 0.14, 0.32, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_30odk"]
-bg_color = Color(0, 0, 0, 0.2)
+bg_color = Color(0.11, 0.09, 0.22, 0.2)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0, 0, 0, 0)
+border_color = Color(0.11, 0.09, 0.22, 0.2)
 
 [resource]
 default_font = ExtResource("1_uvho4")
