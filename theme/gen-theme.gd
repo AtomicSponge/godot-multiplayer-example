@@ -20,6 +20,11 @@ const COLOR_BACKDROP: Color = Color(0.16, 0.14, 0.32, 1.0)
 const COLOR_DISABLED: Color = Color(0.11, 0.09, 0.22, 0.2)
 const COLOR_CLEAR: Color = Color(0.0, 0.0, 0.0, 0.0)
 
+const ICON_BLANK: String = "res://theme/icons/memory--checkbox-blank.png"
+const ICON_CROSS: String = "res://theme/icons/memory--checkbox-cross.png"
+const ICON_INTER: String = "res://theme/icons/memory--checkbox-intermediate.png"
+const ICON_FILL: String = "res://theme/icons/memory--fill.png"
+
 func setup():
 	set_save_path("res://theme//theme.tres")
 
@@ -27,25 +32,19 @@ func define_theme():
 	define_default_font(ResourceLoader.load(DEFAULT_FONT))
 	define_default_font_size(DEFAULT_FONT_SIZE)
 
-	var PANEL_STYLE = stylebox_flat({
-		bg_color = BACKGROUND_COLOR,
-		border_color = BORDER_COLOR,
-		border_width_bottom = BORDER_WIDTH,
-		border_width_left = BORDER_WIDTH,
-		border_width_right = BORDER_WIDTH,
-		border_width_top = BORDER_WIDTH,
-		corner_radius_bottom_left = BORDER_RADIUS,
-		corner_radius_bottom_right = BORDER_RADIUS,
-		corner_radius_top_left = BORDER_RADIUS,
-		corner_radius_top_right = BORDER_RADIUS
-	})
-
 	define_style("Panel", {
-		panel = PANEL_STYLE
-	})
-	
-	define_style("AcceptDialog", {
-		panel = PANEL_STYLE
+		panel = stylebox_flat({
+			bg_color = BACKGROUND_COLOR,
+			border_color = BORDER_COLOR,
+			border_width_bottom = BORDER_WIDTH,
+			border_width_left = BORDER_WIDTH,
+			border_width_right = BORDER_WIDTH,
+			border_width_top = BORDER_WIDTH,
+			corner_radius_bottom_left = BORDER_RADIUS,
+			corner_radius_bottom_right = BORDER_RADIUS,
+			corner_radius_top_left = BORDER_RADIUS,
+			corner_radius_top_right = BORDER_RADIUS
+		})
 	})
 
 	define_style("Label", {
@@ -87,26 +86,26 @@ func define_theme():
 		})
 	})
 	
-	var CHECK_STYLE = stylebox_flat({
+	var check_style = stylebox_flat({
 		bg_color = BACKGROUND_COLOR
 	})
 
 	define_style("CheckButton", {
-		checked = ResourceLoader.load("res://theme/icons/memory--checkbox-intermediate.png"),
-		unchecked = ResourceLoader.load("res://theme/icons/memory--checkbox-blank.png"),
-		focus = CHECK_STYLE,
-		normal = CHECK_STYLE,
-		hover = CHECK_STYLE,
-		pressed = CHECK_STYLE
+		checked = ResourceLoader.load(ICON_INTER),
+		unchecked = ResourceLoader.load(ICON_BLANK),
+		focus = check_style,
+		normal = check_style,
+		hover = check_style,
+		pressed = check_style
 	})
 	
 	define_style("CheckBox", {
-		checked = ResourceLoader.load("res://theme/icons/memory--checkbox-cross.png"),
-		unchecked = ResourceLoader.load("res://theme/icons/memory--checkbox-blank.png"),
-		focus = CHECK_STYLE,
-		normal = CHECK_STYLE,
-		hover = CHECK_STYLE,
-		pressed = CHECK_STYLE
+		checked = ResourceLoader.load(ICON_CROSS),
+		unchecked = ResourceLoader.load(ICON_BLANK),
+		focus = check_style,
+		normal = check_style,
+		hover = check_style,
+		pressed = check_style
 	})
 
 	var square_border_stylebox = stylebox_flat({
@@ -161,8 +160,8 @@ func define_theme():
 	})
 
 	define_style("VSlider", {
-		grabber = ResourceLoader.load("res://theme/icons/memory--fill.png"),
-		grabber_highlight = ResourceLoader.load("res://theme/icons/memory--fill.png"),
+		grabber = ResourceLoader.load(ICON_FILL),
+		grabber_highlight = ResourceLoader.load(ICON_FILL),
 		grabber_area = stylebox_flat({
 			bg_color = COLOR_MAIN
 		}),
@@ -196,8 +195,8 @@ func define_theme():
 	})
 
 	define_style("HSlider", {
-		grabber = ResourceLoader.load("res://theme/icons/memory--fill.png"),
-		grabber_highlight = ResourceLoader.load("res://theme/icons/memory--fill.png"),
+		grabber = ResourceLoader.load(ICON_FILL),
+		grabber_highlight = ResourceLoader.load(ICON_FILL),
 		grabber_area = stylebox_flat({
 			bg_color = COLOR_MAIN
 		}),
@@ -224,5 +223,11 @@ func define_theme():
 		}),
 		fill = stylebox_flat({
 			bg_color = COLOR_MAIN
+		})
+	})
+	
+	define_style("AcceptDialog", {
+		panel = stylebox_flat({
+			bg_color = BACKGROUND_COLOR
 		})
 	})
