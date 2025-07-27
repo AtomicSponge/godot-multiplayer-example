@@ -27,10 +27,3 @@ offset_top = 34.0
 offset_right = 164.0
 offset_bottom = 64.0
 text = "Test Label"
-
-[node name="TabContainer" type="TabContainer" parent="."]
-layout_mode = 0
-offset_left = 238.0
-offset_top = 208.0
-offset_right = 372.0
-offset_bottom = 301.0
