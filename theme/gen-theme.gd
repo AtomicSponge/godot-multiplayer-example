@@ -226,8 +226,42 @@ func define_theme():
 		})
 	})
 
+	define_style("TabContainer", {
+		panel = stylebox_flat({
+			bg_color = COLOR_BACKDROP
+		}),
+		tab_disabled = stylebox_flat({
+			bg_color = COLOR_DISABLED
+		}),
+		tab_focus = stylebox_flat({
+			bg_color = COLOR_DISABLED,
+			border_color = BORDER_COLOR,
+			border_width_top = int(float(BORDER_WIDTH) / 2.0)
+		}),
+		tab_hovered = stylebox_flat({
+			bg_color = COLOR_DISABLED,
+			border_color = BORDER_HIGHLIGHT_COLOR,
+			border_width_top = int(float(BORDER_WIDTH) / 2.0)
+		}),
+		tab_selected = stylebox_flat({
+			bg_color = COLOR_BACKDROP
+		}),
+		tab_unselected = stylebox_flat({
+			bg_color = COLOR_MAIN
+		})
+	})
+
+	define_style("Tree", {
+		panel = stylebox_flat({
+			bg_color = COLOR_BACKDROP
+		})
+	})
+
 	define_style("AcceptDialog", {
 		panel = stylebox_flat({
 			bg_color = BACKGROUND_COLOR
+		}),
+		focus = stylebox_flat({
+			border_color = Color.AQUA
 		})
 	})

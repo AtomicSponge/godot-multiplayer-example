@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=46 format=3 uid="uid://v54qa006qlk3"]
+[gd_resource type="Theme" load_steps=53 format=3 uid="uid://v54qa006qlk3"]
 
 [ext_resource type="Texture2D" uid="uid://bv5ngt4v57mhn" path="res://theme/icons/memory--checkbox-cross.png" id="1_8fw28"]
 [ext_resource type="Texture2D" uid="uid://cwhd1b7r3qh1h" path="res://theme/icons/memory--checkbox-intermediate.png" id="1_kenci"]
@@ -184,6 +184,28 @@ bg_color = Color(0.16, 0.14, 0.32, 1)
 bg_color = Color(0.11, 0.09, 0.22, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_664te"]
+bg_color = Color(0.16, 0.14, 0.32, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tfyjx"]
+bg_color = Color(0.11, 0.09, 0.22, 0.2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1d56q"]
+bg_color = Color(0.11, 0.09, 0.22, 0.2)
+border_width_top = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_688u3"]
+bg_color = Color(0.11, 0.09, 0.22, 0.2)
+border_width_top = 1
+border_color = Color(0, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nchq3"]
+bg_color = Color(0.16, 0.14, 0.32, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_626c1"]
+bg_color = Color(0.11, 0.09, 0.22, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18ycs"]
 bg_color = Color(0, 0, 0, 0)
 border_width_left = 1
 border_width_top = 1
@@ -191,7 +213,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 1, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tfyjx"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ok77r"]
 bg_color = Color(0.16, 0.14, 0.32, 1)
 border_width_left = 1
 border_width_top = 1
@@ -199,7 +221,7 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.16, 0.14, 0.32, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1d56q"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ummfo"]
 bg_color = Color(0.11, 0.09, 0.22, 0.2)
 border_width_left = 1
 border_width_top = 1
@@ -207,29 +229,32 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.11, 0.09, 0.22, 0.2)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_688u3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p5hau"]
+bg_color = Color(0.16, 0.14, 0.32, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2kvax"]
 bg_color = Color(0.11, 0.09, 0.22, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nchq3"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_575g6"]
 bg_color = Color(0.11, 0.09, 0.22, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_626c1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2f3nn"]
 bg_color = Color(0.11, 0.09, 0.22, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18ycs"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3u6g"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
 bg_color = Color(0.16, 0.14, 0.32, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ok77r"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y63ft"]
 bg_color = Color(0.11, 0.09, 0.22, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ummfo"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tlykb"]
 bg_color = Color(0.11, 0.09, 0.22, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p5hau"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7x4u"]
 content_margin_left = 4.0
 content_margin_right = 4.0
 bg_color = Color(0, 0, 0, 0)
@@ -276,16 +301,23 @@ LineEdit/styles/read_only = SubResource("StyleBoxFlat_ig671")
 Panel/styles/panel = SubResource("StyleBoxFlat_3gfsg")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_i08c0")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_hkxcs")
+TabContainer/styles/panel = SubResource("StyleBoxFlat_664te")
+TabContainer/styles/tab_disabled = SubResource("StyleBoxFlat_tfyjx")
+TabContainer/styles/tab_focus = SubResource("StyleBoxFlat_1d56q")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_688u3")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_nchq3")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_626c1")
 TextEdit/colors/font_color = Color(1, 1, 1, 1)
-TextEdit/styles/focus = SubResource("StyleBoxFlat_664te")
-TextEdit/styles/normal = SubResource("StyleBoxFlat_tfyjx")
-TextEdit/styles/read_only = SubResource("StyleBoxFlat_1d56q")
-VScrollBar/styles/grabber = SubResource("StyleBoxFlat_688u3")
-VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_nchq3")
-VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_626c1")
-VScrollBar/styles/scroll = SubResource("StyleBoxFlat_18ycs")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_18ycs")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_ok77r")
+TextEdit/styles/read_only = SubResource("StyleBoxFlat_ummfo")
+Tree/styles/panel = SubResource("StyleBoxFlat_p5hau")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_2kvax")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_575g6")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_2f3nn")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_b3u6g")
 VSlider/icons/grabber = ExtResource("5_vpecb")
 VSlider/icons/grabber_highlight = ExtResource("5_vpecb")
-VSlider/styles/grabber_area = SubResource("StyleBoxFlat_ok77r")
-VSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_ummfo")
-VSlider/styles/slider = SubResource("StyleBoxFlat_p5hau")
+VSlider/styles/grabber_area = SubResource("StyleBoxFlat_y63ft")
+VSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_tlykb")
+VSlider/styles/slider = SubResource("StyleBoxFlat_a7x4u")
