@@ -254,14 +254,15 @@ func define_theme():
 	define_style("Tree", {
 		panel = stylebox_flat({
 			bg_color = COLOR_BACKDROP
+		}),
+		focus = inherit(square_border_stylebox, {
+			bg_color = COLOR_CLEAR,
+			border_color = Color.AQUA
 		})
 	})
 
 	define_style("AcceptDialog", {
 		panel = stylebox_flat({
 			bg_color = BACKGROUND_COLOR
-		}),
-		focus = stylebox_flat({
-			border_color = Color.AQUA
 		})
 	})
