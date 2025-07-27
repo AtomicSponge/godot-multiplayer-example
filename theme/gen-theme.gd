@@ -225,7 +225,7 @@ func define_theme():
 			bg_color = COLOR_MAIN
 		})
 	})
-	
+
 	define_style("AcceptDialog", {
 		panel = stylebox_flat({
 			bg_color = BACKGROUND_COLOR
