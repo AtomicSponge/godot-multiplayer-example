@@ -7,25 +7,23 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = -11.0
-offset_right = 9.0
-offset_bottom = -11.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fyqef")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 119.0
-offset_top = 59.0
-offset_right = 775.0
-offset_bottom = 437.0
+offset_left = 55.0
+offset_top = 44.0
+offset_right = 711.0
+offset_bottom = 422.0
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 127.0
-offset_top = 36.0
-offset_right = 238.0
-offset_bottom = 66.0
+offset_left = 53.0
+offset_top = 34.0
+offset_right = 164.0
+offset_bottom = 64.0
 text = "Test Label"
