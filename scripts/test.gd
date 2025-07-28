@@ -1,9 +1,8 @@
 extends Control
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	alert("test")
+	$Panel/Label.text = Globals.STEAM_NAME
 
 func alert(text: String) -> void:
 	var dialog = AcceptDialog.new()

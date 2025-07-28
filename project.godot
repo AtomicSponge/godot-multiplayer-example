@@ -15,6 +15,10 @@ run/main_scene="uid://tq00s1kf7nao"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://scripts/autostart/globals.gd"
+
 [display]
 
 window/size/viewport_width=1024
@@ -43,3 +47,4 @@ theme/custom_font="uid://cvfux2s2sdl4v"
 [steam]
 
 initialization/app_id=480
+initialization/initialize_on_startup=true
