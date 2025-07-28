@@ -35,7 +35,6 @@ folder_colors={
 "res://gfx/": "blue",
 "res://scenes/": "orange",
 "res://scripts/": "green",
-"res://scripts/networking/": "yellow",
 "res://theme/": "purple"
 }
 
