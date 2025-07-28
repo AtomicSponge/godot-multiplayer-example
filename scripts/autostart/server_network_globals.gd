@@ -20,7 +20,7 @@ func on_peer_disconnected(peer_id: int) -> void:
 func on_server_packet(peer_id: int, data: PackedByteArray) -> void:
 	var packet_type: int = data.decode_u8(0)
 	match packet_type:
-		PacketInfo.PACKET_TYPE.PLAVER_POSITION:
+		PacketInfo.PACKET_TYPE.PLAYER_POSITION:
 			handle_player_position.emit(peer_id, PlayerPosition.create_from_data(data))
 		_:
 			push_error("Packet type with index ", data[0], " unhandled!")

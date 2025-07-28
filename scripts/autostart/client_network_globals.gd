@@ -16,7 +16,7 @@ func on_client_packet(data: PackedByteArray) -> void:
 	match packet_type:
 		PacketInfo.PACKET_TYPE.ID_ASSIGNMENT:
 			manage_ids(IDAssignment.create_from_data(data))
-		PacketInfo.PACKET_TYPE.PLAVER_POSITION:
+		PacketInfo.PACKET_TYPE.PLAYER_POSITION:
 			handle_player_position.emit(PlayerPosition.create_from_data(data))
 		_:
 			push_error("Packet type with index ", data[0], "unhandled!")

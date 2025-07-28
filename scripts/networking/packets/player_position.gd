@@ -3,12 +3,12 @@ class_name PlayerPosition extends PacketInfo
 var id: int
 var position: Vector2
 
-static func create(id: int, position: Vector2) -> PlayerPosition:
+static func create(new_id: int, new_position: Vector2) -> PlayerPosition:
 	var info: PlayerPosition = PlayerPosition.new()
-	info.packet_type = PACKET_TYPE.PLAVER_POSITION
+	info.packet_type = PACKET_TYPE.PLAYER_POSITION
 	info.flag = ENetPacketPeer.FLAG_UNSEQUENCED
-	info.id = id
-	info.position = position
+	info.id = new_id
+	info.position = new_position
 	return info
 
 static func create_from_data(data: PackedByteArray) -> IDAssignment:
@@ -26,5 +26,5 @@ func encode() -> PackedByteArray:
 
 func decode(data: PackedByteArray) -> void:
 	super.decode(data)
-	id = data.decode_double(1)
+	id = data.decode_u8(1)
 	position = Vector2(data.decode_float(2), data.decode_float(6))

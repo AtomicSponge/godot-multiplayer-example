@@ -21,7 +21,7 @@ var server_peer: ENetPacketPeer
 var connection: ENetConnection
 var is_server: bool = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if connection == null: return
 	handle_events()
 

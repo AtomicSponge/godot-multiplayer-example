@@ -3,11 +3,11 @@ class_name IDAssignment extends PacketInfo
 var id: int
 var remoted_ids: Array[int]
 
-static func create(id: int, remote_ids: Array[int]) -> IDAssignment:
+static func create(new_id: int, remote_ids: Array[int]) -> IDAssignment:
 	var info: IDAssignment = IDAssignment.new()
 	info.packet_type = PACKET_TYPE.ID_ASSIGNMENT
 	info.flag = ENetPacketPeer.FLAG_RELIABLE
-	info.id = id
+	info.id = new_id
 	info.remoted_ids = remote_ids
 	return info
 
@@ -21,8 +21,8 @@ func encode() -> PackedByteArray:
 	data.resize(2 + remoted_ids.size())
 	data.encode_u8(1, id)
 	for i in remoted_ids.size():
-		var id: int = remoted_ids[i]
-		data.encode_u8(2 * i, id)
+		var new_id: int = remoted_ids[i]
+		data.encode_u8(2 * i, new_id)
 	return data
 
 func decode(data: PackedByteArray) -> void:
