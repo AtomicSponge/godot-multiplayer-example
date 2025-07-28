@@ -3,8 +3,8 @@ extends Node
 # Steam variables
 var OWNED: bool = false
 var ONLINE: bool = false
-var STEAM_ID: int = 0
-var STEAM_NAME: String = ""
+var ID: int = 0
+var NAME: String = ""
 var VAC_BANNED: bool = false
 
 # Lobby variables
@@ -21,8 +21,8 @@ func _ready() -> void:
 		get_tree().quit()
 
 	ONLINE = Steam.loggedOn()
-	STEAM_ID = Steam.getSteamID()
-	STEAM_NAME = Steam.getPersonaName()
+	ID = Steam.getSteamID()
+	NAME = Steam.getPersonaName()
 	OWNED = Steam.isSubscribed()
 	VAC_BANNED = Steam.isVACBanned()
 
