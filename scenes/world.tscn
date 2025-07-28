@@ -1,7 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://tauj6umdt5sc"]
+[gd_scene load_steps=4 format=3 uid="uid://tauj6umdt5sc"]
 
 [ext_resource type="PackedScene" uid="uid://tq00s1kf7nao" path="res://scenes/ui.tscn" id="1_nnsk1"]
+[ext_resource type="Script" uid="uid://dn36pnnfyr7g3" path="res://scripts/multiplayer_spawner.gd" id="2_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://cjsdm848ojsr2" path="res://scenes/player.tscn" id="3_4wyf3"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="UI" parent="." instance=ExtResource("1_nnsk1")]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://cjsdm848ojsr2")
+script = ExtResource("2_rwgxs")
+network_player = ExtResource("3_4wyf3")
