@@ -24,6 +24,14 @@ window/size/viewport_height=768
 
 enabled=PackedStringArray("res://addons/theme_gen_save_sync/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://addons/": "gray",
+"res://gfx/": "blue",
+"res://theme/": "purple"
+}
+
 [gui]
 
 theme/custom="uid://v54qa006qlk3"
