@@ -29,6 +29,7 @@ enabled=PackedStringArray("res://addons/theme_gen_save_sync/plugin.cfg")
 folder_colors={
 "res://addons/": "gray",
 "res://gfx/": "blue",
+"res://scenes/": "orange",
 "res://scripts/": "green",
 "res://scripts/networking/": "yellow",
 "res://theme/": "purple"

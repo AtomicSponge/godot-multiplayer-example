@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://tq00s1kf7nao"]
 
-[ext_resource type="Script" uid="uid://63qnam46cj4j" path="res://scripts/test.gd" id="1_fyqef"]
+[ext_resource type="Script" uid="uid://63qnam46cj4j" path="res://scripts/test.gd" id="1_nt7q6"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -11,7 +11,7 @@ offset_left = 2.0
 offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_fyqef")
+script = ExtResource("1_nt7q6")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
