@@ -39,3 +39,7 @@ folder_colors={
 
 theme/custom="uid://v54qa006qlk3"
 theme/custom_font="uid://cvfux2s2sdl4v"
+
+[steam]
+
+initialization/app_id=480
