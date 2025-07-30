@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Project Venus"
-run/main_scene="uid://tauj6umdt5sc"
+run/main_scene="uid://d4grytpvau6uc"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

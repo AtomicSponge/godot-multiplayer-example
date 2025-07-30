@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dn36pnnfyr7g3" path="res://scripts/multiplayer_spawner.gd" id="2_rwgxs"]
 [ext_resource type="PackedScene" uid="uid://cjsdm848ojsr2" path="res://scenes/player.tscn" id="3_4wyf3"]
 
-[node name="Node2D" type="Node2D"]
+[node name="WorldScene" type="Node2D"]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://cjsdm848ojsr2")
