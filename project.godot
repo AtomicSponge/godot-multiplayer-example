@@ -21,6 +21,7 @@ SteamGlobals="*res://scripts/autostart/steam_globals.gd"
 NetworkHandler="*res://scripts/autostart/network_handler.gd"
 ClientNetworkGlobals="*res://scripts/autostart/client_network_globals.gd"
 ServerNetworkGlobals="*res://scripts/autostart/server_network_globals.gd"
+SceneManager="*res://scripts/autostart/scene_manager.gd"
 
 [display]
 
@@ -38,7 +39,8 @@ folder_colors={
 "res://gfx/": "blue",
 "res://scenes/": "orange",
 "res://scripts/": "green",
-"res://theme/": "purple"
+"res://theme/": "purple",
+"res://uis/": "teal"
 }
 
 [gui]
