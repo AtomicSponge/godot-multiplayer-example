@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://623iroan7rog"]
+[gd_scene load_steps=2 format=3 uid="uid://623iroan7rog"]
+
+[ext_resource type="Script" uid="uid://c5a2ydn71vylg" path="res://scripts/main_ui.gd" id="1_5gpea"]
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5gpea")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -30,3 +33,8 @@ text = "Settings"
 [node name="QuitBtn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/HostGameBtn" to="." method="_on_host_game_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/JoinGameBtn" to="." method="_on_join_game_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsBtn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitBtn" to="." method="_on_quit_btn_pressed"]
