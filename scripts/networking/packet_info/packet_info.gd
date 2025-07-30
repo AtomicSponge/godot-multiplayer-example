@@ -5,7 +5,7 @@ enum PACKET_TYPE {
 	PLAYER_POSITION = 10
 }
 
-var packet_type: PACKET_TYPE
+var packet_type: int
 var flag: int
 
 # Override function in derived class
