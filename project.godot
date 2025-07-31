@@ -25,8 +25,8 @@ SceneManager="*res://scripts/autostart/scene_manager.tscn"
 
 [display]
 
-window/size/viewport_width=1024
-window/size/viewport_height=768
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [editor_plugins]
 

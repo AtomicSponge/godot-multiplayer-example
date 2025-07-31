@@ -3,6 +3,7 @@ extends Node
 var Scenes: Dictionary = {
 	"main_scene": "res://scenes/main_scene.tscn",
 	"settings_scene": "res://scenes/settings_scene.tscn",
+	"search_scene": "res://scenes/search_scene.tscn",
 	"lobby_scene": "res://scenes/lobby_scene.tscn",
 	"world_scene": "res://scenes/world_scene.tscn"
 }

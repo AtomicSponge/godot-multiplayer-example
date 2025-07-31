@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://da1en3cyvcib"]
+[gd_scene load_steps=2 format=3 uid="uid://da1en3cyvcib"]
+
+[ext_resource type="PackedScene" uid="uid://dgaw4cdwkml6a" path="res://uis/settings_ui.tscn" id="1_kqt80"]
 
 [node name="SettingsScene" type="Node2D"]
+
+[node name="SettingsUI" parent="." instance=ExtResource("1_kqt80")]

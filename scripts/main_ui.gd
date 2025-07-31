@@ -4,7 +4,7 @@ func _on_host_game_btn_pressed() -> void:
 	SceneManager.SwitchScene("lobby_scene")
 
 func _on_join_game_btn_pressed() -> void:
-	SceneManager.SwitchScene("lobby_scene")
+	SceneManager.SwitchScene("search_scene")
 
 func _on_settings_btn_pressed() -> void:
 	SceneManager.SwitchScene("settings_scene")
