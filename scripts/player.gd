@@ -42,10 +42,10 @@ func server_handler_player_position(peer_id: int, player_position: PlayerPositio
 	if owner_id != peer_id: return
 
 	global_position = player_position.position
-	
+
 	PlayerPosition.create(owner_id, global_position).broadcast(NetworkHandler.connection)
 
 func client_handle_player_position(player_position: PlayerPosition) -> void:
 	if is_authority || owner_id != player_position.id: return
-	
+
 	global_position = player_position.position
