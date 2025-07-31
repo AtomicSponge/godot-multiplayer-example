@@ -35,6 +35,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+	PlayerPosition.create(owner_id, global_position).send(NetworkHandler.server_peer)
 
 func server_handler_player_position(peer_id: int, player_position: PlayerPosition) -> void:
 	if owner_id != peer_id: return
