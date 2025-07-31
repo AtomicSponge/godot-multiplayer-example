@@ -50,6 +50,10 @@ folder_colors={
 theme/custom="uid://v54qa006qlk3"
 theme/custom_font="uid://cvfux2s2sdl4v"
 
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
+
 [steam]
 
 initialization/app_id=480

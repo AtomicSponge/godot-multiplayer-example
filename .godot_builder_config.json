@@ -8,6 +8,10 @@
     {
       "preset": "Windows",
       "path": "builds/win/project_venus.exe"
+    },
+    {
+      "preset": "macOS",
+      "path": "builds/mac/project_venus.zip"
     }
   ]
 }
