@@ -17,3 +17,11 @@ shape = SubResource("RectangleShape2D_jedrf")
 _spawnable_scenes = PackedStringArray("uid://cjsdm848ojsr2")
 spawn_path = NodePath("..")
 script = ExtResource("1_jedrf")
+
+[node name="SpawnLocations" type="Node" parent="."]
+
+[node name="0" type="Node2D" parent="SpawnLocations"]
+position = Vector2(140, 92)
+
+[node name="1" type="Node2D" parent="SpawnLocations"]
+position = Vector2(1012, 94)
