@@ -1,16 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://tauj6umdt5sc"]
 
-[ext_resource type="PackedScene" uid="uid://dyw2418fesxgg" path="res://objects/player_spawner.tscn" id="3_qiqor"]
+[ext_resource type="Script" uid="uid://ca3xtcs1fhp37" path="res://scripts/multiplayer_spawner.gd" id="1_jedrf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jedrf"]
 size = Vector2(1349, 78)
 
 [node name="WorldScene" type="Node2D"]
 
-[node name="PlayerSpawner" parent="." instance=ExtResource("3_qiqor")]
-
 [node name="Floor" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 position = Vector2(640.5, 675)
 shape = SubResource("RectangleShape2D_jedrf")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+script = ExtResource("1_jedrf")
