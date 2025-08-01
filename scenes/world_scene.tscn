@@ -15,7 +15,7 @@ shape = SubResource("RectangleShape2D_jedrf")
 
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://cjsdm848ojsr2")
-spawn_path = NodePath("..")
+spawn_path = NodePath("../SpawnLocations/1")
 script = ExtResource("1_jedrf")
 
 [node name="SpawnLocations" type="Node" parent="."]
