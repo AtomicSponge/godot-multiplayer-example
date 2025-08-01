@@ -3,16 +3,17 @@
 [ext_resource type="Script" uid="uid://ca3xtcs1fhp37" path="res://scripts/multiplayer_spawner.gd" id="1_jedrf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jedrf"]
-size = Vector2(1349, 78)
+size = Vector2(1349, 28)
 
 [node name="WorldScene" type="Node2D"]
 
 [node name="Floor" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(640.5, 675)
+position = Vector2(640.5, 700)
 shape = SubResource("RectangleShape2D_jedrf")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://cjsdm848ojsr2")
 spawn_path = NodePath("..")
 script = ExtResource("1_jedrf")
