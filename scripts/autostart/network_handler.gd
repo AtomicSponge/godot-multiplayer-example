@@ -1,5 +1,6 @@
 extends Node
 
+const SERVER_ID: int = 1
 const IP_ADDRESS: String = "localhost"
 const PORT: int = 42069
 const MAX_PLAYERS = 8
@@ -8,7 +9,7 @@ var peer: ENetMultiplayerPeer
 
 func start_server() -> Error:
 	peer = ENetMultiplayerPeer.new()
-	var error: Error = peer.create_server(PORT, 8)
+	var error: Error = peer.create_server(PORT, MAX_PLAYERS)
 	if error: return error
 	multiplayer.multiplayer_peer = peer
 	return OK

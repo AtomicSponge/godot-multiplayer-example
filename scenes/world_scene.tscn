@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://tauj6umdt5sc"]
+[gd_scene load_steps=4 format=3 uid="uid://tauj6umdt5sc"]
 
 [ext_resource type="Script" uid="uid://doq615ggoxlbk" path="res://scripts/player_spawner.gd" id="1_jedrf"]
+[ext_resource type="PackedScene" uid="uid://623iroan7rog" path="res://uis/main_ui.tscn" id="2_kjcoe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jedrf"]
 size = Vector2(1349, 28)
@@ -15,13 +16,15 @@ shape = SubResource("RectangleShape2D_jedrf")
 
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://cjsdm848ojsr2")
-spawn_path = NodePath("../SpawnLocations/1")
+spawn_path = NodePath("../SpawnLocations/Spawn1")
 script = ExtResource("1_jedrf")
 
 [node name="SpawnLocations" type="Node" parent="."]
 
-[node name="0" type="Node2D" parent="SpawnLocations"]
+[node name="Spawn0" type="Node2D" parent="SpawnLocations"]
 position = Vector2(140, 92)
 
-[node name="1" type="Node2D" parent="SpawnLocations"]
+[node name="Spawn1" type="Node2D" parent="SpawnLocations"]
 position = Vector2(1012, 94)
+
+[node name="MainUI" parent="." instance=ExtResource("2_kjcoe")]
