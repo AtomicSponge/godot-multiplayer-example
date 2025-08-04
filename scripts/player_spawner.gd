@@ -3,7 +3,6 @@ extends MultiplayerSpawner
 var network_player: PackedScene = preload("res://objects/player.tscn")
 
 func _ready() -> void:
-	# Spawn players on client connect
 	multiplayer.peer_connected.connect(spawn_player)
 
 func spawn_player(id: int) -> void:
