@@ -1,5 +1,5 @@
 {
-  "godot_command": "godotsteam.441.editor.linux.x86_64",
+  "godot_command": "godotsteam.multiplayer.441.editor.linux.x86_64",
   "jobs": [
     {
       "preset": "Linux",
