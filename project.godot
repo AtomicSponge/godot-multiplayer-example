@@ -29,7 +29,7 @@ window/size/viewport_height=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/theme_gen_save_sync/plugin.cfg")
+enabled=PackedStringArray("res://addons/gdmaim/plugin.cfg", "res://addons/theme_gen_save_sync/plugin.cfg")
 
 [file_customization]
 
