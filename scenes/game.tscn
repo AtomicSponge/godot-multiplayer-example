@@ -12,6 +12,10 @@
 [node name="Level" parent="." instance=ExtResource("1_uwrxv")]
 visible = false
 
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("../Level")
+spawn_limit = 1
+
 [node name="UIs" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
