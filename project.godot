@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 SteamGlobals="*res://scripts/autostart/steam_globals.gd"
-SceneManager="*res://scripts/autostart/scene_manager.tscn"
 Globals="*res://scripts/autostart/globals.gd"
 NetworkHandler="*res://scripts/autostart/network_handler.gd"
 

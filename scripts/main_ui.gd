@@ -13,7 +13,7 @@ func _on_join_game_btn_pressed() -> void:
 	NetworkHandler.start_client()
 
 func _on_settings_btn_pressed() -> void:
-	SceneManager.SwitchScene("settings_scene")
+	pass
 
 func _on_quit_btn_pressed() -> void:
-	SceneManager.QuitGame()
+	Globals.QuitGame()

@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://tauj6umdt5sc"]
 
-[ext_resource type="Script" uid="uid://doq615ggoxlbk" path="res://scripts/player_spawner.gd" id="1_jedrf"]
-[ext_resource type="PackedScene" uid="uid://623iroan7rog" path="res://uis/main_ui.tscn" id="2_kjcoe"]
+[ext_resource type="Script" uid="uid://doq615ggoxlbk" path="res://scripts/player_spawner.gd" id="1_ves5e"]
+[ext_resource type="PackedScene" uid="uid://623iroan7rog" path="res://uis/main_ui.tscn" id="2_g8fix"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jedrf"]
 size = Vector2(1349, 28)
 
-[node name="WorldScene" type="Node2D"]
+[node name="Level" type="Node2D"]
 
 [node name="Floor" type="StaticBody2D" parent="."]
 
@@ -17,7 +17,7 @@ shape = SubResource("RectangleShape2D_jedrf")
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://cjsdm848ojsr2")
 spawn_path = NodePath("../SpawnLocations/Spawn1")
-script = ExtResource("1_jedrf")
+script = ExtResource("1_ves5e")
 
 [node name="SpawnLocations" type="Node" parent="."]
 
@@ -27,4 +27,4 @@ position = Vector2(140, 92)
 [node name="Spawn1" type="Node2D" parent="SpawnLocations"]
 position = Vector2(1012, 94)
 
-[node name="MainUI" parent="." instance=ExtResource("2_kjcoe")]
+[node name="MainUI" parent="." instance=ExtResource("2_g8fix")]
