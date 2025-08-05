@@ -7,3 +7,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 41.0
+offset_right = 1236.0
+offset_bottom = 685.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 568.0
+offset_top = 5.0
+offset_right = 652.0
+offset_bottom = 35.0
+text = "Settings"
