@@ -1,6 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://623iroan7rog"]
-
-[ext_resource type="Script" uid="uid://c5a2ydn71vylg" path="res://scripts/main_ui.gd" id="1_5gpea"]
+[gd_scene format=3 uid="uid://623iroan7rog"]
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -9,7 +7,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_5gpea")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
