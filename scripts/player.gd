@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -600.0
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
