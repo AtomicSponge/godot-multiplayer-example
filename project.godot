@@ -37,7 +37,6 @@ folder_colors={
 "res://audio/": "yellow",
 "res://builds/": "gray",
 "res://gfx/": "blue",
-"res://objects/": "red",
 "res://scenes/": "orange",
 "res://scripts/": "green",
 "res://theme/": "purple",
