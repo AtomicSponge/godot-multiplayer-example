@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://tauj6umdt5sc"]
+[gd_scene load_steps=3 format=3 uid="uid://tauj6umdt5sc"]
 
 [ext_resource type="Script" uid="uid://doq615ggoxlbk" path="res://scripts/player_spawner.gd" id="1_ves5e"]
-[ext_resource type="PackedScene" uid="uid://623iroan7rog" path="res://uis/main_ui.tscn" id="2_g8fix"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jedrf"]
 size = Vector2(1349, 28)
@@ -26,5 +25,3 @@ position = Vector2(140, 92)
 
 [node name="Spawn1" type="Node2D" parent="SpawnLocations"]
 position = Vector2(1012, 94)
-
-[node name="MainUI" parent="." instance=ExtResource("2_g8fix")]
