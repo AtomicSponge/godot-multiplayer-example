@@ -12,4 +12,4 @@ func _on_settings_btn_pressed() -> void:
 	pass
 
 func _on_quit_btn_pressed() -> void:
-	Globals.QuitGame()
+	Globals.quit_game()

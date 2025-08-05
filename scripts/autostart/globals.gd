@@ -9,7 +9,7 @@ func alert(text: String) -> void:
 	scene_tree.current_scene.add_child(dialog)
 	dialog.popup_centered()
 
-func QuitGame() -> void:
+func quit_game() -> void:
 	NetworkHandler.close_connection()
 	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 	get_tree().quit()
