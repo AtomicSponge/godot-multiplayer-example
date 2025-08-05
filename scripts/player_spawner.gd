@@ -1,6 +1,6 @@
 extends MultiplayerSpawner
 
-var network_player: PackedScene = preload("res://objects/player.tscn")
+var network_player: PackedScene = preload("res://scenes/player.tscn")
 
 func _ready() -> void:
 	if not multiplayer.is_server(): return

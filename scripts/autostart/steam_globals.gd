@@ -18,7 +18,7 @@ func _ready() -> void:
 	var INIT = Steam.steamInitEx()
 	if INIT['status'] != 0:
 		print("Failed to initialise Steam. " + str(INIT['verbal']) + " Shutting down...")
-		SceneManager.QuitGame()
+		Globals.QuitGame()
 
 	ONLINE = Steam.loggedOn()
 	ID = Steam.getSteamID()
@@ -28,7 +28,7 @@ func _ready() -> void:
 
 	if OWNED == false:
 		print("User does not own this game.")
-		SceneManager.QuitGame()
+		Globals.QuitGame()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
