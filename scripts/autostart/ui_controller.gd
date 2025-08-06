@@ -1,6 +1,6 @@
 extends Control
 
-var _ui_node
+var _ui_node: Node
 var _ui_ref: Array[String]
 
 const _menus: Dictionary[String, PackedScene] = {
