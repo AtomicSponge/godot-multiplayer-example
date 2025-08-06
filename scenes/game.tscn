@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://w7ppkuj2u8xf"]
+[gd_scene load_steps=4 format=3 uid="uid://w7ppkuj2u8xf"]
 
 [ext_resource type="PackedScene" uid="uid://tauj6umdt5sc" path="res://scenes/level.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://h06b0folvp5a" path="res://scripts/game.gd" id="1_yqjtg"]
+[ext_resource type="Script" uid="uid://8mkow55l8f7p" path="res://scripts/uis/ui.gd" id="3_lnu2h"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_yqjtg")
@@ -12,8 +13,5 @@ script = ExtResource("1_yqjtg")
 spawn_path = NodePath("../Level")
 spawn_limit = 1
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="UI" type="Node" parent="."]
+script = ExtResource("3_lnu2h")

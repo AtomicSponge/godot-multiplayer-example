@@ -1,4 +1,4 @@
 extends Node
 
 func _ready() -> void:
-	UiController.open_menu("MainUI")
+	UiController._ui_node = self

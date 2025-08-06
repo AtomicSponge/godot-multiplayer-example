@@ -3,7 +3,7 @@ extends Control
 var _ui_node
 var _ui_ref: Array[String]
 
-const _interfaces: Dictionary[String, PackedScene] = {
+const _menus: Dictionary[String, PackedScene] = {
 	"HostUI": preload("res://uis/host_ui.tscn"),
 	"LobbyUI": preload("res://uis/lobby_ui.tscn"),
 	"MainUI": preload("res://uis/main_ui.tscn"),
@@ -14,7 +14,7 @@ const _interfaces: Dictionary[String, PackedScene] = {
 func open_menu(menu_name: String) -> void:
 	_clear_menu_mem()
 	_ui_ref.push_back(menu_name)
-	_ui_node.add_child(_interfaces[menu_name].instantiate())
+	_ui_node.add_child(_menus[menu_name].instantiate())
 
 func close_menu() -> void:
 	_clear_menu_mem()

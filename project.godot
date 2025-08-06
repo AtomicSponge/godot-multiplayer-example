@@ -21,7 +21,7 @@ SteamGlobals="*res://scripts/autostart/steam_globals.gd"
 Globals="*res://scripts/autostart/globals.gd"
 NetworkHandler="*res://scripts/autostart/network_handler.gd"
 EventBus="*res://scripts/autostart/event_bus.gd"
-Ui="*res://scripts/autostart/ui.gd"
+UiController="*res://scripts/autostart/ui_controller.gd"
 
 [display]
 
