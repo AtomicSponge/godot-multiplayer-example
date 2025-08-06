@@ -1,5 +1,7 @@
 extends Node
 
+var game_running = false
+
 func alert(text: String) -> void:
 	var dialog = AcceptDialog.new()
 	dialog.dialog_text = text
