@@ -9,6 +9,14 @@ script = ExtResource("1_yqjtg")
 
 [node name="Background" type="Sprite2D" parent="."]
 
+[node name="Title" type="Label" parent="Background"]
+offset_left = 447.0
+offset_top = 86.0
+offset_right = 869.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 94
+text = "Game Title"
+
 [node name="Level" parent="." instance=ExtResource("1_uwrxv")]
 
 [node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
