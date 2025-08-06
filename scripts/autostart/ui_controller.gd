@@ -23,6 +23,6 @@ func close_menu() -> void:
 		open_menu(_ui_ref.back())
 
 func _clear_menu_mem() -> void:
-	for c in _ui_node.get_children():
-		_ui_node.remove_child(c)
-		c.queue_free()
+	for node in _ui_node.get_children():
+		_ui_node.remove_child(node)
+		node.queue_free()
