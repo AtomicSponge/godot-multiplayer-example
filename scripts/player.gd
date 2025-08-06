@@ -25,3 +25,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not is_multiplayer_authority(): return
+
+	if event.is_action_pressed("open_menu") and Input.is_action_just_pressed("open_menu"):
+		UiController.open_menu("GameUI")
