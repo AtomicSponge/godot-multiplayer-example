@@ -1,42 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://w7ppkuj2u8xf"]
+[gd_scene load_steps=3 format=3 uid="uid://w7ppkuj2u8xf"]
 
 [ext_resource type="PackedScene" uid="uid://tauj6umdt5sc" path="res://scenes/level.tscn" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://623iroan7rog" path="res://uis/main_ui.tscn" id="2_p57ef"]
-[ext_resource type="PackedScene" uid="uid://e4rs23vw3k7e" path="res://uis/host_ui.tscn" id="3_u5sy4"]
-[ext_resource type="PackedScene" uid="uid://c2xyatyodxab8" path="res://uis/lobby_ui.tscn" id="4_gee14"]
-[ext_resource type="PackedScene" uid="uid://bqnjroyybvkro" path="res://uis/search_ui.tscn" id="5_0tnpc"]
-[ext_resource type="PackedScene" uid="uid://dgaw4cdwkml6a" path="res://uis/settings_ui.tscn" id="6_vtaks"]
+[ext_resource type="Script" uid="uid://h06b0folvp5a" path="res://scripts/game.gd" id="1_yqjtg"]
 
 [node name="Game" type="Node"]
+script = ExtResource("1_yqjtg")
 
 [node name="Level" parent="." instance=ExtResource("1_uwrxv")]
-visible = false
 
 [node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("../Level")
 spawn_limit = 1
-
-[node name="UIs" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="MainUI" parent="UIs" instance=ExtResource("2_p57ef")]
-layout_mode = 1
-
-[node name="HostUI" parent="UIs" instance=ExtResource("3_u5sy4")]
-visible = false
-layout_mode = 1
-
-[node name="LobbyUI" parent="UIs" instance=ExtResource("4_gee14")]
-visible = false
-layout_mode = 1
-
-[node name="SearchUI" parent="UIs" instance=ExtResource("5_0tnpc")]
-visible = false
-layout_mode = 1
-
-[node name="SettingsUI" parent="UIs" instance=ExtResource("6_vtaks")]
-visible = false
-layout_mode = 1
