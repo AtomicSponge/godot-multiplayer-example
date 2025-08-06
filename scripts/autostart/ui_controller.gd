@@ -1,4 +1,4 @@
-extends Control
+extends Node
 
 var _ui_node: Node
 var _ui_ref: Array[String]
