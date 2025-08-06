@@ -12,12 +12,15 @@ const _interfaces: Dictionary[String, PackedScene] = {
 }
 
 func open_menu(menu_name: String) -> void:
+	_ui_ref.push_back(menu_name)
 	_clear_menu_mem()
 	_ui_node.add_child(_interfaces[menu_name].instantiate())
-	_ui_ref.push_front("MainUI")
 
 func close_menu() -> void:
+	_ui_ref.pop_back()
 	_clear_menu_mem()
+	if not _ui_ref.is_empty():
+		open_menu(_ui_ref.back())
 
 func _clear_menu_mem() -> void:
 	for c in _ui_node.get_children():
