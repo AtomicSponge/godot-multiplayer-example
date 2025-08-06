@@ -7,6 +7,8 @@
 [node name="Game" type="Node"]
 script = ExtResource("1_yqjtg")
 
+[node name="Background" type="Sprite2D" parent="."]
+
 [node name="Level" parent="." instance=ExtResource("1_uwrxv")]
 
 [node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
