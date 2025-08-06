@@ -1,4 +1,5 @@
 extends Node
 
 func _ready() -> void:
-	pass
+	Ui._ui_node = $UI
+	Ui.open_menu("MainUI")

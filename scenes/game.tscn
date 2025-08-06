@@ -11,3 +11,9 @@ script = ExtResource("1_yqjtg")
 [node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("../Level")
 spawn_limit = 1
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
