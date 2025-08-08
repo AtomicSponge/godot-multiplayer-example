@@ -20,10 +20,10 @@ offset_bottom = 659.0
 
 [node name="HostGameLabel" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 21.0
-offset_top = 17.0
-offset_right = 129.0
-offset_bottom = 47.0
+offset_left = 482.0
+offset_top = 19.0
+offset_right = 590.0
+offset_bottom = 49.0
 text = "Host Game"
 
 [node name="LobbyNameLabel" type="Label" parent="Panel"]
@@ -57,7 +57,7 @@ offset_top = 132.0
 offset_right = 131.0
 offset_bottom = 164.0
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="InviteOnlyLabel" type="Label" parent="Panel"]
 layout_mode = 0
 offset_left = 29.0
 offset_top = 176.0
@@ -65,7 +65,7 @@ offset_right = 69.0
 offset_bottom = 206.0
 text = "Invite Only:"
 
-[node name="CheckBox" type="CheckBox" parent="Panel"]
+[node name="InviteOnlyCheckBox" type="CheckBox" parent="Panel"]
 layout_mode = 0
 offset_left = 167.0
 offset_top = 180.0
