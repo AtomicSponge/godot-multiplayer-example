@@ -41,3 +41,51 @@ offset_top = 68.0
 offset_right = 421.0
 offset_bottom = 100.0
 placeholder_text = "SteamID's Lobby"
+
+[node name="PublicLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 129.0
+offset_right = 69.0
+offset_bottom = 159.0
+text = "Public:"
+
+[node name="PublicCheckBox" type="CheckBox" parent="Panel"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 132.0
+offset_right = 131.0
+offset_bottom = 164.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 176.0
+offset_right = 69.0
+offset_bottom = 206.0
+text = "Invite Only:"
+
+[node name="CheckBox" type="CheckBox" parent="Panel"]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 180.0
+offset_right = 191.0
+offset_bottom = 212.0
+
+[node name="BackButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 527.0
+offset_right = 66.0
+offset_bottom = 567.0
+text = "Back"
+
+[node name="HostButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 1007.0
+offset_top = 527.0
+offset_right = 1055.0
+offset_bottom = 567.0
+text = "Host"
+
+[connection signal="pressed" from="Panel/BackButton" to="." method="_on_back_button_pressed"]
