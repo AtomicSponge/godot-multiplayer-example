@@ -89,3 +89,4 @@ offset_bottom = 567.0
 text = "Host"
 
 [connection signal="pressed" from="Panel/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Panel/HostButton" to="." method="_on_host_button_pressed"]
