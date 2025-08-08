@@ -13,7 +13,6 @@ var LOBBY_ID = 0
 var LOBBY_MEMBERS = []
 var LOBBY_INVITE_ARG = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var INIT = Steam.steamInitEx()
 	if INIT['status'] != 0:
@@ -30,6 +29,5 @@ func _ready() -> void:
 		print("User does not own this game.")
 		Globals.quit_game()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	Steam.run_callbacks()
