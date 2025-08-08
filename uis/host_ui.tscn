@@ -74,18 +74,18 @@ offset_bottom = 212.0
 
 [node name="BackButton" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 26.0
-offset_top = 527.0
-offset_right = 66.0
-offset_bottom = 567.0
+offset_left = 20.0
+offset_top = 515.0
+offset_right = 168.0
+offset_bottom = 574.0
 text = "Back"
 
 [node name="HostButton" type="Button" parent="Panel"]
 layout_mode = 0
-offset_left = 1007.0
-offset_top = 527.0
-offset_right = 1055.0
-offset_bottom = 567.0
+offset_left = 912.0
+offset_top = 515.0
+offset_right = 1064.0
+offset_bottom = 575.0
 text = "Host"
 
 [connection signal="pressed" from="Panel/BackButton" to="." method="_on_back_button_pressed"]

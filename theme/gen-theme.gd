@@ -52,6 +52,10 @@ func define_theme():
 	})
 
 	var curved_border_stylebox = stylebox_flat({
+		content_margin_bottom = 10,
+		content_margin_left = 4,
+		content_margin_right = 4,
+		content_margin_top = 0,
 		border_width_bottom = int(float(BORDER_WIDTH) / 2.0),
 		border_width_left = int(float(BORDER_WIDTH) / 2.0),
 		border_width_right = int(float(BORDER_WIDTH) / 2.0),
