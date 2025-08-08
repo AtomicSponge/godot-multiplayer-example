@@ -10,3 +10,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_56aiv")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 32.0
+offset_right = 1245.0
+offset_bottom = 683.0
+
+[node name="BackButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 562.0
+offset_right = 152.0
+offset_bottom = 625.0
+text = "Back"
+
+[connection signal="pressed" from="Panel/BackButton" to="." method="_on_back_button_pressed"]

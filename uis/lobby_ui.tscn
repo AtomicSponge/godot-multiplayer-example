@@ -10,3 +10,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jvbpp")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 29.0
+offset_right = 1240.0
+offset_bottom = 683.0
