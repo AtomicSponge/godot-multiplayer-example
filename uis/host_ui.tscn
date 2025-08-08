@@ -10,3 +10,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lhb2d")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 68.0
+offset_right = 1181.0
+offset_bottom = 659.0
+
+[node name="HostGameLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 17.0
+offset_right = 129.0
+offset_bottom = 47.0
+text = "Host Game"
+
+[node name="LobbyNameLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 69.0
+offset_right = 146.0
+offset_bottom = 99.0
+text = "Lobby name:"
+
+[node name="LobbyNameInput" type="LineEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 68.0
+offset_right = 421.0
+offset_bottom = 100.0
+placeholder_text = "SteamID's Lobby"

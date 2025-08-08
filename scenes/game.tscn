@@ -23,5 +23,5 @@ horizontal_alignment = 1
 spawn_path = NodePath("../Level")
 spawn_limit = 1
 
-[node name="UI" type="Node" parent="."]
+[node name="UIController" type="Node" parent="."]
 script = ExtResource("3_lnu2h")
