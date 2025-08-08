@@ -1,6 +1,8 @@
 extends Control
 
 @onready var LobbyNameInput = $Panel/LobbyNameInput
+@onready var PublicCheckBox = $Panel/PublicCheckBox
+@onready var InviteOnlyCheckBox = $Panel/InviteOnlyCheckBox
 
 func _ready() -> void:
 	LobbyNameInput.text = str(SteamGlobals.NAME, "'s Lobby")
