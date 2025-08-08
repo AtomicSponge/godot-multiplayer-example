@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://bwfl26xnfov72"]
 
-[ext_resource type="Script" uid="uid://bnlgkxk2n24t6" path="res://scripts/uis/game_ui.gd" id="1_5u0bf"]
+[ext_resource type="Script" uid="uid://bnlgkxk2n24t6" path="res://scripts/uis/pause_ui.gd" id="1_5u0bf"]
 
-[node name="GameUI" type="Control"]
+[node name="PauseUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
