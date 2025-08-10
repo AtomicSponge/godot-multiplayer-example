@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://w7ppkuj2u8xf"]
+[gd_scene load_steps=10 format=3 uid="uid://w7ppkuj2u8xf"]
 
 [ext_resource type="PackedScene" uid="uid://tauj6umdt5sc" path="res://scenes/level.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://h06b0folvp5a" path="res://scripts/game.gd" id="1_yqjtg"]
-[ext_resource type="Script" uid="uid://8mkow55l8f7p" path="res://scripts/uis/ui_anchor.gd" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://cmfgtkrms7cw8" path="res://addons/ui_controller/ui_anchor.gd" id="3_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://bwfl26xnfov72" path="res://uis/game_ui.tscn" id="4_vtaks"]
+[ext_resource type="PackedScene" uid="uid://e4rs23vw3k7e" path="res://uis/host_ui.tscn" id="5_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://c2xyatyodxab8" path="res://uis/lobby_ui.tscn" id="6_dinhu"]
+[ext_resource type="PackedScene" uid="uid://623iroan7rog" path="res://uis/main_ui.tscn" id="7_kvuet"]
+[ext_resource type="PackedScene" uid="uid://bqnjroyybvkro" path="res://uis/search_ui.tscn" id="8_trtic"]
+[ext_resource type="PackedScene" uid="uid://dgaw4cdwkml6a" path="res://uis/settings_ui.tscn" id="9_ir15t"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_yqjtg")
@@ -23,5 +29,14 @@ horizontal_alignment = 1
 spawn_path = NodePath("../Level")
 spawn_limit = 1
 
-[node name="UIAnchor" type="Node" parent="."]
-script = ExtResource("3_lnu2h")
+[node name="UiAnchor" type="Node" parent="."]
+script = ExtResource("3_0tnpc")
+_menus = Dictionary[String, PackedScene]({
+"GameUI": ExtResource("4_vtaks"),
+"HostUI": ExtResource("5_kvpfn"),
+"LobbyUI": ExtResource("6_dinhu"),
+"MainUI": ExtResource("7_kvuet"),
+"SearchUI": ExtResource("8_trtic"),
+"SettingsUI": ExtResource("9_ir15t")
+})
+metadata/_custom_type_script = "uid://cmfgtkrms7cw8"
