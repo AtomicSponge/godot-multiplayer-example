@@ -14,6 +14,8 @@ var LOBBY_MEMBERS: Array = []
 var LOBBY_MEMBERS_MAX: int = 8
 var LOBBY_INVITE_ARG: bool = false
 
+var LOBBY_NAME: String = "Test Lobby Name"
+
 func create_lobby() -> void:
 	if LOBBY_ID == 0:
 		Steam.createLobby(Steam.LOBBY_TYPE_FRIENDS_ONLY, LOBBY_MEMBERS_MAX)
@@ -52,8 +54,20 @@ func _on_lobby_join_requested() -> void:
 func _on_lobby_chat_update() -> void:
 	pass
 
-func _on_lobby_created() -> void:
-	pass
+func _on_lobby_created(connect: int, this_lobby_id: int) -> void:
+	if connect == 1:
+		# Set the lobby ID
+		LOBBY_ID = this_lobby_id
+
+		# Set this lobby as joinable, just in case, though this should be done by default
+		Steam.setLobbyJoinable(LOBBY_ID, true)
+
+		# Set some lobby data
+		Steam.setLobbyData(LOBBY_ID, "name", LOBBY_NAME)
+		Steam.setLobbyData(LOBBY_ID, "mode", "GodotSteam test")
+
+		# Allow P2P connections to fallback to being relayed through Steam if needed
+		var set_relay: bool = Steam.allowP2PPacketRelay(true)
 
 func _on_lobby_data_update() -> void:
 	pass
