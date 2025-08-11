@@ -13,9 +13,7 @@
 [node name="Game" type="Node"]
 script = ExtResource("1_yqjtg")
 
-[node name="TitleBackground" type="Sprite2D" parent="."]
-
-[node name="Title" type="Label" parent="TitleBackground"]
+[node name="Title" type="Label" parent="."]
 offset_top = 124.0
 offset_right = 1280.0
 offset_bottom = 273.0

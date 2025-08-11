@@ -17,3 +17,13 @@ offset_left = 37.0
 offset_top = 29.0
 offset_right = 1240.0
 offset_bottom = 683.0
+
+[node name="BackButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 575.0
+offset_right = 175.0
+offset_bottom = 634.0
+text = "Back"
+
+[connection signal="pressed" from="Panel/BackButton" to="." method="_on_back_button_pressed"]
