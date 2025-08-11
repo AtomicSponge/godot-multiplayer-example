@@ -34,7 +34,44 @@ func _ready() -> void:
 		print("User does not own this game.")
 		Globals.quit_game()
 
+	Steam.join_requested.connect(_on_lobby_join_requested)
+	Steam.lobby_chat_update.connect(_on_lobby_chat_update)
+	Steam.lobby_created.connect(_on_lobby_created)
+	Steam.lobby_data_update.connect(_on_lobby_data_update)
+	Steam.lobby_invite.connect(_on_lobby_invite)
+	Steam.lobby_joined.connect(_on_lobby_joined)
+	Steam.lobby_match_list.connect(_on_lobby_match_list)
+	Steam.lobby_message.connect(_on_lobby_message)
+	Steam.persona_state_change.connect(_on_persona_change)
+	
 	_check_command_line()
+
+func _on_lobby_join_requested() -> void:
+	pass
+
+func _on_lobby_chat_update() -> void:
+	pass
+
+func _on_lobby_created() -> void:
+	pass
+
+func _on_lobby_data_update() -> void:
+	pass
+
+func _on_lobby_invite() -> void:
+	pass
+
+func _on_lobby_joined() -> void:
+	pass
+
+func _on_lobby_match_list() -> void:
+	pass
+
+func _on_lobby_message() -> void:
+	pass
+
+func _on_persona_change() -> void:
+	pass
 
 func _process(_delta: float) -> void:
 	Steam.run_callbacks()
