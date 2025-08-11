@@ -11,7 +11,12 @@ var VAC_BANNED: bool = false
 var DATA
 var LOBBY_ID: int = 0
 var LOBBY_MEMBERS: Array = []
+var LOBBY_MEMBERS_MAX: int = 8
 var LOBBY_INVITE_ARG: bool = false
+
+func create_lobby() -> void:
+	if LOBBY_ID == 0:
+		Steam.createLobby(Steam.LOBBY_TYPE_FRIENDS_ONLY, LOBBY_MEMBERS_MAX)
 
 func _ready() -> void:
 	var INIT = Steam.steamInitEx()
@@ -29,12 +34,12 @@ func _ready() -> void:
 		print("User does not own this game.")
 		Globals.quit_game()
 
-	check_command_line()
+	_check_command_line()
 
 func _process(_delta: float) -> void:
 	Steam.run_callbacks()
 
-func check_command_line() -> void:
+func _check_command_line() -> void:
 	var arguments: Array = OS.get_cmdline_args()
 	# There are arguments to process
 	if arguments.size() > 0:
