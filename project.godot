@@ -31,7 +31,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdmaim/plugin.cfg", "res://addons/theme_gen_save_sync/plugin.cfg", "res://addons/ui_controller/plugin.cfg")
+enabled=PackedStringArray("res://addons/theme_gen_save_sync/plugin.cfg", "res://addons/ui_controller/plugin.cfg")
 
 [file_customization]
 

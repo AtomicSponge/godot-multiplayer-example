@@ -21,7 +21,7 @@ func create_lobby() -> void:
 		Steam.createLobby(Steam.LOBBY_TYPE_FRIENDS_ONLY, LOBBY_MEMBERS_MAX)
 
 func _ready() -> void:
-	var INIT = Steam.steamInitEx()
+	var INIT: Dictionary = Steam.steamInitEx()
 	if INIT['status'] != 0:
 		print("Failed to initialise Steam. " + str(INIT['verbal']) + " Shutting down...")
 		Globals.quit_game()
@@ -54,8 +54,8 @@ func _on_lobby_join_requested() -> void:
 func _on_lobby_chat_update() -> void:
 	pass
 
-func _on_lobby_created(connect: int, this_lobby_id: int) -> void:
-	if connect == 1:
+func _on_lobby_created(connected: int, this_lobby_id: int) -> void:
+	if connected == 1:
 		# Set the lobby ID
 		LOBBY_ID = this_lobby_id
 
@@ -67,7 +67,7 @@ func _on_lobby_created(connect: int, this_lobby_id: int) -> void:
 		Steam.setLobbyData(LOBBY_ID, "mode", "GodotSteam test")
 
 		# Allow P2P connections to fallback to being relayed through Steam if needed
-		var set_relay: bool = Steam.allowP2PPacketRelay(true)
+		var _set_relay: bool = Steam.allowP2PPacketRelay(true)
 
 func _on_lobby_data_update() -> void:
 	pass
@@ -84,8 +84,12 @@ func _on_lobby_match_list() -> void:
 func _on_lobby_message() -> void:
 	pass
 
-func _on_persona_change() -> void:
-	pass
+func _on_persona_change(this_steam_id: int, _flag: int) -> void:
+	# Make sure you're in a lobby and this user is valid or Steam might spam your console log
+	if LOBBY_ID > 0:
+		print("A user (%s) had information change, update the lobby list" % this_steam_id)
+		# Update the player list
+		#get_lobby_members()
 
 func _process(_delta: float) -> void:
 	Steam.run_callbacks()
