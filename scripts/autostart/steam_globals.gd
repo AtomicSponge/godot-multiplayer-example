@@ -9,9 +9,9 @@ var VAC_BANNED: bool = false
 
 # Lobby variables
 var DATA
-var LOBBY_ID = 0
-var LOBBY_MEMBERS = []
-var LOBBY_INVITE_ARG = false
+var LOBBY_ID: int = 0
+var LOBBY_MEMBERS: Array = []
+var LOBBY_INVITE_ARG: bool = false
 
 func _ready() -> void:
 	var INIT = Steam.steamInitEx()
@@ -29,5 +29,20 @@ func _ready() -> void:
 		print("User does not own this game.")
 		Globals.quit_game()
 
+	check_command_line()
+
 func _process(_delta: float) -> void:
 	Steam.run_callbacks()
+
+func check_command_line() -> void:
+	var arguments: Array = OS.get_cmdline_args()
+	# There are arguments to process
+	if arguments.size() > 0:
+		# A Steam connection argument exists
+		if arguments[0] == "+connect_lobby":
+			# Lobby invite exists so try to connect to it
+			if int(arguments[1]) > 0:
+				# At this point, you'll probably want to change scenes
+				# Something like a loading into lobby screen
+				print("Command line lobby ID: %s" % arguments[1])
+				#join_lobby(int(arguments[1]))
