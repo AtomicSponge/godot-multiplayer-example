@@ -24,7 +24,7 @@ offset_left = 517.0
 offset_top = 32.0
 offset_right = 709.0
 offset_bottom = 62.0
-text = "Seearch for Lobby"
+text = "Search for Lobby"
 
 [node name="BackButton" type="Button" parent="Panel"]
 layout_mode = 0
