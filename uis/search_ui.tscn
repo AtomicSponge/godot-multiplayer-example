@@ -18,6 +18,14 @@ offset_top = 32.0
 offset_right = 1245.0
 offset_bottom = 683.0
 
+[node name="TitleLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 517.0
+offset_top = 32.0
+offset_right = 709.0
+offset_bottom = 62.0
+text = "Seearch for Lobby"
+
 [node name="BackButton" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 35.0
@@ -25,5 +33,15 @@ offset_top = 562.0
 offset_right = 152.0
 offset_bottom = 625.0
 text = "Back"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 72.0
+offset_right = 1144.0
+offset_bottom = 551.0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
 
 [connection signal="pressed" from="Panel/BackButton" to="." method="_on_back_button_pressed"]
