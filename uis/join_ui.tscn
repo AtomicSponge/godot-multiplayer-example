@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqnjroyybvkro"]
 
-[ext_resource type="Script" uid="uid://ce4yfe1uq7i1a" path="res://scripts/uis/search_ui.gd" id="1_56aiv"]
+[ext_resource type="Script" uid="uid://ce4yfe1uq7i1a" path="res://scripts/uis/join_ui.gd" id="1_56aiv"]
 
 [node name="SearchUI" type="Control"]
 layout_mode = 3
