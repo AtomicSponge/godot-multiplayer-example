@@ -22,6 +22,14 @@ func create_lobby() -> void:
 	if LOBBY_ID == 0:
 		Steam.createLobby(Steam.LOBBY_TYPE_FRIENDS_ONLY, LOBBY_MEMBERS_MAX)
 
+func search_for_lobbies() -> void:
+	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_DEFAULT)
+	#Steam.addRequestLobbyListStringFilter()
+	Steam.requestLobbyList()
+	await get_tree().create_timer(3).timeout
+	if LOBBY_LIST.is_empty():
+		await get_tree().create_timer(2).timeout
+
 func _ready() -> void:
 	var INIT: Dictionary = Steam.steamInitEx()
 	if INIT['status'] != 0:

@@ -1,13 +1,13 @@
 extends Control
 
-@onready var LobbyList = $Panel/LobbyScroller/LobbyList
 @onready var LobbyScroller = $Panel/LobbyScroller
+@onready var SearchingLabel = $Panel/LobbyScroller/SearchingLabel
+@onready var LobbyList = $Panel/LobbyScroller/LobbyList
 
 func _ready() -> void:
-	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_DEFAULT)
-	#Steam.addRequestLobbyListStringFilter()
-	Steam.requestLobbyList()
-	await get_tree().create_timer(3).timeout
+	SearchingLabel.show()
+	await SteamGlobals.search_for_lobbies()
+	SearchingLabel.hide()
 
 	for lobby in SteamGlobals.LOBBY_LIST:
 		var lobby_name: String = Steam.getLobbyData(lobby, "name")
@@ -27,7 +27,9 @@ func _clear_lobby_list() -> void:
 		node.queue_free()
 
 func _on_search_button_pressed() -> void:
-	pass # Replace with function body.
+	SearchingLabel.show()
+	SteamGlobals.search_for_lobbies()
+	SearchingLabel.hide()
 
 func _on_back_button_pressed() -> void:
 	UiController.close_menu()

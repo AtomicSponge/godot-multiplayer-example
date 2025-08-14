@@ -41,6 +41,10 @@ offset_top = 61.0
 offset_right = 1142.0
 offset_bottom = 540.0
 
+[node name="SearchingLabel" type="Label" parent="Panel/LobbyScroller"]
+layout_mode = 2
+text = "Searching..."
+
 [node name="LobbyList" type="HFlowContainer" parent="Panel/LobbyScroller"]
 layout_mode = 2
 
