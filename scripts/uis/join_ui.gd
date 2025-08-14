@@ -1,10 +1,18 @@
 extends Control
 
 @onready var LobbyScroller = $Panel/LobbyScroller
-@onready var SearchingLabel = $Panel/LobbyScroller/SearchingLabel
 @onready var LobbyList = $Panel/LobbyScroller/LobbyList
+@onready var SearchingLabel = $Panel/LobbyScroller/LobbyList/SearchingLabel
 
 func _ready() -> void:
+	await _build_lobby_list()
+
+func _build_lobby_list() -> void:
+	for node in LobbyList.get_children():
+		if node is Button:
+			LobbyList.remove_child(node)
+			node.queue_free()
+
 	SearchingLabel.show()
 	await SteamGlobals.search_for_lobbies()
 	SearchingLabel.hide()
@@ -21,15 +29,8 @@ func _ready() -> void:
 
 		LobbyList.add_child(lobby_button)
 
-func _clear_lobby_list() -> void:
-	for node in LobbyList.get_children():
-		LobbyList.remove_child(node)
-		node.queue_free()
-
 func _on_search_button_pressed() -> void:
-	SearchingLabel.show()
-	SteamGlobals.search_for_lobbies()
-	SearchingLabel.hide()
+	await _build_lobby_list()
 
 func _on_back_button_pressed() -> void:
 	UiController.close_menu()
