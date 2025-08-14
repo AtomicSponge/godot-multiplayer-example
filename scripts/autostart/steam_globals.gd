@@ -16,6 +16,8 @@ var LOBBY_INVITE_ARG: bool = false
 
 var LOBBY_NAME: String = "Test Lobby Name"
 
+var LOBBY_LIST: Array = []
+
 func create_lobby() -> void:
 	if LOBBY_ID == 0:
 		Steam.createLobby(Steam.LOBBY_TYPE_FRIENDS_ONLY, LOBBY_MEMBERS_MAX)
@@ -45,7 +47,7 @@ func _ready() -> void:
 	Steam.lobby_match_list.connect(_on_lobby_match_list)
 	Steam.lobby_message.connect(_on_lobby_message)
 	Steam.persona_state_change.connect(_on_persona_change)
-	
+
 	_check_command_line()
 
 func _on_lobby_join_requested() -> void:
@@ -78,8 +80,8 @@ func _on_lobby_invite() -> void:
 func _on_lobby_joined() -> void:
 	pass
 
-func _on_lobby_match_list() -> void:
-	pass
+func _on_lobby_match_list(these_lobbies: Array) -> void:
+	LOBBY_LIST = these_lobbies
 
 func _on_lobby_message() -> void:
 	pass

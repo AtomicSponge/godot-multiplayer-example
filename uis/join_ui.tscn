@@ -41,7 +41,22 @@ offset_top = 61.0
 offset_right = 1142.0
 offset_bottom = 540.0
 
-[node name="HFlowContainer" type="HFlowContainer" parent="Panel/ScrollContainer"]
+[node name="LobbyList" type="HFlowContainer" parent="Panel/ScrollContainer"]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 2
+offset_left = 243.0
+offset_top = 578.0
+offset_right = 315.0
+offset_bottom = 608.0
+text = "Search:"
+
+[node name="Control" type="LineEdit" parent="Panel"]
+layout_mode = 0
+offset_left = 329.0
+offset_top = 579.0
+offset_right = 810.0
+offset_bottom = 619.0
 
 [connection signal="pressed" from="Panel/BackButton" to="." method="_on_back_button_pressed"]
