@@ -22,6 +22,11 @@ func create_lobby() -> void:
 	if LOBBY_ID == 0:
 		Steam.createLobby(Steam.LOBBY_TYPE_FRIENDS_ONLY, LOBBY_MEMBERS_MAX)
 
+func join_lobby(this_lobby_id: int) -> void:
+	Globals.alert("You tried to join a lobby")
+	LOBBY_MEMBERS.clear()
+	Steam.joinLobby(this_lobby_id)
+
 func search_for_lobbies() -> void:
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_DEFAULT)
 	#Steam.addRequestLobbyListStringFilter()
