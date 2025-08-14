@@ -81,11 +81,36 @@ func _ready() -> void:
 
 	_check_command_line()
 
-func _on_lobby_join_requested() -> void:
-	pass
+func _on_lobby_join_requested(this_lobby_id: int, friend_id: int) -> void:
+	var owner_name: String = Steam.getFriendPersonaName(friend_id)
+	join_lobby(this_lobby_id)
 
-func _on_lobby_chat_update() -> void:
-	pass
+func _on_lobby_chat_update(this_lobby_id: int, change_id: int, making_change_id: int, chat_state: int) -> void:
+	# Get the user who has made the lobby change
+	var changer_name: String = Steam.getFriendPersonaName(change_id)
+
+	# If a player has joined the lobby
+	if chat_state == Steam.CHAT_MEMBER_STATE_CHANGE_ENTERED:
+		print("%s has joined the lobby." % changer_name)
+
+	# Else if a player has left the lobby
+	elif chat_state == Steam.CHAT_MEMBER_STATE_CHANGE_LEFT:
+		print("%s has left the lobby." % changer_name)
+
+	# Else if a player has been kicked
+	elif chat_state == Steam.CHAT_MEMBER_STATE_CHANGE_KICKED:
+		print("%s has been kicked from the lobby." % changer_name)
+
+	# Else if a player has been banned
+	elif chat_state == Steam.CHAT_MEMBER_STATE_CHANGE_BANNED:
+		print("%s has been banned from the lobby." % changer_name)
+
+	# Else there was some unknown change
+	else:
+		print("%s did... something." % changer_name)
+
+	# Update the lobby now that a change has occurred
+	_get_lobby_members()
 
 func _on_lobby_created(connected: int, this_lobby_id: int) -> void:
 	if connected == 1:
@@ -94,10 +119,8 @@ func _on_lobby_created(connected: int, this_lobby_id: int) -> void:
 
 		# Set this lobby as joinable, just in case, though this should be done by default
 		Steam.setLobbyJoinable(LOBBY_ID, true)
-
 		# Set some lobby data
 		Steam.setLobbyData(LOBBY_ID, "name", LOBBY_NAME)
-		Steam.setLobbyData(LOBBY_ID, "mode", "GodotSteam test")
 
 		# Allow P2P connections to fallback to being relayed through Steam if needed
 		var _set_relay: bool = Steam.allowP2PPacketRelay(true)
@@ -137,7 +160,7 @@ func _on_lobby_joined(this_lobby_id: int, _permissions: int, _locked: bool, resp
 			Steam.CHAT_ROOM_ENTER_RESPONSE_MEMBER_BLOCKED_YOU: fail_reason = "A user in the lobby has blocked you from joining."
 			Steam.CHAT_ROOM_ENTER_RESPONSE_YOU_BLOCKED_MEMBER: fail_reason = "A user you have blocked is in the lobby."
 
-		print("Failed to join this chat room: %s" % fail_reason)
+		Globals.alert("Failed to join this chat room: %s" % fail_reason)
 
 func _on_lobby_match_list(these_lobbies: Array) -> void:
 	LOBBY_LIST = these_lobbies
@@ -150,7 +173,7 @@ func _on_persona_change(this_steam_id: int, _flag: int) -> void:
 	if LOBBY_ID > 0:
 		print("A user (%s) had information change, update the lobby list" % this_steam_id)
 		# Update the player list
-		#get_lobby_members()
+		_get_lobby_members()
 
 func _process(_delta: float) -> void:
 	Steam.run_callbacks()
@@ -183,5 +206,4 @@ func _check_command_line() -> void:
 			if int(arguments[1]) > 0:
 				# At this point, you'll probably want to change scenes
 				# Something like a loading into lobby screen
-				print("Command line lobby ID: %s" % arguments[1])
-				#join_lobby(int(arguments[1]))
+				join_lobby(int(arguments[1]))
