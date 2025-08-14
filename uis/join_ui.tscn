@@ -44,14 +44,6 @@ offset_bottom = 540.0
 [node name="LobbyList" type="HFlowContainer" parent="Panel/LobbyScroller"]
 layout_mode = 2
 
-[node name="SearchLabel" type="Label" parent="Panel"]
-layout_mode = 2
-offset_left = 243.0
-offset_top = 578.0
-offset_right = 315.0
-offset_bottom = 608.0
-text = "Search:"
-
 [node name="SearchInput" type="LineEdit" parent="Panel"]
 layout_mode = 0
 offset_left = 329.0
@@ -59,4 +51,13 @@ offset_top = 579.0
 offset_right = 810.0
 offset_bottom = 619.0
 
+[node name="SearchButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 823.0
+offset_top = 580.0
+offset_right = 898.0
+offset_bottom = 620.0
+text = "Search"
+
 [connection signal="pressed" from="Panel/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Panel/SearchButton" to="." method="_on_search_button_pressed"]

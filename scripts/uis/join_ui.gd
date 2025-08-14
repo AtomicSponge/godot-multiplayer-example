@@ -7,6 +7,7 @@ func _ready() -> void:
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_DEFAULT)
 	#Steam.addRequestLobbyListStringFilter()
 	Steam.requestLobbyList()
+	await get_tree().create_timer(3).timeout
 
 	for lobby in SteamGlobals.LOBBY_LIST:
 		var lobby_name: String = Steam.getLobbyData(lobby, "name")
@@ -24,6 +25,9 @@ func _clear_lobby_list() -> void:
 	for node in LobbyList.get_children():
 		LobbyList.remove_child(node)
 		node.queue_free()
+
+func _on_search_button_pressed() -> void:
+	pass # Replace with function body.
 
 func _on_back_button_pressed() -> void:
 	UiController.close_menu()
