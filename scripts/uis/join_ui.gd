@@ -1,6 +1,7 @@
 extends Control
 
-@onready var LobbyList = $Panel/ScrollContainer/LobbyList
+@onready var LobbyList = $Panel/LobbyScroller/LobbyList
+@onready var LobbyScroller = $Panel/LobbyScroller
 
 func _ready() -> void:
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_DEFAULT)
@@ -14,7 +15,7 @@ func _ready() -> void:
 
 		var lobby_button: Button = Button.new()
 		lobby_button.set_text("Lobby %s: %s [%s] - %s Player(s)" % [lobby, lobby_name, lobby_mode, lobby_num_members])
-		lobby_button.set_size(Vector2(800, 50))
+		lobby_button.set_size(Vector2(LobbyScroller.size.x, 50))
 		lobby_button.set_name("lobby_%s" % lobby)
 		#lobby_button.connect("pressed", Callable(self, "join_lobby").bind(lobby))
 
