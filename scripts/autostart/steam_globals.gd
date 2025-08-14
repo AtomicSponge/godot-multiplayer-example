@@ -77,8 +77,36 @@ func _on_lobby_data_update() -> void:
 func _on_lobby_invite() -> void:
 	pass
 
-func _on_lobby_joined() -> void:
-	pass
+func _on_lobby_joined(this_lobby_id: int, _permissions: int, _locked: bool, response: int) -> void:
+	# If joining was successful
+	if response == Steam.CHAT_ROOM_ENTER_RESPONSE_SUCCESS:
+		# Set this lobby ID as your lobby ID
+		LOBBY_ID = this_lobby_id
+
+		# Get the lobby members
+		_get_lobby_members()
+
+		# Make the initial handshake
+		# send_p2p_packet(0, {"message": "handshake", "from": steam_id})
+
+	# Else it failed for some reason
+	else:
+		# Get the failure reason
+		var fail_reason: String
+
+		match response:
+			Steam.CHAT_ROOM_ENTER_RESPONSE_DOESNT_EXIST: fail_reason = "This lobby no longer exists."
+			Steam.CHAT_ROOM_ENTER_RESPONSE_NOT_ALLOWED: fail_reason = "You don't have permission to join this lobby."
+			Steam.CHAT_ROOM_ENTER_RESPONSE_FULL: fail_reason = "The lobby is now full."
+			Steam.CHAT_ROOM_ENTER_RESPONSE_ERROR: fail_reason = "Uh... something unexpected happened!"
+			Steam.CHAT_ROOM_ENTER_RESPONSE_BANNED: fail_reason = "You are banned from this lobby."
+			Steam.CHAT_ROOM_ENTER_RESPONSE_LIMITED: fail_reason = "You cannot join due to having a limited account."
+			Steam.CHAT_ROOM_ENTER_RESPONSE_CLAN_DISABLED: fail_reason = "This lobby is locked or disabled."
+			Steam.CHAT_ROOM_ENTER_RESPONSE_COMMUNITY_BAN: fail_reason = "This lobby is community locked."
+			Steam.CHAT_ROOM_ENTER_RESPONSE_MEMBER_BLOCKED_YOU: fail_reason = "A user in the lobby has blocked you from joining."
+			Steam.CHAT_ROOM_ENTER_RESPONSE_YOU_BLOCKED_MEMBER: fail_reason = "A user you have blocked is in the lobby."
+
+		print("Failed to join this chat room: %s" % fail_reason)
 
 func _on_lobby_match_list(these_lobbies: Array) -> void:
 	LOBBY_LIST = these_lobbies
@@ -95,6 +123,24 @@ func _on_persona_change(this_steam_id: int, _flag: int) -> void:
 
 func _process(_delta: float) -> void:
 	Steam.run_callbacks()
+
+func _get_lobby_members() -> void:
+	# Clear your previous lobby list
+	LOBBY_MEMBERS.clear()
+
+	# Get the number of members from this lobby from Steam
+	var num_of_members: int = Steam.getNumLobbyMembers(LOBBY_ID)
+
+	# Get the data of these players from Steam
+	for this_member in range(0, num_of_members):
+		# Get the member's Steam ID
+		var member_steam_id: int = Steam.getLobbyMemberByIndex(LOBBY_ID, this_member)
+
+		# Get the member's Steam name
+		var member_steam_name: String = Steam.getFriendPersonaName(member_steam_id)
+
+		# Add them to the list
+		LOBBY_MEMBERS.append({"steam_id":member_steam_id, "steam_name":member_steam_name})
 
 func _check_command_line() -> void:
 	var arguments: Array = OS.get_cmdline_args()
