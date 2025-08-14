@@ -82,10 +82,10 @@ func _ready() -> void:
 	_check_command_line()
 
 func _on_lobby_join_requested(this_lobby_id: int, friend_id: int) -> void:
-	var owner_name: String = Steam.getFriendPersonaName(friend_id)
+	var _owner_name: String = Steam.getFriendPersonaName(friend_id)
 	join_lobby(this_lobby_id)
 
-func _on_lobby_chat_update(this_lobby_id: int, change_id: int, making_change_id: int, chat_state: int) -> void:
+func _on_lobby_chat_update(_this_lobby_id: int, change_id: int, _making_change_id: int, chat_state: int) -> void:
 	# Get the user who has made the lobby change
 	var changer_name: String = Steam.getFriendPersonaName(change_id)
 
