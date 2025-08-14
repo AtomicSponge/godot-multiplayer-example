@@ -27,6 +27,24 @@ func join_lobby(this_lobby_id: int) -> void:
 	LOBBY_MEMBERS.clear()
 	Steam.joinLobby(this_lobby_id)
 
+func leave_lobby() -> void:
+	# If in a lobby, leave it
+	if LOBBY_ID != 0:
+		# Send leave request to Steam
+		Steam.leaveLobby(LOBBY_ID)
+
+		# Wipe the Steam lobby ID then display the default lobby ID and player list title
+		LOBBY_ID = 0
+
+		# Close session with all users
+		for this_member in LOBBY_MEMBERS:
+			# Make sure this isn't your Steam ID
+			if this_member['steam_id'] != ID:
+				# Close the P2P session using the Networking class
+				Steam.closeP2PSessionWithUser(this_member['steam_id'])
+		# Clear the local lobby list
+		LOBBY_MEMBERS.clear()
+
 func search_for_lobbies() -> void:
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_DEFAULT)
 	#Steam.addRequestLobbyListStringFilter()
