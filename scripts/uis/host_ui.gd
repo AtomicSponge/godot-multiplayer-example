@@ -11,4 +11,4 @@ func _on_back_button_pressed() -> void:
 	UiController.close_menu()
 
 func _on_host_button_pressed() -> void:
-	pass
+	SteamGlobals.create_lobby(LobbyNameInput.text)

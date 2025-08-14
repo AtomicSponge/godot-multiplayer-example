@@ -14,16 +14,16 @@ var LOBBY_MEMBERS: Array = []
 var LOBBY_MEMBERS_MAX: int = 8
 var LOBBY_INVITE_ARG: bool = false
 
-var LOBBY_NAME: String = "Test Lobby Name"
+var LOBBY_NAME: String = "Default Lobby Name"
 
 var LOBBY_LIST: Array = []
 
-func create_lobby() -> void:
+func create_lobby(name: String) -> void:
 	if LOBBY_ID == 0:
 		Steam.createLobby(Steam.LOBBY_TYPE_FRIENDS_ONLY, LOBBY_MEMBERS_MAX)
+		LOBBY_NAME = name
 
 func join_lobby(this_lobby_id: int) -> void:
-	Globals.alert("You tried to join a lobby")
 	LOBBY_MEMBERS.clear()
 	Steam.joinLobby(this_lobby_id)
 
