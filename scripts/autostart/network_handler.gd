@@ -1,15 +1,13 @@
 extends Node
 
-const SERVER_ID: int = 1
 const IP_ADDRESS: String = "localhost"
 const PORT: int = 42069
-const MAX_PLAYERS = 8
 
 #var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
 
 func start_server() -> Error:
-	#var error: Error = peer.create_server(PORT, MAX_PLAYERS)
+	#var error: Error = peer.create_server(PORT, SteamGlobals.LOBBY_MEMBERS_MAX)
 	var error: Error = peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC, SteamGlobals.LOBBY_MEMBERS_MAX)
 	if error: return error
 	multiplayer.multiplayer_peer = peer
