@@ -5,9 +5,6 @@ extends Control
 @onready var SearchingLabel = $Panel/LobbyScroller/LobbyList/SearchingLabel
 @onready var SearchInput = $Panel/SearchInput
 
-func _ready() -> void:
-	await _build_lobby_list()
-
 func _build_lobby_list(search_string: String = "") -> void:
 	for node in LobbyList.get_children():
 		if node is Button:
@@ -29,6 +26,9 @@ func _build_lobby_list(search_string: String = "") -> void:
 		lobby_button.connect("pressed", Callable(SteamGlobals, "join_lobby").bind(lobby))
 
 		LobbyList.add_child(lobby_button)
+
+func _ready() -> void:
+	await _build_lobby_list()
 
 func _on_search_button_pressed() -> void:
 	await _build_lobby_list(SearchInput.text)
