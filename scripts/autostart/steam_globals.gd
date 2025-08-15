@@ -18,10 +18,10 @@ var LOBBY_NAME: String = "Default Lobby Name"
 
 var LOBBY_LIST: Array = []
 
-func create_lobby(name: String) -> void:
+func create_lobby(this_name: String) -> void:
 	if LOBBY_ID == 0:
-		Steam.createLobby(Steam.LOBBY_TYPE_FRIENDS_ONLY, LOBBY_MEMBERS_MAX)
-		LOBBY_NAME = name
+		Steam.createLobby(Steam.LOBBY_TYPE_PUBLIC, LOBBY_MEMBERS_MAX)
+		LOBBY_NAME = this_name
 
 func join_lobby(this_lobby_id: int) -> void:
 	LOBBY_MEMBERS.clear()
@@ -45,9 +45,10 @@ func leave_lobby() -> void:
 		# Clear the local lobby list
 		LOBBY_MEMBERS.clear()
 
-func search_for_lobbies() -> void:
+func search_for_lobbies(search_string: String = "") -> void:
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_DEFAULT)
-	#Steam.addRequestLobbyListStringFilter()
+	if not search_string.is_empty():
+		Steam.addRequestLobbyListStringFilter("name", search_string, Steam.LOBBY_COMPARISON_EQUAL)
 	Steam.requestLobbyList()
 	await get_tree().create_timer(3).timeout
 	if LOBBY_LIST.is_empty():
@@ -141,7 +142,8 @@ func _on_lobby_joined(this_lobby_id: int, _permissions: int, _locked: bool, resp
 		_get_lobby_members()
 
 		# Make the initial handshake
-		# send_p2p_packet(0, {"message": "handshake", "from": steam_id})
+		# send_p2p_packet(0, {"message": "handshake", "from": ID})
+		# https://godotsteam.com/tutorials/networking/#__tabbed_3_2
 
 	# Else it failed for some reason
 	else:
