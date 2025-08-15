@@ -74,7 +74,6 @@ func _ready() -> void:
 	Steam.lobby_chat_update.connect(_on_lobby_chat_update)
 	Steam.lobby_created.connect(_on_lobby_created)
 	Steam.lobby_data_update.connect(_on_lobby_data_update)
-	Steam.lobby_invite.connect(_on_lobby_invite)
 	Steam.lobby_joined.connect(_on_lobby_joined)
 	Steam.lobby_match_list.connect(_on_lobby_match_list)
 	Steam.lobby_message.connect(_on_lobby_message)
@@ -127,9 +126,6 @@ func _on_lobby_created(connected: int, this_lobby_id: int) -> void:
 		var _set_relay: bool = Steam.allowP2PPacketRelay(true)
 
 func _on_lobby_data_update(_success: int, _this_lobby_id: int, _this_member_id: int) -> void:
-	pass
-
-func _on_lobby_invite() -> void:
 	pass
 
 func _on_lobby_joined(this_lobby_id: int, _permissions: int, _locked: bool, response: int) -> void:
