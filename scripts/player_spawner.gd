@@ -1,6 +1,6 @@
 extends MultiplayerSpawner
 
-var network_player: PackedScene = preload("res://scenes/player.tscn")
+var PLAYER: PackedScene = preload("res://scenes/player.tscn")
 
 func _ready() -> void:
 	if not multiplayer.is_server(): return
@@ -11,7 +11,6 @@ func _exit_tree():
 	multiplayer.peer_connected.disconnect(spawn_player)
 
 func spawn_player(id: int) -> void:
-	if not multiplayer.is_server(): return
-	var player: Node = network_player.instantiate()
+	var player: Node = PLAYER.instantiate()
 	player.name = str(id)
 	get_node(spawn_path).call_deferred("add_child", player)
