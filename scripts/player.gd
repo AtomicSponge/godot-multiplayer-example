@@ -1,10 +1,16 @@
 extends CharacterBody2D
 
+@onready var PlayerCamera: Camera2D = $Camera2D
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
+
+func _ready() -> void:
+	if not is_multiplayer_authority():
+		PlayerCamera.queue_free()
 
 func _physics_process(delta: float) -> void:
 	if not is_multiplayer_authority(): return
