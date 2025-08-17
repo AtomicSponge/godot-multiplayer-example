@@ -13,6 +13,13 @@ size = Vector2(1349, 28)
 position = Vector2(640.5, 700)
 shape = SubResource("RectangleShape2D_jedrf")
 
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+offset_left = -33.0
+offset_top = 687.0
+offset_right = 1314.0
+offset_bottom = 715.0
+color = Color(0, 0, 0, 1)
+
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://cjsdm848ojsr2")
 spawn_path = NodePath("../SpawnLocations/Spawn1")
@@ -21,7 +28,7 @@ script = ExtResource("1_ves5e")
 [node name="SpawnLocations" type="Node" parent="."]
 
 [node name="Spawn0" type="Node2D" parent="SpawnLocations"]
-position = Vector2(140, 92)
+position = Vector2(375, 31)
 
 [node name="Spawn1" type="Node2D" parent="SpawnLocations"]
-position = Vector2(1012, 94)
+position = Vector2(831, 30)

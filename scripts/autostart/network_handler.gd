@@ -11,6 +11,7 @@ func start_server() -> Error:
 	#var error: Error = peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC, SteamGlobals.LOBBY_MEMBERS_MAX)
 	if error: return error
 	multiplayer.multiplayer_peer = peer
+	EventBus.StartGame.emit()
 	return OK
 
 func start_client() -> Error:
@@ -18,6 +19,7 @@ func start_client() -> Error:
 	#var error: Error = peer.connect_lobby(SteamGlobals.LOBBY_ID)
 	if error: return error
 	multiplayer.multiplayer_peer = peer
+	EventBus.StartGame.emit()
 	return OK
 
 func close_connection() -> void:

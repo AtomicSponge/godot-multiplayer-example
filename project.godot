@@ -23,6 +23,10 @@ NetworkHandler="*res://scripts/autostart/network_handler.gd"
 EventBus="*res://scripts/autostart/event_bus.gd"
 UiController="*res://addons/ui_controller/ui_controller.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=1280
