@@ -43,8 +43,7 @@ func _check_command_line() -> void:
 		if arguments[0] == "+connect_lobby":
 			# Lobby invite exists so try to connect to it
 			if int(arguments[1]) > 0:
-				pass
-				#join_lobby(int(arguments[1]))
+				NetworkHandler.start_client(int(arguments[1]))
 
 func _ready() -> void:
 	var INIT: Dictionary = Steam.steamInitEx()
