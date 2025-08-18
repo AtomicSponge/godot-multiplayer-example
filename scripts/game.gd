@@ -11,7 +11,7 @@ func _ready() -> void:
 func start_game():
 	Globals.game_running = true
 	if multiplayer.is_server():
-		change_level.call_deferred(load("res://scenes/level.tscn"))
+		load_level.call_deferred(load("res://scenes/level.tscn"))
 
 func end_game():
 	Globals.game_running = false
@@ -20,7 +20,7 @@ func end_game():
 		node.queue_free()
 	NetworkHandler.close_connection()
 
-func change_level(scene: PackedScene) -> void:
+func load_level(scene: PackedScene) -> void:
 	for node in Level.get_children():
 		Level.remove_child(node)
 		node.queue_free()

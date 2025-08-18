@@ -26,7 +26,8 @@ func start_client(this_lobby_id: int) -> Error:
 	EventBus.StartGame.emit()
 	return OK
 
-func leave_lobby() -> void:
+# Rename later
+func steam_close_connection() -> void:
 	# If in a lobby, leave it
 	if Globals.LOBBY_ID != 0:
 		# Send leave request to Steam
@@ -59,7 +60,7 @@ func search_for_lobbies(search_string: String = "") -> void:
 
 func _on_lobby_join_requested(this_lobby_id: int, friend_id: int) -> void:
 	var _owner_name: String = Steam.getFriendPersonaName(friend_id)
-	NetworkHandler.join_lobby(this_lobby_id)
+	start_client(this_lobby_id)
 
 func _on_lobby_chat_update(_this_lobby_id: int, change_id: int, _making_change_id: int, chat_state: int) -> void:
 	# Get the user who has made the lobby change
@@ -92,12 +93,10 @@ func _on_lobby_created(connected: int, this_lobby_id: int) -> void:
 	if connected == 1:
 		# Set the lobby ID
 		Globals.LOBBY_ID = this_lobby_id
-
 		# Set this lobby as joinable, just in case, though this should be done by default
 		Steam.setLobbyJoinable(Globals.LOBBY_ID, true)
 		# Set some lobby data
 		Steam.setLobbyData(Globals.LOBBY_ID, "name", Globals.LOBBY_NAME)
-
 		# Allow P2P connections to fallback to being relayed through Steam if needed
 		var _set_relay: bool = Steam.allowP2PPacketRelay(true)
 
@@ -152,17 +151,13 @@ func _on_persona_change(this_steam_id: int, _flag: int) -> void:
 func _get_lobby_members() -> void:
 	# Clear your previous lobby list
 	Globals.LOBBY_MEMBERS.clear()
-
 	# Get the number of members from this lobby from Steam
 	var num_of_members: int = Steam.getNumLobbyMembers(Globals.LOBBY_ID)
-
 	# Get the data of these players from Steam
 	for this_member in range(0, num_of_members):
 		# Get the member's Steam ID
 		var member_steam_id: int = Steam.getLobbyMemberByIndex(Globals.LOBBY_ID, this_member)
-
 		# Get the member's Steam name
 		var member_steam_name: String = Steam.getFriendPersonaName(member_steam_id)
-
 		# Add them to the list
 		Globals.LOBBY_MEMBERS.append({"steam_id":member_steam_id, "steam_name":member_steam_name})

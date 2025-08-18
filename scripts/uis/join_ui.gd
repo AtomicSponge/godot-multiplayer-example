@@ -5,6 +5,10 @@ extends CanvasLayer
 @onready var SearchingLabel = $Panel/LobbyScroller/LobbyList/SearchingLabel
 @onready var SearchInput = $Panel/SearchInput
 
+func _join_lobby(id: int) -> void:
+	UiController.close_all_menus()
+	NetworkHandler.start_client(id)
+
 func _build_lobby_list(search_string: String = "") -> void:
 	for node in LobbyList.get_children():
 		if node is Button:
@@ -12,7 +16,7 @@ func _build_lobby_list(search_string: String = "") -> void:
 			node.queue_free()
 
 	SearchingLabel.show()
-	await Globals.search_for_lobbies(search_string)
+	await NetworkHandler.search_for_lobbies(search_string)
 	SearchingLabel.hide()
 
 	for lobby in Globals.LOBBY_LIST:
@@ -23,7 +27,7 @@ func _build_lobby_list(search_string: String = "") -> void:
 		lobby_button.set_text("Lobby %s: %s - %s Player(s)" % [lobby, lobby_name, lobby_num_members])
 		lobby_button.set_size(Vector2(LobbyScroller.size.x, 50))
 		lobby_button.set_name("lobby_%s" % lobby)
-		lobby_button.connect("pressed", Callable(NetworkHandler, "start_client").bind(lobby))
+		lobby_button.connect("pressed", Callable(self, "_join_lobby").bind(lobby))
 
 		LobbyList.add_child(lobby_button)
 
