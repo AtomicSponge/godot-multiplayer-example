@@ -13,6 +13,7 @@
 script = ExtResource("1_yqjtg")
 
 [node name="Console" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("2_gee14")
 
 [node name="ConsoleWindow" type="RichTextLabel" parent="Console"]

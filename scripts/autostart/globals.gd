@@ -18,6 +18,8 @@ var LOBBY_NAME: String = "Default Lobby Name"
 
 var LOBBY_LIST: Array = []
 
+var CONSOLE_BUFFER: String = ""
+
 var game_running = false
 var game_menu_opened = false
 
