@@ -23,4 +23,4 @@ func start_client() -> Error:
 	return OK
 
 func close_connection() -> void:
-	multiplayer.multiplayer_peer = null
+	multiplayer.multiplayer_peer.close()
