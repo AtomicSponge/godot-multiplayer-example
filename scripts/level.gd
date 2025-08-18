@@ -7,7 +7,7 @@ var PLAYER: PackedScene = preload("res://scenes/player.tscn")
 func _spawn_player(id: int) -> void:
 	var player: Node = PLAYER.instantiate()
 	player.name = str(id)
-	player.position = Vector2(randi() % 401 + 400, 350)
+	player.global_position = Vector2(randi() % 401 + 400, 350)
 	PlayerList.call_deferred("add_child", player)
 
 func _remove_player(id: int) -> void:
