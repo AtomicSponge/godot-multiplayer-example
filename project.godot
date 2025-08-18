@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SteamGlobals="*res://scripts/autostart/steam_globals.gd"
+SteamGlobals="res://scripts/autostart/steam_globals.gd"
 Globals="*res://scripts/autostart/globals.gd"
 NetworkHandler="*res://scripts/autostart/network_handler.gd"
 EventBus="*res://scripts/autostart/event_bus.gd"

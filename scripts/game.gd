@@ -4,7 +4,7 @@ extends Node
 
 func _ready() -> void:
 	EventBus.StartGame.connect(start_game)
-	EventBus.EndGame.connect(end_gme)
+	EventBus.EndGame.connect(end_game)
 
 	UiController.open_menu("MainUI")
 
@@ -13,7 +13,7 @@ func start_game():
 	if multiplayer.is_server():
 		change_level.call_deferred(load("res://scenes/level.tscn"))
 
-func end_gme():
+func end_game():
 	Globals.game_running = false
 	for node in Level.get_children():
 		Level.remove_child(node)
