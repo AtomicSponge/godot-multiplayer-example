@@ -2,20 +2,14 @@ extends Node
 
 @onready var Level: Node = $Level
 
-@rpc
-func kick_players():
-	end_game()
-
 func start_game():
 	Globals.game_running = true
 	if multiplayer.is_server():
 		load_level.call_deferred(load("res://scenes/level.tscn"))
 
 func end_game():
-	#if multiplayer.is_server():
-		#kick_players().rpc()
 	Globals.game_running = false
-	_unload_level.call_deferred()
+	unload_level.call_deferred()
 	NetworkHandler.close_connection()
 	UiController.open_menu("MainUI")
 
@@ -25,7 +19,7 @@ func load_level(scene: PackedScene) -> void:
 		node.queue_free()
 	Level.add_child(scene.instantiate())
 
-func _unload_level() -> void:
+func unload_level() -> void:
 	for node in Level.get_children():
 		Level.remove_child(node)
 		node.queue_free()
