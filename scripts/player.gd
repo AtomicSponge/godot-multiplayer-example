@@ -9,10 +9,11 @@ func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
 func _ready() -> void:
-	if not is_multiplayer_authority():
+	if not is_multiplayer_authority() and PlayerCamera != null:
 		PlayerCamera.queue_free()
 
 func _process(delta: float) -> void:
+	if not is_multiplayer_authority(): return
 	if Globals.game_menu_opened: return
 
 	# Handle jump.
