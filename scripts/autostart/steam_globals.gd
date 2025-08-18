@@ -18,20 +18,31 @@ var LOBBY_NAME: String = "Default Lobby Name"
 
 var LOBBY_LIST: Array = []
 
-func create_lobby(this_name: String) -> void:
+func create_lobby(this_name: String) -> Error:
 	if LOBBY_ID == 0:
-		Steam.createLobby(Steam.LOBBY_TYPE_PUBLIC, LOBBY_MEMBERS_MAX)
 		LOBBY_NAME = this_name
+		var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
+		var error: Error = peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC, SteamGlobals.LOBBY_MEMBERS_MAX)
+		if error: return error
+		multiplayer.multiplayer_peer = peer
+		EventBus.StartGame.emit()
+	return OK
 
-func join_lobby(this_lobby_id: int) -> void:
+func join_lobby(this_lobby_id: int) -> Error:
 	LOBBY_MEMBERS.clear()
-	Steam.joinLobby(this_lobby_id)
+	var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
+	var error: Error = peer.connect_lobby(SteamGlobals.LOBBY_ID)
+	if error: return error
+	multiplayer.multiplayer_peer = peer
+	EventBus.StartGame.emit()
+	return OK
 
 func leave_lobby() -> void:
 	# If in a lobby, leave it
 	if LOBBY_ID != 0:
 		# Send leave request to Steam
 		Steam.leaveLobby(LOBBY_ID)
+		multiplayer.multiplayer_peer.close()
 
 		# Wipe the Steam lobby ID then display the default lobby ID and player list title
 		LOBBY_ID = 0
@@ -202,6 +213,4 @@ func _check_command_line() -> void:
 		if arguments[0] == "+connect_lobby":
 			# Lobby invite exists so try to connect to it
 			if int(arguments[1]) > 0:
-				# At this point, you'll probably want to change scenes
-				# Something like a loading into lobby screen
 				join_lobby(int(arguments[1]))

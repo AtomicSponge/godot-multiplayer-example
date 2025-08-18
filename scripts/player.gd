@@ -11,7 +11,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	PlayerCamera.enabled = is_multiplayer_authority()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not is_multiplayer_authority(): return
 
 	if Globals.game_menu_opened:
