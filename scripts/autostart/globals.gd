@@ -42,7 +42,7 @@ func _ready() -> void:
 	var INIT: Dictionary = Steam.steamInitEx()
 	if INIT['status'] != 0:
 		print("Failed to initialise Steam. " + str(INIT['verbal']) + " Shutting down...")
-		quit_game()
+		get_tree().quit()
 
 	ONLINE = Steam.loggedOn()
 	ID = Steam.getSteamID()
@@ -52,7 +52,7 @@ func _ready() -> void:
 
 	if OWNED == false:
 		print("User does not own this game.")
-		quit_game()
+		get_tree().quit()
 
 	Steam.join_requested.connect(NetworkHandler._on_lobby_join_requested)
 	Steam.lobby_chat_update.connect(NetworkHandler._on_lobby_chat_update)
