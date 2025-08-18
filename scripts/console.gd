@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@onready var ConsoleWindow: RichTextLabel = $ConsoleWindow
-@onready var ConsoleInput: LineEdit = $ConsoleInput
+@onready var ConsoleWindow: RichTextLabel = $VBoxContainer/ConsoleWindow
+@onready var ConsoleInput: LineEdit = $VBoxContainer/ConsoleInput
 
 func _ready() -> void:
 	pass
