@@ -10,6 +10,7 @@ func spawn_player(id: int) -> void:
 func _ready() -> void:
 	if not multiplayer.is_server(): return
 	multiplayer.peer_connected.connect(spawn_player)
+	spawn_player(1)
 
 func _exit_tree():
 	if not multiplayer.is_server(): return
