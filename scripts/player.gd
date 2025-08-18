@@ -12,12 +12,8 @@ func _ready() -> void:
 	if not is_multiplayer_authority():
 		PlayerCamera.queue_free()
 
-func _physics_process(delta: float) -> void:
-	if not is_multiplayer_authority(): return
-
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+func _process(delta: float) -> void:
+	if Globals.game_menu_opened: return
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -30,10 +26,18 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
+func _physics_process(delta: float) -> void:
+	if not is_multiplayer_authority(): return
+
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
 	move_and_slide()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_multiplayer_authority(): return
 
-	if event.is_action_pressed("open_menu") and Input.is_action_just_pressed("open_menu"):
+	if event.is_action_pressed("open_menu") and Input.is_action_just_pressed("open_menu") and not Globals.game_menu_opened:
+		Globals.game_menu_opened = true
 		UiController.open_menu("GameUI")
