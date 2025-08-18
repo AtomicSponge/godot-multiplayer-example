@@ -19,6 +19,7 @@ func end_game():
 		Level.remove_child(node)
 		node.queue_free()
 	NetworkHandler.close_connection()
+	UiController.open_menu("MainUI")
 
 func load_level(scene: PackedScene) -> void:
 	for node in Level.get_children():

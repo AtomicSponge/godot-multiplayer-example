@@ -9,7 +9,7 @@ func start_server(this_name: String) -> Error:
 	var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 	var error: Error = peer.create_server(PORT, Globals.LOBBY_MEMBERS_MAX)
 	#var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
-	#var error: Error = peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC, SteamGlobals.LOBBY_MEMBERS_MAX)
+	#var error: Error = peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC, Globals.LOBBY_MEMBERS_MAX)
 	if error: return error
 	multiplayer.multiplayer_peer = peer
 	EventBus.StartGame.emit()
