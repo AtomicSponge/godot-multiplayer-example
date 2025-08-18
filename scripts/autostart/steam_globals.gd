@@ -31,7 +31,7 @@ func create_lobby(this_name: String) -> Error:
 func join_lobby(this_lobby_id: int) -> Error:
 	LOBBY_MEMBERS.clear()
 	var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
-	var error: Error = peer.connect_lobby(SteamGlobals.LOBBY_ID)
+	var error: Error = peer.connect_lobby(this_lobby_id)
 	if error: return error
 	multiplayer.multiplayer_peer = peer
 	EventBus.StartGame.emit()
