@@ -9,7 +9,9 @@ func start_game():
 
 func end_game():
 	Globals.game_running = false
-	unload_level.call_deferred()
+	for node in Level.get_children():
+		Level.remove_child(node)
+		node.queue_free()
 	NetworkHandler.close_connection()
 	UiController.open_menu("MainUI")
 
@@ -19,11 +21,6 @@ func load_level(scene: PackedScene) -> void:
 		node.queue_free()
 	Level.add_child(scene.instantiate())
 
-func unload_level() -> void:
-	for node in Level.get_children():
-		Level.remove_child(node)
-		node.queue_free()
-
 func _notification(what):
 	if Globals.game_running and what == NOTIFICATION_WM_CLOSE_REQUEST:
 		NetworkHandler.close_connection()
@@ -31,5 +28,7 @@ func _notification(what):
 func _ready() -> void:
 	EventBus.StartGame.connect(start_game)
 	EventBus.EndGame.connect(end_game)
+
+	multiplayer.server_disconnected.connect(end_game)
 
 	UiController.open_menu("MainUI")
