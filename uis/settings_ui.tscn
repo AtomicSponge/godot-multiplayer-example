@@ -2,17 +2,10 @@
 
 [ext_resource type="Script" uid="uid://f5ai2d3pw2g7" path="res://scripts/uis/settings_ui.gd" id="1_jnd6j"]
 
-[node name="SettingsUI" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="SettingsUI" type="CanvasLayer"]
 script = ExtResource("1_jnd6j")
 
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 0
 offset_left = 47.0
 offset_top = 41.0
 offset_right = 1236.0

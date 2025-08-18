@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @onready var LobbyNameInput = $Panel/LobbyNameInput
 @onready var PublicCheckBox = $Panel/PublicCheckBox

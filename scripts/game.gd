@@ -4,16 +4,24 @@ extends Node
 
 func _ready() -> void:
 	EventBus.StartGame.connect(start_game)
+	EventBus.EndGame.connect(end_gme)
 
 	UiController.open_menu("MainUI")
 
 func start_game():
+	Globals.game_running = true
 	if multiplayer.is_server():
 		change_level.call_deferred(load("res://scenes/level.tscn"))
 
+func end_gme():
+	Globals.game_running = false
+	for node in Level.get_children():
+		Level.remove_child(node)
+		node.queue_free()
+	NetworkHandler.close_connection()
+
 func change_level(scene: PackedScene) -> void:
-	var level = Level
-	for c in level.get_children():
-		level.remove_child(c)
-		c.queue_free()
-	level.add_child(scene.instantiate())
+	for node in Level.get_children():
+		Level.remove_child(node)
+		node.queue_free()
+	Level.add_child(scene.instantiate())

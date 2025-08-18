@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @onready var LobbyScroller = $Panel/LobbyScroller
 @onready var LobbyList = $Panel/LobbyScroller/LobbyList
