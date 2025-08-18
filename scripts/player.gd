@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var PlayerCamera: Camera2D = $Camera2D
+@onready var PlayerCamera: Camera2D = $PlayerCamera
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -600.0
