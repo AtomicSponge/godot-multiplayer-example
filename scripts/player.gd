@@ -14,7 +14,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if not is_multiplayer_authority(): return
-	if Globals.game_menu_opened: return
+
+	if Globals.game_menu_opened:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		return
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
