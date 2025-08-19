@@ -11,4 +11,3 @@ func _ready() -> void:
 	Console.set_position(Vector2(2, 482))
 	Console.add_command("say", say_command)
 	Console.add_command("quit", quit_command)
-	Console.add_text("test text!")
