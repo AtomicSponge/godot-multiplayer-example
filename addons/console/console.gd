@@ -4,9 +4,6 @@ extends CanvasLayer
 @onready var ConsoleWindow: RichTextLabel = $ConsoleContainer/ConsoleWindow
 @onready var ConsoleInput: LineEdit = $ConsoleContainer/ConsoleInput
 
-func _ready() -> void:
-	hide()
-
 func _on_console_input_text_submitted(new_text: String) -> void:
 	ConsoleInput.clear()
 	ConsoleInput.has_focus()
@@ -27,3 +24,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			ConsoleInput.call_deferred("edit")
 		else:
 			hide()
+
+func _ready() -> void:
+	hide()

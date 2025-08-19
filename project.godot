@@ -21,7 +21,7 @@ Globals="*res://scripts/autostart/globals.gd"
 NetworkHandler="*res://scripts/autostart/network_handler.gd"
 EventBus="*res://scripts/autostart/event_bus.gd"
 UiController="*res://addons/ui_controller/ui_controller.gd"
-Console="*res://scenes/console.tscn"
+Console="*res://addons/console/console.tscn"
 
 [debug]
 
@@ -35,7 +35,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/theme_gen_save_sync/plugin.cfg", "res://addons/ui_controller/plugin.cfg")
+enabled=PackedStringArray("res://addons/console/plugin.cfg", "res://addons/theme_gen_save_sync/plugin.cfg", "res://addons/ui_controller/plugin.cfg")
 
 [file_customization]
 

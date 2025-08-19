@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://xjcj5omyk4ch"]
 
-[ext_resource type="Script" uid="uid://qq4ndnjiqgqt" path="res://scripts/console.gd" id="1_gf67r"]
+[ext_resource type="Script" uid="uid://qq4ndnjiqgqt" path="res://addons/console/console.gd" id="1_5t81l"]
 
 [node name="Console" type="CanvasLayer"]
-script = ExtResource("1_gf67r")
+script = ExtResource("1_5t81l")
 
 [node name="ConsoleContainer" type="VBoxContainer" parent="."]
 offset_left = 2.0
