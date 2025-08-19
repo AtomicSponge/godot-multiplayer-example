@@ -2,7 +2,6 @@
 extends EditorPlugin
 
 const AUTOLOAD_NAME = "Console"
-const NODE_NAME = "Console"
 const PATH = "res://addons/console/"
 
 func _enter_tree() -> void:
