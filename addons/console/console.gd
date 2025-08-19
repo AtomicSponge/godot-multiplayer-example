@@ -4,8 +4,10 @@ extends CanvasLayer
 @onready var ConsoleWindow: RichTextLabel = $ConsoleContainer/ConsoleWindow
 @onready var ConsoleInput: LineEdit = $ConsoleContainer/ConsoleInput
 
+var command_table: Dictionary[String, Signal]
+
 func add_text(new_text: String) -> void:
-	ConsoleWindow.add_text(new_text)
+	ConsoleWindow.add_text(new_text + "\n")
 
 func set_window_size(new_size: Vector2) -> void:
 	ConsoleContainer.size.x = new_size.x
@@ -14,12 +16,28 @@ func set_window_size(new_size: Vector2) -> void:
 func set_position(new_position: Vector2) -> void:
 	ConsoleContainer.position = new_position
 
+func add_command(command: StringName, obj: Object) -> void:
+	command_table[command] = Signal(obj, command)
+	pass
+
+func process_command(command: String) -> void:
+	if not command.begins_with("/"): return
+	var cmd_split: Array = command.split(" ", false, 1)
+	var cmd = cmd_split[0].lstrip("/")
+	var arg = ""
+	if cmd_split.size() >= 2:
+		arg = cmd_split[1]
+	if command_table.has(cmd):
+		command_table[cmd].emit(arg)
+	else:
+		add_text("Command not found.")
+
 func _on_console_input_text_submitted(new_text: String) -> void:
 	ConsoleInput.clear()
 	ConsoleInput.has_focus()
 	ConsoleInput.call_deferred("edit")
 	if new_text == "": return
-	ConsoleWindow.add_text(new_text + "\n")
+	process_command(new_text)
 
 func _on_console_input_text_changed(_new_text: String) -> void:
 	if visible and Input.is_action_just_pressed("console"):

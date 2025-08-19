@@ -39,6 +39,7 @@ func _check_command_line() -> void:
 				NetworkHandler.start_client(int(arguments[1]))
 
 func _ready() -> void:
+	#  Configure Steam
 	var INIT: Dictionary = Steam.steamInitEx()
 	if INIT['status'] != 0:
 		print("Failed to initialise Steam. " + str(INIT['verbal']) + " Shutting down...")
