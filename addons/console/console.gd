@@ -20,6 +20,15 @@ func set_window_size(new_size: Vector2) -> void:
 func set_position(new_position: Vector2) -> void:
 	ConsoleContainer.position = new_position
 
+## Sets the font size.
+func set_font_size(new_size: int) -> void:
+	ConsoleWindow.add_theme_font_size_override("bold_italics_font_size", new_size)
+	ConsoleWindow.add_theme_font_size_override("italics_font_size", new_size)
+	ConsoleWindow.add_theme_font_size_override("mono_font_size", new_size)
+	ConsoleWindow.add_theme_font_size_override("normal_font_size", new_size)
+	ConsoleWindow.add_theme_font_size_override("bold_font_size", new_size)
+	ConsoleInput.add_theme_font_size_override("font_size", new_size)
+
 ## Add a new command to the console
 func add_command(command: String, callback: Callable) -> void:
 	_command_table[command] = callback

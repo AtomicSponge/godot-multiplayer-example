@@ -6,6 +6,6 @@ func say_command(text: String) -> void:
 func quit_command(_arg: String) -> void:
 	Globals.quit_game()
 
-func _enter_tree() -> void:
+func _ready() -> void:
 	Console.add_command("say", say_command)
 	Console.add_command("quit", quit_command)
