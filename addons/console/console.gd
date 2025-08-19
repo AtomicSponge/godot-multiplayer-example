@@ -59,7 +59,7 @@ func _process_command(command: String) -> void:
 	if _command_table.has(cmd):
 		_command_table[cmd].call(arg)
 	else:
-		add_text("Command not found.")
+		add_text(cmd + ":  Command not found.")
 
 func _on_console_input_text_submitted(new_text: String) -> void:
 	ConsoleInput.clear()
