@@ -7,9 +7,11 @@ extends CanvasLayer
 var _command_table: Dictionary[StringName, Callable] = {}
 
 ## Add text to the console window.  Automatically appends a new line.
-func add_text(new_text: String) -> void:
+## If called when the console is not visible it will display for a few seconds.
+func add_text(new_text: String, seconds: float = 4.0) -> void:
 	if ConsoleWindow == null: return
 	ConsoleWindow.add_text(new_text + "\n")
+	show_output(seconds)
 
 ## Set the console size.  This does not include the LineEdit.  That is adjusted by the font size.
 func set_console_size(new_size: Vector2) -> void:
@@ -52,6 +54,15 @@ func add_command(command: StringName, callback: Callable) -> void:
 ## Check if the console is opened.
 func is_opened() -> bool:
 	return visible
+
+## Show the console window for a few seconds.
+func show_output(seconds: float = 4.0) -> void:
+	if not visible:
+		show()
+		ConsoleInput.hide()
+		await get_tree().create_timer(seconds).timeout
+		hide()
+		ConsoleInput.show()
 
 func _process_command(command: String) -> void:
 	if not command.begins_with("/"): return
