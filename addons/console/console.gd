@@ -29,6 +29,22 @@ func set_font_size(new_size: int) -> void:
 	ConsoleWindow.add_theme_font_size_override("bold_font_size", new_size)
 	ConsoleInput.add_theme_font_size_override("font_size", new_size)
 
+## Sets the background color for the console window.
+func set_window_bg_color(new_color: Color = Color(1.0, 1.0, 1.0, 0.2)) -> void:
+	var theme = Theme.new()
+	var style_box = StyleBoxFlat.new()
+	style_box.set_bg_color(new_color)
+	theme.set_stylebox("normal", "RichTextLabel", style_box)
+	ConsoleWindow.theme = theme
+
+## Sets the background color for the input text box.
+func set_input_bg_color(new_color: Color = Color(1.0, 1.0, 1.0, 0.2)) -> void:
+	var theme = Theme.new()
+	var style_box = StyleBoxFlat.new()
+	style_box.set_bg_color(new_color)
+	theme.set_stylebox("normal", "LineEdit", style_box)
+	ConsoleInput.theme = theme
+
 ## Add a new command to the console
 func add_command(command: String, callback: Callable) -> void:
 	_command_table[command] = callback
@@ -68,3 +84,4 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	hide()
+	set_window_bg_color()
