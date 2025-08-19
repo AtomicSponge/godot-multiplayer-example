@@ -7,11 +7,11 @@ func _ready() -> void:
 	pass
 
 func _on_console_input_text_submitted(new_text: String) -> void:
-	if new_text == "": return
-	ConsoleWindow.add_text(new_text + "\n")
 	ConsoleInput.clear()
 	ConsoleInput.has_focus()
 	ConsoleInput.call_deferred("edit")
+	if new_text == "": return
+	ConsoleWindow.add_text(new_text + "\n")
 
 func _on_console_input_text_changed(_new_text: String) -> void:
 	if visible and Input.is_action_just_pressed("console"):
