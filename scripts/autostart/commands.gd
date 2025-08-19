@@ -1,7 +1,7 @@
 extends Node
 
 func say_command(text: String) -> void:
-	Console.add_text(text)
+	Console.add_text(Globals.NAME + ":  " + text)
 
 func quit_command(_arg: String) -> void:
 	Globals.quit_game()
