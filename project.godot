@@ -21,6 +21,7 @@ Globals="*res://scripts/autostart/globals.gd"
 NetworkHandler="*res://scripts/autostart/network_handler.gd"
 EventBus="*res://scripts/autostart/event_bus.gd"
 UiController="*res://addons/ui_controller/ui_controller.gd"
+Console="*res://scenes/console.tscn"
 
 [debug]
 

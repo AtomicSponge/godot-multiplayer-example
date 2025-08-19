@@ -1,7 +1,11 @@
 extends CanvasLayer
 
+@onready var ConsoleContainer: VBoxContainer = $ConsoleContainer
 @onready var ConsoleWindow: RichTextLabel = $ConsoleContainer/ConsoleWindow
 @onready var ConsoleInput: LineEdit = $ConsoleContainer/ConsoleInput
+
+func _ready() -> void:
+	hide()
 
 func _on_console_input_text_submitted(new_text: String) -> void:
 	ConsoleInput.clear()
