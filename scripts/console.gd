@@ -13,7 +13,7 @@ func _on_console_input_text_submitted(new_text: String) -> void:
 	ConsoleInput.has_focus()
 	ConsoleInput.call_deferred("edit")
 
-func _on_console_input_text_changed(new_text: String) -> void:
+func _on_console_input_text_changed(_new_text: String) -> void:
 	if visible and Input.is_action_just_pressed("console"):
 		hide()
 
