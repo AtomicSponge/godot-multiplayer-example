@@ -49,6 +49,10 @@ func set_input_bg_color(new_color: Color = Color(1.0, 1.0, 1.0, 0.2)) -> void:
 func add_command(command: StringName, callback: Callable) -> void:
 	_command_table[command] = callback
 
+## Check if the console is opened.
+func is_opened() -> bool:
+	return visible
+
 func _process_command(command: String) -> void:
 	if not command.begins_with("/"): return
 	var cmd_split: Array = command.split(" ", false, 1)

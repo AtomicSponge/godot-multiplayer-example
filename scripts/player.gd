@@ -11,13 +11,10 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	PlayerCamera.enabled = is_multiplayer_authority()
 
-
-
-#func _process(_delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if not is_multiplayer_authority(): return
 
-	if Globals.GAME_MENU_OPENED:
+	if Globals.GAME_MENU_OPENED or Console.is_opened():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		return
 
