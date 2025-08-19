@@ -14,7 +14,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if not is_multiplayer_authority(): return
 
-	if Globals.game_menu_opened:
+	if Globals.GAME_MENU_OPENED:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		return
 
@@ -41,6 +41,6 @@ func _physics_process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_multiplayer_authority(): return
 
-	if event.is_action_pressed("open_menu") and Input.is_action_just_pressed("open_menu") and not Globals.game_menu_opened:
-		Globals.game_menu_opened = true
+	if event.is_action_pressed("open_menu") and Input.is_action_just_pressed("open_menu") and not Globals.GAME_MENU_OPENED:
+		Globals.GAME_MENU_OPENED = true
 		UiController.open_menu("GameUI")

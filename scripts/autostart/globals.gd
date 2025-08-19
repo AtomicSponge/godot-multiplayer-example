@@ -20,8 +20,8 @@ var LOBBY_LIST: Array = []
 
 var CONSOLE_BUFFER: String = ""
 
-var game_running = false
-var game_menu_opened = false
+var GAME_RUNNING = false
+var GAME_MENU_OPENED = false
 
 func quit_game() -> void:
 	NetworkHandler.close_connection()
