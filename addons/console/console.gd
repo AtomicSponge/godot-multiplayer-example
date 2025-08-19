@@ -61,7 +61,8 @@ func show_output(seconds: float = 4.0) -> void:
 		show()
 		ConsoleInput.hide()
 		await get_tree().create_timer(seconds).timeout
-		hide()
+		if visible:
+			hide()
 		ConsoleInput.show()
 
 func _process_command(command: String) -> void:
@@ -92,6 +93,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("console") and Input.is_action_just_pressed("console"):
 		if not visible:
 			show()
+			ConsoleInput.show()
 			ConsoleInput.has_focus()
 			ConsoleInput.call_deferred("edit")
 		else:
