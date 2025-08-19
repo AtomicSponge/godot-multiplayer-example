@@ -11,3 +11,8 @@ func _on_quit_btn_pressed() -> void:
 	UiController.close_all_menus()
 	Globals.GAME_MENU_OPENED = false
 	EventBus.EndGame.emit()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("open_menu") and Input.is_action_just_pressed("open_menu") and Globals.GAME_MENU_OPENED:
+		UiController.close_all_menus()
+		Globals.GAME_MENU_OPENED = false
