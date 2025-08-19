@@ -101,5 +101,5 @@ func _unhandled_input(event: InputEvent) -> void:
 			hide()
 
 func _ready() -> void:
-	set_window_bg_color(Color(1.0, 1.0, 1.0, 0.2))
+	set_window_bg_color(Color(0.0, 0.0, 0.0, 0.2))
 	hide()
