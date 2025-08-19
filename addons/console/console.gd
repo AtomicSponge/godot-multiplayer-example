@@ -6,12 +6,12 @@ extends CanvasLayer
 
 var _command_table: Dictionary[StringName, Callable] = {}
 
-## Add text to the console window.
+## Add text to the console window.  Automatically appends a new line.
 func add_text(new_text: String) -> void:
 	if ConsoleWindow == null: return
 	ConsoleWindow.add_text(new_text + "\n")
 
-## Set the console size.
+## Set the console size.  This does not include the LineEdit.  That is adjusted by the font size.
 func set_console_size(new_size: Vector2) -> void:
 	ConsoleContainer.size.x = new_size.x
 	ConsoleWindow.custom_minimum_size.y = new_size.y
