@@ -7,5 +7,5 @@ func quit_command(_arg: String) -> void:
 	Globals.quit_game()
 
 func _enter_tree() -> void:
-	Console.add_command("quit", quit_command)
 	Console.add_command("say", say_command)
+	Console.add_command("quit", quit_command)
