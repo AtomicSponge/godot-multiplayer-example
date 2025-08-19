@@ -45,7 +45,7 @@ func set_input_bg_color(new_color: Color = Color(1.0, 1.0, 1.0, 0.2)) -> void:
 	theme.set_stylebox("normal", "LineEdit", style_box)
 	ConsoleInput.theme = theme
 
-## Add a new command to the console
+## Adds a new command to the console.
 func add_command(command: String, callback: Callable) -> void:
 	_command_table[command] = callback
 
