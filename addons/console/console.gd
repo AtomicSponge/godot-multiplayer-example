@@ -13,7 +13,7 @@ func add_text(new_text: String, seconds: float = 4.0) -> void:
 	ConsoleWindow.add_text(new_text + "\n")
 	show_output(seconds)
 
-## Set the console size.  This does not include the LineEdit.  That is adjusted by the font size.
+## Set the console size.  This does not include the LineEdit height.  That is adjusted by the font size.
 func set_console_size(new_size: Vector2) -> void:
 	ConsoleContainer.size.x = new_size.x
 	ConsoleWindow.custom_minimum_size.y = new_size.y
@@ -22,7 +22,7 @@ func set_console_size(new_size: Vector2) -> void:
 func set_position(new_position: Vector2) -> void:
 	ConsoleContainer.position = new_position
 
-## Sets the font size.
+## Set the font size.
 func set_font_size(new_size: int) -> void:
 	ConsoleWindow.add_theme_font_size_override("bold_italics_font_size", new_size)
 	ConsoleWindow.add_theme_font_size_override("italics_font_size", new_size)
