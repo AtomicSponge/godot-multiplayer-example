@@ -27,7 +27,7 @@ func _build_lobby_list(search_string: String = "") -> void:
 		lobby_button.set_text("Lobby %s: %s - %s Player(s)" % [lobby, lobby_name, lobby_num_members])
 		lobby_button.set_size(Vector2(LobbyScroller.size.x, 50))
 		lobby_button.set_name("lobby_%s" % lobby)
-		lobby_button.connect("pressed", Callable(self, "_join_lobby").bind(lobby))
+		lobby_button.connect("pressed", _join_lobby.bind(lobby))
 
 		LobbyList.add_child(lobby_button)
 

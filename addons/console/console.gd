@@ -4,9 +4,10 @@ extends CanvasLayer
 @onready var ConsoleWindow: RichTextLabel = $ConsoleContainer/ConsoleWindow
 @onready var ConsoleInput: LineEdit = $ConsoleContainer/ConsoleInput
 
-var command_table: Dictionary[String, Signal]
+var command_table: Dictionary[String, Callable] = {}
 
 func add_text(new_text: String) -> void:
+	if ConsoleWindow == null: return
 	ConsoleWindow.add_text(new_text + "\n")
 
 func set_window_size(new_size: Vector2) -> void:
@@ -16,9 +17,8 @@ func set_window_size(new_size: Vector2) -> void:
 func set_position(new_position: Vector2) -> void:
 	ConsoleContainer.position = new_position
 
-func add_command(command: StringName, obj: Object) -> void:
-	command_table[command] = Signal(obj, command)
-	pass
+func add_command(command: String, callback: Callable) -> void:
+	command_table[command] = callback
 
 func process_command(command: String) -> void:
 	if not command.begins_with("/"): return
@@ -28,7 +28,7 @@ func process_command(command: String) -> void:
 	if cmd_split.size() >= 2:
 		arg = cmd_split[1]
 	if command_table.has(cmd):
-		command_table[cmd].emit(arg)
+		command_table[cmd].call(arg)
 	else:
 		add_text("Command not found.")
 
