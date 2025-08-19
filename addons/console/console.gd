@@ -22,7 +22,7 @@ func set_console_size(new_size: Vector2) -> void:
 func set_position(new_position: Vector2) -> void:
 	ConsoleContainer.position = new_position
 
-## Set the font size.
+## Set the font size.  Applies to both the window and the input field.
 func set_font_size(new_size: int) -> void:
 	ConsoleWindow.add_theme_font_size_override("bold_italics_font_size", new_size)
 	ConsoleWindow.add_theme_font_size_override("italics_font_size", new_size)
@@ -32,7 +32,7 @@ func set_font_size(new_size: int) -> void:
 	ConsoleInput.add_theme_font_size_override("font_size", new_size)
 
 ## Sets the background color for the console window.
-func set_window_bg_color(new_color: Color = Color(1.0, 1.0, 1.0, 0.2)) -> void:
+func set_window_bg_color(new_color: Color) -> void:
 	var theme = Theme.new()
 	var style_box = StyleBoxFlat.new()
 	style_box.set_bg_color(new_color)
@@ -40,7 +40,7 @@ func set_window_bg_color(new_color: Color = Color(1.0, 1.0, 1.0, 0.2)) -> void:
 	ConsoleWindow.theme = theme
 
 ## Sets the background color for the input text box.
-func set_input_bg_color(new_color: Color = Color(1.0, 1.0, 1.0, 0.2)) -> void:
+func set_input_bg_color(new_color: Color) -> void:
 	var theme = Theme.new()
 	var style_box = StyleBoxFlat.new()
 	style_box.set_bg_color(new_color)
@@ -101,5 +101,5 @@ func _unhandled_input(event: InputEvent) -> void:
 			hide()
 
 func _ready() -> void:
-	set_window_bg_color()
+	set_window_bg_color(Color(1.0, 1.0, 1.0, 0.2))
 	hide()
