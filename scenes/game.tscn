@@ -12,16 +12,6 @@
 [node name="Game" type="Node"]
 script = ExtResource("1_yqjtg")
 
-[node name="Console" parent="." instance=ExtResource("2_gee14")]
-visible = false
-
-[node name="Level" type="Node" parent="."]
-
-[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://tauj6umdt5sc")
-spawn_path = NodePath("../Level")
-spawn_limit = 1
-
 [node name="UiAnchor" type="Node" parent="."]
 script = ExtResource("3_0tnpc")
 _menus = Dictionary[String, PackedScene]({
@@ -32,3 +22,13 @@ _menus = Dictionary[String, PackedScene]({
 "SettingsUI": ExtResource("9_ir15t")
 })
 metadata/_custom_type_script = "uid://cmfgtkrms7cw8"
+
+[node name="Console" parent="." instance=ExtResource("2_gee14")]
+visible = false
+
+[node name="Level" type="Node" parent="."]
+
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://tauj6umdt5sc")
+spawn_path = NodePath("../Level")
+spawn_limit = 1
