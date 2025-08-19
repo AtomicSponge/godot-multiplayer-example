@@ -11,8 +11,8 @@ func add_text(new_text: String) -> void:
 	if ConsoleWindow == null: return
 	ConsoleWindow.add_text(new_text + "\n")
 
-## Set the console window size.
-func set_window_size(new_size: Vector2) -> void:
+## Set the console size.
+func set_console_size(new_size: Vector2) -> void:
 	ConsoleContainer.size.x = new_size.x
 	ConsoleWindow.custom_minimum_size.y = new_size.y
 
