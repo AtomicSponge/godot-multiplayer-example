@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var ConsoleWindow: RichTextLabel = $ConsoleContainer/ConsoleWindow
 @onready var ConsoleInput: LineEdit = $ConsoleContainer/ConsoleInput
 
-var _command_table: Dictionary[String, Callable] = {}
+var _command_table: Dictionary[StringName, Callable] = {}
 
 ## Add text to the console window.
 func add_text(new_text: String) -> void:
@@ -46,14 +46,14 @@ func set_input_bg_color(new_color: Color = Color(1.0, 1.0, 1.0, 0.2)) -> void:
 	ConsoleInput.theme = theme
 
 ## Adds a new command to the console.
-func add_command(command: String, callback: Callable) -> void:
+func add_command(command: StringName, callback: Callable) -> void:
 	_command_table[command] = callback
 
 func _process_command(command: String) -> void:
 	if not command.begins_with("/"): return
 	var cmd_split: Array = command.split(" ", false, 1)
-	var cmd = cmd_split[0].lstrip("/")
-	var arg = ""
+	var cmd: StringName = cmd_split[0].lstrip("/")
+	var arg: String = ""
 	if cmd_split.size() >= 2:
 		arg = cmd_split[1]
 	if _command_table.has(cmd):
