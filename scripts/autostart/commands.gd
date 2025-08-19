@@ -7,5 +7,7 @@ func quit_command(_arg: String) -> void:
 	Globals.quit_game()
 
 func _ready() -> void:
+	Console.set_window_size(Vector2(550, 200))
+	Console.set_position(Vector2(2, 482))
 	Console.add_command("say", say_command)
 	Console.add_command("quit", quit_command)

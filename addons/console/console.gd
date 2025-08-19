@@ -83,5 +83,5 @@ func _unhandled_input(event: InputEvent) -> void:
 			hide()
 
 func _ready() -> void:
-	hide()
 	set_window_bg_color()
+	hide()
