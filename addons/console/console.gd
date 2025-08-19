@@ -80,6 +80,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			ConsoleInput.has_focus()
 			ConsoleInput.call_deferred("edit")
 		else:
+			ConsoleInput.clear()
 			hide()
 
 func _ready() -> void:
