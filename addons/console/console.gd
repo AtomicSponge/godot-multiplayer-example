@@ -79,6 +79,18 @@ func _process_command(command: String) -> void:
 	else:
 		add_text(cmd + ":  Command not found.")
 
+func _show_console(play_b: bool = true) -> void:
+	show()
+	FaderA.play("Fade")
+	if play_b: FaderB.play("Fade")
+	await FaderA.animation_finished
+
+func _hide_console(play_b: bool = true) -> void:
+	FaderA.play_backwards("Fade")
+	if play_b: FaderB.play_backwards("Fade")
+	await FaderA.animation_finished
+	hide()
+
 func _on_console_input_text_submitted(new_text: String) -> void:
 	ConsoleInput.clear()
 	ConsoleInput.has_focus()
@@ -101,18 +113,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			ConsoleInput.clear()
 			_hide_console()
-
-func _show_console(play_b: bool = true) -> void:
-	show()
-	FaderA.play("Fade")
-	if play_b: FaderB.play("Fade")
-	await FaderA.animation_finished
-
-func _hide_console(play_b: bool = true) -> void:
-	FaderA.play_backwards("Fade")
-	if play_b: FaderB.play_backwards("Fade")
-	await FaderA.animation_finished
-	hide()
 
 func _ready() -> void:
 	set_window_bg_color(Color(0.0, 0.0, 0.0, 0.2))
