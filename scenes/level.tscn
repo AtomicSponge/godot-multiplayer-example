@@ -31,7 +31,7 @@ script = ExtResource("1_ves5e")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="HUD"]
+[node name="Test" type="Label" parent="HUD"]
 offset_left = 502.0
 offset_top = 645.0
 offset_right = 779.0
