@@ -28,3 +28,12 @@ color = Color(0, 0, 0, 1)
 _spawnable_scenes = PackedStringArray("uid://cjsdm848ojsr2")
 spawn_path = NodePath("../PlayerList")
 script = ExtResource("1_ves5e")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="HUD"]
+offset_left = 502.0
+offset_top = 645.0
+offset_right = 779.0
+offset_bottom = 675.0
+text = "This is a test of the HUD"
