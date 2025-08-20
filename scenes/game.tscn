@@ -30,9 +30,9 @@ _menus = Dictionary[String, PackedScene]({
 })
 metadata/_custom_type_script = "uid://cmfgtkrms7cw8"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="FPSLabel" type="Label" parent="CanvasLayer"]
+[node name="FPSLabel" type="Label" parent="HUD"]
 visible = false
 offset_left = 1179.0
 offset_top = -7.0
