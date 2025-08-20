@@ -3,15 +3,17 @@ extends CharacterBody2D
 @onready var PlayerCamera: Camera2D = $PlayerCamera
 @onready var NameLabel: Label = $NameLabel
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -800.0
+const SPEED: float = 300.0
+const JUMP_VELOCITY: float = -800.0
+
+var player_name: String = Globals.NAME
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
 func _ready() -> void:
 	PlayerCamera.enabled = is_multiplayer_authority()
-	NameLabel.set_text(Globals.NAME)
+	NameLabel.set_text(player_name)
 
 func _input(_event: InputEvent) -> void:
 	if not is_multiplayer_authority(): return
