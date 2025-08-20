@@ -1,15 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://w7ppkuj2u8xf"]
+[gd_scene load_steps=9 format=3 uid="uid://w7ppkuj2u8xf"]
 
 [ext_resource type="Script" uid="uid://h06b0folvp5a" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="Script" uid="uid://cmfgtkrms7cw8" path="res://addons/ui_controller/ui_anchor.gd" id="3_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://bwfl26xnfov72" path="res://uis/game_ui.tscn" id="4_vtaks"]
 [ext_resource type="PackedScene" uid="uid://e4rs23vw3k7e" path="res://uis/host_ui.tscn" id="5_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://623iroan7rog" path="res://uis/main_ui.tscn" id="7_kvuet"]
+[ext_resource type="Script" uid="uid://b3wipabqqg4tm" path="res://addons/fps_label/fps_label.gd" id="8_gee14"]
 [ext_resource type="PackedScene" uid="uid://bqnjroyybvkro" path="res://uis/join_ui.tscn" id="8_trtic"]
 [ext_resource type="PackedScene" uid="uid://dgaw4cdwkml6a" path="res://uis/settings_ui.tscn" id="9_ir15t"]
 
 [node name="Game" type="Node"]
 script = ExtResource("1_yqjtg")
+
+[node name="Level" type="Node" parent="."]
+
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://tauj6umdt5sc")
+spawn_path = NodePath("../Level")
+spawn_limit = 1
 
 [node name="UiAnchor" type="Node" parent="."]
 script = ExtResource("3_0tnpc")
@@ -22,9 +30,14 @@ _menus = Dictionary[String, PackedScene]({
 })
 metadata/_custom_type_script = "uid://cmfgtkrms7cw8"
 
-[node name="Level" type="Node" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://tauj6umdt5sc")
-spawn_path = NodePath("../Level")
-spawn_limit = 1
+[node name="FPSLabel" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 1179.0
+offset_top = -7.0
+offset_right = 1275.0
+offset_bottom = 23.0
+text = "FPS:  244"
+script = ExtResource("8_gee14")
+metadata/_custom_type_script = "uid://b3wipabqqg4tm"
