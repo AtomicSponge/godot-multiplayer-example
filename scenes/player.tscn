@@ -24,3 +24,12 @@ shape = SubResource("RectangleShape2D_3vyb7")
 
 [node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_ykyjo")
+
+[node name="NameLabel" type="Label" parent="."]
+offset_left = -138.0
+offset_top = -108.0
+offset_right = 141.0
+offset_bottom = -78.0
+text = "player name"
+horizontal_alignment = 1
+vertical_alignment = 1
