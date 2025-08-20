@@ -7,9 +7,9 @@ script = ExtResource("1_5t81l")
 
 [node name="ConsoleContainer" type="VBoxContainer" parent="."]
 offset_left = 2.0
-offset_top = 482.0
+offset_top = 2.0
 offset_right = 552.0
-offset_bottom = 720.0
+offset_bottom = 237.0
 
 [node name="ConsoleWindow" type="RichTextLabel" parent="ConsoleContainer"]
 custom_minimum_size = Vector2(0, 200)
