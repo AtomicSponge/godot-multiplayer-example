@@ -71,10 +71,3 @@ offset_top = 645.0
 offset_right = 779.0
 offset_bottom = 675.0
 text = "This is a test of the HUD"
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -66.0
-offset_top = 1374.0
-offset_right = 1281.0
-offset_bottom = 1402.0
-color = Color(0, 0, 0, 1)
