@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var PlayerCamera: Camera2D = $PlayerCamera
 @onready var NameLabel: Label = $NameLabel
 
-const SPEED: float = 300.0
+const SPEED: float = 400.0
 const JUMP_VELOCITY: float = -800.0
 
 var player_name: String = Globals.NAME
@@ -46,6 +46,6 @@ func _physics_process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_multiplayer_authority(): return
 
-	if event.is_action_pressed("open_menu") and Input.is_action_just_pressed("open_menu") and not Globals.GAME_MENU_OPENED:
+	if event.is_action_pressed("open_game_menu") and Input.is_action_just_pressed("open_game_menu") and not Globals.GAME_MENU_OPENED:
 		Globals.GAME_MENU_OPENED = true
 		UiController.open_menu("GameUI")

@@ -7,19 +7,21 @@ var ID: int = 0
 var NAME: String = ""
 var VAC_BANNED: bool = false
 
+var achievements: Dictionary[String, bool] = {
+	"Test1": false,
+	"Test2": false
+}
+
 # Lobby variables
 var DATA
 var LOBBY_ID: int = 0
 var LOBBY_MEMBERS: Array = []
 var LOBBY_MEMBERS_MAX: int = 8
 var LOBBY_INVITE_ARG: bool = false
-
 var LOBBY_NAME: String = "Default Lobby Name"
-
 var LOBBY_LIST: Array = []
 
-var CONSOLE_BUFFER: String = ""
-
+# Game variables
 var GAME_RUNNING: bool = false
 var GAME_MENU_OPENED: bool = false
 
@@ -27,6 +29,25 @@ func quit_game() -> void:
 	NetworkHandler.close_connection()
 	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 	get_tree().quit()
+
+func set_achievement(this_achievement: String) -> void:
+	if not achievements.has(this_achievement):
+		print("This achievement does not exist locally: %s" % this_achievement)
+		return
+	achievements[this_achievement] = true
+
+	if not Steam.setAchievement(this_achievement):
+		print("Failed to set achievement: %s" % this_achievement)
+		return
+
+	print("Set acheivement: %s" % this_achievement)
+
+	# Pass the value to Steam then fire it
+	if not Steam.storeStats():
+		print("Failed to store data on Steam, should be stored locally")
+		return
+
+	print("Data successfully sent to Steam")
 
 func _check_command_line() -> void:
 	var arguments: Array = OS.get_cmdline_args()
