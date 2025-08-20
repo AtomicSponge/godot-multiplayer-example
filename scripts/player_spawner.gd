@@ -8,5 +8,5 @@ func _make_player(data:Dictionary) -> Node:
 	player.position = data.position
 	return player
 
-func _ready() -> void:
+func _enter_tree() -> void:
 	set_spawn_function(_make_player)
