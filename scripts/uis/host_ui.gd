@@ -1,8 +1,8 @@
 extends CanvasLayer
 
-@onready var LobbyNameInput = $Panel/LobbyNameInput
-@onready var PublicCheckBox = $Panel/PublicCheckBox
-@onready var InviteOnlyCheckBox = $Panel/InviteOnlyCheckBox
+@onready var LobbyNameInput: LineEdit = $Panel/LobbyNameInput
+@onready var PublicCheckBox: CheckBox = $Panel/PublicCheckBox
+@onready var InviteOnlyCheckBox: CheckBox = $Panel/InviteOnlyCheckBox
 
 func _ready() -> void:
 	LobbyNameInput.text = str(Globals.NAME, "'s Lobby")

@@ -1,9 +1,9 @@
 extends CanvasLayer
 
-@onready var LobbyScroller = $Panel/LobbyScroller
-@onready var LobbyList = $Panel/LobbyScroller/LobbyList
-@onready var SearchingLabel = $Panel/LobbyScroller/LobbyList/SearchingLabel
-@onready var SearchInput = $Panel/SearchInput
+@onready var LobbyScroller: ScrollContainer = $Panel/LobbyScroller
+@onready var LobbyList: HFlowContainer = $Panel/LobbyScroller/LobbyList
+@onready var SearchingLabel: Label = $Panel/LobbyScroller/LobbyList/SearchingLabel
+@onready var SearchInput: LineEdit = $Panel/SearchInput
 
 func _join_lobby(id: int) -> void:
 	UiController.close_all_menus()
