@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var PlayerCamera: Camera2D = $PlayerCamera
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -600.0
+const JUMP_VELOCITY = -800.0
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
