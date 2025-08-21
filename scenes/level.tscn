@@ -17,13 +17,20 @@ script = ExtResource("1_w7c3h")
 script = ExtResource("3_w8frs")
 
 [node name="BottomLabel" type="Label" parent="LevelHUD"]
+visible = false
 offset_left = 361.0
 offset_top = 645.0
 offset_right = 917.0
 offset_bottom = 675.0
-text = "This is a test of the HUD"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ScorePanel" type="Panel" parent="LevelHUD"]
+visible = false
+offset_left = 222.0
+offset_top = 91.0
+offset_right = 1053.0
+offset_bottom = 605.0
 
 [node name="FloorA" type="StaticBody2D" parent="."]
 position = Vector2(-2, -1)
