@@ -68,7 +68,6 @@ func _on_lobby_join_requested(this_lobby_id: int, friend_id: int) -> void:
 func _on_lobby_chat_update(_this_lobby_id: int, change_id: int, _making_change_id: int, chat_state: int) -> void:
 	# Get the user who has made the lobby change
 	var changer_name: String = Steam.getFriendPersonaName(change_id)
-
 	# If a player has joined the lobby
 	if chat_state == Steam.CHAT_MEMBER_STATE_CHANGE_ENTERED:
 		Console.add_text("%s has joined the lobby." % changer_name)
@@ -107,19 +106,12 @@ func _on_lobby_joined(this_lobby_id: int, _permissions: int, _locked: bool, resp
 	if response == Steam.CHAT_ROOM_ENTER_RESPONSE_SUCCESS:
 		# Set this lobby ID as your lobby ID
 		Globals.LOBBY_ID = this_lobby_id
-
 		# Get the lobby members
 		_get_lobby_members()
-
-		# Make the initial handshake
-		# send_p2p_packet(0, {"message": "handshake", "from": ID})
-		# https://godotsteam.com/tutorials/networking/#__tabbed_3_2
-
 	# Else it failed for some reason
 	else:
 		# Get the failure reason
 		var fail_reason: String
-
 		match response:
 			Steam.CHAT_ROOM_ENTER_RESPONSE_DOESNT_EXIST: fail_reason = "This lobby no longer exists."
 			Steam.CHAT_ROOM_ENTER_RESPONSE_NOT_ALLOWED: fail_reason = "You don't have permission to join this lobby."
@@ -131,7 +123,6 @@ func _on_lobby_joined(this_lobby_id: int, _permissions: int, _locked: bool, resp
 			Steam.CHAT_ROOM_ENTER_RESPONSE_COMMUNITY_BAN: fail_reason = "This lobby is community locked."
 			Steam.CHAT_ROOM_ENTER_RESPONSE_MEMBER_BLOCKED_YOU: fail_reason = "A user in the lobby has blocked you from joining."
 			Steam.CHAT_ROOM_ENTER_RESPONSE_YOU_BLOCKED_MEMBER: fail_reason = "A user you have blocked is in the lobby."
-
 		Globals.alert("Failed to join this lobby: %s" % fail_reason)
 
 func _on_lobby_match_list(these_lobbies: Array) -> void:
