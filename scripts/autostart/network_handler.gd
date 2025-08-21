@@ -147,7 +147,7 @@ func _on_persona_change(this_steam_id: int, _flags: int) -> void:
 		if this_steam_id == Globals.ID:
 			var new_name = Steam.getPersonaName()
 			Globals.NAME = new_name
-			EventBus.UpdateName.emit(new_name)
+			EventBus.UpdatePlayerName.emit()
 
 func _get_lobby_members() -> void:
 	# Clear your previous lobby list
