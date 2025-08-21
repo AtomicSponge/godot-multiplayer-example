@@ -4,22 +4,10 @@ extends CanvasLayer
 @onready var ScorePanel: Panel = $ScorePanel
 
 @onready var ScorePanelPlayerRef: Array[Label] = [
-	$ScorePanel/Player1,
-	$ScorePanel/Player2,
-	$ScorePanel/Player3,
-	$ScorePanel/Player4,
-	$ScorePanel/Player5,
-	$ScorePanel/Player6,
-	$ScorePanel/Player7,
-	$ScorePanel/Player8,
-	$ScorePanel/Player9,
-	$ScorePanel/Player10,
-	$ScorePanel/Player11,
-	$ScorePanel/Player12,
-	$ScorePanel/Player13,
-	$ScorePanel/Player14,
-	$ScorePanel/Player15,
-	$ScorePanel/Player16,
+	$ScorePanel/Player1, $ScorePanel/Player2, $ScorePanel/Player3, $ScorePanel/Player4,
+	$ScorePanel/Player5, $ScorePanel/Player6, $ScorePanel/Player7, $ScorePanel/Player8,
+	$ScorePanel/Player9, $ScorePanel/Player10, $ScorePanel/Player11, $ScorePanel/Player12,
+	$ScorePanel/Player13, $ScorePanel/Player14, $ScorePanel/Player15, $ScorePanel/Player16,
 ]
 
 func _update_bottom_label(new_text: String) -> void:
