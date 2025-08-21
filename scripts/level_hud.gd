@@ -24,6 +24,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	for counter in Globals.LOBBY_MEMBERS.size():
+		if counter > 15: break  #  Max is 16 players so we should never get here
 		ScorePanelPlayerRef[counter].text = Globals.LOBBY_MEMBERS[counter].steam_name
 
 func _unhandled_input(event: InputEvent) -> void:
