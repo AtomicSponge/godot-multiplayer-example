@@ -129,7 +129,9 @@ func _on_lobby_joined(this_lobby_id: int, _permissions: int, _locked: bool, resp
 func _on_lobby_match_list(these_lobbies: Array) -> void:
 	Globals.LOBBY_LIST = these_lobbies
 
-func _on_lobby_message(lobby_id: int, user: int, message: String, chat_type: int) -> void:
+func _on_lobby_message(lobby_id: int, user: int, message: String, _chat_type: int) -> void:
+	if lobby_id != Globals.LOBBY_ID:
+		return
 	var sender_name = ""
 	for member in Globals.LOBBY_MEMBERS:
 		if member.steam_id == user:
