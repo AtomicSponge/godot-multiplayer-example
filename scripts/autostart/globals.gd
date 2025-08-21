@@ -39,14 +39,12 @@ func set_achievement(this_achievement: String) -> void:
 	if not Steam.setAchievement(this_achievement):
 		print("Failed to set achievement: %s" % this_achievement)
 		return
-
 	print("Set acheivement: %s" % this_achievement)
 
 	# Pass the value to Steam then fire it
 	if not Steam.storeStats():
 		print("Failed to store data on Steam, should be stored locally")
 		return
-
 	print("Data successfully sent to Steam")
 
 func _check_command_line() -> void:

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cqpc42xkco1cf" path="res://scripts/player_spawner.gd" id="1_ves5e"]
 [ext_resource type="Script" uid="uid://wqfkauxg2hqs" path="res://scripts/level.gd" id="1_w7c3h"]
-[ext_resource type="Script" uid="uid://b4sfkiub2bq47" path="res://scripts/game_hud.gd" id="3_w8frs"]
+[ext_resource type="Script" uid="uid://b4sfkiub2bq47" path="res://scripts/level_hud.gd" id="3_w8frs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jedrf"]
 size = Vector2(1349, 28)
@@ -62,10 +62,10 @@ _spawnable_scenes = PackedStringArray("uid://cjsdm848ojsr2")
 spawn_path = NodePath("../PlayerList")
 script = ExtResource("1_ves5e")
 
-[node name="GameHUD" type="CanvasLayer" parent="."]
+[node name="LevelHUD" type="CanvasLayer" parent="."]
 script = ExtResource("3_w8frs")
 
-[node name="Test" type="Label" parent="GameHUD"]
+[node name="Test" type="Label" parent="LevelHUD"]
 offset_left = 502.0
 offset_top = 645.0
 offset_right = 779.0
