@@ -7,7 +7,9 @@ extends CanvasLayer
 
 func _join_lobby(id: int) -> void:
 	UiController.close_all_menus()
-	NetworkHandler.start_client(id)
+	var error = NetworkHandler.start_client(id)
+	if error:
+		UiController.open_menu("JoinUI")
 
 func _build_lobby_list(search_string: String = "") -> void:
 	for node in LobbyList.get_children():

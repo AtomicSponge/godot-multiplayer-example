@@ -139,9 +139,8 @@ func _on_lobby_message(lobby_id: int, user: int, message: String, _chat_type: in
 	Console.add_text(sender_name + ":  " + message)
 
 func _on_persona_change(this_steam_id: int, _flag: int) -> void:
-	# Make sure you're in a lobby and this user is valid or Steam might spam your console log
+	# Make sure you're in a lobby
 	if Globals.LOBBY_ID > 0:
-		print("A user (%s) had information change, update the lobby list" % this_steam_id)
 		# Update the player list
 		_get_lobby_members()
 
