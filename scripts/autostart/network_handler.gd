@@ -25,7 +25,7 @@ func start_client(this_lobby_id: int) -> Error:
 	EventBus.StartGame.emit()
 	return OK
 
-# Rename later
+# Use for Steam
 func close_connection() -> void:
 	# If in a lobby, leave it
 	if Globals.LOBBY_ID != 0:
@@ -45,6 +45,7 @@ func close_connection() -> void:
 		# Clear the local lobby list
 		Globals.LOBBY_MEMBERS.clear()
 
+#  Use for ENet
 func __close_connection() -> void:
 	multiplayer.multiplayer_peer.close()
 
