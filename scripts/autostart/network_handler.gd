@@ -6,10 +6,10 @@ const PORT: int = 42069
 
 func start_server(this_name: String) -> Error:
 	Globals.LOBBY_NAME = this_name
-	var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
-	var error: Error = peer.create_server(PORT, Globals.LOBBY_MEMBERS_MAX)
-	#var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
-	#var error: Error = peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC, Globals.LOBBY_MEMBERS_MAX)
+	#var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
+	#var error: Error = peer.create_server(PORT, Globals.LOBBY_MEMBERS_MAX)
+	var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
+	var error: Error = peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC, Globals.LOBBY_MEMBERS_MAX)
 	if error: return error
 	multiplayer.multiplayer_peer = peer
 	EventBus.StartGame.emit()
@@ -17,17 +17,17 @@ func start_server(this_name: String) -> Error:
 
 func start_client(this_lobby_id: int) -> Error:
 	Globals.LOBBY_MEMBERS.clear()
-	var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
-	var error: Error = peer.create_client(IP_ADDRESS, PORT)
-	#var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
-	#var error: Error = peer.connect_lobby(this_lobby_id)
+	#var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
+	#var error: Error = peer.create_client(IP_ADDRESS, PORT)
+	var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
+	var error: Error = peer.connect_lobby(this_lobby_id)
 	if error: return error
 	multiplayer.multiplayer_peer = peer
 	EventBus.StartGame.emit()
 	return OK
 
 # Rename later
-func __steam_close_connection() -> void:
+func close_connection() -> void:
 	# If in a lobby, leave it
 	if Globals.LOBBY_ID != 0:
 		# Send leave request to Steam
@@ -46,8 +46,11 @@ func __steam_close_connection() -> void:
 		# Clear the local lobby list
 		Globals.LOBBY_MEMBERS.clear()
 
-func close_connection() -> void:
+func __close_connection() -> void:
 	multiplayer.multiplayer_peer.close()
+
+func is_network_connected() -> bool:
+	return multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED
 
 func search_for_lobbies(search_string: String = "") -> void:
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_DEFAULT)

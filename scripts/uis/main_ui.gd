@@ -1,14 +1,14 @@
 extends CanvasLayer
 
 func _on_host_game_btn_pressed() -> void:
-	#UiController.open_menu("HostUI")
-	UiController.close_all_menus()
-	NetworkHandler.start_server(Globals.LOBBY_NAME)
+	UiController.open_menu("HostUI")
+	#UiController.close_all_menus()
+	#NetworkHandler.start_server(Globals.LOBBY_NAME)
 
 func _on_join_game_btn_pressed() -> void:
-	#UiController.open_menu("JoinUI")
-	UiController.close_all_menus()
-	NetworkHandler.start_client(1)
+	UiController.open_menu("JoinUI")
+	#UiController.close_all_menus()
+	#NetworkHandler.start_client(1)
 
 func _on_settings_btn_pressed() -> void:
 	UiController.open_menu("SettingsUI")
