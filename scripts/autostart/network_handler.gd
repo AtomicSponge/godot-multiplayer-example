@@ -161,4 +161,4 @@ func _get_lobby_members() -> void:
 		# Get the member's Steam name
 		var member_steam_name: String = Steam.getFriendPersonaName(member_steam_id)
 		# Add them to the list
-		Globals.LOBBY_MEMBERS.append({"steam_id": member_steam_id, "steam_name": member_steam_name})
+		Globals.LOBBY_MEMBERS.append({ "steam_id": member_steam_id, "steam_name": member_steam_name })
