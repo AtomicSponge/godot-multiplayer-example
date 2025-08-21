@@ -1,6 +1,8 @@
 extends Node
 
-signal StartGame
-signal EndGame
+signal StartGame  # Start the game
+signal EndGame    # End the game
 
-signal ShowKill(text: String)
+signal UpdateName(new_name: String)  # Called when your Steam name is updated
+
+signal ShowKill(text: String)  # Show kill message

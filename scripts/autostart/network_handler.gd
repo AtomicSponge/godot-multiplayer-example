@@ -138,11 +138,16 @@ func _on_lobby_message(lobby_id: int, user: int, message: String, _chat_type: in
 			sender_name = member.steam_name
 	Console.add_text(sender_name + ":  " + message)
 
-func _on_persona_change(this_steam_id: int, _flag: int) -> void:
+func _on_persona_change(this_steam_id: int, _flags: int) -> void:
 	# Make sure you're in a lobby
 	if Globals.LOBBY_ID > 0:
 		# Update the player list
 		_get_lobby_members()
+		# If you changed your name, update the display
+		if this_steam_id == Globals.ID:
+			var new_name = Steam.getPersonaName()
+			Globals.NAME = new_name
+			EventBus.UpdateName.emit(new_name)
 
 func _get_lobby_members() -> void:
 	# Clear your previous lobby list

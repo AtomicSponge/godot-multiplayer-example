@@ -98,3 +98,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	Steam.run_callbacks()
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		NetworkHandler.close_connection()
+		get_tree().quit()

@@ -9,9 +9,13 @@ const JUMP_VELOCITY: float = -800.0
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
+func update_player_name() -> void:
+	NameLabel.set_text(Globals.NAME)
+
 func _ready() -> void:
 	PlayerCamera.enabled = is_multiplayer_authority()
 	if not is_multiplayer_authority(): return
+	EventBus.UpdateName.connect(update_player_name)
 	NameLabel.set_text(Globals.NAME)
 
 func _input(_event: InputEvent) -> void:
