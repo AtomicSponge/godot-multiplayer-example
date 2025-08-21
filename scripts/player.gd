@@ -6,8 +6,6 @@ extends CharacterBody2D
 const SPEED: float = 400.0
 const JUMP_VELOCITY: float = -800.0
 
-#var player_name: String = Globals.NAME
-
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 

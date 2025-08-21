@@ -62,6 +62,7 @@ func search_for_lobbies(search_string: String = "") -> void:
 
 func _on_lobby_join_requested(this_lobby_id: int, friend_id: int) -> void:
 	var _owner_name: String = Steam.getFriendPersonaName(friend_id)
+	UiController.close_all_menus()
 	start_client(this_lobby_id)
 
 func _on_lobby_chat_update(_this_lobby_id: int, change_id: int, _making_change_id: int, chat_state: int) -> void:
@@ -158,4 +159,4 @@ func _get_lobby_members() -> void:
 		# Get the member's Steam name
 		var member_steam_name: String = Steam.getFriendPersonaName(member_steam_id)
 		# Add them to the list
-		Globals.LOBBY_MEMBERS.append({"steam_id":member_steam_id, "steam_name":member_steam_name})
+		Globals.LOBBY_MEMBERS.append({"steam_id": member_steam_id, "steam_name": member_steam_name})
