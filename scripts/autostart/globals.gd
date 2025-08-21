@@ -70,8 +70,9 @@ func _ready() -> void:
 	#  Configure Steam
 	var INIT: Dictionary = Steam.steamInitEx()
 	if INIT['status'] != 0:
-		print("Failed to initialise Steam. " + str(INIT['verbal']) + " Shutting down...")
+		OS.alert("Failed to initialise Steam. " + str(INIT['verbal']) + " Shutting down...")
 		quit_game()
+		return
 
 	ONLINE = Steam.loggedOn()
 	ID = Steam.getSteamID()
@@ -80,8 +81,9 @@ func _ready() -> void:
 	VAC_BANNED = Steam.isVACBanned()
 
 	if OWNED == false:
-		print("User does not own this game.")
+		OS.alert("User does not own this game.")
 		quit_game()
+		return
 
 	Steam.join_requested.connect(NetworkHandler._on_lobby_join_requested)
 	Steam.lobby_chat_update.connect(NetworkHandler._on_lobby_chat_update)
