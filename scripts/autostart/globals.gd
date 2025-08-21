@@ -27,7 +27,6 @@ var GAME_MENU_OPENED: bool = false
 
 func quit_game() -> void:
 	NetworkHandler.close_connection()
-	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 	get_tree().quit()
 
 func alert(text: String) -> void:
