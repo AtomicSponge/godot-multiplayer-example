@@ -19,17 +19,6 @@ _spawnable_scenes = PackedStringArray("uid://tauj6umdt5sc")
 spawn_path = NodePath("../Level")
 spawn_limit = 1
 
-[node name="UiAnchor" type="Node" parent="."]
-script = ExtResource("3_0tnpc")
-_menus = Dictionary[String, PackedScene]({
-"GameUI": ExtResource("4_vtaks"),
-"HostUI": ExtResource("5_kvpfn"),
-"JoinUI": ExtResource("8_trtic"),
-"MainUI": ExtResource("7_kvuet"),
-"SettingsUI": ExtResource("9_ir15t")
-})
-metadata/_custom_type_script = "uid://cmfgtkrms7cw8"
-
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="FPSLabel" type="Label" parent="HUD"]
@@ -41,3 +30,14 @@ offset_bottom = 23.0
 text = "FPS:  244"
 script = ExtResource("8_gee14")
 metadata/_custom_type_script = "uid://b3wipabqqg4tm"
+
+[node name="UiAnchor" type="Node" parent="."]
+script = ExtResource("3_0tnpc")
+_menus = Dictionary[String, PackedScene]({
+"GameUI": ExtResource("4_vtaks"),
+"HostUI": ExtResource("5_kvpfn"),
+"JoinUI": ExtResource("8_trtic"),
+"MainUI": ExtResource("7_kvuet"),
+"SettingsUI": ExtResource("9_ir15t")
+})
+metadata/_custom_type_script = "uid://cmfgtkrms7cw8"
