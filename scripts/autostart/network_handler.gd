@@ -4,13 +4,12 @@ extends Node
 const IP_ADDRESS: String = "localhost"
 const PORT: int = 42069
 
+#var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
 
 func start_server(this_name: String) -> Error:
 	Globals.LOBBY_NAME = this_name
-	#var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 	#var error: Error = peer.create_server(PORT, Globals.LOBBY_MEMBERS_MAX)
-	#var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
 	var error: Error = peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC, Globals.LOBBY_MEMBERS_MAX)
 	if error: return error
 	multiplayer.multiplayer_peer = peer
@@ -19,9 +18,7 @@ func start_server(this_name: String) -> Error:
 
 func start_client(this_lobby_id: int) -> Error:
 	Globals.LOBBY_MEMBERS.clear()
-	#var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 	#var error: Error = peer.create_client(IP_ADDRESS, PORT)
-	#var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
 	var error: Error = peer.connect_lobby(this_lobby_id)
 	if error: return error
 	multiplayer.multiplayer_peer = peer
@@ -100,7 +97,6 @@ func _on_lobby_created(connected: int, this_lobby_id: int) -> void:
 		Steam.setLobbyData(Globals.LOBBY_ID, "name", Globals.LOBBY_NAME)
 		# Allow P2P connections to fallback to being relayed through Steam if needed
 		var _set_relay: bool = Steam.allowP2PPacketRelay(true)
-		Globals.alert("here")
 
 func _on_lobby_data_update(_success: int, _this_lobby_id: int, _this_member_id: int) -> void:
 	pass

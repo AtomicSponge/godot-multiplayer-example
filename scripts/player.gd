@@ -13,7 +13,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	PlayerCamera.enabled = is_multiplayer_authority()
-	#if not is_multiplayer_authority(): return
+	if not is_multiplayer_authority(): return
 	NameLabel.set_text(player_name)
 
 func _input(_event: InputEvent) -> void:
