@@ -71,23 +71,19 @@ func _on_lobby_chat_update(_this_lobby_id: int, change_id: int, _making_change_i
 
 	# If a player has joined the lobby
 	if chat_state == Steam.CHAT_MEMBER_STATE_CHANGE_ENTERED:
-		print("%s has joined the lobby." % changer_name)
-
+		Console.add_text("%s has joined the lobby." % changer_name)
 	# Else if a player has left the lobby
 	elif chat_state == Steam.CHAT_MEMBER_STATE_CHANGE_LEFT:
-		print("%s has left the lobby." % changer_name)
-
+		Console.add_text("%s has left the lobby." % changer_name)
 	# Else if a player has been kicked
 	elif chat_state == Steam.CHAT_MEMBER_STATE_CHANGE_KICKED:
-		print("%s has been kicked from the lobby." % changer_name)
-
+		Console.add_text("%s has been kicked from the lobby." % changer_name)
 	# Else if a player has been banned
 	elif chat_state == Steam.CHAT_MEMBER_STATE_CHANGE_BANNED:
-		print("%s has been banned from the lobby." % changer_name)
-
+		Console.add_text("%s has been banned from the lobby." % changer_name)
 	# Else there was some unknown change
 	else:
-		print("%s did... something." % changer_name)
+		Console.add_text("%s did... something." % changer_name)
 
 	# Update the lobby now that a change has occurred
 	_get_lobby_members()

@@ -17,7 +17,10 @@ func _build_lobby_list(search_string: String = "") -> void:
 
 	SearchingLabel.show()
 	await NetworkHandler.search_for_lobbies(search_string)
-	SearchingLabel.hide()
+	if Globals.LOBBY_LIST.is_empty():
+		SearchingLabel.set_text("No lobbies found!")
+	else:
+		SearchingLabel.hide()
 
 	for lobby in Globals.LOBBY_LIST:
 		var lobby_name: String = Steam.getLobbyData(lobby, "name")
