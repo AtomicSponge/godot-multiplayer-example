@@ -129,8 +129,12 @@ func _on_lobby_joined(this_lobby_id: int, _permissions: int, _locked: bool, resp
 func _on_lobby_match_list(these_lobbies: Array) -> void:
 	Globals.LOBBY_LIST = these_lobbies
 
-func _on_lobby_message() -> void:
-	pass
+func _on_lobby_message(lobby_id: int, user: int, message: String, chat_type: int) -> void:
+	var sender_name = ""
+	for member in Globals.LOBBY_MEMBERS:
+		if member.steam_id == user:
+			sender_name = member.steam_name
+	Console.add_text(sender_name + ":  " + message)
 
 func _on_persona_change(this_steam_id: int, _flag: int) -> void:
 	# Make sure you're in a lobby and this user is valid or Steam might spam your console log

@@ -16,7 +16,7 @@ var achievements: Dictionary[String, bool] = {
 var DATA
 var LOBBY_ID: int = 0
 var LOBBY_MEMBERS: Array = []
-var LOBBY_MEMBERS_MAX: int = 8
+var LOBBY_MEMBERS_MAX: int = 16
 var LOBBY_INVITE_ARG: bool = false
 var LOBBY_NAME: String = "Default Lobby Name"
 var LOBBY_LIST: Array = []
