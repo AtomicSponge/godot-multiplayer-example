@@ -85,7 +85,7 @@ func _ready() -> void:
 
 	Steam.join_requested.connect(NetworkHandler._on_lobby_join_requested)
 	Steam.lobby_chat_update.connect(NetworkHandler._on_lobby_chat_update)
-	multiplayer.mutiplayer_peer.lobby_created.connect(NetworkHandler._on_lobby_created)
+	NetworkHandler.peer.lobby_created.connect(NetworkHandler._on_lobby_created)
 	Steam.lobby_data_update.connect(NetworkHandler._on_lobby_data_update)
 	Steam.lobby_joined.connect(NetworkHandler._on_lobby_joined)
 	Steam.lobby_match_list.connect(NetworkHandler._on_lobby_match_list)
