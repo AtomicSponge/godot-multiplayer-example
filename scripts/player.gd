@@ -6,7 +6,7 @@ extends CharacterBody2D
 const SPEED: float = 400.0
 const JUMP_VELOCITY: float = -800.0
 
-var player_name: String = Globals.NAME
+#var player_name: String = Globals.NAME
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
@@ -14,7 +14,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	PlayerCamera.enabled = is_multiplayer_authority()
 	if not is_multiplayer_authority(): return
-	NameLabel.set_text(player_name)
+	NameLabel.set_text(Globals.NAME)
 
 func _input(_event: InputEvent) -> void:
 	if not is_multiplayer_authority(): return
