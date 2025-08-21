@@ -37,6 +37,7 @@ func _input(_event: InputEvent) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 func _physics_process(delta: float) -> void:
+	if not NetworkHandler.is_network_connected(): return
 	if not is_multiplayer_authority(): return
 
 	# Add the gravity.
