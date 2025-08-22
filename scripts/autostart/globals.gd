@@ -7,6 +7,7 @@ var ID: int = 0
 var NAME: String = ""
 var VAC_BANNED: bool = false
 
+#  Achievements list
 var achievements: Dictionary[String, bool] = {
 	"Test1": false,
 	"Test2": false
