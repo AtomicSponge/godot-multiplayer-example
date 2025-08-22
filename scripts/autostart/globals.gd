@@ -102,5 +102,6 @@ func _process(_delta: float) -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		NetworkHandler.close_connection()
+		if Globals.GAME_RUNNING:
+			EventBus.EndGame.emit()
 		get_tree().quit()

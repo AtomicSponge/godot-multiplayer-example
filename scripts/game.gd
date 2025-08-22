@@ -30,6 +30,4 @@ func _ready() -> void:
 	EventBus.StartGame.connect(start_game)
 	EventBus.EndGame.connect(end_game)
 
-	multiplayer.connection_failed.connect(end_game.bind("Connection failed!"))
-
 	UiController.open_menu("MainUI")
