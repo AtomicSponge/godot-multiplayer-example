@@ -7,12 +7,6 @@ var ID: int = 0
 var NAME: String = ""
 var VAC_BANNED: bool = false
 
-#  Achievements list
-var achievements: Dictionary[String, bool] = {
-	"Test1": false,
-	"Test2": false
-}
-
 # Lobby variables
 var LOBBY_ID: int = 0
 var LOBBY_MEMBERS: Array = []
@@ -23,6 +17,12 @@ var LOBBY_LIST: Array = []
 # Game variables
 var GAME_RUNNING: bool = false
 var GAME_MENU_OPENED: bool = false
+
+#  Achievements list
+var achievements: Dictionary[String, bool] = {
+	"Test1": false,
+	"Test2": false
+}
 
 func quit_game() -> void:
 	NetworkHandler.close_connection()
