@@ -10,14 +10,15 @@ extends CanvasLayer
 	$ScorePanel/Player13, $ScorePanel/Player14, $ScorePanel/Player15, $ScorePanel/Player16,
 ]
 
-func _update_bottom_label(new_text: String) -> void:
+##  Update the panel at the bottom
+func update_bottom_label(new_text: String) -> void:
 	BottomLabel.show()
 	BottomLabel.set_text(new_text)
 	await get_tree().create_timer(4).timeout
 	BottomLabel.hide()
 
 func _ready() -> void:
-	EventBus.ShowKill.connect(_update_bottom_label)
+	EventBus.ShowKill.connect(update_bottom_label)
 
 	for element in ScorePanelPlayerRef:
 		element.text = ""

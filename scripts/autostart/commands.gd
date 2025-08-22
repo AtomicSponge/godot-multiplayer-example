@@ -1,11 +1,12 @@
 extends Node
 
+##  Broadcast a message to chat
 func say_command(text: String) -> void:
-	#Console.add_text(Globals.NAME + ":  " + text)
 	var sent: bool = Steam.sendLobbyChatMsg(Globals.LOBBY_ID, text)
 	if not sent:
 		Console.add_text("Your message was not sent!")
 
+##  Quit the game from command
 func quit_command(_arg: String) -> void:
 	Globals.quit_game()
 

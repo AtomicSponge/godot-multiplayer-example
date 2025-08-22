@@ -24,10 +24,12 @@ var achievements: Dictionary[String, bool] = {
 	"Test2": false
 }
 
+##  Quit the game
 func quit_game() -> void:
 	NetworkHandler.close_connection()
 	get_tree().quit()
 
+##  Show an alert
 func alert(text: String) -> void:
 	var dialog = AcceptDialog.new()
 	dialog.dialog_text = text
@@ -37,6 +39,7 @@ func alert(text: String) -> void:
 	scene_tree.current_scene.add_child(dialog)
 	dialog.popup_centered()
 
+##  Set an achievement locally and on Steam
 func set_achievement(this_achievement: String) -> void:
 	if not achievements.has(this_achievement):
 		print("This achievement does not exist locally: %s" % this_achievement)

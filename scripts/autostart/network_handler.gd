@@ -7,6 +7,7 @@ const PORT: int = 42069
 #var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
 
+##  Start the multiplayer server and trigger a new game
 func start_server(this_name: String) -> Error:
 	Globals.LOBBY_NAME = this_name
 	#var error: Error = peer.create_server(PORT, Globals.LOBBY_MEMBERS_MAX)
@@ -16,6 +17,7 @@ func start_server(this_name: String) -> Error:
 	EventBus.StartGame.emit()
 	return OK
 
+##  Start the multiplayer client and trigger a new game
 func start_client(this_lobby_id: int) -> Error:
 	Globals.LOBBY_MEMBERS.clear()
 	#var error: Error = peer.create_client(IP_ADDRESS, PORT)
@@ -26,6 +28,7 @@ func start_client(this_lobby_id: int) -> Error:
 	return OK
 
 # Use for Steam
+##  Close network connection
 func close_connection() -> void:
 	# If in a lobby, leave it
 	if Globals.LOBBY_ID != 0:
@@ -46,12 +49,15 @@ func close_connection() -> void:
 		Globals.LOBBY_MEMBERS.clear()
 
 #  Use for ENet
+##  Close network connection
 func __close_connection() -> void:
 	multiplayer.multiplayer_peer.close()
 
+##  Check if the network connection is active
 func is_network_connected() -> bool:
 	return multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.CONNECTION_CONNECTED
 
+##  Search for lobbies.  Provide an optional string to search for an exact match.
 func search_for_lobbies(search_string: String = "") -> void:
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_DEFAULT)
 	if not search_string.is_empty():

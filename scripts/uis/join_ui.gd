@@ -5,13 +5,15 @@ extends CanvasLayer
 @onready var SearchingLabel: Label = $Panel/LobbyScroller/LobbyList/SearchingLabel
 @onready var SearchInput: LineEdit = $Panel/SearchInput
 
-func _join_lobby(id: int) -> void:
+##  Join a lobby by ID
+func join_lobby(id: int) -> void:
 	UiController.close_all_menus()
 	var error = NetworkHandler.start_client(id)
 	if error:
 		UiController.open_menu("JoinUI")
 
-func _build_lobby_list(search_string: String = "") -> void:
+##  Build the lobby list.  Takes an optional string to do an exact search.
+func build_lobby_list(search_string: String = "") -> void:
 	for node in LobbyList.get_children():
 		if node is Button:
 			LobbyList.remove_child(node)
@@ -32,15 +34,15 @@ func _build_lobby_list(search_string: String = "") -> void:
 		lobby_button.set_text("Lobby %s: %s - %s Player(s)" % [lobby, lobby_name, lobby_num_members])
 		lobby_button.set_size(Vector2(LobbyScroller.size.x, 50))
 		lobby_button.set_name("lobby_%s" % lobby)
-		lobby_button.connect("pressed", _join_lobby.bind(lobby))
+		lobby_button.connect("pressed", join_lobby.bind(lobby))
 
 		LobbyList.add_child(lobby_button)
 
 func _ready() -> void:
-	await _build_lobby_list()
+	await build_lobby_list()
 
 func _on_search_button_pressed() -> void:
-	await _build_lobby_list(SearchInput.text)
+	await build_lobby_list(SearchInput.text)
 
 func _on_back_button_pressed() -> void:
 	UiController.close_menu()

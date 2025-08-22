@@ -3,9 +3,11 @@ extends Node2D
 @onready var PlayerList: Node = $PlayerList
 @onready var PlayerSpawner: MultiplayerSpawner = $PlayerSpawner
 
+##  Spawn a player
 func spawn_player(id: int) -> void:
 	PlayerSpawner.spawn({ "id": id, "position": Vector2(randi() % 701 + 200, 350) })
 
+##  Remove a player
 func remove_player(id: int) -> void:
 	if not PlayerList.has_node(str(id)): return
 	PlayerList.get_node(str(id)).queue_free()
