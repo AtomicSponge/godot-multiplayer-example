@@ -1,7 +1,7 @@
 extends Node
 
 signal StartGame  # Start the game
-signal EndGame    # End the game
+signal EndGame(how: String)    # End the game
 
 signal UpdatePlayerName  # Called when your Steam name is updated
 

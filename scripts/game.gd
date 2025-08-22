@@ -9,7 +9,8 @@ func start_game():
 		load_level.call_deferred(load("res://scenes/level.tscn"))
 
 ##  End the game and close the network connection
-func end_game():
+func end_game(how: String = "self"):
+	Globals.alert(how)
 	Globals.GAME_RUNNING = false
 	for node in Level.get_children():
 		Level.remove_child(node)
@@ -27,5 +28,7 @@ func load_level(scene: PackedScene) -> void:
 func _ready() -> void:
 	EventBus.StartGame.connect(start_game)
 	EventBus.EndGame.connect(end_game)
+
+	multiplayer.server_disconnected.connect(end_game.bind("remote"))
 
 	UiController.open_menu("MainUI")
