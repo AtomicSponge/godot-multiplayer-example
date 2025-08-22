@@ -39,6 +39,7 @@ func _input(_event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if not NetworkHandler.is_network_connected(): return
+	if not is_multiplayer_authority(): return
 
 	# Add the gravity.
 	if not is_on_floor():
