@@ -8,8 +8,14 @@ func start_game():
 	if multiplayer.is_server():
 		load_level.call_deferred(load("res://scenes/level.tscn"))
 
+@rpc("authority", "call_remote", "reliable")
+func disconnect_all_players() -> void:
+	EventBus.EndGame.emit("Server disconnected from the game!")
+
 ##  End the game and close the network connection
 func end_game(why: String = ""):
+	if multiplayer.is_server():
+		disconnect_all_players.rpc()
 	Globals.GAME_RUNNING = false
 	for node in Level.get_children():
 		Level.remove_child(node)
