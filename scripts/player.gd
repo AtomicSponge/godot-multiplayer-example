@@ -37,15 +37,15 @@ func _input(_event: InputEvent) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
-func _physics_process(delta: float) -> void:
-	if not NetworkHandler.is_network_connected(): return
-	if not multiplayer.is_server(): return
+#func _physics_process(delta: float) -> void:
+	#if not NetworkHandler.is_network_connected(): return
+	#if not multiplayer.is_server(): return
 
 	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	#if not is_on_floor():
+		#velocity += get_gravity() * delta
 
-	move_and_slide()
+	#move_and_slide()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_multiplayer_authority(): return

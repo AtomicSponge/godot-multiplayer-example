@@ -12,6 +12,16 @@ func remove_player(id: int) -> void:
 	if not PlayerList.has_node(str(id)): return
 	PlayerList.get_node(str(id)).queue_free()
 
+func _physics_process(delta: float) -> void:
+	if not NetworkHandler.is_network_connected(): return
+	if not multiplayer.is_server(): return
+
+	for player in PlayerList.get_children():
+		# Add the gravity.
+		if not player.is_on_floor():
+			player.velocity += player.get_gravity() * delta
+		player.move_and_slide()
+
 func _ready() -> void:
 	if not multiplayer.is_server(): return
 	multiplayer.peer_connected.connect(spawn_player)
