@@ -10,7 +10,6 @@ func start_game():
 
 ##  End the game and close the network connection
 func end_game():
-	Globals.alert("called")
 	Globals.GAME_RUNNING = false
 	for node in Level.get_children():
 		Level.remove_child(node)
@@ -28,7 +27,9 @@ func load_level(scene: PackedScene) -> void:
 func _ready() -> void:
 	EventBus.StartGame.connect(start_game)
 	EventBus.EndGame.connect(end_game)
-	
-	multiplayer.server_disconnected.connect(end_game)
 
 	UiController.open_menu("MainUI")
+
+func _process(_delta: float) -> void:
+	if not NetworkHandler.is_network_connected():
+		end_game()
