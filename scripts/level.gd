@@ -13,6 +13,7 @@ func remove_player(id: int) -> void:
 	PlayerList.get_node(str(id)).queue_free()
 
 func _physics_process(delta: float) -> void:
+	return
 	if not NetworkHandler.is_network_connected(): return
 	if not multiplayer.is_server(): return
 
