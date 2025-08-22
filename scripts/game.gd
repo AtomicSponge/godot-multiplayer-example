@@ -10,6 +10,7 @@ func start_game():
 
 ##  End the game and close the network connection
 func end_game():
+	Globals.alert("called")
 	Globals.GAME_RUNNING = false
 	for node in Level.get_children():
 		Level.remove_child(node)
