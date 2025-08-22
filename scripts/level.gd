@@ -22,3 +22,7 @@ func _ready() -> void:
 
 	if not OS.has_feature("dedicated_server"):
 		spawn_player(1)
+
+func _process(_delta: float) -> void:
+	if not NetworkHandler.is_network_connected():
+		EventBus.EndGame.emit()
