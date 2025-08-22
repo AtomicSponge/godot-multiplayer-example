@@ -14,6 +14,7 @@ func update_player_name() -> void:
 	NameLabel.set_text(Globals.NAME)
 
 func _ready() -> void:
+	set_physics_process(true)
 	PlayerCamera.enabled = is_multiplayer_authority()
 	if not is_multiplayer_authority(): return
 	EventBus.UpdatePlayerName.connect(update_player_name)
