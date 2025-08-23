@@ -95,18 +95,19 @@ func _on_lobby_chat_update(_this_lobby_id: int, change_id: int, _making_change_i
 	_get_lobby_members()
 
 func _on_lobby_created(connected: int, this_lobby_id: int) -> void:
-	if connected == 1:
-		# Set the lobby ID
-		Globals.LOBBY_ID = this_lobby_id
-		# Set this lobby as joinable, just in case, though this should be done by default
-		Steam.setLobbyJoinable(Globals.LOBBY_ID, true)
-		# Set some lobby data
-		Steam.setLobbyData(Globals.LOBBY_ID, "name", Globals.LOBBY_NAME)
-		# Allow P2P connections to fallback to being relayed through Steam if needed
-		var _set_relay: bool = Steam.allowP2PPacketRelay(true)
-	else:
-		pass
-		# There was a problem, do something about it
+	match connected:
+		Steam.Result.RESULT_OK:
+			# Set the lobby ID
+			Globals.LOBBY_ID = this_lobby_id
+			# Set this lobby as joinable, just in case, though this should be done by default
+			Steam.setLobbyJoinable(Globals.LOBBY_ID, true)
+			# Set some lobby data
+			Steam.setLobbyData(Globals.LOBBY_ID, "name", Globals.LOBBY_NAME)
+			# Allow P2P connections to fallback to being relayed through Steam if needed
+			var _set_relay: bool = Steam.allowP2PPacketRelay(true)
+		_:
+			pass
+		#	 There was a problem, do something about it
 
 func _on_lobby_data_update(_success: int, _this_lobby_id: int, _this_member_id: int) -> void:
 	pass
