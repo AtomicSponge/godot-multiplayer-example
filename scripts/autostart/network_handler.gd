@@ -104,6 +104,9 @@ func _on_lobby_created(connected: int, this_lobby_id: int) -> void:
 		Steam.setLobbyData(Globals.LOBBY_ID, "name", Globals.LOBBY_NAME)
 		# Allow P2P connections to fallback to being relayed through Steam if needed
 		var _set_relay: bool = Steam.allowP2PPacketRelay(true)
+	else:
+		pass
+		# There was a problem, do something about it
 
 func _on_lobby_data_update(_success: int, _this_lobby_id: int, _this_member_id: int) -> void:
 	pass
