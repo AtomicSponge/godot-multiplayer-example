@@ -32,7 +32,6 @@ func start_client(this_lobby_id: int) -> Error:
 func close_connection() -> void:
 	# If in a lobby, leave it
 	if Globals.LOBBY_ID != 0:
-		Globals.alert("here")
 		# Send leave request to Steam
 		Steam.leaveLobby(Globals.LOBBY_ID)
 		multiplayer.multiplayer_peer.close()
