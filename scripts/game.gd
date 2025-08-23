@@ -9,13 +9,15 @@ func start_game():
 	Globals.GAME_RUNNING = true
 
 	if not multiplayer.is_server(): return
-	load_level.call_deferred(load("res://scenes/level.tscn"))
 	multiplayer.peer_connected.connect(spawn_player)
 	multiplayer.peer_disconnected.connect(remove_player)
 
+	load_level.call_deferred(load("res://scenes/level.tscn"))
+
+	#  Spawn already connected players
 	for id in multiplayer.get_peers():
 		spawn_player(id)
-
+	#  Spawn the server player if not dedicated
 	if not OS.has_feature("dedicated_server"):
 		spawn_player(1)
 
@@ -59,8 +61,6 @@ func spawn_player(id: int) -> void:
 func remove_player(id: int) -> void:
 	if not PlayerList.has_node(str(id)): return
 	PlayerList.get_node(str(id)).queue_free()
-	if PlayerList.get_node(str(id)).is_queued_for_deletion():
-		Globals.alert("player %s deleting" % id)
 
 @rpc("authority", "call_remote", "reliable")
 func disconnect_all_players() -> void:
