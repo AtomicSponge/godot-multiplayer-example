@@ -7,13 +7,11 @@ extends Node
 ##  Start a game and if server replicate the level
 func start_game():
 	Globals.GAME_RUNNING = true
-	if multiplayer.is_server():
-		load_level.call_deferred(load("res://scenes/level.tscn"))
 
 	if not multiplayer.is_server(): return
+	load_level.call_deferred(load("res://scenes/level.tscn"))
 	multiplayer.peer_connected.connect(spawn_player)
 	multiplayer.peer_disconnected.connect(remove_player)
-	multiplayer.server_disconnected.connect(remove_player)
 
 	for id in multiplayer.get_peers():
 		spawn_player(id)
