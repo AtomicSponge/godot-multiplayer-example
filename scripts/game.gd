@@ -31,8 +31,10 @@ func end_game(why: String = ""):
 	for node in Level.get_children():
 		Level.remove_child(node)
 		node.queue_free()
-	#multiplayer.peer_connected.disconnect(spawn_player)
-	#multiplayer.peer_disconnected.disconnect(remove_player)
+	if multiplayer.peer_connected.is_connected(spawn_player):
+		multiplayer.peer_connected.disconnect(spawn_player)
+	if multiplayer.peer_disconnected.is_connected(remove_player):
+		multiplayer.peer_disconnected.disconnect(remove_player)
 	NetworkHandler.close_connection()
 	UiController.open_menu("MainUI")
 	if not why.is_empty():
