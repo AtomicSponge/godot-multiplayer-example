@@ -25,9 +25,9 @@ func end_game(why: String = ""):
 		disconnect_all_players.rpc()
 		remove_player(1)
 	Globals.GAME_RUNNING = false
-	#for node in PlayerList.get_children():
-		#PlayerList.remove_child(node)
-		#node.queue_free()
+	for node in PlayerList.get_children():
+		PlayerList.remove_child(node)
+		node.queue_free()
 	for node in Level.get_children():
 		Level.remove_child(node)
 		node.queue_free()

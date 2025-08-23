@@ -20,7 +20,7 @@ func _ready() -> void:
 	NameLabel.set_text(Globals.NAME)
 
 func _input(_event: InputEvent) -> void:
-	if not NetworkHandler.is_network_connected(): return
+	#if not NetworkHandler.is_network_connected(): return
 	if not is_multiplayer_authority(): return
 
 	if Globals.GAME_MENU_OPENED or Console.is_opened():
@@ -39,7 +39,7 @@ func _input(_event: InputEvent) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 func _physics_process(delta: float) -> void:
-	if not NetworkHandler.is_network_connected(): return
+	#if not NetworkHandler.is_network_connected(): return
 	if not is_multiplayer_authority(): return
 
 	# Add the gravity.
@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not NetworkHandler.is_network_connected(): return
+	#if not NetworkHandler.is_network_connected(): return
 	if not is_multiplayer_authority(): return
 
 	if event.is_action_pressed("game_menu") and Input.is_action_just_pressed("game_menu") and Globals.GAME_MENU_OPENED:
