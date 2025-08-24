@@ -4,13 +4,11 @@ extends Node
 const IP_ADDRESS: String = "localhost"
 const PORT: int = 42069
 
-#var peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
 var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
 
 ##  Start the multiplayer server and trigger a new game
 func start_server(this_name: String) -> Error:
 	Globals.LOBBY_NAME = this_name
-	#var error: Error = peer.create_server(PORT, Globals.LOBBY_MEMBERS_MAX)
 	var error: Error = peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC, Globals.LOBBY_MEMBERS_MAX)
 	if error: return error
 	multiplayer.multiplayer_peer = peer
@@ -20,7 +18,6 @@ func start_server(this_name: String) -> Error:
 ##  Start the multiplayer client and trigger a new game
 func start_client(this_lobby_id: int) -> Error:
 	Globals.LOBBY_MEMBERS.clear()
-	#var error: Error = peer.create_client(IP_ADDRESS, PORT)
 	var error: Error = peer.connect_lobby(this_lobby_id)
 	if error: return error
 	multiplayer.multiplayer_peer = peer
@@ -29,13 +26,12 @@ func start_client(this_lobby_id: int) -> Error:
 
 # Use for Steam
 ##  Close network connection
-func __close_connection() -> void:
+func close_connection() -> void:
 	# If in a lobby, leave it
 	if Globals.LOBBY_ID != 0:
 		# Send leave request to Steam
 		Steam.leaveLobby(Globals.LOBBY_ID)
 		multiplayer.multiplayer_peer.close()
-		NetworkHandler.peer.close()
 
 		# Wipe the Steam lobby ID then display the default lobby ID and player list title
 		Globals.LOBBY_ID = 0
@@ -48,11 +44,6 @@ func __close_connection() -> void:
 				Steam.closeP2PSessionWithUser(this_member['steam_id'])
 		# Clear the local lobby list
 		Globals.LOBBY_MEMBERS.clear()
-
-#  Use for ENet
-##  Close network connection
-func close_connection() -> void:
-	multiplayer.multiplayer_peer.close()
 
 ##  Check if the network connection is active
 func is_network_connected() -> bool:
