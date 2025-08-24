@@ -61,7 +61,7 @@ func spawn_player(id: int) -> void:
 func remove_player(id: int) -> void:
 	if not PlayerList.has_node(str(id)): return
 	PlayerList.get_node(str(id)).queue_free()
-	NetworkHandler.peer.disconnect_peer(id)
+	#NetworkHandler.peer.disconnect_peer(id)
 
 @rpc("authority", "call_remote", "reliable")
 func disconnect_all_players() -> void:
