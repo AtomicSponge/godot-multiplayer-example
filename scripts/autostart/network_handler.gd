@@ -29,12 +29,13 @@ func start_client(this_lobby_id: int) -> Error:
 
 # Use for Steam
 ##  Close network connection
-func close_connection() -> void:
+func __close_connection() -> void:
 	# If in a lobby, leave it
 	if Globals.LOBBY_ID != 0:
 		# Send leave request to Steam
 		Steam.leaveLobby(Globals.LOBBY_ID)
 		multiplayer.multiplayer_peer.close()
+		NetworkHandler.peer.close()
 
 		# Wipe the Steam lobby ID then display the default lobby ID and player list title
 		Globals.LOBBY_ID = 0
@@ -50,7 +51,7 @@ func close_connection() -> void:
 
 #  Use for ENet
 ##  Close network connection
-func __close_connection() -> void:
+func close_connection() -> void:
 	multiplayer.multiplayer_peer.close()
 
 ##  Check if the network connection is active
