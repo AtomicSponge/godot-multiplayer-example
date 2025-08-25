@@ -55,7 +55,7 @@ func load_level(scene: PackedScene) -> void:
 
 ##  Spawn a player
 func spawn_player(id: int) -> void:
-	PlayerSpawner.spawn({ "id": id, "position": Vector2(randi() % 701 + 200, 350) })
+	PlayerSpawner.spawn({ "id": id, "position": Vector2(randi() % 701 + 200, 150) })
 
 ##  Remove a player
 func remove_player(id: int) -> void:
