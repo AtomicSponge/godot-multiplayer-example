@@ -31,11 +31,12 @@ script = ExtResource("2_0tnpc")
 
 [node name="FPSLabel" type="Label" parent="HUD"]
 visible = false
-offset_left = 1179.0
-offset_top = -7.0
-offset_right = 1275.0
-offset_bottom = 23.0
-text = "FPS:  244"
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_bottom = 30.0
+grow_horizontal = 0
 script = ExtResource("8_gee14")
 metadata/_custom_type_script = "uid://b3wipabqqg4tm"
 
