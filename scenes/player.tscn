@@ -40,5 +40,5 @@ text = "player name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GunRotation" type="Node2D" parent="."]
+[node name="WeaponRotation" type="Node2D" parent="."]
 position = Vector2(30, 2)
