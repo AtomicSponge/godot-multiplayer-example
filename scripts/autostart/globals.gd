@@ -69,7 +69,7 @@ func _check_command_line() -> void:
 
 func _ready() -> void:
 	#  Configure Steam
-	var INIT: Dictionary = Steam.steamInitEx()
+	var INIT: Dictionary = Steam.steamInitEx(480, true)
 	if INIT['status'] != 0:
 		OS.alert("Failed to initialise Steam. " + str(INIT['verbal']) + " Shutting down...")
 		quit_game()
@@ -96,9 +96,6 @@ func _ready() -> void:
 	Steam.persona_state_change.connect(NetworkHandler._on_persona_change)
 
 	_check_command_line()
-
-func _process(_delta: float) -> void:
-	Steam.run_callbacks()
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
