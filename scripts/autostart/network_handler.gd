@@ -101,8 +101,8 @@ func _on_lobby_data_update(_success: int, _this_lobby_id: int, _this_member_id: 
 	pass
 
 func _on_lobby_joined(this_lobby_id: int, _permissions: int, _locked: bool, response: int) -> void:
+	#  If hosting ignore
 	if Steam.getLobbyOwner(this_lobby_id) == Steam.getSteamID():
-		# We're probably hosting so we can ignore this
 		return
 
 	# If joining was successful
