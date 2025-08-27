@@ -5,15 +5,11 @@ const IP_ADDRESS: String = "localhost"
 const PORT: int = 42069
 
 ##  Start the multiplayer server and trigger a new game
-func start_server(this_name: String) -> Error:
+func start_server(this_name: String) -> void:
 	Globals.LOBBY_NAME = this_name
-	# Set this lobby as joinable, just in case, though this should be done by default
-	Steam.setLobbyJoinable(Globals.LOBBY_ID, true)
-	# Set some lobby data
-	Steam.setLobbyData(Globals.LOBBY_ID, "name", Globals.LOBBY_NAME)
 	Steam.createLobby(Steam.LobbyType.LOBBY_TYPE_PUBLIC, Globals.LOBBY_MEMBERS_MAX)
 	EventBus.StartGame.emit()
-	return OK
+	return
 
 ##  Start the multiplayer client and trigger a new game
 func start_client(this_lobby_id: int) -> Error:
@@ -91,11 +87,14 @@ func _on_lobby_chat_update(_this_lobby_id: int, change_id: int, _making_change_i
 func _on_lobby_created(connected: int, this_lobby_id: int) -> void:
 	match connected:
 		Steam.Result.RESULT_OK:
+			Globals.LOBBY_ID = this_lobby_id
+			# Set this lobby as joinable, just in case, though this should be done by default
+			Steam.setLobbyJoinable(Globals.LOBBY_ID, true)
+			# Set some lobby data
+			Steam.setLobbyData(Globals.LOBBY_ID, "name", Globals.LOBBY_NAME)
 			var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
 			peer.host_with_lobby(this_lobby_id)
 			multiplayer.multiplayer_peer = peer
-			# Set the lobby ID
-			Globals.LOBBY_ID = this_lobby_id
 			# Allow P2P connections to fallback to being relayed through Steam if needed
 			var _set_relay: bool = Steam.allowP2PPacketRelay(true)
 		_:
