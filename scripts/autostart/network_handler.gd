@@ -8,14 +8,12 @@ const PORT: int = 42069
 func start_server(this_name: String) -> void:
 	Globals.LOBBY_NAME = this_name
 	Steam.createLobby(Steam.LobbyType.LOBBY_TYPE_PUBLIC, Globals.LOBBY_MEMBERS_MAX)
-	EventBus.StartGame.emit()
 	return
 
 ##  Start the multiplayer client and trigger a new game
 func start_client(this_lobby_id: int) -> void:
 	Globals.LOBBY_MEMBERS.clear()
 	Steam.joinLobby(this_lobby_id)
-	EventBus.StartGame.emit()
 	return
 
 # Use for Steam
@@ -93,6 +91,7 @@ func _on_lobby_created(connected: int, this_lobby_id: int) -> void:
 			multiplayer.multiplayer_peer = peer
 			# Allow P2P connections to fallback to being relayed through Steam if needed
 			var _set_relay: bool = Steam.allowP2PPacketRelay(true)
+			EventBus.StartGame.emit()
 		_:
 			pass
 		#	 There was a problem, do something about it
@@ -114,6 +113,7 @@ func _on_lobby_joined(this_lobby_id: int, _permissions: int, _locked: bool, resp
 		multiplayer.multiplayer_peer = peer
 		# Get the lobby members
 		_get_lobby_members()
+		EventBus.StartGame.emit()
 	# Else it failed for some reason
 	else:
 		# Get the failure reason
