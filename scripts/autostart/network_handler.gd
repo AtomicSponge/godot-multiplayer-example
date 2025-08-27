@@ -15,8 +15,8 @@ func start_server(this_name: String) -> Error:
 func start_client(this_lobby_id: int) -> Error:
 	Globals.LOBBY_MEMBERS.clear()
 
-	var peer := SteamMultiplayerPeer.new()
-	peer.debug_level = SteamMultiplayerPeer.DEBUG_LEVEL_PEER
+	var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
+	#peer.debug_level = SteamMultiplayerPeer.DEBUG_LEVEL_PEER
 	peer.connect_to_lobby(this_lobby_id)
 	multiplayer.multiplayer_peer = peer
 
@@ -89,7 +89,7 @@ func _on_lobby_created(connected: int, this_lobby_id: int) -> void:
 	match connected:
 		Steam.Result.RESULT_OK:
 			var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
-			peer.debug_level = SteamMultiplayerPeer.DEBUG_LEVEL_PEER
+			#peer.debug_level = SteamMultiplayerPeer.DEBUG_LEVEL_PEER
 			peer.host_with_lobby(this_lobby_id)
 			multiplayer.multiplayer_peer = peer
 			# Set the lobby ID
