@@ -1,9 +1,5 @@
 extends Node
 
-# For testing only
-const IP_ADDRESS: String = "localhost"
-const PORT: int = 42069
-
 ##  Start the multiplayer server and trigger a new game
 func start_server(this_name: String) -> void:
 	Globals.LOBBY_NAME = this_name
