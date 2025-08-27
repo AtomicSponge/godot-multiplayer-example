@@ -75,6 +75,8 @@ func _ready() -> void:
 		quit_game()
 		return
 
+	Steam.initRelayNetworkAccess()
+
 	ONLINE = Steam.loggedOn()
 	ID = Steam.getSteamID()
 	NAME = Steam.getPersonaName()
@@ -88,7 +90,7 @@ func _ready() -> void:
 
 	Steam.join_requested.connect(NetworkHandler._on_lobby_join_requested)
 	Steam.lobby_chat_update.connect(NetworkHandler._on_lobby_chat_update)
-	NetworkHandler.peer.lobby_created.connect(NetworkHandler._on_lobby_created)
+	Steam.lobby_created.connect(NetworkHandler._on_lobby_created)
 	Steam.lobby_data_update.connect(NetworkHandler._on_lobby_data_update)
 	Steam.lobby_joined.connect(NetworkHandler._on_lobby_joined)
 	Steam.lobby_match_list.connect(NetworkHandler._on_lobby_match_list)

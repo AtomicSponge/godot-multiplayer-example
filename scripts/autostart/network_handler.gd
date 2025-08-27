@@ -4,23 +4,22 @@ extends Node
 const IP_ADDRESS: String = "localhost"
 const PORT: int = 42069
 
-var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
-
 ##  Start the multiplayer server and trigger a new game
 func start_server(this_name: String) -> Error:
 	Globals.LOBBY_NAME = this_name
-	var error: Error = peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC, Globals.LOBBY_MEMBERS_MAX)
-	if error: return error
-	multiplayer.multiplayer_peer = peer
+	Steam.createLobby(Steam.LobbyType.LOBBY_TYPE_FRIENDS_ONLY, 16)
 	EventBus.StartGame.emit()
 	return OK
 
 ##  Start the multiplayer client and trigger a new game
 func start_client(this_lobby_id: int) -> Error:
 	Globals.LOBBY_MEMBERS.clear()
-	var error: Error = peer.connect_lobby(this_lobby_id)
-	if error: return error
+
+	var peer := SteamMultiplayerPeer.new()
+	peer.debug_level = SteamMultiplayerPeer.DEBUG_LEVEL_PEER
+	peer.connect_to_lobby(this_lobby_id)
 	multiplayer.multiplayer_peer = peer
+
 	EventBus.StartGame.emit()
 	return OK
 
@@ -89,6 +88,10 @@ func _on_lobby_chat_update(_this_lobby_id: int, change_id: int, _making_change_i
 func _on_lobby_created(connected: int, this_lobby_id: int) -> void:
 	match connected:
 		Steam.Result.RESULT_OK:
+			var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
+			peer.debug_level = SteamMultiplayerPeer.DEBUG_LEVEL_PEER
+			peer.host_with_lobby(this_lobby_id)
+			multiplayer.multiplayer_peer = peer
 			# Set the lobby ID
 			Globals.LOBBY_ID = this_lobby_id
 			# Set this lobby as joinable, just in case, though this should be done by default
