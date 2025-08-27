@@ -12,15 +12,11 @@ func start_server(this_name: String) -> void:
 	return
 
 ##  Start the multiplayer client and trigger a new game
-func start_client(this_lobby_id: int) -> Error:
+func start_client(this_lobby_id: int) -> void:
 	Globals.LOBBY_MEMBERS.clear()
-
-	var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
-	peer.connect_to_lobby(this_lobby_id)
-	multiplayer.multiplayer_peer = peer
-
+	Steam.joinLobby(this_lobby_id)
 	EventBus.StartGame.emit()
-	return OK
+	return
 
 # Use for Steam
 ##  Close network connection
@@ -113,6 +109,9 @@ func _on_lobby_joined(this_lobby_id: int, _permissions: int, _locked: bool, resp
 	if response == Steam.CHAT_ROOM_ENTER_RESPONSE_SUCCESS:
 		# Set this lobby ID as your lobby ID
 		Globals.LOBBY_ID = this_lobby_id
+		var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
+		peer.connect_to_lobby(this_lobby_id)
+		multiplayer.multiplayer_peer = peer
 		# Get the lobby members
 		_get_lobby_members()
 	# Else it failed for some reason

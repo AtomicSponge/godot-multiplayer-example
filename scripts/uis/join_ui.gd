@@ -8,9 +8,7 @@ extends CanvasLayer
 ##  Join a lobby by ID
 func join_lobby(id: int) -> void:
 	UiController.close_all_menus()
-	var error = NetworkHandler.start_client(id)
-	if error:
-		UiController.open_menu("JoinUI")
+	NetworkHandler.start_client(id)
 
 ##  Build the lobby list.  Takes an optional string to do an exact search.
 func build_lobby_list(search_string: String = "") -> void:
