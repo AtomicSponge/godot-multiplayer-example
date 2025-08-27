@@ -12,7 +12,6 @@ func start_client(this_lobby_id: int) -> void:
 	Steam.joinLobby(this_lobby_id)
 	return
 
-# Use for Steam
 ##  Close network connection
 func close_connection() -> void:
 	# If in a lobby, leave it
