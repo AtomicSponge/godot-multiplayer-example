@@ -7,7 +7,7 @@ const PORT: int = 42069
 ##  Start the multiplayer server and trigger a new game
 func start_server(this_name: String) -> Error:
 	Globals.LOBBY_NAME = this_name
-	Steam.createLobby(Steam.LobbyType.LOBBY_TYPE_FRIENDS_ONLY, 16)
+	Steam.createLobby(Steam.LobbyType.LOBBY_TYPE_PUBLIC, Globals.LOBBY_MEMBERS_MAX)
 	EventBus.StartGame.emit()
 	return OK
 
