@@ -64,7 +64,7 @@ func remove_player(id: int) -> void:
 
 @rpc("authority", "call_remote", "reliable")
 func disconnect_all_players() -> void:
-	EventBus.EndGame.emit("Server disconnected from the game!")
+	end_game("Server disconnected from the game!")
 
 func _ready() -> void:
 	EventBus.StartGame.connect(start_game)
