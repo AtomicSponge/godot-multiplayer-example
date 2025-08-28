@@ -24,6 +24,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if power_mode:
 		set_text("FPS:  %d" % Engine.get_frames_per_second() +
+			"\nFrame: %f" % Performance.get_monitor(Performance.TIME_PROCESS) +
+			"\nPhys: %f" % Performance.get_monitor(Performance.TIME_PHYSICS_PROCESS) +
 			"\nCPU:  %f" % delta)
 	else:
 		set_text("FPS:  %d" % Engine.get_frames_per_second())
