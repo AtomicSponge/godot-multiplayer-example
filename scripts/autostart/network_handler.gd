@@ -4,13 +4,11 @@ extends Node
 func start_server(this_name: String) -> void:
 	Globals.LOBBY_NAME = this_name
 	Steam.createLobby(Steam.LobbyType.LOBBY_TYPE_PUBLIC, Globals.LOBBY_MEMBERS_MAX)
-	return
 
 ##  Start the multiplayer client and trigger a new game
 func start_client(this_lobby_id: int) -> void:
 	Globals.LOBBY_MEMBERS.clear()
 	Steam.joinLobby(this_lobby_id)
-	return
 
 ##  Close network connection
 func close_connection() -> void:
