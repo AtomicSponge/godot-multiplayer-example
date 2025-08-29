@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bys7kf1ydhw6r"]
+
+[ext_resource type="Script" uid="uid://cq4exn7hpg0ns" path="res://scripts/enemies/basic_mob.gd" id="1_hjk8o"]
+
+[node name="BasicMob" type="RigidBody2D"]
+script = ExtResource("1_hjk8o")
