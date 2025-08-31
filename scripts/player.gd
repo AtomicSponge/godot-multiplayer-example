@@ -31,7 +31,7 @@ func _input(_event: InputEvent) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
-	var direction := Input.get_axis("move_left", "move_right")
+	var direction: float = Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
