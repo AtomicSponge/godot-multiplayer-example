@@ -8,23 +8,27 @@ extends Node
 func start_game():
 	Globals.GAME_RUNNING = true
 
-	if not multiplayer.is_server(): return
-	multiplayer.peer_connected.connect(spawn_player)
-	multiplayer.peer_disconnected.connect(remove_player)
+	#  We are server
+	if multiplayer.is_server():
+		multiplayer.peer_connected.connect(spawn_player)
+		multiplayer.peer_disconnected.connect(remove_player)
 
-	load_level.call_deferred(load("res://scenes/level.tscn"))
+		load_level.call_deferred(load("res://scenes/level.tscn"))
 
-	#  Spawn already connected players
-	for id in multiplayer.get_peers():
-		spawn_player(id)
-	#  Spawn the server player if not dedicated
-	if not OS.has_feature("dedicated_server"):
-		spawn_player(1)
+		#  Spawn already connected players
+		for id in multiplayer.get_peers():
+			spawn_player(id)
+		#  Spawn the server player if not dedicated
+		if not OS.has_feature("dedicated_server"):
+			spawn_player(1)
+	#  We are not server
+	else:
+		multiplayer.server_disconnected.connect(end_game.bind("Server left the game!"))
 
 ##  End the game and close the network connection
 func end_game(why: String = ""):
 	if multiplayer.is_server():
-		disconnect_all_players.rpc()
+		#disconnect_all_players.rpc()
 		remove_player(1)
 		if multiplayer.peer_connected.is_connected(spawn_player):
 			multiplayer.peer_connected.disconnect(spawn_player)
@@ -42,7 +46,7 @@ func end_game(why: String = ""):
 	if not why.is_empty():
 		Globals.alert(why)
 
-## Restart the game
+##  Restart the game
 func restart_game() -> void:
 	pass
 
