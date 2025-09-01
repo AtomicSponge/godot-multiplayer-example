@@ -29,11 +29,13 @@ func start_game():
 func end_game(why: String = ""):
 	if multiplayer.is_server():
 		#disconnect_all_players.rpc()
-		remove_player(1)
+		#remove_player(1)
 		if multiplayer.peer_connected.is_connected(spawn_player):
 			multiplayer.peer_connected.disconnect(spawn_player)
 		if multiplayer.peer_disconnected.is_connected(remove_player):
 			multiplayer.peer_disconnected.disconnect(remove_player)
+	else:
+		multiplayer.server_disconnected.disconnect(end_game)
 	Globals.GAME_RUNNING = false
 	for node in PlayerList.get_children():
 		PlayerList.remove_child(node)
