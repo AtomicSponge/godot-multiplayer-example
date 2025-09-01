@@ -22,12 +22,13 @@ func _ready() -> void:
 func _input(_event: InputEvent) -> void:
 	if not is_multiplayer_authority(): return
 
+	# Stop the player if the menu or console is opened
 	if Globals.GAME_MENU_OPENED or Console.is_opened():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		return
 
-	# Get the input direction and handle the movement/deceleration.
+	# Get the input direction and handle the movement/deceleration
 	var direction_x: float = Input.get_axis("move_left", "move_right")
 	if direction_x:
 		velocity.x = direction_x * SPEED
