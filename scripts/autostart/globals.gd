@@ -1,24 +1,24 @@
 extends Node
 
 # Steam variables
-var OWNED: bool = false
-var ONLINE: bool = false
-var ID: int = 0
-var NAME: String = ""
-var VAC_BANNED: bool = false
+var OWNED: bool = false			##  Does the player own the game
+var ONLINE: bool = false		##  Is the player online
+var ID: int = 0					##  Steam ID of the player
+var NAME: String = ""			##  Steam name of the player
+var VAC_BANNED: bool = false	##  Is the plyer VAC banned
 
 # Lobby variables
-var LOBBY_ID: int = 0
-var LOBBY_MEMBERS: Array = []
-var LOBBY_MEMBERS_MAX: int = 8
-var LOBBY_NAME: String = "Default Lobby Name"
-var LOBBY_LIST: Array = []
+var LOBBY_ID: int = 0			##  ID of the lobby
+var LOBBY_MEMBERS: Array = []	##  List of lobby members
+var LOBBY_MEMBERS_MAX: int = 4	##  Max allowed lobby members
+var LOBBY_NAME: String = "Default Lobby Name"	##  Lobby name
+var LOBBY_LIST: Array = []		##  List of players in the lobby
 
 # Game variables
-var GAME_RUNNING: bool = false
-var GAME_MENU_OPENED: bool = false
+var GAME_RUNNING: bool = false		##  Is the game running
+var GAME_MENU_OPENED: bool = false	##  Is the game menu opened
 
-#  Achievements list
+##  Achievements list
 var achievements: Dictionary[String, bool] = {
 	"Test1": false,
 	"Test2": false
