@@ -11,7 +11,7 @@ var VAC_BANNED: bool = false	##  Is the plyer VAC banned
 var LOBBY_ID: int = 0			##  ID of the lobby
 var LOBBY_MEMBERS: Array = []	##  List of lobby members
 var LOBBY_MEMBERS_MAX: int = 4	##  Max allowed lobby members
-var LOBBY_NAME: String = "Default Lobby Name"	##  Lobby name
+var LOBBY_NAME: String = ""		##  Lobby name
 var LOBBY_LIST: Array = []		##  List of players in the lobby
 
 # Game variables
