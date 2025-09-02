@@ -23,7 +23,11 @@ func start_game():
 			spawn_player(1)
 	#  We are not server
 	else:
-		multiplayer.server_disconnected.connect(end_game.bind("Host left the game!"))
+		multiplayer.peer_disconnected.connect(check_if_host)
+
+func check_if_host(id: int) -> void:
+	if id == 1:
+		end_game("Host left the game!")
 
 ##  End the game and close the network connection
 func end_game(why: String = ""):
@@ -33,8 +37,8 @@ func end_game(why: String = ""):
 		if multiplayer.peer_disconnected.is_connected(remove_player):
 			multiplayer.peer_disconnected.disconnect(remove_player)
 	else:
-		if multiplayer.server_disconnected.is_connected(end_game):
-			multiplayer.server_disconnected.disconnect(end_game)
+		if multiplayer.peer_disconnected.is_connected(check_if_host):
+			multiplayer.peer_disconnected.disconnect(check_if_host)
 	Globals.GAME_RUNNING = false
 	for node in PlayerList.get_children():
 		PlayerList.remove_child(node)
