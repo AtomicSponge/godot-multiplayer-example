@@ -44,11 +44,13 @@ func search_for_lobbies(search_string: String = "") -> void:
 	if Globals.LOBBY_LIST.is_empty():
 		await get_tree().create_timer(2).timeout
 
+##
 func _on_lobby_join_requested(this_lobby_id: int, friend_id: int) -> void:
 	var _owner_name: String = Steam.getFriendPersonaName(friend_id)
 	UiController.close_all_menus()
 	start_client(this_lobby_id)
 
+##
 func _on_lobby_chat_update(_this_lobby_id: int, change_id: int, _making_change_id: int, chat_state: int) -> void:
 	# Get the user who has made the lobby change
 	var changer_name: String = Steam.getFriendPersonaName(change_id)
@@ -71,6 +73,7 @@ func _on_lobby_chat_update(_this_lobby_id: int, change_id: int, _making_change_i
 	# Update the lobby now that a change has occurred
 	_get_lobby_members()
 
+##
 func _on_lobby_created(connected: int, this_lobby_id: int) -> void:
 	match connected:
 		Steam.Result.RESULT_OK:
@@ -89,9 +92,11 @@ func _on_lobby_created(connected: int, this_lobby_id: int) -> void:
 			pass
 		#	 There was a problem, do something about it
 
+##
 func _on_lobby_data_update(_success: int, _this_lobby_id: int, _this_member_id: int) -> void:
 	pass
 
+##
 func _on_lobby_joined(this_lobby_id: int, _permissions: int, _locked: bool, response: int) -> void:
 	#  If hosting ignore
 	if Steam.getLobbyOwner(this_lobby_id) == Steam.getSteamID():
@@ -125,9 +130,11 @@ func _on_lobby_joined(this_lobby_id: int, _permissions: int, _locked: bool, resp
 		UiController.open_menu("JoinUI")
 		Globals.alert("Failed to join this lobby: %s" % fail_reason)
 
+##
 func _on_lobby_match_list(these_lobbies: Array) -> void:
 	Globals.LOBBY_LIST = these_lobbies
 
+##
 func _on_lobby_message(lobby_id: int, user: int, message: String, _chat_type: int) -> void:
 	if lobby_id != Globals.LOBBY_ID:
 		return
@@ -137,6 +144,7 @@ func _on_lobby_message(lobby_id: int, user: int, message: String, _chat_type: in
 			sender_name = member.steam_name
 	Console.add_text(sender_name + ":  " + message)
 
+##
 func _on_persona_change(this_steam_id: int, _flags: int) -> void:
 	# Make sure you're in a lobby
 	if Globals.LOBBY_ID > 0:
@@ -148,6 +156,7 @@ func _on_persona_change(this_steam_id: int, _flags: int) -> void:
 			Globals.NAME = new_name
 			EventBus.UpdatePlayerName.emit()
 
+##
 func _get_lobby_members() -> void:
 	# Clear your previous lobby list
 	Globals.LOBBY_MEMBERS.clear()
