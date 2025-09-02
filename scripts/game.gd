@@ -4,7 +4,7 @@ extends Node
 @onready var PlayerList: Node = $PlayerList
 @onready var PlayerSpawner: MultiplayerSpawner = $PlayerSpawner
 
-##  Start a game and if server replicate the level
+##  Start a game and if server replicate the level.
 func start_game():
 	Globals.GAME_RUNNING = true
 
@@ -25,11 +25,7 @@ func start_game():
 	else:
 		multiplayer.peer_disconnected.connect(handle_peer_disconnect)
 
-func handle_peer_disconnect(id: int) -> void:
-	if id == 1:
-		end_game("Host left the game!")
-
-##  End the game and close the network connection
+##  End the game and close the network connection.
 func end_game(why: String = ""):
 	if multiplayer.is_server():
 		if multiplayer.peer_connected.is_connected(spawn_player):
@@ -37,8 +33,8 @@ func end_game(why: String = ""):
 		if multiplayer.peer_disconnected.is_connected(remove_player):
 			multiplayer.peer_disconnected.disconnect(remove_player)
 	else:
-		if multiplayer.peer_disconnected.is_connected(check_if_host):
-			multiplayer.peer_disconnected.disconnect(check_if_host)
+		if multiplayer.peer_disconnected.is_connected(handle_peer_disconnect):
+			multiplayer.peer_disconnected.disconnect(handle_peer_disconnect)
 	Globals.GAME_RUNNING = false
 	for node in PlayerList.get_children():
 		PlayerList.remove_child(node)
@@ -51,7 +47,7 @@ func end_game(why: String = ""):
 	if not why.is_empty():
 		Globals.alert(why)
 
-##  Restart the game
+##  Restart the game.
 func restart_game() -> void:
 	pass
 
@@ -62,14 +58,19 @@ func load_level(scene: PackedScene) -> void:
 		node.queue_free()
 	Level.add_child(scene.instantiate())
 
-##  Spawn a player
+##  Spawn a player.
 func spawn_player(id: int) -> void:
 	PlayerSpawner.spawn({ "id": id, "position": Vector2(randi() % 701 + 200, 150) })
 
-##  Remove a player
+##  Remove a player.
 func remove_player(id: int) -> void:
 	if not PlayerList.has_node(str(id)): return
 	PlayerList.get_node(str(id)).queue_free()
+
+##  Handle a player leaving the game.
+func handle_peer_disconnect(id: int) -> void:
+	if id == 1:
+		end_game("Host left the game!")
 
 func _ready() -> void:
 	EventBus.StartGame.connect(start_game)
