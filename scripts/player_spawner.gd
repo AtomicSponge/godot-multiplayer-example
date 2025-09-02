@@ -2,7 +2,7 @@ extends MultiplayerSpawner
 
 var PLAYER: PackedScene = preload("res://scenes/player.tscn")
 
-func _make_player(data:Dictionary) -> Node:
+func _make_player(data: Dictionary) -> Node:
 	var player: Node = PLAYER.instantiate()
 	player.name = str(data.id)
 	player.position = data.position
