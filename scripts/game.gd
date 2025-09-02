@@ -23,9 +23,9 @@ func start_game():
 			spawn_player(1)
 	#  We are not server
 	else:
-		multiplayer.peer_disconnected.connect(check_if_host)
+		multiplayer.peer_disconnected.connect(handle_peer_disconnect)
 
-func check_if_host(id: int) -> void:
+func handle_peer_disconnect(id: int) -> void:
 	if id == 1:
 		end_game("Host left the game!")
 
