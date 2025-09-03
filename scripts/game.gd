@@ -83,3 +83,12 @@ func _ready() -> void:
 	EventBus.EndGame.connect(end_game)
 
 	UiController.open_menu("MainUI")
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not Globals.GAME_RUNNING: return
+	if event.is_action_pressed("game_menu") and Input.is_action_just_pressed("game_menu") and Globals.GAME_MENU_OPENED:
+		Globals.GAME_MENU_OPENED = false
+		UiController.close_all_menus()
+	elif event.is_action_pressed("game_menu") and Input.is_action_just_pressed("game_menu") and not Globals.GAME_MENU_OPENED:
+		Globals.GAME_MENU_OPENED = true
+		UiController.open_menu("GameUI")
