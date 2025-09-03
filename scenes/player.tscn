@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cmdde17x3h3w4" path="res://gfx/player.svg" id="2_uxov2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
-size = Vector2(122, 122)
+size = Vector2(96, 101)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ykyjo"]
 properties/0/path = NodePath(".:position")
@@ -21,9 +21,12 @@ properties/2/replication_mode = 1
 script = ExtResource("1_ykyjo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.499998, -1)
+scale = Vector2(0.75, 0.791)
 texture = ExtResource("2_uxov2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1.5)
 shape = SubResource("RectangleShape2D_3vyb7")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
@@ -33,9 +36,10 @@ replication_config = SubResource("SceneReplicationConfig_ykyjo")
 
 [node name="NameLabel" type="Label" parent="."]
 offset_left = -138.0
-offset_top = -108.0
+offset_top = -88.0
 offset_right = 141.0
-offset_bottom = -78.0
+offset_bottom = -58.0
+theme_override_font_sizes/font_size = 18
 text = "player name"
 horizontal_alignment = 1
 vertical_alignment = 1

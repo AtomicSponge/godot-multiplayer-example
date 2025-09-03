@@ -57,7 +57,7 @@ func proceed_game() -> void:
 	spawn_player(1)
 	pass
 
-##  Load a level
+##  Load a level.  Call deferred.
 func load_level(scene: PackedScene) -> void:
 	for node in Level.get_children():
 		Level.remove_child(node)
