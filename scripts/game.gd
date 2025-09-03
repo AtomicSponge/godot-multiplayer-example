@@ -18,9 +18,8 @@ func start_game():
 		#  Spawn already connected players
 		for id in multiplayer.get_peers():
 			spawn_player(id)
-		#  Spawn the server player if not dedicated
-		if not OS.has_feature("dedicated_server"):
-			spawn_player(1)
+		#  Spawn the server (main) player
+		spawn_player(1)
 	#  We are not server
 	else:
 		multiplayer.peer_disconnected.connect(handle_peer_disconnect)
@@ -47,8 +46,15 @@ func end_game(why: String = ""):
 	if not why.is_empty():
 		Globals.alert(why)
 
-##  Restart the game.
-func restart_game() -> void:
+##  Continue the game to the next stage.
+func proceed_game() -> void:
+	load_level.call_deferred(load("res://scenes/level.tscn"))
+
+	#  Spawn already connected players
+	for id in multiplayer.get_peers():
+		spawn_player(id)
+	#  Spawn server (main) player
+	spawn_player(1)
 	pass
 
 ##  Load a level
