@@ -20,12 +20,17 @@ _spawnable_scenes = PackedStringArray("uid://tauj6umdt5sc")
 spawn_path = NodePath("../Level")
 spawn_limit = 1
 
-[node name="PlayerList" type="Node" parent="."]
+[node name="Players" type="Node" parent="."]
 
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://cjsdm848ojsr2")
-spawn_path = NodePath("../PlayerList")
+spawn_path = NodePath("../Players")
 script = ExtResource("2_0tnpc")
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("../Enemies")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

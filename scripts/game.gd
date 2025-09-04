@@ -1,7 +1,7 @@
 extends Node
 
 @onready var Level: Node = $Level
-@onready var PlayerList: Node = $PlayerList
+@onready var Players: Node = $Players
 @onready var PlayerSpawner: MultiplayerSpawner = $PlayerSpawner
 
 ##  Start a game and if server replicate the level.
@@ -35,8 +35,8 @@ func end_game(why: String = ""):
 		if multiplayer.peer_disconnected.is_connected(handle_peer_disconnect):
 			multiplayer.peer_disconnected.disconnect(handle_peer_disconnect)
 	Globals.GAME_RUNNING = false
-	for node in PlayerList.get_children():
-		PlayerList.remove_child(node)
+	for node in Players.get_children():
+		Players.remove_child(node)
 		node.queue_free()
 	for node in Level.get_children():
 		Level.remove_child(node)
@@ -70,8 +70,8 @@ func spawn_player(id: int) -> void:
 
 ##  Remove a player.
 func remove_player(id: int) -> void:
-	if not PlayerList.has_node(str(id)): return
-	PlayerList.get_node(str(id)).queue_free()
+	if not Players.has_node(str(id)): return
+	Players.get_node(str(id)).queue_free()
 
 ##  Handle a player leaving the game.
 func handle_peer_disconnect(id: int) -> void:
