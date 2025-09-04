@@ -1,4 +1,4 @@
-extends Node
+class_name Game extends Node
 
 @onready var Level: Node = $Level
 @onready var Players: Node = $Players
