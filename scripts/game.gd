@@ -85,6 +85,7 @@ func _ready() -> void:
 	UiController.open_menu("MainUI")
 
 func _unhandled_input(event: InputEvent) -> void:
+	#  Handle in-game menu only if the game is running
 	if not Globals.GAME_RUNNING: return
 	if event.is_action_pressed("game_menu") and Input.is_action_just_pressed("game_menu") and Globals.GAME_MENU_OPENED:
 		Globals.GAME_MENU_OPENED = false
