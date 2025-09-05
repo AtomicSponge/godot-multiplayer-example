@@ -13,7 +13,7 @@ func start_game():
 		multiplayer.peer_connected.connect(spawn_player)
 		multiplayer.peer_disconnected.connect(remove_player)
 
-		load_level.call_deferred(load("res://scenes/level.tscn"))
+		load_level.call_deferred(load("res://scenes/levels/level1.tscn"))
 
 		#  Spawn already connected players
 		for id in multiplayer.get_peers():
@@ -48,7 +48,7 @@ func end_game(why: String = ""):
 
 ##  Continue the game to the next stage.
 func proceed_game() -> void:
-	load_level.call_deferred(load("res://scenes/level.tscn"))
+	load_level.call_deferred(load("res://scenes/levels/level1.tscn"))
 
 	#  Spawn already connected players
 	for id in multiplayer.get_peers():
