@@ -5,10 +5,6 @@ class_name Player extends CharacterBody2D
 
 const SPEED: float = 500.0
 
-enum States { IDLE, RUNNING }
-
-var state: States = States.IDLE
-
 ##  Update the player display name
 func update_player_name() -> void:
 	NameLabel.set_text(Globals.NAME)
