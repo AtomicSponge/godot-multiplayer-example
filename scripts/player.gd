@@ -22,7 +22,7 @@ func _input(_event: InputEvent) -> void:
 	if not is_multiplayer_authority(): return
 
 	# Stop the player if the menu or console is opened
-	if Globals.GAME_MENU_OPENED or Console.is_opened():
+	if GameState.GAME_MENU_OPENED or Console.is_opened():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		return

@@ -14,10 +14,6 @@ var LOBBY_MEMBERS_MAX: int = 4	##  Max allowed lobby members
 var LOBBY_NAME: String = ""		##  Lobby name
 var LOBBY_LIST: Array = []		##  List of players in the lobby
 
-# Game variables
-var GAME_RUNNING: bool = false		##  Is the game running
-var GAME_MENU_OPENED: bool = false	##  Is the game menu opened
-
 ##  Achievements list
 var achievements: Dictionary[String, bool] = {
 	"Test1": false,
@@ -101,6 +97,6 @@ func _ready() -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		if Globals.GAME_RUNNING:
+		if GameState.GAME_RUNNING:
 			EventBus.EndGame.emit()
 		get_tree().quit()

@@ -6,7 +6,7 @@ class_name Game extends Node
 
 ##  Start a game and if server replicate the level.
 func start_game():
-	Globals.GAME_RUNNING = true
+	GameState.GAME_RUNNING = true
 
 	#  We are server
 	if multiplayer.is_server():
@@ -34,7 +34,7 @@ func end_game(why: String = ""):
 	else:
 		if multiplayer.peer_disconnected.is_connected(handle_peer_disconnect):
 			multiplayer.peer_disconnected.disconnect(handle_peer_disconnect)
-	Globals.GAME_RUNNING = false
+	GameState.GAME_RUNNING = false
 	for node in Players.get_children():
 		Players.remove_child(node)
 		node.queue_free()
@@ -86,10 +86,10 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	#  Handle in-game menu only if the game is running
-	if not Globals.GAME_RUNNING: return
-	if event.is_action_pressed("game_menu") and Input.is_action_just_pressed("game_menu") and Globals.GAME_MENU_OPENED:
-		Globals.GAME_MENU_OPENED = false
+	if not GameState.GAME_RUNNING: return
+	if event.is_action_pressed("game_menu") and Input.is_action_just_pressed("game_menu") and GameState.GAME_MENU_OPENED:
+		GameState.GAME_MENU_OPENED = false
 		UiController.close_all_menus()
-	elif event.is_action_pressed("game_menu") and Input.is_action_just_pressed("game_menu") and not Globals.GAME_MENU_OPENED:
-		Globals.GAME_MENU_OPENED = true
+	elif event.is_action_pressed("game_menu") and Input.is_action_just_pressed("game_menu") and not GameState.GAME_MENU_OPENED:
+		GameState.GAME_MENU_OPENED = true
 		UiController.open_menu("GameUI")

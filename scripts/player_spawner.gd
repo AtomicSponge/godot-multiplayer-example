@@ -1,4 +1,4 @@
-class_name PlayerSpawner extends MultiplayerSpawner
+extends MultiplayerSpawner
 
 var PLAYER: PackedScene = preload("res://scenes/player.tscn")
 

@@ -23,6 +23,7 @@ EventBus="*res://scripts/autostart/event_bus.gd"
 UiController="*res://addons/ui_controller/ui_controller.gd"
 Console="*res://addons/console/console.tscn"
 Commands="*res://scripts/autostart/commands.gd"
+GameState="*res://scripts/autostart/game_state.gd"
 
 [debug]
 
