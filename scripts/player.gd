@@ -9,12 +9,12 @@ enum States { IDLE, RUNNING }
 
 var state: States = States.IDLE
 
-func _enter_tree() -> void:
-	set_multiplayer_authority(name.to_int())
-
 ##  Update the player display name
 func update_player_name() -> void:
 	NameLabel.set_text(Globals.NAME)
+
+func _enter_tree() -> void:
+	set_multiplayer_authority(name.to_int())
 
 func _ready() -> void:
 	PlayerCamera.enabled = is_multiplayer_authority()
