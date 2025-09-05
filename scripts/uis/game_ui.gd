@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name GameUI extends CanvasLayer
 
 func _on_resume_game_btn_pressed() -> void:
 	UiController.close_all_menus()

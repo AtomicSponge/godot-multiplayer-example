@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name MainUI extends CanvasLayer
 
 func _on_host_game_btn_pressed() -> void:
 	UiController.open_menu("HostUI")

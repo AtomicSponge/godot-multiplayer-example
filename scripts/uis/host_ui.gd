@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name HostUI extends CanvasLayer
 
 @onready var LobbyNameInput: LineEdit = $Panel/LobbyNameInput
 @onready var PublicCheckBox: CheckBox = $Panel/PublicCheckBox

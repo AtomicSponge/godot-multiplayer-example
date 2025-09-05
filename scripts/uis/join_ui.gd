@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name JoinUI extends CanvasLayer
 
 @onready var LobbyScroller: ScrollContainer = $Panel/LobbyScroller
 @onready var LobbyList: HFlowContainer = $Panel/LobbyScroller/LobbyList

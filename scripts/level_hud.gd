@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name LevelHud extends CanvasLayer
 
 @onready var BottomLabel: Label = $BottomLabel
 @onready var ScorePanel: Panel = $ScorePanel
