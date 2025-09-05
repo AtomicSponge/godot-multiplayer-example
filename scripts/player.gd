@@ -4,7 +4,10 @@ class_name Player extends CharacterBody2D
 @onready var NameLabel: Label = $NameLabel
 
 const SPEED: float = 500.0
-const JUMP_VELOCITY: float = -800.0
+
+enum States { IDLE, RUNNING }
+
+var state: States = States.IDLE
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
@@ -34,7 +37,7 @@ func _input(_event: InputEvent) -> void:
 		velocity.x = direction_x * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
+
 	var direction_y: float = Input.get_axis("move_up", "move_down")
 	if direction_y:
 		velocity.y = direction_y * SPEED

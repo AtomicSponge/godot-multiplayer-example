@@ -5,6 +5,8 @@ func say_command(text: String) -> void:
 	var sent: bool = Steam.sendLobbyChatMsg(Globals.LOBBY_ID, text)
 	if not sent:
 		Console.add_text("Your message was not sent!")
+	elif Globals.LOBBY_ID == 0:
+		Console.add_text("You are not in a lobby!")
 
 ##  Quit the game from command
 func quit_command(_arg: String) -> void:
