@@ -1,4 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://tauj6umdt5sc"]
+[gd_scene load_steps=4 format=3 uid="uid://tauj6umdt5sc"]
+
+[sub_resource type="Curve2D" id="Curve2D_83ld5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -320, 960, 0, 0, 0, 0, 1600, 960)
+}
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jedrf"]
 size = Vector2(1349, 28)
@@ -8,42 +14,50 @@ size = Vector2(491, 25)
 
 [node name="Level1" type="Node2D"]
 
-[node name="FloorA" type="StaticBody2D" parent="."]
-position = Vector2(-2, -1)
+[node name="MobSpawners" type="Node" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorA"]
+[node name="Spawn1" type="Path2D" parent="MobSpawners"]
+curve = SubResource("Curve2D_83ld5")
+
+[node name="WallA" type="StaticBody2D" parent="."]
+position = Vector2(-2, -1)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallA"]
 position = Vector2(640.5, 700)
 shape = SubResource("RectangleShape2D_jedrf")
 
-[node name="ColorRect" type="ColorRect" parent="FloorA"]
+[node name="ColorRect" type="ColorRect" parent="WallA"]
 offset_left = -33.0
 offset_top = 687.0
 offset_right = 1314.0
 offset_bottom = 715.0
 color = Color(0, 0, 0, 1)
 
-[node name="FloorB" type="StaticBody2D" parent="."]
-position = Vector2(1036, 481)
+[node name="WallB" type="StaticBody2D" parent="."]
+position = Vector2(1040, 384)
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorB"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallB"]
 position = Vector2(245, 14)
 shape = SubResource("RectangleShape2D_w8frs")
 
-[node name="ColorRect" type="ColorRect" parent="FloorB"]
+[node name="ColorRect" type="ColorRect" parent="WallB"]
 offset_left = -1.0
 offset_top = 1.0
 offset_right = 492.0
 offset_bottom = 27.0
 color = Color(0, 0, 0, 1)
 
-[node name="FloorC" type="StaticBody2D" parent="."]
-position = Vector2(-242, 576)
+[node name="WallC" type="StaticBody2D" parent="."]
+position = Vector2(-244, 486)
+metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorC"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallC"]
 position = Vector2(243, -87)
 shape = SubResource("RectangleShape2D_w8frs")
 
-[node name="ColorRect" type="ColorRect" parent="FloorC"]
+[node name="ColorRect" type="ColorRect" parent="WallC"]
 offset_left = -2.0
 offset_top = -102.0
 offset_right = 489.0
