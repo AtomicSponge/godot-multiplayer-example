@@ -3,10 +3,12 @@ class_name Game extends Node
 @onready var Level: Node = $Level
 @onready var Players: Node = $Players
 @onready var PlayerSpawner: MultiplayerSpawner = $PlayerSpawner
+@onready var HUD: CanvasLayer = $HUD
 
 ##  Start a game and if server replicate the level.
 func start_game():
 	GameState.GAME_RUNNING = true
+	HUD.show()
 
 	#  We are server
 	if multiplayer.is_server():
@@ -34,6 +36,7 @@ func end_game(why: String = ""):
 	else:
 		if multiplayer.peer_disconnected.is_connected(handle_peer_disconnect):
 			multiplayer.peer_disconnected.disconnect(handle_peer_disconnect)
+	HUD.hide()
 	GameState.GAME_RUNNING = false
 	for node in Players.get_children():
 		Players.remove_child(node)
@@ -48,14 +51,18 @@ func end_game(why: String = ""):
 
 ##  Continue the game to the next stage.
 func proceed_game() -> void:
+	HUD.hide()
 	load_level.call_deferred(load("res://scenes/levels/level1.tscn"))
-
+	#  Reset player list
+	for node in Players.get_children():
+		Players.remove_child(node)
+		node.queue_free()
 	#  Spawn already connected players
 	for id in multiplayer.get_peers():
 		spawn_player(id)
 	#  Spawn server (main) player
 	spawn_player(1)
-	pass
+	HUD.show()
 
 ##  Load a level.  Call deferred.
 func load_level(scene: PackedScene) -> void:
@@ -76,7 +83,7 @@ func remove_player(id: int) -> void:
 ##  Handle a player leaving the game.
 func handle_peer_disconnect(id: int) -> void:
 	if id == 1:
-		end_game("Host left the game!")
+		end_game("Host has left the game!")
 
 func _ready() -> void:
 	EventBus.StartGame.connect(start_game)

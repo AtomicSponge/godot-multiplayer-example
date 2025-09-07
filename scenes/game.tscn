@@ -33,6 +33,7 @@ script = ExtResource("2_0tnpc")
 spawn_path = NodePath("../Enemies")
 
 [node name="HUD" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="FPSLabel" type="Label" parent="HUD"]
 visible = false

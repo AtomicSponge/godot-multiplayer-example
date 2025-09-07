@@ -5,7 +5,7 @@ var OWNED: bool = false			##  Does the player own the game
 var ONLINE: bool = false		##  Is the player online
 var ID: int = 0					##  Steam ID of the player
 var NAME: String = ""			##  Steam name of the player
-var VAC_BANNED: bool = false	##  Is the plyer VAC banned
+var VAC_BANNED: bool = false	##  Is the player VAC banned
 
 # Lobby variables
 var LOBBY_ID: int = 0			##  ID of the lobby

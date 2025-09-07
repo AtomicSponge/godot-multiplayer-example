@@ -11,7 +11,7 @@ func _ready() -> void:
 	pass
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	var velocity:Vector2 = state.get_linear_velocity()
+	var velocity: Vector2 = state.get_linear_velocity()
 
 	var direction_x: float = -1
 	var direction_y: float = -1
