@@ -19,6 +19,9 @@ size = Vector2(491, 25)
 [node name="Spawn1" type="Path2D" parent="MobSpawners"]
 curve = SubResource("Curve2D_83ld5")
 
+[node name="SpawnLocation1" type="PathFollow2D" parent="MobSpawners/Spawn1"]
+position = Vector2(-320, 960)
+
 [node name="WallA" type="StaticBody2D" parent="."]
 position = Vector2(-2, -1)
 metadata/_edit_group_ = true
