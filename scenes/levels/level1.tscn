@@ -17,6 +17,7 @@ size = Vector2(491, 25)
 [node name="PlayerSpawners" type="Node" parent="."]
 
 [node name="Player1Spawn" type="Node2D" parent="PlayerSpawners"]
+position = Vector2(640, 384)
 
 [node name="EnemySpawners" type="Node" parent="."]
 
@@ -27,7 +28,7 @@ curve = SubResource("Curve2D_83ld5")
 position = Vector2(-320, 960)
 
 [node name="WallA" type="StaticBody2D" parent="."]
-position = Vector2(-51, 736)
+position = Vector2(-48, 688)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallA"]
@@ -42,7 +43,7 @@ offset_bottom = 27.0
 color = Color(0, 0, 0, 1)
 
 [node name="WallB" type="StaticBody2D" parent="."]
-position = Vector2(-308, 2)
+position = Vector2(-311, -2)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallB"]
@@ -56,7 +57,7 @@ offset_bottom = 28.0
 color = Color(0, 0, 0, 1)
 
 [node name="WallC" type="StaticBody2D" parent="."]
-position = Vector2(1070, -2)
+position = Vector2(1083, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallC"]
