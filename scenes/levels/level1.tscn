@@ -14,31 +14,35 @@ size = Vector2(491, 25)
 
 [node name="Level1" type="Node2D"]
 
-[node name="MobSpawners" type="Node" parent="."]
+[node name="PlayerSpawners" type="Node" parent="."]
 
-[node name="Spawn1" type="Path2D" parent="MobSpawners"]
+[node name="Player1Spawn" type="Node2D" parent="PlayerSpawners"]
+
+[node name="EnemySpawners" type="Node" parent="."]
+
+[node name="EnemySpawn1" type="Path2D" parent="EnemySpawners"]
 curve = SubResource("Curve2D_83ld5")
 
-[node name="SpawnLocation1" type="PathFollow2D" parent="MobSpawners/Spawn1"]
+[node name="SpawnLocation1" type="PathFollow2D" parent="EnemySpawners/EnemySpawn1"]
 position = Vector2(-320, 960)
 
 [node name="WallA" type="StaticBody2D" parent="."]
-position = Vector2(-2, -1)
+position = Vector2(-51, 736)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallA"]
-position = Vector2(640.5, 700)
+position = Vector2(690, 12)
 shape = SubResource("RectangleShape2D_jedrf")
 
 [node name="ColorRect" type="ColorRect" parent="WallA"]
-offset_left = -33.0
-offset_top = 687.0
-offset_right = 1314.0
-offset_bottom = 715.0
+offset_left = 17.0
+offset_top = -3.0
+offset_right = 1364.0
+offset_bottom = 27.0
 color = Color(0, 0, 0, 1)
 
 [node name="WallB" type="StaticBody2D" parent="."]
-position = Vector2(1040, 384)
+position = Vector2(-308, 2)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallB"]
@@ -46,23 +50,22 @@ position = Vector2(245, 14)
 shape = SubResource("RectangleShape2D_w8frs")
 
 [node name="ColorRect" type="ColorRect" parent="WallB"]
-offset_left = -1.0
-offset_top = 1.0
+offset_left = -3.0
 offset_right = 492.0
-offset_bottom = 27.0
+offset_bottom = 28.0
 color = Color(0, 0, 0, 1)
 
 [node name="WallC" type="StaticBody2D" parent="."]
-position = Vector2(-244, 486)
+position = Vector2(1070, -2)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallC"]
-position = Vector2(243, -87)
+position = Vector2(262, 18)
 shape = SubResource("RectangleShape2D_w8frs")
 
 [node name="ColorRect" type="ColorRect" parent="WallC"]
-offset_left = -2.0
-offset_top = -102.0
-offset_right = 489.0
-offset_bottom = -74.0
+offset_left = 13.0
+offset_top = 5.0
+offset_right = 504.0
+offset_bottom = 33.0
 color = Color(0, 0, 0, 1)
