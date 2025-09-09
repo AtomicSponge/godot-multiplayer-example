@@ -8,8 +8,6 @@ class_name Game extends Node
 ##  Start a new game and if server replicate the level.
 func start_game():
 	GameState.GAME_RUNNING = true
-	HUD.show()
-
 	#  We are server
 	if multiplayer.is_server():
 		multiplayer.peer_connected.connect(spawn_player)
@@ -19,12 +17,13 @@ func start_game():
 
 		#  Spawn already connected players
 		for id in multiplayer.get_peers():
-			spawn_player(id)
+			spawn_player.call_deferred(id)
 		#  Spawn the server (main) player
-		spawn_player(1)
+		spawn_player.call_deferred(1)
 	#  We are not server
 	else:
 		multiplayer.peer_disconnected.connect(handle_peer_disconnect)
+	HUD.show()
 
 ##  End the game and close the network connection.
 func end_game(why: String = ""):
@@ -74,7 +73,9 @@ func load_level(scene: PackedScene) -> void:
 
 ##  Spawn a player.
 func spawn_player(id: int) -> void:
-	PlayerSpawner.spawn({ "id": id, "position": Vector2(randi() % 701 + 200, 150) })
+	#var spawn_position: Node2D = get_tree().get_root().find_child("Player1Spawn")
+	var spawn_position: Node2D = Level.find_child("Player1Spawn", true, false)
+	PlayerSpawner.spawn({ "id": id, "position": spawn_position.position })
 
 ##  Remove a player.
 func remove_player(id: int) -> void:
