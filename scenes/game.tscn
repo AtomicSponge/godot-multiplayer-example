@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://w7ppkuj2u8xf"]
+[gd_scene load_steps=11 format=3 uid="uid://w7ppkuj2u8xf"]
 
 [ext_resource type="Script" uid="uid://h06b0folvp5a" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="Script" uid="uid://cqpc42xkco1cf" path="res://scripts/player_spawner.gd" id="2_0tnpc"]
 [ext_resource type="Script" uid="uid://cmfgtkrms7cw8" path="res://addons/ui_controller/ui_anchor.gd" id="3_0tnpc"]
+[ext_resource type="Script" uid="uid://b13j3mwckj10" path="res://scripts/enemy_spawner.gd" id="3_vtaks"]
 [ext_resource type="PackedScene" uid="uid://bwfl26xnfov72" path="res://uis/game_ui.tscn" id="4_vtaks"]
 [ext_resource type="PackedScene" uid="uid://e4rs23vw3k7e" path="res://uis/host_ui.tscn" id="5_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://623iroan7rog" path="res://uis/main_ui.tscn" id="7_kvuet"]
@@ -32,6 +33,7 @@ script = ExtResource("2_0tnpc")
 
 [node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("../Enemies")
+script = ExtResource("3_vtaks")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 visible = false
