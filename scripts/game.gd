@@ -5,7 +5,7 @@ class_name Game extends Node
 @onready var PlayerSpawner: MultiplayerSpawner = $PlayerSpawner
 @onready var HUD: CanvasLayer = $HUD
 
-##  Start a game and if server replicate the level.
+##  Start a new game and if server replicate the level.
 func start_game():
 	GameState.GAME_RUNNING = true
 	HUD.show()
@@ -52,11 +52,12 @@ func end_game(why: String = ""):
 ##  Continue the game to the next stage.
 func proceed_game() -> void:
 	HUD.hide()
-	load_level.call_deferred(load("res://scenes/levels/level1.tscn"))
 	#  Reset player list
 	for node in Players.get_children():
 		Players.remove_child(node)
 		node.queue_free()
+	#  Load the next level
+	load_level.call_deferred(load("res://scenes/levels/level1.tscn"))
 	#  Spawn already connected players
 	for id in multiplayer.get_peers():
 		spawn_player(id)
