@@ -11,7 +11,7 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	if not is_inside_tree() or not multiplayer.has_multiplayer_peer() or not is_multiplayer_authority():
+	if not multiplayer.is_server():
 		return
 
 	var direction_x: float = -1
