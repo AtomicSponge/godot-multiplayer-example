@@ -1,6 +1,6 @@
 extends MultiplayerSpawner
 
-var PLAYER: PackedScene = preload("res://scenes/player.tscn")
+var PLAYER: PackedScene = preload("res://scenes/players/player.tscn")
 
 func _make_player(data: Dictionary) -> Node:
 	var player: Node = PLAYER.instantiate()
