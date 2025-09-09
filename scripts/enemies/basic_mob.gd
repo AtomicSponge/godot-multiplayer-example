@@ -1,4 +1,4 @@
-class_name BasicMob extends RigidBody2D
+class_name BasicMob extends CharacterBody2D
 
 const WALK_SPEED: float = 350.0
 const CHASE_SPEED: float = 500.0
@@ -10,8 +10,9 @@ var _state: States = States.WALKING
 func _ready() -> void:
 	pass
 
-func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	var velocity: Vector2 = state.get_linear_velocity()
+func _physics_process(delta: float) -> void:
+	if not is_inside_tree() or not multiplayer.has_multiplayer_peer() or not is_multiplayer_authority():
+		return
 
 	var direction_x: float = -1
 	var direction_y: float = -1
@@ -26,4 +27,4 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
 		velocity.y = move_toward(velocity.y, 0, WALK_SPEED)
 
-	state.set_linear_velocity(velocity)
+	move_and_slide()

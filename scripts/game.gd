@@ -74,7 +74,8 @@ func load_level(scene: PackedScene) -> void:
 ##  Spawn a player.
 func spawn_player(id: int) -> void:
 	var spawn_position: Node2D = Level.find_child("Player1Spawn", true, false)
-	PlayerSpawner.spawn({ "id": id, "position": spawn_position.position })
+	if spawn_position != null:
+		PlayerSpawner.spawn({ "id": id, "position": spawn_position.position })
 
 ##  Remove a player.
 func remove_player(id: int) -> void:
