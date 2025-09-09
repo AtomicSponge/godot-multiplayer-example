@@ -18,6 +18,7 @@ properties/2/spawn = true
 properties/2/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_ykyjo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
