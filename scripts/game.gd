@@ -59,9 +59,9 @@ func proceed_game() -> void:
 	load_level.call_deferred(load("res://scenes/levels/level1.tscn"))
 	#  Spawn already connected players
 	for id in multiplayer.get_peers():
-		spawn_player(id)
+		spawn_player.call_deferred(id)
 	#  Spawn server (main) player
-	spawn_player(1)
+	spawn_player.call_deferred(1)
 	HUD.show()
 
 ##  Load a level.  Call deferred.
@@ -73,7 +73,6 @@ func load_level(scene: PackedScene) -> void:
 
 ##  Spawn a player.
 func spawn_player(id: int) -> void:
-	#var spawn_position: Node2D = get_tree().get_root().find_child("Player1Spawn")
 	var spawn_position: Node2D = Level.find_child("Player1Spawn", true, false)
 	PlayerSpawner.spawn({ "id": id, "position": spawn_position.position })
 
