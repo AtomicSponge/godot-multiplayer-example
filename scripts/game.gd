@@ -93,6 +93,9 @@ func _ready() -> void:
 
 	UiController.open_menu("MainUI")
 
+func _process(delta: float) -> void:
+	if not GameState.GAME_RUNNING: return
+
 func _unhandled_input(event: InputEvent) -> void:
 	#  Handle in-game menu only if the game is running
 	if not GameState.GAME_RUNNING: return

@@ -10,7 +10,7 @@ var moveState: MovementStates = MovementStates.WALKING
 func _ready() -> void:
 	pass
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not multiplayer.is_server():
 		return
 

@@ -13,7 +13,8 @@ config_version=5
 config/name="Project Venus"
 run/main_scene="uid://w7ppkuj2u8xf"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://gfx/player.svg"
+boot_splash/show_image=false
+config/icon="uid://c1gne6drf2eul"
 
 [autoload]
 
