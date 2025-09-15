@@ -71,7 +71,7 @@ func load_level(scene: PackedScene) -> void:
 		node.queue_free()
 	Level.add_child(scene.instantiate())
 
-##  Spawn a player.
+##  Spawn a player.  Call deferred.
 func spawn_player(id: int) -> void:
 	var spawn_position: Node2D = Level.find_child("Player1Spawn", true, false)
 	if spawn_position != null:
