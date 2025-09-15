@@ -1,21 +1,28 @@
 class_name BasicMob extends CharacterBody2D
 
-const WALK_SPEED: float = 350.0
+@onready var MovementTimer: Timer = $MovementTimer
+
+const WALK_SPEED: float = 200.0
 const CHASE_SPEED: float = 500.0
+
+var direction_x: float = (randi() % 3) - 1
+var direction_y: float = (randi() % 3) - 1
 
 enum MovementStates { WALKING, CHASING, ATTACKING }
 
 var moveState: MovementStates = MovementStates.WALKING
 
+func change_direction() -> void:
+	direction_x = (randi() % 3) - 1
+	direction_y = (randi() % 3) - 1
+	MovementTimer.start(randi() % 2)
+
 func _ready() -> void:
-	pass
+	MovementTimer.timeout.connect(change_direction)
 
 func _physics_process(_delta: float) -> void:
 	if not multiplayer.is_server():
 		return
-
-	var direction_x: float = -1
-	var direction_y: float = -1
 
 	if moveState == MovementStates.WALKING:
 		velocity.x = direction_x * WALK_SPEED
