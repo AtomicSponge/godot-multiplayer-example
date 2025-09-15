@@ -25,7 +25,7 @@ func _ready() -> void:
 	if not multiplayer.is_server():
 		set_process(false)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _physics_process(_delta: float) -> void:

@@ -17,7 +17,7 @@ size = Vector2(491, 25)
 [node name="PlayerSpawners" type="Node" parent="."]
 
 [node name="Player1Spawn" type="Node2D" parent="PlayerSpawners"]
-position = Vector2(640, 384)
+position = Vector2(448, 320)
 
 [node name="EnemySpawners" type="Node" parent="."]
 
