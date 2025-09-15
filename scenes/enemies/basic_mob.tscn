@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bys7kf1ydhw6r"]
+[gd_scene load_steps=6 format=3 uid="uid://bys7kf1ydhw6r"]
 
 [ext_resource type="Script" uid="uid://cq4exn7hpg0ns" path="res://scripts/enemies/basic_mob.gd" id="1_hjk8o"]
 [ext_resource type="Texture2D" uid="uid://cfyxtagwwvjfm" path="res://gfx/enemy.svg" id="2_1um0f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjk8o"]
 size = Vector2(96, 95)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1um0f"]
+radius = 240.566
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1um0f"]
 properties/0/path = NodePath(".:position")
@@ -17,13 +20,16 @@ properties/1/replication_mode = 1
 [node name="BasicMob" type="CharacterBody2D"]
 script = ExtResource("1_hjk8o")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="MobSprite" type="Sprite2D" parent="."]
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_1um0f")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="MobHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_hjk8o")
+
+[node name="ChaseArea" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1um0f")
 
 [node name="MovementTimer" type="Timer" parent="."]
 one_shot = true
