@@ -27,6 +27,8 @@ func start_game():
 
 ##  End the game and close the network connection.
 func end_game(why: String = ""):
+	GameState.GAME_RUNNING = false
+	HUD.hide()
 	if multiplayer.is_server():
 		if multiplayer.peer_connected.is_connected(spawn_player):
 			multiplayer.peer_connected.disconnect(spawn_player)
@@ -35,8 +37,6 @@ func end_game(why: String = ""):
 	else:
 		if multiplayer.peer_disconnected.is_connected(handle_peer_disconnect):
 			multiplayer.peer_disconnected.disconnect(handle_peer_disconnect)
-	HUD.hide()
-	GameState.GAME_RUNNING = false
 	for node in Players.get_children():
 		Players.remove_child(node)
 		node.queue_free()
