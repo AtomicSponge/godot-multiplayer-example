@@ -13,8 +13,8 @@ var current_speed: float = WALK_SPEED
 func update_player_name() -> void:
 	NameLabel.set_text(Globals.NAME)
 
-#func _enter_tree() -> void:
-	#set_multiplayer_authority(name.to_int())
+func _enter_tree() -> void:
+	set_multiplayer_authority(name.to_int())
 
 func _ready() -> void:
 	PlayerCamera.enabled = is_multiplayer_authority()
