@@ -29,9 +29,10 @@ texture = ExtResource("2_1um0f")
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_hjk8o")
 
-[node name="ChaseArea" type="CollisionShape2D" parent="."]
+[node name="ChaseArea" type="Area2D" parent="."]
+
+[node name="ActivactionArea" type="CollisionShape2D" parent="ChaseArea"]
 shape = SubResource("CircleShape2D_1um0f")
-disabled = true
 
 [node name="MovementTimer" type="Timer" parent="."]
 one_shot = true
