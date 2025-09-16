@@ -19,12 +19,12 @@ func start_game():
 
 		#  Spawn already connected players
 		for id in multiplayer.get_peers():
-			spawn_player.call_deferred(id)
+			spawn_player.call_deferred(id, "Player1Spawn")
 		#  Spawn the server (main) player
-		spawn_player.call_deferred(1)
-		#  FOR TESTING
+		spawn_player.call_deferred(1, "Player1Spawn")
+		#  SPAWN SOME MOBS FOR TESTING
 		for n in 20:
-			spawn_enemy.call_deferred("basic_mob", Vector2(0, 0))
+			spawn_enemy.call_deferred("basic_mob", "SpawnLocation1")
 	#  We are not server
 	else:
 		multiplayer.peer_disconnected.connect(handle_peer_disconnect)
@@ -74,7 +74,7 @@ func proceed_game() -> void:
 	load_level.call_deferred(load("res://scenes/levels/level1.tscn"))
 	#  Spawn already connected players
 	for id in multiplayer.get_peers():
-		spawn_player.call_deferred(id)
+		spawn_player.call_deferred(id, "Player1Spawn")
 	#  Spawn server (main) player
 	spawn_player.call_deferred(1)
 	HUD.show()
@@ -87,8 +87,8 @@ func load_level(scene: PackedScene) -> void:
 	Level.add_child(scene.instantiate())
 
 ##  Spawn a player.  Call deferred.
-func spawn_player(id: int) -> void:
-	var spawn_position: Node2D = Level.find_child("Player1Spawn", true, false)
+func spawn_player(id: int, spawn_location: String) -> void:
+	var spawn_position: Node2D = Level.find_child(spawn_location, true, false)
 	if spawn_position != null:
 		PlayerSpawner.spawn({ "id": id, "position": spawn_position.position })
 
@@ -98,9 +98,11 @@ func remove_player(id: int) -> void:
 	Players.get_node(str(id)).queue_free()
 
 ##  Spawn a new enemy.
-func spawn_enemy(type: String, location: Vector2) -> void:
+func spawn_enemy(type: String, spawn_location: String) -> void:
 	if not multiplayer.is_server(): return
-	EnemySpawner.spawn({ "type": type, "position": location })
+	var spawn_position: Node2D = Level.find_child(spawn_location, true, false)
+	spawn_position.progress_ratio = randf()
+	EnemySpawner.spawn({ "type": type, "position": spawn_position.position })
 
 ##  Handle a player leaving the game.
 func handle_peer_disconnect(id: int) -> void:
