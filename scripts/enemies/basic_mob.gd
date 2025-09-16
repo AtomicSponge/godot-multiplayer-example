@@ -1,4 +1,4 @@
-class_name BasicMob extends CharacterBody2D
+class_name BasicMob extends Enemy
 
 @onready var MovementTimer: Timer = $MovementTimer
 
@@ -20,10 +20,7 @@ func change_direction() -> void:
 	MovementTimer.start(randi() % 2)
 
 func _ready() -> void:
-	set_physics_process(multiplayer.is_server())
-	if not multiplayer.is_server():
-		set_process(false)
-	else:
+	if multiplayer.is_server():
 		MovementTimer.timeout.connect(change_direction)
 
 func _process(_delta: float) -> void:
