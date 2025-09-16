@@ -57,6 +57,10 @@ func _physics_process(_delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, current_speed)
 		return
 
+	if input.running:
+		current_speed = RUN_SPEED
+	else:
+		current_speed = WALK_SPEED
 	var direction = input.direction
 	if direction:
 		velocity.x = direction.x * current_speed
