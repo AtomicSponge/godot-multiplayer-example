@@ -2,6 +2,7 @@ class_name Game extends Node
 
 @onready var Level: Node = $Level
 @onready var Players: Node = $Players
+@onready var Enemies: Node = $Enemies
 @onready var PlayerSpawner: MultiplayerSpawner = $PlayerSpawner
 @onready var EnemySpawner: MultiplayerSpawner = $EnemySpawner
 @onready var HUD: CanvasLayer = $HUD
@@ -41,9 +42,15 @@ func end_game(why: String = ""):
 	else:
 		if multiplayer.peer_disconnected.is_connected(handle_peer_disconnect):
 			multiplayer.peer_disconnected.disconnect(handle_peer_disconnect)
+	#  Remove all players
 	for node in Players.get_children():
 		Players.remove_child(node)
 		node.queue_free()
+	#  Remove all enemies
+	for node in Enemies.get_children():
+		Enemies.remove_child(node)
+		node.queue_free()
+	#  Remove the level
 	for node in Level.get_children():
 		Level.remove_child(node)
 		node.queue_free()
@@ -55,6 +62,10 @@ func end_game(why: String = ""):
 ##  Continue the game to the next stage.
 func proceed_game() -> void:
 	HUD.hide()
+	#  Remove all enemies
+	for node in Enemies.get_children():
+		Enemies.remove_child(node)
+		node.queue_free()
 	#  Reset player list
 	for node in Players.get_children():
 		Players.remove_child(node)
