@@ -16,6 +16,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	PlayerCamera.enabled = is_multiplayer_authority()
+	set_physics_process(multiplayer.is_server())
 	if not is_multiplayer_authority(): return
 	EventBus.UpdatePlayerName.connect(update_player_name)
 	NameLabel.set_text(Globals.NAME)
@@ -47,5 +48,5 @@ func _input(_event: InputEvent) -> void:
 		velocity.y = move_toward(velocity.y, 0, current_speed)
 
 func _physics_process(_delta: float) -> void:
-	if not is_multiplayer_authority(): return
+	#if not is_multiplayer_authority(): return
 	move_and_slide()
