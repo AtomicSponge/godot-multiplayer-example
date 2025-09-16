@@ -3,6 +3,7 @@ class_name Game extends Node
 @onready var Level: Node = $Level
 @onready var Players: Node = $Players
 @onready var PlayerSpawner: MultiplayerSpawner = $PlayerSpawner
+@onready var EnemySpawner: MultiplayerSpawner = $EnemySpawner
 @onready var HUD: CanvasLayer = $HUD
 
 ##  Start a new game and if server replicate the level.
@@ -81,6 +82,10 @@ func spawn_player(id: int) -> void:
 func remove_player(id: int) -> void:
 	if not Players.has_node(str(id)): return
 	Players.get_node(str(id)).queue_free()
+
+func spawn_mob() -> void:
+	#EnemySpawner.spawn({"position": mob_spawn_location})
+	pass
 
 ##  Handle a player leaving the game.
 func handle_peer_disconnect(id: int) -> void:

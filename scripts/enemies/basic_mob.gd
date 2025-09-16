@@ -2,7 +2,7 @@ class_name BasicMob extends CharacterBody2D
 
 @onready var MovementTimer: Timer = $MovementTimer
 
-const WALK_SPEED: float = 150.0
+const WALK_SPEED: float = 100.0
 const CHASE_SPEED: float = 500.0
 
 var direction_x: float = (randi() % 3) - 1
