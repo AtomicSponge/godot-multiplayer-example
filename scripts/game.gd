@@ -19,11 +19,11 @@ func start_game():
 
 		#  Spawn already connected players
 		for id in multiplayer.get_peers():
-			spawn_player.call_deferred(id, "Player1Spawn")
+			spawn_player.call_deferred(id)
 		#  Spawn the server (main) player
-		spawn_player.call_deferred(1, "Player1Spawn")
+		spawn_player.call_deferred(1)
 		#  SPAWN SOME MOBS FOR TESTING
-		for n in 20:
+		for n in 40:
 			spawn_enemy.call_deferred("basic_mob", "SpawnLocation1")
 	#  We are not server
 	else:
@@ -87,8 +87,8 @@ func load_level(scene: PackedScene) -> void:
 	Level.add_child(scene.instantiate())
 
 ##  Spawn a player.  Call deferred.
-func spawn_player(id: int, spawn_location: String) -> void:
-	var spawn_position: Node2D = Level.find_child(spawn_location, true, false)
+func spawn_player(id: int) -> void:
+	var spawn_position: Node2D = Level.find_child("PlayerSpawn", true, false)
 	if spawn_position != null:
 		PlayerSpawner.spawn({ "id": id, "position": spawn_position.position })
 
