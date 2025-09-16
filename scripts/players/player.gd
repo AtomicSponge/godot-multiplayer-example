@@ -3,9 +3,11 @@ class_name Player extends CharacterBody2D
 @onready var PlayerCamera: Camera2D = $PlayerCamera
 @onready var NameLabel: Label = $NameLabel
 
+@onready var input = $InputSynchronizer
+
 const WALK_SPEED: float = 450.0
 const RUN_SPEED: float = 650.0
-var current_speed: float = 0.0
+var current_speed: float = WALK_SPEED
 
 ##  Update the player display name
 func update_player_name() -> void:
@@ -16,11 +18,13 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	PlayerCamera.enabled = is_multiplayer_authority()
+	set_physics_process(multiplayer.is_server())
 	if not is_multiplayer_authority(): return
 	EventBus.UpdatePlayerName.connect(update_player_name)
 	NameLabel.set_text(Globals.NAME)
 
 func _input(_event: InputEvent) -> void:
+	return
 	if not is_multiplayer_authority(): return
 
 	# Stop input handling if the menu or console is opened
@@ -47,5 +51,17 @@ func _input(_event: InputEvent) -> void:
 		velocity.y = move_toward(velocity.y, 0, current_speed)
 
 func _physics_process(_delta: float) -> void:
-	if not is_multiplayer_authority(): return
+	# Stop input handling if the menu or console is opened
+	if GameState.GAME_MENU_OPENED or Console.is_opened():
+		velocity.x = move_toward(velocity.x, 0, current_speed)
+		velocity.y = move_toward(velocity.y, 0, current_speed)
+		return
+
+	var direction = input.direction
+	if direction:
+		velocity.x = direction.x * current_speed
+		velocity.y = direction.y * current_speed
+	else:
+		velocity.x = move_toward(velocity.x, 0, current_speed)
+		velocity.y = move_toward(velocity.y, 0, current_speed)
 	move_and_slide()
