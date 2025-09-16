@@ -22,7 +22,7 @@ func change_direction() -> void:
 func _ready() -> void:
 	if not multiplayer.is_server():
 		set_process(false)
-		MovementTimer.timeout.connect(change_direction)
+	MovementTimer.timeout.connect(change_direction)
 
 func _process(_delta: float) -> void:
 	pass
