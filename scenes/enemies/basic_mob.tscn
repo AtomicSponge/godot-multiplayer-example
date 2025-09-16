@@ -18,6 +18,7 @@ properties/1/spawn = true
 properties/1/replication_mode = 1
 
 [node name="BasicMob" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_hjk8o")
 
 [node name="MobSprite" type="Sprite2D" parent="."]
@@ -30,6 +31,7 @@ shape = SubResource("RectangleShape2D_hjk8o")
 
 [node name="ChaseArea" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1um0f")
+disabled = true
 
 [node name="MovementTimer" type="Timer" parent="."]
 one_shot = true

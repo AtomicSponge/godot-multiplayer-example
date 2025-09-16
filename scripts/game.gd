@@ -25,6 +25,7 @@ func start_game():
 	else:
 		multiplayer.peer_disconnected.connect(handle_peer_disconnect)
 	HUD.show()
+	spawn_enemy.call_deferred("basic_mob")
 
 ##  End the game and close the network connection.
 func end_game(why: String = ""):
@@ -85,7 +86,7 @@ func remove_player(id: int) -> void:
 
 ##  Spawn a new enemy.
 func spawn_enemy(type: String) -> void:
-	EnemySpawner.spawn({ "type": "basic_mob", "position": Vector2(0, 0) })
+	EnemySpawner.spawn({ "type": type, "position": Vector2(0, 0) })
 
 ##  Handle a player leaving the game.
 func handle_peer_disconnect(id: int) -> void:
