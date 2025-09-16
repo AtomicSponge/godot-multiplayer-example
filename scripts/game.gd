@@ -83,9 +83,9 @@ func remove_player(id: int) -> void:
 	if not Players.has_node(str(id)): return
 	Players.get_node(str(id)).queue_free()
 
-func spawn_mob() -> void:
-	#EnemySpawner.spawn({"position": mob_spawn_location})
-	pass
+##  Spawn a new enemy.
+func spawn_enemy(type: String) -> void:
+	EnemySpawner.spawn({ "type": "basic_mob", "position": Vector2(0, 0) })
 
 ##  Handle a player leaving the game.
 func handle_peer_disconnect(id: int) -> void:

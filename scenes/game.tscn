@@ -32,6 +32,7 @@ script = ExtResource("2_0tnpc")
 [node name="Enemies" type="Node" parent="."]
 
 [node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bys7kf1ydhw6r")
 spawn_path = NodePath("../Enemies")
 script = ExtResource("3_vtaks")
 
