@@ -21,11 +21,12 @@ func start_game():
 			spawn_player.call_deferred(id)
 		#  Spawn the server (main) player
 		spawn_player.call_deferred(1)
+		#  FOR TESTING
+		spawn_enemy.call_deferred("basic_mob")
 	#  We are not server
 	else:
 		multiplayer.peer_disconnected.connect(handle_peer_disconnect)
 	HUD.show()
-	spawn_enemy.call_deferred("basic_mob")
 
 ##  End the game and close the network connection.
 func end_game(why: String = ""):
@@ -86,6 +87,7 @@ func remove_player(id: int) -> void:
 
 ##  Spawn a new enemy.
 func spawn_enemy(type: String) -> void:
+	if not multiplayer.is_server(): return
 	EnemySpawner.spawn({ "type": type, "position": Vector2(0, 0) })
 
 ##  Handle a player leaving the game.
