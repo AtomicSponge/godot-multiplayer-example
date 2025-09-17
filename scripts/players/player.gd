@@ -22,7 +22,7 @@ func _ready() -> void:
 	EventBus.UpdatePlayerName.connect(update_player_name)
 	NameLabel.set_text(Globals.NAME)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	running = Input.is_action_pressed("run")
 
