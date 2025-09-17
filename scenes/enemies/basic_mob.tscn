@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bys7kf1ydhw6r"]
+[gd_scene load_steps=7 format=3 uid="uid://bys7kf1ydhw6r"]
 
 [ext_resource type="Script" uid="uid://cq4exn7hpg0ns" path="res://scripts/enemies/basic_mob.gd" id="1_hjk8o"]
 [ext_resource type="Texture2D" uid="uid://cfyxtagwwvjfm" path="res://gfx/enemy.svg" id="2_1um0f"]
@@ -8,6 +8,9 @@ size = Vector2(96, 95)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1um0f"]
 radius = 240.566
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0tnuk"]
+radius = 556.723
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1um0f"]
 properties/0/path = NodePath(".:position")
@@ -33,6 +36,11 @@ shape = SubResource("RectangleShape2D_hjk8o")
 
 [node name="ActivactionArea" type="CollisionShape2D" parent="ChaseArea"]
 shape = SubResource("CircleShape2D_1um0f")
+
+[node name="LossArea" type="Area2D" parent="."]
+
+[node name="DeactivactionArea" type="CollisionShape2D" parent="LossArea"]
+shape = SubResource("CircleShape2D_0tnuk")
 
 [node name="MovementTimer" type="Timer" parent="."]
 one_shot = true
