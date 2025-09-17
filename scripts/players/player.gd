@@ -19,7 +19,6 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	PlayerCamera.enabled = is_multiplayer_authority()
 	if not is_multiplayer_authority(): return
-	set_physics_process(multiplayer.is_server())
 	EventBus.UpdatePlayerName.connect(update_player_name)
 	NameLabel.set_text(Globals.NAME)
 
