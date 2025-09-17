@@ -19,7 +19,7 @@ func change_direction() -> void:
 	MovementTimer.start(randi() % 2)
 
 ##  Change the state of the enemy
-func change_state(old_state: int, new_state: int) -> void:
+func change_state(_old_state: MovementStates, new_state: MovementStates) -> void:
 	moveState = new_state
 
 func set_target_player(player: Player) -> void:
