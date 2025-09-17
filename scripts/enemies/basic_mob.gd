@@ -3,7 +3,7 @@ class_name BasicMob extends Enemy
 @onready var MovementTimer: Timer = $MovementTimer
 
 const WALK_SPEED: float = 100.0
-const CHASE_SPEED: float = 500.0
+const CHASE_SPEED: float = 450.0
 
 var directionX: float = (randi() % 3) - 1
 var directionY: float = (randi() % 3) - 1
