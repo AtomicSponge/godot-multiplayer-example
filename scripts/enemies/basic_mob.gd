@@ -8,9 +8,7 @@ const CHASE_SPEED: float = 500.0
 var direction_x: float = (randi() % 3) - 1
 var direction_y: float = (randi() % 3) - 1
 
-enum MovementStates { WALKING, CHASING, ATTACKING }
-
-var moveState: MovementStates = MovementStates.WALKING
+var targetPlayer: Player = null
 
 func change_direction() -> void:
 	if randf() >= 0.33:
@@ -19,14 +17,20 @@ func change_direction() -> void:
 		direction_y = (randi() % 3) - 1
 	MovementTimer.start(randi() % 2)
 
+func change_state(old_state: int, new_state: int) -> void:
+	pass
+
 func _ready() -> void:
 	if multiplayer.is_server():
 		MovementTimer.timeout.connect(change_direction)
+		moveState = MovementStates.WALKING
 
 func _process(_delta: float) -> void:
 	pass
 
 func _physics_process(_delta: float) -> void:
+	if targetPlayer != null:
+		change_state(moveState, MovementStates.CHASING)
 	if moveState == MovementStates.WALKING:
 		velocity.x = direction_x * WALK_SPEED
 		velocity.y = direction_y * WALK_SPEED
