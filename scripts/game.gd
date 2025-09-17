@@ -103,9 +103,9 @@ func remove_player(id: int) -> void:
 func spawn_enemy(type: String, spawn_location: String, progress: float = 0.0) -> void:
 	if not multiplayer.is_server(): return
 	var spawn_position: Node = Level.find_child(spawn_location, true, false)
-	if spawn_position is PathFollow2D:
-		spawn_position.progress_ratio = progress
 	if spawn_position != null:
+		if spawn_position is PathFollow2D:
+			spawn_position.progress_ratio = progress
 		EnemySpawner.spawn({ "type": type, "position": spawn_position.position })
 
 ##  Handle a player leaving the game.
