@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bys7kf1ydhw6r"]
+[gd_scene load_steps=8 format=3 uid="uid://bys7kf1ydhw6r"]
 
 [ext_resource type="Script" uid="uid://cq4exn7hpg0ns" path="res://scripts/enemies/basic_mob.gd" id="1_hjk8o"]
 [ext_resource type="Texture2D" uid="uid://cfyxtagwwvjfm" path="res://gfx/enemy.svg" id="2_1um0f"]
+[ext_resource type="Script" uid="uid://dr7iq2pc3agkp" path="res://scripts/enemies/basic_mob_synchronizer.gd" id="3_0tnuk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjk8o"]
 size = Vector2(96, 95)
@@ -46,5 +47,9 @@ shape = SubResource("CircleShape2D_0tnuk")
 one_shot = true
 autostart = true
 
-[node name="MobSynchronizer" type="MultiplayerSynchronizer" parent="."]
+[node name="BasicMobSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_1um0f")
+script = ExtResource("3_0tnuk")
+
+[connection signal="body_entered" from="ChaseArea" to="BasicMobSynchronizer" method="_on_chase_area_body_entered"]
+[connection signal="body_exited" from="LossArea" to="BasicMobSynchronizer" method="_on_loss_area_body_exited"]

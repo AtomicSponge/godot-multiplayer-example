@@ -5,20 +5,25 @@ class_name BasicMob extends Enemy
 const WALK_SPEED: float = 100.0
 const CHASE_SPEED: float = 500.0
 
-var direction_x: float = (randi() % 3) - 1
-var direction_y: float = (randi() % 3) - 1
+var directionX: float = (randi() % 3) - 1
+var directionY: float = (randi() % 3) - 1
 
 var targetPlayer: Player = null
 
+##  Randomly change enemy direction durring its walk cycle
 func change_direction() -> void:
 	if randf() >= 0.33:
-		direction_x = (randi() % 3) - 1
+		directionX = (randi() % 3) - 1
 	if randf() >= 0.33:
-		direction_y = (randi() % 3) - 1
+		directionY = (randi() % 3) - 1
 	MovementTimer.start(randi() % 2)
 
-func change_state(_old_state: int, _new_state: int) -> void:
-	pass
+##  Change the state of the enemy
+func change_state(old_state: int, new_state: int) -> void:
+	moveState = new_state
+
+func set_target_player(player: Player) -> void:
+	targetPlayer = player
 
 func _ready() -> void:
 	if multiplayer.is_server():
@@ -31,13 +36,14 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	if targetPlayer != null:
 		change_state(moveState, MovementStates.CHASING)
-	
+	else:
+		change_state(moveState, MovementStates.WALKING)
+
 	match moveState:
 		MovementStates.WALKING:
-			velocity.x = direction_x * WALK_SPEED
-			velocity.y = direction_y * WALK_SPEED
+			velocity.x = directionX * WALK_SPEED
+			velocity.y = directionY * WALK_SPEED
 		MovementStates.CHASING:
-			look_at(targetPlayer.position)
 			var pos: Vector2 = position.direction_to(targetPlayer.position)
 			velocity.x = pos.x * CHASE_SPEED
 			velocity.y = pos.y * CHASE_SPEED
