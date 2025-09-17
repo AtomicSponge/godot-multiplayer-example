@@ -4,7 +4,7 @@ enum MovementStates { WALKING, CHASING, ATTACKING }
 var moveState: MovementStates = MovementStates.WALKING
 
 ##  Override in each enemy to implement state changing
-func change_state(old_state: int, new_state: int) -> void:
+func change_state(_old_state: int, _new_state: int) -> void:
 	pass
 
 func _ready() -> void:

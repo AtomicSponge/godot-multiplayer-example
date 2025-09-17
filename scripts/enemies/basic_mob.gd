@@ -17,7 +17,7 @@ func change_direction() -> void:
 		direction_y = (randi() % 3) - 1
 	MovementTimer.start(randi() % 2)
 
-func change_state(old_state: int, new_state: int) -> void:
+func change_state(_old_state: int, _new_state: int) -> void:
 	pass
 
 func _ready() -> void:
