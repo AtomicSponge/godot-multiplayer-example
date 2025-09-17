@@ -24,7 +24,7 @@ func start_game():
 		spawn_player.call_deferred(1)
 		#  SPAWN SOME MOBS FOR TESTING
 		for n in 20:
-			spawn_enemy.call_deferred("basic_mob", "SpawnLocation1")
+			spawn_enemy.call_deferred("basic_mob", "SpawnLocation1", randf())
 	#  We are not server
 	else:
 		multiplayer.peer_disconnected.connect(handle_peer_disconnect)
@@ -76,7 +76,7 @@ func proceed_game() -> void:
 	load_level.call_deferred(load("res://scenes/levels/level1.tscn"))
 	#  Spawn already connected players
 	for id in multiplayer.get_peers():
-		spawn_player.call_deferred(id, "Player1Spawn")
+		spawn_player.call_deferred(id)
 	#  Spawn server (main) player
 	spawn_player.call_deferred(1)
 	HUD.show()
@@ -88,7 +88,7 @@ func load_level(scene: PackedScene) -> void:
 		node.queue_free()
 	Level.add_child(scene.instantiate())
 
-##  Spawn a player.  Call deferred.
+##  Spawn a player.  Call deferred or after the level loaded.
 func spawn_player(id: int) -> void:
 	var spawn_position: Node2D = Level.find_child("PlayerSpawn", true, false)
 	if spawn_position != null:
@@ -99,11 +99,12 @@ func remove_player(id: int) -> void:
 	if not Players.has_node(str(id)): return
 	Players.get_node(str(id)).queue_free()
 
-##  Spawn a new enemy.
-func spawn_enemy(type: String, spawn_location: String) -> void:
+##  Spawn a new enemy.  Call after the level loaded.
+func spawn_enemy(type: String, spawn_location: String, progress: float = 0.0) -> void:
 	if not multiplayer.is_server(): return
-	var spawn_position: Node2D = Level.find_child(spawn_location, true, false)
-	spawn_position.progress_ratio = randf()
+	var spawn_position: Node = Level.find_child(spawn_location, true, false)
+	if spawn_position is PathFollow2D:
+		spawn_position.progress_ratio = progress
 	EnemySpawner.spawn({ "type": type, "position": spawn_position.position })
 
 ##  Handle a player leaving the game.
