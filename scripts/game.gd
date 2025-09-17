@@ -105,7 +105,8 @@ func spawn_enemy(type: String, spawn_location: String, progress: float = 0.0) ->
 	var spawn_position: Node = Level.find_child(spawn_location, true, false)
 	if spawn_position is PathFollow2D:
 		spawn_position.progress_ratio = progress
-	EnemySpawner.spawn({ "type": type, "position": spawn_position.position })
+	if spawn_position != null:
+		EnemySpawner.spawn({ "type": type, "position": spawn_position.position })
 
 ##  Handle a player leaving the game.
 func handle_peer_disconnect(id: int) -> void:
