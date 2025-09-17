@@ -38,6 +38,9 @@ func _physics_process(_delta: float) -> void:
 			velocity.y = direction_y * WALK_SPEED
 		MovementStates.CHASING:
 			look_at(targetPlayer.position)
+			var pos: Vector2 = position.direction_to(targetPlayer.position)
+			velocity.x = pos.x * CHASE_SPEED
+			velocity.y = pos.y * CHASE_SPEED
 		MovementStates.ATTACKING:
 			velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
 			velocity.y = move_toward(velocity.y, 0, WALK_SPEED)
