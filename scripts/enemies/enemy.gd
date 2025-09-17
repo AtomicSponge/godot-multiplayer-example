@@ -4,8 +4,9 @@ enum MovementStates { IDLE, WALKING, CHASING, ATTACKING }
 var moveState: MovementStates = MovementStates.IDLE
 
 ##  Override in each enemy to implement state changing
-func change_state(_old_state: MovementStates, new_state: MovementStates) -> void:
+func change_state(old_state: MovementStates, new_state: MovementStates) -> MovementStates:
 	moveState = new_state
+	return old_state
 
 func _ready() -> void:
 	#  Handle all enemy physics on server only
