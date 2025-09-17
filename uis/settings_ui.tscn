@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://f5ai2d3pw2g7" path="res://scripts/uis/settings_ui.gd" id="1_jnd6j"]
 
 [node name="SettingsUI" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_jnd6j")
 
 [node name="Panel" type="Panel" parent="."]

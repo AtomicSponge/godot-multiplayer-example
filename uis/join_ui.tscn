@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ce4yfe1uq7i1a" path="res://scripts/uis/join_ui.gd" id="1_56aiv"]
 
-[node name="SearchUI" type="CanvasLayer"]
+[node name="JoinUI" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_56aiv")
 
 [node name="Panel" type="Panel" parent="."]
