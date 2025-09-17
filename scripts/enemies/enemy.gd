@@ -1,7 +1,7 @@
 class_name Enemy extends CharacterBody2D
 
-enum MovementStates { WALKING, CHASING, ATTACKING }
-var moveState: MovementStates = MovementStates.WALKING
+enum MovementStates { IDLE, WALKING, CHASING, ATTACKING }
+var moveState: MovementStates = MovementStates.IDLE
 
 ##  Override in each enemy to implement state changing
 func change_state(_old_state: int, _new_state: int) -> void:
