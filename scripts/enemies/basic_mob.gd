@@ -31,14 +31,15 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	if targetPlayer != null:
 		change_state(moveState, MovementStates.CHASING)
-	if moveState == MovementStates.WALKING:
-		velocity.x = direction_x * WALK_SPEED
-		velocity.y = direction_y * WALK_SPEED
-	elif moveState == MovementStates.CHASING:
-		velocity.x = direction_x * CHASE_SPEED
-		velocity.y = direction_y * CHASE_SPEED
-	elif moveState == MovementStates.ATTACKING:
-		velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
-		velocity.y = move_toward(velocity.y, 0, WALK_SPEED)
+	
+	match moveState:
+		MovementStates.WALKING:
+			velocity.x = direction_x * WALK_SPEED
+			velocity.y = direction_y * WALK_SPEED
+		MovementStates.CHASING:
+			look_at(targetPlayer.position)
+		MovementStates.ATTACKING:
+			velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
+			velocity.y = move_toward(velocity.y, 0, WALK_SPEED)
 
 	move_and_slide()
