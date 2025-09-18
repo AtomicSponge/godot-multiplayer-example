@@ -1,3 +1,4 @@
+##  Base class for creating a new enemy scene
 class_name Enemy extends CharacterBody2D
 
 enum MovementStates { IDLE, WALKING, CHASING, ATTACKING }

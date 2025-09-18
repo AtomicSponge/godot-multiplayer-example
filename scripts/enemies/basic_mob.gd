@@ -1,3 +1,4 @@
+##  An enemy that will wander around or chase the player if they come in range
 class_name BasicMob extends Enemy
 
 @onready var MovementTimer: Timer = $MovementTimer
