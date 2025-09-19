@@ -52,7 +52,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3vyb7"]
-size = Vector2(96, 101)
+size = Vector2(85, 108)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ykyjo"]
 properties/0/path = NodePath(".:position")
@@ -73,7 +73,7 @@ motion_mode = 1
 script = ExtResource("1_ykyjo")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(1.375, -82.877)
+position = Vector2(1.375, -79.877)
 scale = Vector2(0.205688, 0.177854)
 sprite_frames = SubResource("SpriteFrames_qb7t6")
 animation = &"Move"
@@ -81,7 +81,7 @@ frame = 7
 frame_progress = 0.231239
 
 [node name="PlayerHitbox" type="CollisionShape2D" parent="."]
-position = Vector2(1, -1.5)
+position = Vector2(-0.5, -5)
 shape = SubResource("RectangleShape2D_3vyb7")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
