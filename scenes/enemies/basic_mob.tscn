@@ -42,7 +42,7 @@ radius = 33.0606
 radius = 240.566
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tnuk"]
-radius = 556.723
+radius = 492.001
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1um0f"]
 properties/0/path = NodePath(".:position")
@@ -64,13 +64,11 @@ position = Vector2(-3, 1)
 shape = SubResource("CircleShape2D_deofh")
 
 [node name="ChaseArea" type="Area2D" parent="."]
-visible = false
 
 [node name="ActivactionArea" type="CollisionShape2D" parent="ChaseArea"]
 shape = SubResource("CircleShape2D_1um0f")
 
 [node name="LossArea" type="Area2D" parent="."]
-visible = false
 
 [node name="DeactivactionArea" type="CollisionShape2D" parent="LossArea"]
 shape = SubResource("CircleShape2D_0tnuk")
