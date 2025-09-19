@@ -17,9 +17,6 @@ radius = 556.723
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
 
 [node name="BasicMob" type="CharacterBody2D"]
 motion_mode = 1
