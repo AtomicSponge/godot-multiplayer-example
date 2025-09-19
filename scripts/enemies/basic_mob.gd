@@ -30,6 +30,7 @@ func _ready() -> void:
 		moveState = MovementStates.WALKING
 
 func _physics_process(_delta: float) -> void:
+	#  Process moving on server only
 	if multiplayer.is_server():
 		if targetPlayer != null:
 			change_state(moveState, MovementStates.CHASING)
@@ -47,6 +48,7 @@ func _physics_process(_delta: float) -> void:
 			MovementStates.ATTACKING:
 				velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
 				velocity.y = move_toward(velocity.y, 0, WALK_SPEED)
+	#  Play animations
 	match moveState:
 		MovementStates.CHASING:
 			MobSprite.play("Fly", 4.0)  #  Quad speed
