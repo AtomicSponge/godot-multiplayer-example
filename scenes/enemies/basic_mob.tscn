@@ -1,11 +1,42 @@
-[gd_scene load_steps=8 format=3 uid="uid://bys7kf1ydhw6r"]
+[gd_scene load_steps=14 format=3 uid="uid://bys7kf1ydhw6r"]
 
 [ext_resource type="Script" uid="uid://cq4exn7hpg0ns" path="res://scripts/enemies/basic_mob.gd" id="1_hjk8o"]
-[ext_resource type="Texture2D" uid="uid://cfyxtagwwvjfm" path="res://gfx/enemy.svg" id="2_1um0f"]
+[ext_resource type="Texture2D" uid="uid://j2ccogxeykl3" path="res://gfx/basic_mob/fly_0.png" id="2_4a7r8"]
 [ext_resource type="Script" uid="uid://dr7iq2pc3agkp" path="res://scripts/enemies/basic_mob_synchronizer.gd" id="3_0tnuk"]
+[ext_resource type="Texture2D" uid="uid://cye61q0a2nek7" path="res://gfx/basic_mob/fly_1.png" id="3_6jiqk"]
+[ext_resource type="Texture2D" uid="uid://d1273j45c2cl2" path="res://gfx/basic_mob/fly_2.png" id="4_wd3yg"]
+[ext_resource type="Texture2D" uid="uid://5b3bqg7ismth" path="res://gfx/basic_mob/fly_4.png" id="5_o3po7"]
+[ext_resource type="Texture2D" uid="uid://clfjwqtld1tp1" path="res://gfx/basic_mob/fly_3.png" id="6_jou20"]
+[ext_resource type="Texture2D" uid="uid://yl84h4pr0wv" path="res://gfx/basic_mob/fly_5.png" id="7_gbpul"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjk8o"]
-size = Vector2(96, 95)
+[sub_resource type="SpriteFrames" id="SpriteFrames_2wyjh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4a7r8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6jiqk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wd3yg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o3po7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jou20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gbpul")
+}],
+"loop": true,
+"name": &"Fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_deofh"]
+radius = 33.0606
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1um0f"]
 radius = 240.566
@@ -22,20 +53,24 @@ properties/0/replication_mode = 1
 motion_mode = 1
 script = ExtResource("1_hjk8o")
 
-[node name="MobSprite" type="Sprite2D" parent="."]
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_1um0f")
+[node name="MobSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -49)
+scale = Vector2(0.132568, 0.134277)
+sprite_frames = SubResource("SpriteFrames_2wyjh")
+animation = &"Fly"
 
 [node name="MobHitbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_hjk8o")
+position = Vector2(-3, 1)
+shape = SubResource("CircleShape2D_deofh")
 
 [node name="ChaseArea" type="Area2D" parent="."]
+visible = false
 
 [node name="ActivactionArea" type="CollisionShape2D" parent="ChaseArea"]
 shape = SubResource("CircleShape2D_1um0f")
 
 [node name="LossArea" type="Area2D" parent="."]
+visible = false
 
 [node name="DeactivactionArea" type="CollisionShape2D" parent="LossArea"]
 shape = SubResource("CircleShape2D_0tnuk")

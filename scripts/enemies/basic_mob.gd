@@ -1,6 +1,7 @@
 ##  An enemy that will wander around or chase the player if they come in range
 class_name BasicMob extends Enemy
 
+@onready var MobSprite: AnimatedSprite2D = $MobSprite
 @onready var MovementTimer: Timer = $MovementTimer
 
 const WALK_SPEED: float = 100.0
