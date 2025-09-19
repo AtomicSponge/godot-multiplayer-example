@@ -25,30 +25,32 @@ func set_target_player(player: Player) -> void:
 	targetPlayer = player
 
 func _ready() -> void:
-	set_physics_process(multiplayer.is_server())
 	if multiplayer.is_server():
 		MovementTimer.timeout.connect(change_direction)
 		moveState = MovementStates.WALKING
 
 func _physics_process(_delta: float) -> void:
-	if targetPlayer != null:
-		change_state(moveState, MovementStates.CHASING)
-	else:
-		change_state(moveState, MovementStates.WALKING)
+	if multiplayer.is_server():
+		if targetPlayer != null:
+			change_state(moveState, MovementStates.CHASING)
+		else:
+			change_state(moveState, MovementStates.WALKING)
 
+		match moveState:
+			MovementStates.WALKING:
+				velocity.x = directionX * WALK_SPEED
+				velocity.y = directionY * WALK_SPEED
+			MovementStates.CHASING:
+				var pos: Vector2 = position.direction_to(targetPlayer.position)
+				velocity.x = pos.x * CHASE_SPEED
+				velocity.y = pos.y * CHASE_SPEED
+			MovementStates.ATTACKING:
+				velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
+				velocity.y = move_toward(velocity.y, 0, WALK_SPEED)
 	match moveState:
-		MovementStates.WALKING:
-			velocity.x = directionX * WALK_SPEED
-			velocity.y = directionY * WALK_SPEED
-			MobSprite.play("Fly")
 		MovementStates.CHASING:
-			var pos: Vector2 = position.direction_to(targetPlayer.position)
-			velocity.x = pos.x * CHASE_SPEED
-			velocity.y = pos.y * CHASE_SPEED
 			MobSprite.play("Fly", 4.0)  #  Quad speed
-		MovementStates.ATTACKING:
-			velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
-			velocity.y = move_toward(velocity.y, 0, WALK_SPEED)
+		_:
 			MobSprite.play("Fly")
 
 	move_and_slide()

@@ -8,7 +8,3 @@ var moveState: MovementStates = MovementStates.IDLE
 func change_state(old_state: MovementStates, new_state: MovementStates) -> MovementStates:
 	moveState = new_state
 	return old_state
-
-func _ready() -> void:
-	#  Handle all enemy physics on server only
-	set_physics_process(multiplayer.is_server())
