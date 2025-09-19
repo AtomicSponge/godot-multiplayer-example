@@ -9,7 +9,6 @@ const CHASE_SPEED: float = 450.0
 
 var directionX: float = (randi() % 3) - 1
 var directionY: float = (randi() % 3) - 1
-@export var movingLeft: bool = false
 
 var targetPlayer: Player = null
 
