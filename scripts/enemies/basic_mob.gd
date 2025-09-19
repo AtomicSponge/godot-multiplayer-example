@@ -9,6 +9,7 @@ const CHASE_SPEED: float = 450.0
 
 var directionX: float = (randi() % 3) - 1
 var directionY: float = (randi() % 3) - 1
+var movingLeft: bool = false
 
 var targetPlayer: Player = null
 
@@ -28,6 +29,7 @@ func _ready() -> void:
 	if multiplayer.is_server():
 		MovementTimer.timeout.connect(change_direction)
 		moveState = MovementStates.WALKING
+		change_direction()
 
 func _physics_process(_delta: float) -> void:
 	#  Process moving on server only
@@ -41,10 +43,18 @@ func _physics_process(_delta: float) -> void:
 			MovementStates.WALKING:
 				velocity.x = directionX * WALK_SPEED
 				velocity.y = directionY * WALK_SPEED
+				if directionX < 0:
+					MobSprite.flip_h = true
+				else:
+					MobSprite.flip_h = false
 			MovementStates.CHASING:
 				var pos: Vector2 = position.direction_to(targetPlayer.position)
 				velocity.x = pos.x * CHASE_SPEED
 				velocity.y = pos.y * CHASE_SPEED
+				if pos.x < 0:
+					MobSprite.flip_h = true
+				else:
+					MobSprite.flip_h = false
 			MovementStates.ATTACKING:
 				velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
 				velocity.y = move_toward(velocity.y, 0, WALK_SPEED)

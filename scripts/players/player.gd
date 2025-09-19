@@ -51,6 +51,11 @@ func _physics_process(_delta: float) -> void:
 	if GameState.GAME_MENU_OPENED or Console.is_opened():
 		change_state(moveState, MovementStates.IDLE)
 
+	if movingLeft:
+		PlayerSprite.flip_h = true
+	else:
+		PlayerSprite.flip_h = false
+
 	match moveState:
 		MovementStates.IDLE:
 			velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
@@ -59,18 +64,10 @@ func _physics_process(_delta: float) -> void:
 		MovementStates.WALKING:
 			velocity.x = direction.x * WALK_SPEED
 			velocity.y = direction.y * WALK_SPEED
-			if movingLeft:
-				PlayerSprite.flip_h = true
-			else:
-				PlayerSprite.flip_h = false
 			PlayerSprite.play("Move")
 		MovementStates.RUNNING:
 			velocity.x = direction.x * RUN_SPEED
 			velocity.y = direction.y * RUN_SPEED
-			if movingLeft:
-				PlayerSprite.flip_h = true
-			else:
-				PlayerSprite.flip_h = false
 			PlayerSprite.play("Move", 2.0)  #  Double speed
 
 	move_and_slide()
