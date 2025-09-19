@@ -4,6 +4,7 @@ class_name Enemy extends CharacterBody2D
 enum MovementStates { IDLE, WALKING, CHASING, ATTACKING }
 var moveState: MovementStates = MovementStates.IDLE
 
+##  If the enemy is moving to the left.  For animation purposes.  Exported for synchronizer.
 @export var movingLeft: bool = false
 
 ##  Change states.  Override to implement custom functionality.
