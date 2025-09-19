@@ -39,12 +39,15 @@ func _physics_process(_delta: float) -> void:
 		MovementStates.WALKING:
 			velocity.x = directionX * WALK_SPEED
 			velocity.y = directionY * WALK_SPEED
+			MobSprite.play("Fly")
 		MovementStates.CHASING:
 			var pos: Vector2 = position.direction_to(targetPlayer.position)
 			velocity.x = pos.x * CHASE_SPEED
 			velocity.y = pos.y * CHASE_SPEED
+			MobSprite.play("Fly", 2.0)
 		MovementStates.ATTACKING:
 			velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
 			velocity.y = move_toward(velocity.y, 0, WALK_SPEED)
+			MobSprite.play("Fly")
 
 	move_and_slide()
