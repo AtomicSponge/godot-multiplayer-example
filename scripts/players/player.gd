@@ -32,6 +32,7 @@ func _ready() -> void:
 	PlayerSprite.play("Idle")
 
 func _process(_delta: float) -> void:
+	if not is_multiplayer_authority(): return
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if direction:
 		if direction.x < 0:
@@ -46,6 +47,7 @@ func _process(_delta: float) -> void:
 		change_state(moveState, MovementStates.IDLE)
 
 func _physics_process(_delta: float) -> void:
+	if not is_multiplayer_authority(): return
 	# Stop input handling if the menu or console is opened
 	if GameState.GAME_MENU_OPENED or Console.is_opened():
 		change_state(moveState, MovementStates.IDLE)
