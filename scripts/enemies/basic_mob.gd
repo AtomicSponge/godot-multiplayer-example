@@ -25,6 +25,7 @@ func set_target_player(player: Player) -> void:
 	targetPlayer = player
 
 func _ready() -> void:
+	set_physics_process(multiplayer.is_server())
 	if multiplayer.is_server():
 		MovementTimer.timeout.connect(change_direction)
 		moveState = MovementStates.WALKING
