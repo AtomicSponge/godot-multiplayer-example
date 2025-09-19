@@ -9,7 +9,7 @@ enum MovementStates { IDLE, WALKING, RUNNING }
 
 const WALK_SPEED: float = 450.0
 const RUN_SPEED: float = 650.0
-@export var direction: Vector2 = Vector2()
+var direction: Vector2 = Vector2()
 @export var movingLeft: bool = false
 
 ##  Update the player display name
@@ -26,7 +26,6 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	PlayerCamera.enabled = is_multiplayer_authority()
-	set_physics_process(multiplayer.is_server())
 	if not is_multiplayer_authority(): return
 	EventBus.UpdatePlayerName.connect(update_player_name)
 	NameLabel.set_text(Globals.NAME)
