@@ -64,8 +64,7 @@ func show_output(seconds: float = 4.0) -> void:
 		_show_console(false)
 		ConsoleInput.hide()
 		await get_tree().create_timer(seconds).timeout
-		if visible:
-			_hide_console(false)
+		_hide_console(false)
 
 func _process_command(command: String) -> void:
 	if not command.begins_with("/"): return
