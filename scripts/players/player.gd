@@ -47,7 +47,7 @@ func _process(_delta: float) -> void:
 		change_state(moveState, MovementStates.IDLE)
 
 func _physics_process(_delta: float) -> void:
-	# Stop input handling if the menu or console is opened
+	# Stop movement if the menu or console is opened
 	if GameState.GAME_MENU_OPENED or Console.is_opened():
 		change_state(moveState, MovementStates.IDLE)
 
