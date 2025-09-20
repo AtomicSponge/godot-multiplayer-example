@@ -43,24 +43,28 @@ color = Color(0, 0.341176, 0, 1)
 
 [node name="PlayerSpawn1" type="Area2D" parent="PlayerSpawners"]
 position = Vector2(320, -200)
+metadata/_edit_group_ = true
 
 [node name="SpawnArea" type="CollisionShape2D" parent="PlayerSpawners/PlayerSpawn1"]
 shape = SubResource("CircleShape2D_83ld5")
 
 [node name="PlayerSpawn2" type="Area2D" parent="PlayerSpawners"]
 position = Vector2(896, -200)
+metadata/_edit_group_ = true
 
 [node name="SpawnArea" type="CollisionShape2D" parent="PlayerSpawners/PlayerSpawn2"]
 shape = SubResource("CircleShape2D_x6ivy")
 
 [node name="PlayerSpawn3" type="Area2D" parent="PlayerSpawners"]
 position = Vector2(320, -576)
+metadata/_edit_group_ = true
 
 [node name="SpawnArea" type="CollisionShape2D" parent="PlayerSpawners/PlayerSpawn3"]
 shape = SubResource("CircleShape2D_4tcl0")
 
 [node name="PlayerSpawn4" type="Area2D" parent="PlayerSpawners"]
 position = Vector2(896, -576)
+metadata/_edit_group_ = true
 
 [node name="SpawnArea" type="CollisionShape2D" parent="PlayerSpawners/PlayerSpawn4"]
 shape = SubResource("CircleShape2D_dd0lh")
@@ -120,6 +124,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="ArenaWallLeft" type="StaticBody2D" parent="."]
 position = Vector2(-1608, -968)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArenaWallLeft"]
 position = Vector2(40, 1280)
@@ -127,6 +132,7 @@ shape = SubResource("RectangleShape2D_83ld5")
 
 [node name="ArenaWallRight" type="StaticBody2D" parent="."]
 position = Vector2(2808, -960)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArenaWallRight"]
 position = Vector2(40, 1280)
@@ -134,6 +140,7 @@ shape = SubResource("RectangleShape2D_83ld5")
 
 [node name="ArenaWallTop" type="StaticBody2D" parent="."]
 position = Vector2(-1592, -1024)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArenaWallTop"]
 position = Vector2(2227, 23)
@@ -141,6 +148,7 @@ shape = SubResource("RectangleShape2D_x6ivy")
 
 [node name="ArenaWallBottom" type="StaticBody2D" parent="."]
 position = Vector2(-1592, 1544)
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ArenaWallBottom"]
 position = Vector2(2227, 23)
