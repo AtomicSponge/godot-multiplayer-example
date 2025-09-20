@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cjsdm848ojsr2"]
+[gd_scene load_steps=15 format=3 uid="uid://cjsdm848ojsr2"]
 
 [ext_resource type="Script" uid="uid://bu0y2wed2itqv" path="res://scripts/players/player.gd" id="1_ykyjo"]
 [ext_resource type="Texture2D" uid="uid://djb6yh323gkt2" path="res://gfx/player/idle_0.png" id="2_es4m5"]
@@ -68,6 +68,9 @@ properties/3/path = NodePath(".:movingLeft")
 properties/3/spawn = true
 properties/3/replication_mode = 2
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_es4m5"]
+radius = 81.0987
+
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_ykyjo")
@@ -101,3 +104,9 @@ vertical_alignment = 1
 
 [node name="WeaponLocation" type="Node2D" parent="."]
 position = Vector2(30, 2)
+
+[node name="SpawnTester" type="Area2D" parent="."]
+
+[node name="SpawnArea" type="CollisionShape2D" parent="SpawnTester"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_es4m5")

@@ -1,4 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://tauj6umdt5sc"]
+[gd_scene load_steps=10 format=3 uid="uid://tauj6umdt5sc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_83ld5"]
+radius = 121.062
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x6ivy"]
+radius = 120.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4tcl0"]
+radius = 118.929
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dd0lh"]
+radius = 121.062
 
 [sub_resource type="Curve2D" id="Curve2D_83ld5"]
 _data = {
@@ -29,17 +41,29 @@ color = Color(0, 0.341176, 0, 1)
 
 [node name="PlayerSpawners" type="Node" parent="."]
 
-[node name="PlayerSpawn1" type="Node2D" parent="PlayerSpawners"]
-position = Vector2(192, -200)
+[node name="PlayerSpawn1" type="Area2D" parent="PlayerSpawners"]
+position = Vector2(320, -200)
 
-[node name="PlayerSpawn2" type="Node2D" parent="PlayerSpawners"]
-position = Vector2(1088, -200)
+[node name="SpawnArea" type="CollisionShape2D" parent="PlayerSpawners/PlayerSpawn1"]
+shape = SubResource("CircleShape2D_83ld5")
 
-[node name="PlayerSpawn3" type="Node2D" parent="PlayerSpawners"]
-position = Vector2(192, -576)
+[node name="PlayerSpawn2" type="Area2D" parent="PlayerSpawners"]
+position = Vector2(896, -200)
 
-[node name="PlayerSpawn4" type="Node2D" parent="PlayerSpawners"]
-position = Vector2(1083, -576)
+[node name="SpawnArea" type="CollisionShape2D" parent="PlayerSpawners/PlayerSpawn2"]
+shape = SubResource("CircleShape2D_x6ivy")
+
+[node name="PlayerSpawn3" type="Area2D" parent="PlayerSpawners"]
+position = Vector2(320, -576)
+
+[node name="SpawnArea" type="CollisionShape2D" parent="PlayerSpawners/PlayerSpawn3"]
+shape = SubResource("CircleShape2D_4tcl0")
+
+[node name="PlayerSpawn4" type="Area2D" parent="PlayerSpawners"]
+position = Vector2(896, -576)
+
+[node name="SpawnArea" type="CollisionShape2D" parent="PlayerSpawners/PlayerSpawn4"]
+shape = SubResource("CircleShape2D_dd0lh")
 
 [node name="EnemySpawners" type="Node" parent="."]
 
