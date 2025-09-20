@@ -37,7 +37,7 @@ func is_network_connected() -> bool:
 
 ##  Search for lobbies.  Provide an optional string to search for an exact match.
 func search_for_lobbies(search_string: String = "") -> void:
-	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_DEFAULT)
+	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_FAR)
 	if not search_string.is_empty():
 		Steam.addRequestLobbyListStringFilter("name", search_string, Steam.LOBBY_COMPARISON_EQUAL)
 	Steam.requestLobbyList()
