@@ -92,6 +92,7 @@ func load_level(scene: PackedScene) -> void:
 func spawn_player(id: int) -> void:
 	var spawners: Node = Level.find_child("PlayerSpawners", true, false)
 	var spawn_position: Area2D = null
+	#  Look for any overlapping areas and pick an empty spawn location
 	for spawner in spawners.get_children():
 		if spawner is Area2D:
 			if spawner.get_overlapping_areas():
