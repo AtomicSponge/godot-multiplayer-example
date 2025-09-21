@@ -6,6 +6,7 @@ class_name Game extends Node
 @onready var PlayerSpawner: MultiplayerSpawner = $PlayerSpawner
 @onready var EnemySpawner: MultiplayerSpawner = $EnemySpawner
 @onready var HUD: CanvasLayer = $HUD
+@onready var AlertDialog: AcceptDialog = $AlertDialog
 
 ##  Start a new game and if server replicate the level.
 func start_game():
@@ -59,7 +60,8 @@ func end_game(why: String = ""):
 	NetworkHandler.close_connection()
 	UiController.open_menu("MainUI")
 	if not why.is_empty():
-		Globals.alert(why)
+		AlertDialog.dialog_text = why
+		AlertDialog.visible = true
 
 ##  Continue the game to the next stage.
 func proceed_game() -> void:

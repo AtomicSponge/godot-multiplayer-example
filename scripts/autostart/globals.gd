@@ -25,16 +25,6 @@ func quit_game() -> void:
 	NetworkHandler.close_connection()
 	get_tree().quit()
 
-##  Show an alert
-func alert(text: String) -> void:
-	var dialog = AcceptDialog.new()
-	dialog.dialog_text = text
-	dialog.dialog_hide_on_ok = false # Disable default behaviour
-	dialog.connect('confirmed', dialog.queue_free) # Free node on OK
-	var scene_tree = Engine.get_main_loop()
-	scene_tree.current_scene.add_child(dialog)
-	dialog.popup_centered()
-
 ##  Set an achievement locally and on Steam
 func set_achievement(this_achievement: String) -> void:
 	if not achievements.has(this_achievement):
