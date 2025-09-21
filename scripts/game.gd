@@ -60,8 +60,7 @@ func end_game(why: String = ""):
 	NetworkHandler.close_connection()
 	UiController.open_menu("MainUI")
 	if not why.is_empty():
-		AlertDialog.dialog_text = why
-		AlertDialog.visible = true
+		Console.add_text(why)
 
 ##  Continue the game to the next stage.
 func proceed_game() -> void:
