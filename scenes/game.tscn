@@ -50,6 +50,9 @@ grow_horizontal = 0
 script = ExtResource("8_gee14")
 metadata/_custom_type_script = "uid://b3wipabqqg4tm"
 
+[node name="AlertDialog" type="AcceptDialog" parent="HUD"]
+initial_position = 1
+
 [node name="UiAnchor" type="Node" parent="."]
 script = ExtResource("3_0tnpc")
 _menus = Dictionary[String, PackedScene]({
