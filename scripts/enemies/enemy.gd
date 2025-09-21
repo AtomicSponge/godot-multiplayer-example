@@ -1,8 +1,13 @@
-##  Base class for creating a new enemy scene
+##  Base class for creating a new enemy scene.
 class_name Enemy extends CharacterBody2D
 
-##  List of movement states
-enum MovementStates { IDLE, WALKING, CHASING, ATTACKING }
+##  List of movement states.
+enum MovementStates {
+	IDLE,		##  Enemy is standing still.
+	WALKING,	##  Enemy is walking around.
+	CHASING,	##  Enemy is chasing a player.
+	ATTACKING	##  Enemy is attacking a player.
+}
 ##  Current movement state.  Exported for synchronizer.
 @export var moveState: MovementStates = MovementStates.IDLE
 
