@@ -29,11 +29,9 @@ func start_game():
 	else:
 		multiplayer.peer_disconnected.connect(handle_peer_disconnect)
 	HUD.show()
-	get_tree().paused = false
 
 ##  End the game and close the network connection.
 func end_game(why: String = ""):
-	get_tree().paused = true
 	GameState.GAME_RUNNING = false
 	HUD.hide()
 	if multiplayer.is_server():
@@ -126,7 +124,6 @@ func _ready() -> void:
 	EventBus.StartGame.connect(start_game)
 	EventBus.EndGame.connect(end_game)
 	
-	get_tree().paused = true
 	UiController.open_menu("MainUI")
 
 func _process(_delta: float) -> void:
