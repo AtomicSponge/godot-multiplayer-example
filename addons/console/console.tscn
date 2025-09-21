@@ -104,6 +104,7 @@ libraries = {
 }
 
 [node name="ConsoleTimer" type="Timer" parent="."]
+process_mode = 3
 one_shot = true
 
 [connection signal="text_changed" from="ConsoleContainer/ConsoleInput" to="." method="_on_console_input_text_changed"]
