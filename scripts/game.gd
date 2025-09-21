@@ -6,7 +6,6 @@ class_name Game extends Node
 @onready var PlayerSpawner: MultiplayerSpawner = $PlayerSpawner
 @onready var EnemySpawner: MultiplayerSpawner = $EnemySpawner
 @onready var HUD: CanvasLayer = $HUD
-@onready var AlertDialog: AcceptDialog = $HUD/AlertDialog
 
 ##  Start a new game and if server replicate the level.
 func start_game():
