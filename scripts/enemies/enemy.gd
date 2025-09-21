@@ -10,7 +10,6 @@ enum MovementStates {
 }
 ##  Current movement state.  Exported for synchronizer.
 @export var moveState: MovementStates = MovementStates.IDLE
-
 ##  If the enemy is moving to the left.  For animation purposes.  Exported for synchronizer.
 @export var movingLeft: bool = false
 
