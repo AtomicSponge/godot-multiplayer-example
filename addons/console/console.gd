@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var ConsoleInput: LineEdit = $ConsoleContainer/ConsoleInput
 @onready var FaderA: AnimationPlayer = $ConsoleContainer/ConsoleWindow/FaderA
 @onready var FaderB: AnimationPlayer = $ConsoleContainer/ConsoleInput/FaderB
+@onready var ConsoleTimer: Timer = $ConsoleTimer
 
 var _command_table: Dictionary[StringName, Callable] = {}
 
@@ -63,8 +64,7 @@ func show_output(seconds: float = 4.0) -> void:
 	if not visible:
 		_show_console(false)
 		ConsoleInput.hide()
-		await get_tree().create_timer(seconds).timeout
-		_hide_console(false)
+		ConsoleTimer.start(seconds)
 
 func _process_command(command: String) -> void:
 	if not command.begins_with("/"): return
@@ -114,5 +114,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			_hide_console()
 
 func _ready() -> void:
+	ConsoleTimer.timeout.connect(_hide_console.bind(false))
 	set_window_bg_color(Color(0.0, 0.0, 0.0, 0.2))
 	hide()

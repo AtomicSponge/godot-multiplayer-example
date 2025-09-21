@@ -103,5 +103,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_p25ai")
 }
 
+[node name="ConsoleTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="text_changed" from="ConsoleContainer/ConsoleInput" to="." method="_on_console_input_text_changed"]
 [connection signal="text_submitted" from="ConsoleContainer/ConsoleInput" to="." method="_on_console_input_text_submitted"]
