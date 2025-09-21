@@ -91,7 +91,7 @@ func spawn_player(id: int) -> void:
 	var spawners: Node = Level.find_child("PlayerSpawners", true, false)
 	if spawners == null:  return
 	var spawn_position: Area2D = null
-	#  Look for any overlapping areas and pick an empty spawn location
+	#  Look for any overlapping bodies and pick an empty spawn location
 	for spawner in spawners.get_children():
 		if spawner is Area2D:
 			if spawner.has_overlapping_bodies():
