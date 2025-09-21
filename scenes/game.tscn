@@ -60,6 +60,3 @@ _menus = Dictionary[String, PackedScene]({
 "SettingsUI": ExtResource("9_ir15t")
 })
 metadata/_custom_type_script = "uid://cmfgtkrms7cw8"
-
-[node name="AlertDialog" type="AcceptDialog" parent="."]
-initial_position = 1
