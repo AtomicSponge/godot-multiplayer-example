@@ -20,6 +20,17 @@ var achievements: Dictionary[String, bool] = {
 	"Test2": false
 }
 
+## Display an alert
+func alert(text: String) -> void:
+	var dialog = AcceptDialog.new()
+	dialog.dialog_text = text
+	dialog.dialog_hide_on_ok = false # Disable default behaviour
+	dialog.connect('confirmed', dialog.queue_free)
+	dialog.connect('canceled', dialog.queue_free)
+	var scene_tree = Engine.get_main_loop()
+	scene_tree.current_scene.add_child(dialog)
+	dialog.popup_centered()
+
 ##  Quit the game
 func quit_game() -> void:
 	NetworkHandler.close_connection()

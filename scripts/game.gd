@@ -59,7 +59,7 @@ func end_game(why: String = ""):
 	NetworkHandler.close_connection()
 	UiController.open_menu("MainUI")
 	if not why.is_empty():
-		Console.add_text(why)
+		Globals.alert(why)
 
 ##  Continue the game to the next stage.
 func proceed_game() -> void:
