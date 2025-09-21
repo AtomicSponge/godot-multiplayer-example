@@ -24,6 +24,8 @@ var achievements: Dictionary[String, bool] = {
 func alert(text: String) -> void:
 	var dialog = AcceptDialog.new()
 	dialog.dialog_text = text
+	dialog.always_on_top = true
+	#dialog.mouse_passthrough = true
 	dialog.connect('confirmed', dialog.queue_free)
 	dialog.connect('canceled', dialog.queue_free)
 	var scene_tree = Engine.get_main_loop()
