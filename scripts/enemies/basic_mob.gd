@@ -32,31 +32,31 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	#  Process moving on server only
-	#if multiplayer.is_server():
-	if targetPlayer != null:
-		change_state(moveState, MovementStates.CHASING)
-	else:
-		change_state(moveState, MovementStates.WALKING)
+	if multiplayer.is_server():
+		if targetPlayer != null:
+			change_state(moveState, MovementStates.CHASING)
+		else:
+			change_state(moveState, MovementStates.WALKING)
 
-	match moveState:
-		MovementStates.WALKING:
-			velocity.x = directionX * WALK_SPEED
-			velocity.y = directionY * WALK_SPEED
-			if directionX < 0:
-				movingLeft = true
-			else:
-				movingLeft = false
-		MovementStates.CHASING:
-			var pos: Vector2 = position.direction_to(targetPlayer.position)
-			velocity.x = pos.x * CHASE_SPEED
-			velocity.y = pos.y * CHASE_SPEED
-			if pos.x < 0:
-				movingLeft = true
-			else:
-				movingLeft = false
-		MovementStates.ATTACKING:
-			velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
-			velocity.y = move_toward(velocity.y, 0, WALK_SPEED)
+		match moveState:
+			MovementStates.WALKING:
+				velocity.x = directionX * WALK_SPEED
+				velocity.y = directionY * WALK_SPEED
+				if directionX < 0:
+					movingLeft = true
+				else:
+					movingLeft = false
+			MovementStates.CHASING:
+				var pos: Vector2 = position.direction_to(targetPlayer.position)
+				velocity.x = pos.x * CHASE_SPEED
+				velocity.y = pos.y * CHASE_SPEED
+				if pos.x < 0:
+					movingLeft = true
+				else:
+					movingLeft = false
+			MovementStates.ATTACKING:
+				velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
+				velocity.y = move_toward(velocity.y, 0, WALK_SPEED)
 
 	#  Play animations
 	if movingLeft:
@@ -69,4 +69,5 @@ func _physics_process(_delta: float) -> void:
 		_:
 			MobSprite.play("Fly")
 
-	move_and_slide()
+	if multiplayer.is_server():
+		move_and_slide()
