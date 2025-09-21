@@ -94,7 +94,7 @@ func spawn_player(id: int) -> void:
 	#  Look for any overlapping areas and pick an empty spawn location
 	for spawner in spawners.get_children():
 		if spawner is Area2D:
-			if spawner.get_overlapping_areas():
+			if spawner.has_overlapping_bodies():
 				continue
 			else:
 				spawn_position = spawner
