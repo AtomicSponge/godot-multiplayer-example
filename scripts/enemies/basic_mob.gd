@@ -14,7 +14,6 @@ var targetPlayer: Player = null
 
 ##  Randomly change enemy direction durring its walk cycle.
 func change_direction() -> void:
-	if not multiplayer.is_server(): return
 	if randf() >= 0.33:
 		directionX = (randi() % 3) - 1
 	if randf() >= 0.33:
