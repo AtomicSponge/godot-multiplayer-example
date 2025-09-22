@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cjsdm848ojsr2"]
+[gd_scene load_steps=15 format=3 uid="uid://cjsdm848ojsr2"]
 
 [ext_resource type="Script" uid="uid://bu0y2wed2itqv" path="res://scripts/players/player.gd" id="1_ykyjo"]
 [ext_resource type="Texture2D" uid="uid://djb6yh323gkt2" path="res://gfx/player/idle_0.png" id="2_es4m5"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dmitssocab7b3" path="res://gfx/player/walk_5.png" id="8_f1232"]
 [ext_resource type="Texture2D" uid="uid://c7lau1yhbs5cr" path="res://gfx/player/walk_6.png" id="9_v7vuu"]
 [ext_resource type="Texture2D" uid="uid://rbu0xgrk22ch" path="res://gfx/player/walk_7.png" id="10_bdc4e"]
+[ext_resource type="Texture2D" uid="uid://ckqy1d4m4cu4k" path="res://gfx/weapon/weaponR1.png" id="11_fsrjl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qb7t6"]
 animations = [{
@@ -99,5 +100,10 @@ text = "player name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WeaponLocation" type="Node2D" parent="."]
-position = Vector2(30, 2)
+[node name="WeaponSprite" type="Sprite2D" parent="."]
+position = Vector2(-2.00002, -13)
+scale = Vector2(0.06, 0.057)
+texture = ExtResource("11_fsrjl")
+
+[node name="FireLocation" type="Node2D" parent="WeaponSprite"]
+position = Vector2(650, 403.509)
