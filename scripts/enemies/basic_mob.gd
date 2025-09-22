@@ -14,6 +14,7 @@ var targetPlayer: Player = null
 
 ##  Randomly change enemy direction durring its walk cycle.
 func change_direction() -> void:
+	if not multiplayer.is_server(): return
 	if randf() >= 0.33:
 		directionX = (randi() % 3) - 1
 	if randf() >= 0.33:
@@ -25,10 +26,10 @@ func set_target_player(player: Player) -> void:
 	targetPlayer = player
 
 func _ready() -> void:
-	if multiplayer.is_server():
-		MovementTimer.timeout.connect(change_direction)
-		moveState = MovementStates.WALKING
-		change_direction()
+	if not multiplayer.is_server(): return
+	MovementTimer.timeout.connect(change_direction)
+	moveState = MovementStates.WALKING
+	change_direction()
 
 func _physics_process(_delta: float) -> void:
 	#  Process moving on server only
