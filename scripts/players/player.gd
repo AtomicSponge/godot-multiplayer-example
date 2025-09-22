@@ -7,6 +7,7 @@ var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 @onready var NameLabel: Label = $NameLabel
 @onready var WeaponSprite: Sprite2D = $WeaponSprite
 @onready var FireLocation: Marker2D = $WeaponSprite/FireLocation
+@onready var ShotTimer: Timer = $ShotTimer
 
 enum MovementStates { IDLE, WALKING, RUNNING }
 @export var moveState: MovementStates = MovementStates.IDLE
@@ -55,8 +56,9 @@ func _process(_delta: float) -> void:
 		lookingLeft = false
 	WeaponSprite.look_at(get_global_mouse_position())
 
-	if Input.is_action_pressed("attack"):
+	if Input.is_action_pressed("attack") and ShotTimer.is_stopped():
 		fire_weapon.rpc()
+		ShotTimer.start()
 
 func _physics_process(_delta: float) -> void:
 	# Stop movement if the menu or console is opened

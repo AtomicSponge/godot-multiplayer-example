@@ -17,7 +17,7 @@ texture = ExtResource("1_8pgug")
 shape = SubResource("CircleShape2D_6kkh3")
 
 [node name="LifeTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
