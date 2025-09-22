@@ -106,7 +106,7 @@ scale = Vector2(0.06, 0.057)
 texture = ExtResource("11_fsrjl")
 
 [node name="FireLocation" type="Marker2D" parent="WeaponSprite"]
-position = Vector2(650, -70.1754)
+position = Vector2(633.334, -52.6316)
 
 [node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_ykyjo")

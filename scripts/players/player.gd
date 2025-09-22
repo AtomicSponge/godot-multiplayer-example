@@ -23,8 +23,9 @@ func update_player_name() -> void:
 @rpc("any_peer", "call_local")
 func fire_weapon() -> void:
 	var b: Bullet = bullet.instantiate()
-	owner.add_child(b)
-	b.position = FireLocation.global_position
+	add_child(b)
+	b.position = FireLocation.position
+	b.look_at(get_global_mouse_position())
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
@@ -52,6 +53,9 @@ func _process(_delta: float) -> void:
 	else:
 		lookingLeft = false
 	WeaponSprite.look_at(get_global_mouse_position())
+
+	if Input.is_action_pressed("attack"):
+		fire_weapon.rpc()
 
 func _physics_process(_delta: float) -> void:
 	# Stop movement if the menu or console is opened
