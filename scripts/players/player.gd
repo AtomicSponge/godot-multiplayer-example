@@ -1,9 +1,12 @@
 class_name Player extends CharacterBody2D
 
+var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
+
 @onready var PlayerSprite: AnimatedSprite2D = $PlayerSprite
 @onready var PlayerCamera: Camera2D = $PlayerCamera
 @onready var NameLabel: Label = $NameLabel
 @onready var WeaponSprite: Sprite2D = $WeaponSprite
+@onready var FireLocation: Marker2D = $WeaponSprite/FireLocation
 
 enum MovementStates { IDLE, WALKING, RUNNING }
 @export var moveState: MovementStates = MovementStates.IDLE
@@ -19,7 +22,9 @@ func update_player_name() -> void:
 
 @rpc("any_peer", "call_local")
 func fire_weapon() -> void:
-	pass
+	var b: Bullet = bullet.instantiate()
+	owner.add_child(b)
+	b.position = FireLocation.global_position
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
