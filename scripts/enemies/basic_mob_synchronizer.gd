@@ -5,11 +5,13 @@ extends MultiplayerSynchronizer
 func _on_chase_area_body_entered(body: Node2D) -> void:
 	if not is_inside_tree() or not multiplayer.has_multiplayer_peer() or not is_multiplayer_authority():
 		return
+	#  Check if there is no target and the body entered is a player
 	if basicMob.targetPlayer == null and body is Player:
 		basicMob.set_target_player(body)
 
 func _on_loss_area_body_exited(body: Node2D) -> void:
 	if not is_inside_tree() or not multiplayer.has_multiplayer_peer() or not is_multiplayer_authority():
 		return
+	#  If the target left is the targeted player, reset to null
 	if body == basicMob.targetPlayer:
 		basicMob.set_target_player(null)
