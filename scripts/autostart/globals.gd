@@ -68,7 +68,7 @@ func _ready() -> void:
 	var INIT: Dictionary = Steam.steamInitEx(480, true)
 	if INIT['status'] != 0:
 		OS.alert("Failed to initialise Steam. " + str(INIT['verbal']) + " Shutting down...")
-		quit_game()
+		get_tree().quit()
 		return
 
 	Steam.initRelayNetworkAccess()
@@ -81,7 +81,7 @@ func _ready() -> void:
 
 	if OWNED == false:
 		OS.alert("User does not own this game.")
-		quit_game()
+		get_tree().quit()
 		return
 
 	Steam.join_requested.connect(NetworkHandler._on_lobby_join_requested)
