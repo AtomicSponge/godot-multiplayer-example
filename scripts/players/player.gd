@@ -59,6 +59,8 @@ func _physics_process(_delta: float) -> void:
 		PlayerSprite.flip_h = false
 		WeaponSprite.flip_h = false
 
+	WeaponSprite.look_at(get_global_mouse_position())
+
 	match moveState:
 		MovementStates.IDLE:
 			velocity.x = move_toward(velocity.x, 0, WALK_SPEED)

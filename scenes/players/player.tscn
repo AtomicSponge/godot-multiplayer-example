@@ -87,9 +87,6 @@ shape = SubResource("RectangleShape2D_3vyb7")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 
-[node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_ykyjo")
-
 [node name="NameLabel" type="Label" parent="."]
 offset_left = -138.0
 offset_top = -88.0
@@ -101,9 +98,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
-position = Vector2(-2.00002, -13)
+position = Vector2(-1.52588e-05, 18)
 scale = Vector2(0.06, 0.057)
 texture = ExtResource("11_fsrjl")
 
 [node name="FireLocation" type="Node2D" parent="WeaponSprite"]
-position = Vector2(650, 403.509)
+position = Vector2(650, -70.1754)
+
+[node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ykyjo")
