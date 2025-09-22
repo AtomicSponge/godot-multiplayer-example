@@ -17,11 +17,6 @@ var direction: Vector2 = Vector2()
 func update_player_name() -> void:
 	NameLabel.set_text(Globals.NAME)
 
-##  Change states.  Returns old state.
-func change_state(old_state: MovementStates, new_state: MovementStates) -> MovementStates:
-	moveState = new_state
-	return old_state
-
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
@@ -41,17 +36,17 @@ func _process(_delta: float) -> void:
 		else:
 			movingLeft = false
 		if Input.is_action_pressed("run"):
-			change_state(moveState, MovementStates.RUNNING)
+			moveState = MovementStates.RUNNING
 		else:
-			change_state(moveState, MovementStates.WALKING)
+			moveState = MovementStates.WALKING
 	else:
-		change_state(moveState, MovementStates.IDLE)
+		moveState = MovementStates.IDLE
 	WeaponSprite.look_at(get_global_mouse_position())
 
 func _physics_process(_delta: float) -> void:
 	# Stop movement if the menu or console is opened
 	if GameState.GAME_MENU_OPENED or Console.is_opened():
-		change_state(moveState, MovementStates.IDLE)
+		moveState = MovementStates.IDLE
 
 	if movingLeft:
 		PlayerSprite.flip_h = true
