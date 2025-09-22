@@ -17,6 +17,10 @@ var direction: Vector2 = Vector2()
 func update_player_name() -> void:
 	NameLabel.set_text(Globals.NAME)
 
+@rpc("any_peer", "call_local")
+func fire_weapon() -> void:
+	pass
+
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
