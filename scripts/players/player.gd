@@ -11,7 +11,7 @@ enum MovementStates { IDLE, WALKING, RUNNING }
 const WALK_SPEED: float = 450.0
 const RUN_SPEED: float = 650.0
 var direction: Vector2 = Vector2()
-@export var movingLeft: bool = false
+@export var lookingLeft: bool = false
 
 ##  Update the player display name
 func update_player_name() -> void:
@@ -31,16 +31,17 @@ func _process(_delta: float) -> void:
 	if not is_multiplayer_authority(): return
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if direction:
-		if direction.x < 0:
-			movingLeft = true
-		else:
-			movingLeft = false
 		if Input.is_action_pressed("run"):
 			moveState = MovementStates.RUNNING
 		else:
 			moveState = MovementStates.WALKING
 	else:
 		moveState = MovementStates.IDLE
+
+	if get_local_mouse_position().x < 0:
+		lookingLeft = true
+	else:
+		lookingLeft = false
 	WeaponSprite.look_at(get_global_mouse_position())
 
 func _physics_process(_delta: float) -> void:
@@ -48,7 +49,7 @@ func _physics_process(_delta: float) -> void:
 	if GameState.GAME_MENU_OPENED or Console.is_opened():
 		moveState = MovementStates.IDLE
 
-	if movingLeft:
+	if lookingLeft:
 		PlayerSprite.flip_h = true
 		WeaponSprite.flip_v = true
 	else:
