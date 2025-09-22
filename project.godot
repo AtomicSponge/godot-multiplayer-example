@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Project Venus"
 run/main_scene="uid://w7ppkuj2u8xf"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/show_image=false
 config/icon="uid://c1gne6drf2eul"
 
@@ -118,4 +118,3 @@ textures/vram_compression/import_etc2_astc=true
 [steam]
 
 initialization/app_id=480
-initialization/initialize_on_startup=true
