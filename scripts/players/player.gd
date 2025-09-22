@@ -54,11 +54,10 @@ func _physics_process(_delta: float) -> void:
 
 	if movingLeft:
 		PlayerSprite.flip_h = true
-		WeaponSprite.flip_h = true
+		WeaponSprite.flip_v = true
 	else:
 		PlayerSprite.flip_h = false
-		WeaponSprite.flip_h = false
-
+		WeaponSprite.flip_v = false
 	WeaponSprite.look_at(get_global_mouse_position())
 
 	match moveState:
