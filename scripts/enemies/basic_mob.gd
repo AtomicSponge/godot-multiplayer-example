@@ -54,7 +54,7 @@ func _physics_process(_delta: float) -> void:
 					movingLeft = true
 				else:
 					movingLeft = false
-			MovementStates.ATTACKING:
+			_:
 				velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
 				velocity.y = move_toward(velocity.y, 0, WALK_SPEED)
 		move_and_slide()
