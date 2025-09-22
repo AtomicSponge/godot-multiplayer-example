@@ -13,6 +13,8 @@ func _process(delta: float) -> void:
 	position += transform.x * speed * delta
 
 func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		return
 	if body is Enemy:
 		pass
 	queue_free()
