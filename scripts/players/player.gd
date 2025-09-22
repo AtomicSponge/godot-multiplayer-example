@@ -46,6 +46,7 @@ func _process(_delta: float) -> void:
 			change_state(moveState, MovementStates.WALKING)
 	else:
 		change_state(moveState, MovementStates.IDLE)
+	WeaponSprite.look_at(get_global_mouse_position())
 
 func _physics_process(_delta: float) -> void:
 	# Stop movement if the menu or console is opened
@@ -58,7 +59,6 @@ func _physics_process(_delta: float) -> void:
 	else:
 		PlayerSprite.flip_h = false
 		WeaponSprite.flip_v = false
-	WeaponSprite.look_at(get_global_mouse_position())
 
 	match moveState:
 		MovementStates.IDLE:
