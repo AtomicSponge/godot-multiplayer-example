@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 @onready var PlayerSprite: AnimatedSprite2D = $PlayerSprite
 @onready var PlayerCamera: Camera2D = $PlayerCamera
 @onready var NameLabel: Label = $NameLabel
+@onready var WeaponSprite: Sprite2D = $WeaponSprite
 
 enum MovementStates { IDLE, WALKING, RUNNING }
 @export var moveState: MovementStates = MovementStates.IDLE
@@ -53,8 +54,10 @@ func _physics_process(_delta: float) -> void:
 
 	if movingLeft:
 		PlayerSprite.flip_h = true
+		WeaponSprite.flip_h = true
 	else:
 		PlayerSprite.flip_h = false
+		WeaponSprite.flip_h = false
 
 	match moveState:
 		MovementStates.IDLE:
