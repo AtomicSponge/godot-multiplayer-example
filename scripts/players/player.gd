@@ -24,9 +24,9 @@ func update_player_name() -> void:
 @rpc("any_peer", "call_local")
 func fire_weapon() -> void:
 	var b: Bullet = bullet.instantiate()
-	b.position = FireLocation.global_position
-	b.rotation = WeaponSprite.rotation
 	add_child(b)
+	b.global_position = FireLocation.global_position
+	b.rotation = WeaponSprite.rotation
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
