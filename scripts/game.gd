@@ -31,7 +31,7 @@ func start_game():
 	else:
 		multiplayer.peer_disconnected.connect(handle_peer_disconnect)
 	HUD.show()
-	Input.set_custom_mouse_cursor(crosshair, 0, Vector2(32,32))
+	Input.set_custom_mouse_cursor(crosshair, Input.CURSOR_ARROW, Vector2(32,32))
 
 ##  End the game and close the network connection.
 func end_game(why: String = ""):
