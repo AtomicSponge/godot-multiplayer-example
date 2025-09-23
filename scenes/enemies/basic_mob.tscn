@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bys7kf1ydhw6r"]
+[gd_scene load_steps=15 format=3 uid="uid://bys7kf1ydhw6r"]
 
 [ext_resource type="Script" uid="uid://cq4exn7hpg0ns" path="res://scripts/enemies/basic_mob.gd" id="1_hjk8o"]
 [ext_resource type="Texture2D" uid="uid://j2ccogxeykl3" path="res://gfx/basic_mob/fly_0.png" id="2_4a7r8"]
@@ -38,6 +38,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_deofh"]
 radius = 33.0606
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4a7r8"]
+radius = 39.012817
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_1um0f"]
 radius = 240.566
 
@@ -69,6 +72,12 @@ animation = &"Fly"
 position = Vector2(-3, 1)
 shape = SubResource("CircleShape2D_deofh")
 
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="HitArea" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(-3, 1)
+shape = SubResource("CircleShape2D_4a7r8")
+
 [node name="ChaseArea" type="Area2D" parent="."]
 
 [node name="ActivactionArea" type="CollisionShape2D" parent="ChaseArea"]
@@ -86,5 +95,6 @@ one_shot = true
 replication_config = SubResource("SceneReplicationConfig_1um0f")
 script = ExtResource("3_0tnuk")
 
+[connection signal="body_entered" from="AttackArea" to="BasicMobSynchronizer" method="_on_attack_area_body_entered"]
 [connection signal="body_entered" from="ChaseArea" to="BasicMobSynchronizer" method="_on_chase_area_body_entered"]
 [connection signal="body_exited" from="LossArea" to="BasicMobSynchronizer" method="_on_loss_area_body_exited"]

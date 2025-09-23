@@ -15,3 +15,9 @@ func _on_loss_area_body_exited(body: Node2D) -> void:
 	#  If the target that left is the targeted player, reset to null
 	if body == basicMob.targetPlayer:
 		basicMob.set_target_player(null)
+
+func _on_attack_area_body_entered(body: Node2D) -> void:
+	if not is_inside_tree() or not multiplayer.has_multiplayer_peer() or not is_multiplayer_authority():
+		return
+	if body is Player:
+		print("Player %s took tamage" % body)
