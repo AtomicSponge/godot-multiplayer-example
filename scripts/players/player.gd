@@ -21,6 +21,7 @@ var direction: Vector2 = Vector2()
 func update_player_name() -> void:
 	NameLabel.set_text(Globals.NAME)
 
+##  Fire weapon.  Called as an RPC.
 @rpc("any_peer", "call_local")
 func fire_weapon() -> void:
 	var b: Bullet = bullet.instantiate()
