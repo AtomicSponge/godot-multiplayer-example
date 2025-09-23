@@ -1,5 +1,7 @@
 class_name Game extends Node
 
+var crosshair: CompressedTexture2D = load("res://gfx/weapon/crosshair.png")
+
 @onready var Level: Node = $Level
 @onready var Players: Node = $Players
 @onready var Enemies: Node = $Enemies
@@ -29,6 +31,7 @@ func start_game():
 	else:
 		multiplayer.peer_disconnected.connect(handle_peer_disconnect)
 	HUD.show()
+	Input.set_custom_mouse_cursor(crosshair, 0, Vector2(32,32))
 
 ##  End the game and close the network connection.
 func end_game(why: String = ""):
@@ -55,6 +58,7 @@ func end_game(why: String = ""):
 		Level.remove_child(node)
 		node.queue_free()
 	NetworkHandler.close_connection()
+	Input.set_custom_mouse_cursor(null)
 	UiController.open_menu("MainUI")
 	if not why.is_empty():
 		Globals.alert(why)
