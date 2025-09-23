@@ -16,5 +16,5 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		return
 	if body is Enemy:
-		pass
+		body.queue_free()
 	queue_free()
