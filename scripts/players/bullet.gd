@@ -5,7 +5,10 @@ class_name Bullet extends Area2D
 var speed = 750
 
 func _ready() -> void:
-	LifeTimer.start()
+	if not multiplayer.is_server():
+		set_process(false)
+	else:
+		LifeTimer.start()
 
 func _process(delta: float) -> void:
 	if LifeTimer.is_stopped():
