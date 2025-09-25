@@ -25,6 +25,11 @@ UiController="*res://addons/ui_controller/ui_controller.gd"
 Console="*res://addons/console/console.tscn"
 Commands="*res://scripts/autostart/commands.gd"
 GameState="*res://scripts/autostart/game_state.gd"
+NetworkTime="*res://addons/netfox/network-time.gd"
+NetworkTimeSynchronizer="*res://addons/netfox/network-time-synchronizer.gd"
+NetworkRollback="*res://addons/netfox/rollback/network-rollback.gd"
+NetworkEvents="*res://addons/netfox/network-events.gd"
+NetworkPerformance="*res://addons/netfox/network-performance.gd"
 
 [debug]
 
@@ -38,7 +43,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/console/plugin.cfg", "res://addons/fps_label/plugin.cfg", "res://addons/theme_gen_save_sync/plugin.cfg", "res://addons/ui_controller/plugin.cfg")
+enabled=PackedStringArray("res://addons/console/plugin.cfg", "res://addons/fps_label/plugin.cfg", "res://addons/netfox.internals/plugin.cfg", "res://addons/netfox/plugin.cfg", "res://addons/theme_gen_save_sync/plugin.cfg", "res://addons/ui_controller/plugin.cfg")
 
 [file_customization]
 
