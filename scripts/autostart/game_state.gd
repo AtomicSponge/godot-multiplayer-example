@@ -8,7 +8,7 @@ var GAME_MENU_OPENED: bool = false	##  Is the game menu opened
 var playerSpawners: Node = null
 
 ##  Find the player spawn points and returns an empty one.
-func find_player_spawns() -> Area2D:
+func find_player_spawn() -> Area2D:
 	if playerSpawners == null:  return
 	var spawn_position: Area2D = null
 	#  Look for any overlapping bodies and pick an empty spawn location

@@ -95,7 +95,7 @@ func load_level(scene: PackedScene) -> void:
 
 ##  Spawn a player.  Call deferred or after the level loaded.
 func spawn_player(id: int) -> void:
-	var spawn_position: Area2D = GameState.find_player_spawns()
+	var spawn_position: Area2D = GameState.find_player_spawn()
 	if spawn_position != null:
 		PlayerSpawner.spawn({ "id": id, "position": spawn_position.position })
 
