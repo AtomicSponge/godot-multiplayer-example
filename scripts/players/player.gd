@@ -18,14 +18,13 @@ const WALK_SPEED: float = 450.0
 const RUN_SPEED: float = 650.0
 var direction: Vector2 = Vector2()
 @export var lookingLeft: bool = false
-var alive: bool = true
+@export var alive: bool = true
 
 ##  Update the player display name
 func update_player_name() -> void:
 	NameLabel.set_text(Globals.NAME)
 
 ##  Called when the player dies.
-@rpc("any_peer", "call_local")
 func die() -> void:
 	alive = false
 	PlayerHitbox.set_deferred("disabled", true)

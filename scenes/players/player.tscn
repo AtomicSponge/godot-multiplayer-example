@@ -71,6 +71,9 @@ properties/3/replication_mode = 1
 properties/4/path = NodePath(".:lookingLeft")
 properties/4/spawn = true
 properties/4/replication_mode = 2
+properties/5/path = NodePath(".:alive")
+properties/5/spawn = true
+properties/5/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
