@@ -60,7 +60,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if not is_multiplayer_authority(): return
-	# Stop input if the menu or console is opened
+	# Stop input if the menu or console is opened, or not alive
 	if GameState.GAME_MENU_OPENED or Console.is_opened(): return
 	if not alive: return
 
