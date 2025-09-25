@@ -20,5 +20,4 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 	if not is_inside_tree() or not multiplayer.has_multiplayer_peer() or not is_multiplayer_authority():
 		return
 	if body is Player:
-		print(body.name)
-		body.die()
+		body.die.rpc()
