@@ -112,5 +112,9 @@ position = Vector2(633.334, -52.6316)
 wait_time = 0.05
 one_shot = true
 
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_ykyjo")

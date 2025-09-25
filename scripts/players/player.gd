@@ -3,11 +3,13 @@ class_name Player extends CharacterBody2D
 var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 
 @onready var PlayerSprite: AnimatedSprite2D = $PlayerSprite
+@onready var PlayerHitbox: CollisionShape2D = $PlayerHitbox
 @onready var PlayerCamera: Camera2D = $PlayerCamera
 @onready var NameLabel: Label = $NameLabel
 @onready var WeaponSprite: Sprite2D = $WeaponSprite
 @onready var FireLocation: Marker2D = $WeaponSprite/FireLocation
 @onready var ShotTimer: Timer = $ShotTimer
+@onready var RespawnTimer: Timer = $RespawnTimer
 
 enum MovementStates { IDLE, WALKING, RUNNING }
 @export var moveState: MovementStates = MovementStates.IDLE
@@ -16,10 +18,24 @@ const WALK_SPEED: float = 450.0
 const RUN_SPEED: float = 650.0
 var direction: Vector2 = Vector2()
 @export var lookingLeft: bool = false
+var alive: bool = true
 
 ##  Update the player display name
 func update_player_name() -> void:
 	NameLabel.set_text(Globals.NAME)
+
+##  Called when the player dies.
+func die() -> void:
+	alive = false
+	hide()
+	PlayerHitbox.set_deferred("disabled", true)
+	RespawnTimer.start()
+
+##  Called when the player respawns.
+func respawn() -> void:
+	PlayerHitbox.set_deferred("disabled", false)
+	show()
+	alive = true
 
 ##  Fire weapon.  Called as an RPC.
 @rpc("any_peer", "call_local")
@@ -36,6 +52,7 @@ func _ready() -> void:
 	PlayerCamera.enabled = is_multiplayer_authority()
 	if not is_multiplayer_authority(): return
 	EventBus.UpdatePlayerName.connect(update_player_name)
+	RespawnTimer.timeout.connect(respawn)
 	NameLabel.set_text(Globals.NAME)
 	PlayerSprite.play("Idle")
 
