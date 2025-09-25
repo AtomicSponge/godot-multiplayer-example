@@ -26,7 +26,6 @@ func update_player_name() -> void:
 
 ##  Called when the player dies.
 func die() -> void:
-	print("HERE")
 	alive = false
 	PlayerHitbox.set_deferred("disabled", true)
 	hide()
