@@ -27,14 +27,14 @@ func update_player_name() -> void:
 ##  Called when the player dies.
 func die() -> void:
 	alive = false
-	hide()
 	PlayerHitbox.set_deferred("disabled", true)
+	hide()
 	RespawnTimer.start()
 
 ##  Called when the player respawns.
 func respawn() -> void:
-	PlayerHitbox.set_deferred("disabled", false)
 	show()
+	PlayerHitbox.set_deferred("disabled", false)
 	alive = true
 
 ##  Fire weapon.  Called as an RPC.
