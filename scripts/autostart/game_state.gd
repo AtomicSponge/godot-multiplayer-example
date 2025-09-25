@@ -4,6 +4,7 @@ extends Node
 var GAME_RUNNING: bool = false		##  Is the game running
 var GAME_MENU_OPENED: bool = false	##  Is the game menu opened
 
+##  Node to track player spawn locations.  Gets set when a level is loaded.
 var playerSpawners: Node = null
 
 ##  Find the player spawn points and returns an empty one.
