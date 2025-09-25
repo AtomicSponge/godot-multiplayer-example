@@ -30,6 +30,7 @@ func start_game():
 	#  We are not server
 	else:
 		multiplayer.peer_disconnected.connect(handle_peer_disconnect)
+	#  Configure HUD and show custom mouse cursor
 	HUD.show()
 	Input.set_custom_mouse_cursor(crosshair, Input.CURSOR_ARROW, Vector2(32,32))
 
@@ -89,14 +90,15 @@ func load_level(scene: PackedScene) -> void:
 		Level.remove_child(node)
 		node.queue_free()
 	Level.add_child(scene.instantiate())
+	#  Find the spawn locations
+	GameState.playerSpawners = Level.find_child("PlayerSpawners", true, false)
 
 ##  Spawn a player.  Call deferred or after the level loaded.
 func spawn_player(id: int) -> void:
-	var spawners: Node = Level.find_child("PlayerSpawners", true, false)
-	if spawners == null:  return
+	if GameState.playerSpawners == null:  return
 	var spawn_position: Area2D = null
 	#  Look for any overlapping bodies and pick an empty spawn location
-	for spawner in spawners.get_children():
+	for spawner in GameState.playerSpawners.get_children():
 		if spawner is Area2D:
 			if spawner.has_overlapping_bodies():
 				continue
