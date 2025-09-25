@@ -21,4 +21,4 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		return
 	if body is Player:
 		print(body.name)
-		body.die()
+		body.die.rpc()
