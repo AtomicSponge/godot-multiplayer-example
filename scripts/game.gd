@@ -96,15 +96,7 @@ func load_level(scene: PackedScene) -> void:
 ##  Spawn a player.  Call deferred or after the level loaded.
 func spawn_player(id: int) -> void:
 	if GameState.playerSpawners == null:  return
-	var spawn_position: Area2D = null
-	#  Look for any overlapping bodies and pick an empty spawn location
-	for spawner in GameState.playerSpawners.get_children():
-		if spawner is Area2D:
-			if spawner.has_overlapping_bodies():
-				continue
-			else:
-				spawn_position = spawner
-				break
+	var spawn_position: Area2D = GameState.find_player_spawns()
 	if spawn_position != null:
 		PlayerSpawner.spawn({ "id": id, "position": spawn_position.position })
 
