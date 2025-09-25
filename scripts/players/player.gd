@@ -86,6 +86,8 @@ func _physics_process(_delta: float) -> void:
 	# Stop movement if the menu or console is opened
 	if GameState.GAME_MENU_OPENED or Console.is_opened():
 		moveState = MovementStates.IDLE
+	if not alive:
+		moveState = MovementStates.IDLE
 
 	if lookingLeft:
 		PlayerSprite.flip_h = true
