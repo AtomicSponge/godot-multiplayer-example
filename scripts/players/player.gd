@@ -25,7 +25,6 @@ func update_player_name() -> void:
 	NameLabel.set_text(Globals.NAME)
 
 ##  Called when the player dies.
-@rpc("authority", "call_local")
 func die() -> void:
 	alive = false
 	PlayerHitbox.set_deferred("disabled", true)
