@@ -33,6 +33,8 @@ func die() -> void:
 
 ##  Called when the player respawns.
 func respawn() -> void:
+	var spawn_position: Area2D = GameState.find_player_spawns()
+	position = spawn_position.position
 	show()
 	PlayerHitbox.set_deferred("disabled", false)
 	alive = true
