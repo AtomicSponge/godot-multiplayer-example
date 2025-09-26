@@ -45,8 +45,8 @@ func fire_weapon() -> void:
 	b.global_position = FireLocation.global_position
 	b.rotation = WeaponSprite.rotation
 
-func _enter_tree() -> void:
-	set_multiplayer_authority(name.to_int())
+#func _enter_tree() -> void:
+	#set_multiplayer_authority(name.to_int())
 
 func _ready() -> void:
 	PlayerCamera.enabled = is_multiplayer_authority()
@@ -61,8 +61,6 @@ func _process(_delta: float) -> void:
 	# Stop input if the menu or console is opened, or not alive
 	if GameState.GAME_MENU_OPENED or Console.is_opened(): return
 	if not alive: return
-
-	#direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 	if get_local_mouse_position().x < 0:
 		lookingLeft = true
