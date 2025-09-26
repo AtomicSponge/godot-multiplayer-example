@@ -62,16 +62,12 @@ func _ready() -> void:
 	PlayerSprite.play("Idle")
 
 func _process(_delta: float) -> void:
-	if not is_multiplayer_authority(): return
-	# Stop input if the menu or console is opened, or not alive
-	if GameState.GAME_MENU_OPENED or Console.is_opened(): return
-	if not alive: return
-
-	if get_local_mouse_position().x < 0:
-		lookingLeft = true
-	else:
-		lookingLeft = false
-	WeaponSprite.look_at(get_global_mouse_position())
+	if not multiplayer.is_server():
+		if get_local_mouse_position().x < 0:
+			lookingLeft = true
+		else:
+			lookingLeft = false
+		WeaponSprite.look_at(get_global_mouse_position())
 
 func _physics_process(_delta: float) -> void:
 	# Stop movement if the menu or console is opened
