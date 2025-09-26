@@ -20,7 +20,6 @@ var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 
 const SPEED: float = 450.0
 var direction: Vector2 = Vector2()
-@export var lookingLeft: bool = false
 @export var alive: bool = true
 
 ##  Update the player display name
@@ -67,11 +66,9 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if get_local_mouse_position().x < 0:
-		lookingLeft = true
 		PlayerSprite.flip_h = true
 		WeaponSprite.flip_v = true
 	else:
-		lookingLeft = false
 		PlayerSprite.flip_h = false
 		WeaponSprite.flip_v = false
 	WeaponSprite.look_at(input.mouse_position)
@@ -83,13 +80,6 @@ func _physics_process(_delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		PlayerSprite.play("Idle")
 		return
-
-	if lookingLeft:
-		PlayerSprite.flip_h = true
-		WeaponSprite.flip_v = true
-	else:
-		PlayerSprite.flip_h = false
-		WeaponSprite.flip_v = false
 
 	if input.direction:
 		velocity.x = input.direction.x * SPEED
