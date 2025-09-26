@@ -63,6 +63,9 @@ func _ready() -> void:
 	PlayerSprite.play("Idle")
 
 func _process(_delta: float) -> void:
+	if GameState.GAME_MENU_OPENED or Console.is_opened() or not alive:
+		PlayerSprite.play("Idle")
+		return
 	if get_local_mouse_position().x < 0:
 		PlayerSprite.flip_h = true
 		WeaponSprite.flip_v = true
