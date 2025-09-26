@@ -1,9 +1,9 @@
 class_name PlayerInput extends Node2D
 
-var direction: Vector2 = Vector2(0, 0)
-var attacking: bool = false
-var mousePosition: Vector2 = Vector2()
-var lookingLeft: bool = false
+var direction: Vector2 = Vector2(0, 0)	##  Input direction vector
+var attacking: bool = false				##  Is the player attacking
+var mousePosition: Vector2 = Vector2()	##  Screen position of mouse
+var lookingLeft: bool = false			##  Direction player is facing
 
 func _ready() -> void:
 	if get_multiplayer_authority() != multiplayer.get_unique_id():
