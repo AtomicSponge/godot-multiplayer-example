@@ -1,6 +1,7 @@
 class_name PlayerInput extends Node
 
 var direction: Vector2 = Vector2()
+var attacking: bool = false
 
 func _ready() -> void:
 	if get_multiplayer_authority() != multiplayer.get_unique_id():
@@ -8,4 +9,8 @@ func _ready() -> void:
 		set_physics_process(false)
 
 func _process(_delta: float) -> void:
-	pass
+	if not is_multiplayer_authority(): return
+	if GameState.GAME_MENU_OPENED or Console.is_opened(): return
+
+	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	attacking = Input.is_action_pressed("attack")
