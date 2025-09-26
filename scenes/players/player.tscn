@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjsdm848ojsr2"]
+[gd_scene load_steps=16 format=3 uid="uid://cjsdm848ojsr2"]
 
 [ext_resource type="Script" uid="uid://bu0y2wed2itqv" path="res://scripts/players/player.gd" id="1_ykyjo"]
 [ext_resource type="Texture2D" uid="uid://djb6yh323gkt2" path="res://gfx/player/idle_0.png" id="2_es4m5"]
+[ext_resource type="Script" uid="uid://0i1mifaxs5jc" path="res://scripts/players/player_input.gd" id="2_mh0hk"]
 [ext_resource type="Texture2D" uid="uid://cr668dmqhg8ao" path="res://gfx/player/walk_0.png" id="3_fsrjl"]
 [ext_resource type="Texture2D" uid="uid://dbvnyxej00w2d" path="res://gfx/player/walk_1.png" id="4_mh0hk"]
 [ext_resource type="Texture2D" uid="uid://c54yvctj3arer" path="res://gfx/player/walk_2.png" id="5_18rgo"]
@@ -75,6 +76,9 @@ properties/4/replication_mode = 2
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_ykyjo")
+
+[node name="PlayerInput" type="Node" parent="."]
+script = ExtResource("2_mh0hk")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(1.375, -79.877)
