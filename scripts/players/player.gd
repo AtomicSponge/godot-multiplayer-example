@@ -49,8 +49,8 @@ func fire_weapon() -> void:
 	b.global_position = FireLocation.global_position
 	b.rotation = WeaponSprite.rotation
 
-#func _enter_tree() -> void:
-	#set_multiplayer_authority(name.to_int())
+func _enter_tree() -> void:
+	set_multiplayer_authority(name.to_int())
 
 func _ready() -> void:
 	if multiplayer.get_unique_id() == player_id:
