@@ -50,15 +50,15 @@ func fire_weapon() -> void:
 	b.global_position = FireLocation.global_position
 	b.rotation = WeaponSprite.rotation
 
-#func _enter_tree() -> void:
-	#set_multiplayer_authority(name.to_int())
+func _enter_tree() -> void:
+	set_multiplayer_authority(name.to_int())
 
 func _ready() -> void:
-	#PlayerCamera.enabled = is_multiplayer_authority()
-	if multiplayer.get_unique_id() == player_id:
-		PlayerCamera.make_current()
-	else:
-		PlayerCamera.enabled = false
+	PlayerCamera.enabled = is_multiplayer_authority()
+	#if multiplayer.get_unique_id() == player_id:
+		#PlayerCamera.make_current()
+	#else:
+		#PlayerCamera.enabled = false
 	if not is_multiplayer_authority(): return
 	EventBus.UpdatePlayerName.connect(update_player_name)
 	RespawnTimer.timeout.connect(respawn)
@@ -66,12 +66,15 @@ func _ready() -> void:
 	PlayerSprite.play("Idle")
 
 func _process(_delta: float) -> void:
-	if not multiplayer.is_server():
-		if get_local_mouse_position().x < 0:
-			lookingLeft = true
-		else:
-			lookingLeft = false
-		WeaponSprite.look_at(get_global_mouse_position())
+	if get_local_mouse_position().x < 0:
+		lookingLeft = true
+		PlayerSprite.flip_h = true
+		WeaponSprite.flip_v = true
+	else:
+		lookingLeft = false
+		PlayerSprite.flip_h = false
+		WeaponSprite.flip_v = false
+	WeaponSprite.look_at(input.mouse_position)
 
 func _physics_process(_delta: float) -> void:
 	# Stop movement if the menu or console is opened
