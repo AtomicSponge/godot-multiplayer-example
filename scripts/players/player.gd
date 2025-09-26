@@ -2,6 +2,8 @@ class_name Player extends CharacterBody2D
 
 var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 
+@onready var input: PlayerInput = $PlayerInput
+
 @onready var PlayerSprite: AnimatedSprite2D = $PlayerSprite
 @onready var PlayerHitbox: CollisionShape2D = $PlayerHitbox
 @onready var PlayerCamera: Camera2D = $PlayerCamera
@@ -11,11 +13,7 @@ var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 @onready var ShotTimer: Timer = $ShotTimer
 @onready var RespawnTimer: Timer = $RespawnTimer
 
-enum MovementStates { IDLE, WALKING, RUNNING }
-@export var moveState: MovementStates = MovementStates.IDLE
-
-const WALK_SPEED: float = 450.0
-const RUN_SPEED: float = 650.0
+const SPEED: float = 450.0
 var direction: Vector2 = Vector2()
 @export var lookingLeft: bool = false
 @export var alive: bool = true
@@ -65,13 +63,6 @@ func _process(_delta: float) -> void:
 	if not alive: return
 
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	if direction:
-		if Input.is_action_pressed("run"):
-			moveState = MovementStates.RUNNING
-		else:
-			moveState = MovementStates.WALKING
-	else:
-		moveState = MovementStates.IDLE
 
 	if get_local_mouse_position().x < 0:
 		lookingLeft = true
@@ -85,10 +76,11 @@ func _process(_delta: float) -> void:
 
 func _physics_process(_delta: float) -> void:
 	# Stop movement if the menu or console is opened
-	if GameState.GAME_MENU_OPENED or Console.is_opened():
-		moveState = MovementStates.IDLE
-	if not alive:
-		moveState = MovementStates.IDLE
+	if GameState.GAME_MENU_OPENED or Console.is_opened() or not alive:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.y = move_toward(velocity.y, 0, SPEED)
+		PlayerSprite.play("Idle")
+		return
 
 	if lookingLeft:
 		PlayerSprite.flip_h = true
@@ -97,18 +89,13 @@ func _physics_process(_delta: float) -> void:
 		PlayerSprite.flip_h = false
 		WeaponSprite.flip_v = false
 
-	match moveState:
-		MovementStates.IDLE:
-			velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
-			velocity.y = move_toward(velocity.y, 0, WALK_SPEED)
-			PlayerSprite.play("Idle")
-		MovementStates.WALKING:
-			velocity.x = direction.x * WALK_SPEED
-			velocity.y = direction.y * WALK_SPEED
-			PlayerSprite.play("Move")
-		MovementStates.RUNNING:
-			velocity.x = direction.x * RUN_SPEED
-			velocity.y = direction.y * RUN_SPEED
-			PlayerSprite.play("Move", 2.0)  #  Double speed
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.y = direction.y * SPEED
+		PlayerSprite.play("Move")
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.y = move_toward(velocity.y, 0, SPEED)
+		PlayerSprite.play("Idle")
 
 	move_and_slide()
