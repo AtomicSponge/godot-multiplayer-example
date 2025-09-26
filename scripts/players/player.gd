@@ -45,8 +45,9 @@ func fire_weapon() -> void:
 	b.global_position = FireLocation.global_position
 	b.rotation = WeaponSprite.rotation
 
-#func _enter_tree() -> void:
+func _enter_tree() -> void:
 	#set_multiplayer_authority(name.to_int())
+	set_multiplayer_authority(1)
 
 func _ready() -> void:
 	PlayerCamera.enabled = is_multiplayer_authority()
