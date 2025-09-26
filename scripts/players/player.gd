@@ -70,23 +70,25 @@ func _process(_delta: float) -> void:
 		PlayerSprite.flip_h = false
 		WeaponSprite.flip_v = false
 	WeaponSprite.look_at(input.mouse_position)
+	
+	if input.direction:
+		PlayerSprite.play("Move")
+	else:
+		PlayerSprite.play("Idle")
 
 func _physics_process(_delta: float) -> void:
 	# Stop movement if the menu or console is opened
 	if GameState.GAME_MENU_OPENED or Console.is_opened() or not alive:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
-		PlayerSprite.play("Idle")
 		return
 
 	if input.direction:
 		velocity.x = input.direction.x * SPEED
 		velocity.y = input.direction.y * SPEED
-		PlayerSprite.play("Move")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
-		PlayerSprite.play("Idle")
 	
 	if input.attacking and ShotTimer.is_stopped():
 		fire_weapon.rpc()
