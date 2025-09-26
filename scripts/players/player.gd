@@ -73,7 +73,7 @@ func _process(_delta: float) -> void:
 		PlayerSprite.flip_h = false
 		WeaponSprite.flip_v = false
 	WeaponSprite.look_at(input.mouse_position)
-	
+
 	if input.direction:
 		PlayerSprite.play("Move")
 	else:
