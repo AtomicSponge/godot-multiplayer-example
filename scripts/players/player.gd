@@ -66,13 +66,13 @@ func _process(_delta: float) -> void:
 	if GameState.GAME_MENU_OPENED or Console.is_opened() or not alive:
 		PlayerSprite.play("Idle")
 		return
-	if get_local_mouse_position().x < 0:
+	if input.lookingLeft:
 		PlayerSprite.flip_h = true
 		WeaponSprite.flip_v = true
 	else:
 		PlayerSprite.flip_h = false
 		WeaponSprite.flip_v = false
-	WeaponSprite.look_at(input.mouse_position)
+	WeaponSprite.look_at(input.mousePosition)
 
 	if input.direction:
 		PlayerSprite.play("Move")
