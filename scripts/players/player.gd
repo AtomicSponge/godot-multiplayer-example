@@ -53,16 +53,20 @@ func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
 
 func _ready() -> void:
-	PlayerCamera.enabled = is_multiplayer_authority()
-	#if multiplayer.get_unique_id() == player_id:
-		#PlayerCamera.make_current()
-	#else:
-		#PlayerCamera.enabled = false
-	if not is_multiplayer_authority(): return
-	EventBus.UpdatePlayerName.connect(update_player_name)
-	RespawnTimer.timeout.connect(respawn)
-	NameLabel.set_text(Globals.NAME)
-	PlayerSprite.play("Idle")
+	#PlayerCamera.enabled = is_multiplayer_authority()
+	if multiplayer.get_unique_id() == player_id:
+		PlayerCamera.make_current()
+		EventBus.UpdatePlayerName.connect(update_player_name)
+		RespawnTimer.timeout.connect(respawn)
+		NameLabel.set_text(Globals.NAME)
+		PlayerSprite.play("Idle")
+	else:
+		PlayerCamera.enabled = false
+	#if not is_multiplayer_authority(): return
+	#EventBus.UpdatePlayerName.connect(update_player_name)
+	#RespawnTimer.timeout.connect(respawn)
+	#NameLabel.set_text(Globals.NAME)
+	#PlayerSprite.play("Idle")
 
 func _process(_delta: float) -> void:
 	if get_local_mouse_position().x < 0:
