@@ -70,9 +70,10 @@ properties/3/path = NodePath(".:lookingLeft")
 properties/3/spawn = true
 properties/3/replication_mode = 2
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input")]
 motion_mode = 1
 script = ExtResource("1_ykyjo")
+input = NodePath("PlayerInput")
 
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource("2_mh0hk")

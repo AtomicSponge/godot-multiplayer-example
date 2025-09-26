@@ -4,6 +4,7 @@ var PLAYER: PackedScene = preload("res://scenes/players/player.tscn")
 
 func _make_player(data: Dictionary) -> Node:
 	var player: Node = PLAYER.instantiate()
+	player.player_id = data.id
 	player.name = str(data.id)
 	player.position = data.position
 	return player

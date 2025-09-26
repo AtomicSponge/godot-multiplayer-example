@@ -2,7 +2,7 @@ class_name Player extends CharacterBody2D
 
 var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 
-@onready var input: PlayerInput = $PlayerInput
+@export var input: PlayerInput
 
 @onready var PlayerSprite: AnimatedSprite2D = $PlayerSprite
 @onready var PlayerHitbox: CollisionShape2D = $PlayerHitbox
@@ -12,6 +12,11 @@ var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 @onready var FireLocation: Marker2D = $WeaponSprite/FireLocation
 @onready var ShotTimer: Timer = $ShotTimer
 @onready var RespawnTimer: Timer = $RespawnTimer
+
+@export var player_id: int = 1:
+	set(id):
+		player_id = id
+		input.set_multiplayer_authority(id)
 
 const SPEED: float = 450.0
 var direction: Vector2 = Vector2()
