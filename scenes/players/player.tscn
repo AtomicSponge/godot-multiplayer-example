@@ -63,15 +63,12 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath("NameLabel:text")
 properties/1/spawn = true
 properties/1/replication_mode = 2
-properties/2/path = NodePath(".:moveState")
+properties/2/path = NodePath("WeaponSprite:rotation")
 properties/2/spawn = true
-properties/2/replication_mode = 2
-properties/3/path = NodePath("WeaponSprite:rotation")
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:lookingLeft")
 properties/3/spawn = true
-properties/3/replication_mode = 1
-properties/4/path = NodePath(".:lookingLeft")
-properties/4/spawn = true
-properties/4/replication_mode = 2
+properties/3/replication_mode = 2
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
