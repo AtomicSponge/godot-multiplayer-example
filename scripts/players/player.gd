@@ -50,7 +50,7 @@ func fire_weapon() -> void:
 	b.rotation = WeaponSprite.rotation
 
 func _enter_tree() -> void:
-	set_multiplayer_authority(name.to_int())
+	set_multiplayer_authority(player_id)
 
 func _ready() -> void:
 	if multiplayer.get_unique_id() == player_id:
