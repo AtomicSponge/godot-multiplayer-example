@@ -1,8 +1,10 @@
+##  A node representing a player scene
 class_name Player extends CharacterBody2D
 
-var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
-
+##  Reference to the player input node
 @export var input: PlayerInput
+##  Reference to the player bullet scene
+var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 
 @onready var PlayerSprite: AnimatedSprite2D = $PlayerSprite
 @onready var PlayerHitbox: CollisionShape2D = $PlayerHitbox
@@ -19,7 +21,6 @@ var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 		input.set_multiplayer_authority(id)
 
 const SPEED: float = 450.0
-var direction: Vector2 = Vector2.ZERO
 @export var alive: bool = true
 
 ##  Update the player display name
