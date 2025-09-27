@@ -19,7 +19,7 @@ var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 		input.set_multiplayer_authority(id)
 
 const SPEED: float = 450.0
-var direction: Vector2 = Vector2()
+var direction: Vector2 = Vector2.ZERO
 @export var alive: bool = true
 
 ##  Update the player display name
@@ -66,12 +66,15 @@ func _process(_delta: float) -> void:
 	if GameState.GAME_MENU_OPENED or Console.is_opened() or not alive:
 		PlayerSprite.play("Idle")
 		return
+	
+	#  Apply animations
 	if input.lookingLeft:
 		PlayerSprite.flip_h = true
 		WeaponSprite.flip_v = true
 	else:
 		PlayerSprite.flip_h = false
 		WeaponSprite.flip_v = false
+
 	WeaponSprite.look_at(input.mousePosition)
 
 	if input.direction:
