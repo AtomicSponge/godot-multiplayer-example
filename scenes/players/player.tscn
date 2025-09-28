@@ -119,6 +119,7 @@ one_shot = true
 [node name="RollbackSynchronizer" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("13_wb5ey")
 root = NodePath("..")
+enable_prediction = true
 state_properties = Array[String]([":position"])
 input_properties = Array[String](["PlayerInput:direction", "PlayerInput:attacking", "PlayerInput:mousePosition", "PlayerInput:lookingLeft"])
 metadata/_custom_type_script = "uid://d350u8evihs1u"
