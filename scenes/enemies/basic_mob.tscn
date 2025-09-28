@@ -84,17 +84,17 @@ shape = SubResource("CircleShape2D_0tnuk")
 [node name="MovementTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
-script = ExtResource("8_wd3yg")
-root = NodePath("..")
-properties = Array[String]([":position", ":movingLeft", ":moveState"])
-metadata/_custom_type_script = "uid://dour8fehaaugp"
-
 [node name="StateSynchronizer" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("8_6jiqk")
 root = NodePath("..")
 properties = Array[String]([":position", ":movingLeft", ":moveState"])
 metadata/_custom_type_script = "uid://3lbngqcexe0l"
+
+[node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("8_wd3yg")
+root = NodePath("..")
+properties = Array[String]([":position", ":movingLeft", ":moveState"])
+metadata/_custom_type_script = "uid://dour8fehaaugp"
 
 [node name="BasicMobSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_1um0f")

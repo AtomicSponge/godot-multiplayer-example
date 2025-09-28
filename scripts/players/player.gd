@@ -51,7 +51,7 @@ func fire_weapon() -> void:
 	b.rotation = WeaponSprite.rotation
 
 ##  Run animations.
-func apply_animation(_delta: float) -> void:
+func apply_animation(_delta: float, _tick: float, _is_fresh: bool) -> void:
 	if GameState.GAME_MENU_OPENED or Console.is_opened() or not alive:
 		PlayerSprite.play("Idle")
 		return
@@ -104,11 +104,9 @@ func _ready() -> void:
 	else:
 		PlayerCamera.enabled = false
 
-func _process(delta: float) -> void:
-	apply_animation(delta)
-
 func _rollback_tick(delta: float, tick: float, is_fresh: bool) -> void:
 	apply_input(delta, tick, is_fresh)
+	apply_animation(delta, tick, is_fresh)
 
 	velocity *= NetworkTime.physics_factor
 	move_and_slide()
