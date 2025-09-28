@@ -18,7 +18,6 @@ var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 @export var player_id: int = 1:
 	set(id):
 		player_id = id
-		input.set_multiplayer_authority(id)
 
 const SPEED: float = 450.0
 @export var alive: bool = true
@@ -70,10 +69,14 @@ func apply_animation(_delta: float) -> void:
 	else:
 		PlayerSprite.play("Idle")
 
-func _enter_tree() -> void:
-	set_multiplayer_authority(1)
+#func _enter_tree() -> void:
+	#set_multiplayer_authority(1)
 
 func _ready() -> void:
+	await get_tree().process_frame
+	set_multiplayer_authority(1)
+	input.set_multiplayer_authority(player_id)
+	$RollbackSynchronizer.process_settings()
 	#  Configure the player for the controlling client
 	if multiplayer.get_unique_id() == player_id:
 		PlayerCamera.make_current()
@@ -83,7 +86,6 @@ func _ready() -> void:
 	#  Disable this player for other clients
 	else:
 		PlayerCamera.enabled = false
-	$RollbackSynchronizer.process_settings()
 
 func _process(delta: float) -> void:
 	apply_animation(delta)
