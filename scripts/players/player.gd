@@ -69,6 +69,24 @@ func apply_animation(_delta: float) -> void:
 	else:
 		PlayerSprite.play("Idle")
 
+func apply_input(_delta: float, _tick: float, _is_fresh: bool) -> void:
+	# Stop movement if the menu or console is opened
+	if GameState.GAME_MENU_OPENED or Console.is_opened() or not alive:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.y = move_toward(velocity.y, 0, SPEED)
+		return
+
+	if input.direction:
+		velocity.x = input.direction.x * SPEED
+		velocity.y = input.direction.y * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.y = move_toward(velocity.y, 0, SPEED)
+	
+	if input.attacking and ShotTimer.is_stopped():
+		fire_weapon.rpc()
+		ShotTimer.start()
+
 func _ready() -> void:
 	await get_tree().process_frame
 	set_multiplayer_authority(1)
@@ -87,26 +105,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	apply_animation(delta)
 
-#func _physics_process(_delta: float) -> void:
-	#pass
-
-func _rollback_tick(_delta: float, _tick, _is_fresh: bool) -> void:
-	# Stop movement if the menu or console is opened
-	if GameState.GAME_MENU_OPENED or Console.is_opened() or not alive:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-		return
-
-	if input.direction:
-		velocity.x = input.direction.x * SPEED
-		velocity.y = input.direction.y * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-	
-	if input.attacking and ShotTimer.is_stopped():
-		fire_weapon.rpc()
-		ShotTimer.start()
+func _rollback_tick(delta: float, tick: float, is_fresh: bool) -> void:
+	apply_input(delta, tick, is_fresh)
 
 	velocity *= NetworkTime.physics_factor
 	move_and_slide()
