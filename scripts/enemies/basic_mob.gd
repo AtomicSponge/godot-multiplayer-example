@@ -4,6 +4,8 @@ class_name BasicMob extends Enemy
 @onready var MobSprite: AnimatedSprite2D = $MobSprite
 @onready var MovementTimer: Timer = $MovementTimer
 
+@onready var state_synchronizer: StateSynchronizer = $StateSynchronizer
+
 const WALK_SPEED: float = 100.0
 const CHASE_SPEED: float = 450.0
 
@@ -26,7 +28,7 @@ func set_target_player(player: Player) -> void:
 
 func _ready() -> void:
 	if not multiplayer.is_server(): return
-	$StateSynchronizer.process_settings()
+	state_synchronizer.process_settings()
 	MovementTimer.timeout.connect(change_direction)
 	moveState = MovementStates.WALKING
 	change_direction()
