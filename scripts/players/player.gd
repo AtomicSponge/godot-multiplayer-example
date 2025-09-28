@@ -69,9 +69,6 @@ func apply_animation(_delta: float) -> void:
 	else:
 		PlayerSprite.play("Idle")
 
-#func _enter_tree() -> void:
-	#set_multiplayer_authority(1)
-
 func _ready() -> void:
 	await get_tree().process_frame
 	set_multiplayer_authority(1)
