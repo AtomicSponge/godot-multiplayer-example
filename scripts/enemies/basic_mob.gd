@@ -24,6 +24,9 @@ func change_direction() -> void:
 func set_target_player(player: Player) -> void:
 	targetPlayer = player
 
+func _enter_tree() -> void:
+	set_multiplayer_authority(1)
+
 func _ready() -> void:
 	if not multiplayer.is_server(): return
 	MovementTimer.timeout.connect(change_direction)
