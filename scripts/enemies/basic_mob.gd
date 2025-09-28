@@ -29,6 +29,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	if not multiplayer.is_server(): return
+	$StateSynchronizer.process_settings()
 	MovementTimer.timeout.connect(change_direction)
 	moveState = MovementStates.WALKING
 	change_direction()
