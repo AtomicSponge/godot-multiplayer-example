@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjsdm848ojsr2"]
+[gd_scene load_steps=18 format=3 uid="uid://cjsdm848ojsr2"]
 
 [ext_resource type="Script" uid="uid://bu0y2wed2itqv" path="res://scripts/players/player.gd" id="1_ykyjo"]
 [ext_resource type="Texture2D" uid="uid://djb6yh323gkt2" path="res://gfx/player/idle_0.png" id="2_es4m5"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://c7lau1yhbs5cr" path="res://gfx/player/walk_6.png" id="9_v7vuu"]
 [ext_resource type="Texture2D" uid="uid://rbu0xgrk22ch" path="res://gfx/player/walk_7.png" id="10_bdc4e"]
 [ext_resource type="Texture2D" uid="uid://ckqy1d4m4cu4k" path="res://gfx/weapon/weaponR1.png" id="11_fsrjl"]
+[ext_resource type="Script" uid="uid://d350u8evihs1u" path="res://addons/netfox/rollback/rollback-synchronizer.gd" id="13_wb5ey"]
+[ext_resource type="Script" uid="uid://dour8fehaaugp" path="res://addons/netfox/tick-interpolator.gd" id="14_vjh8g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qb7t6"]
 animations = [{
@@ -57,18 +59,15 @@ animations = [{
 size = Vector2(85, 108)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ykyjo"]
-properties/0/path = NodePath(".:position")
+properties/0/path = NodePath("NameLabel:text")
 properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath("NameLabel:text")
+properties/0/replication_mode = 2
+properties/1/path = NodePath("WeaponSprite:rotation")
 properties/1/spawn = true
-properties/1/replication_mode = 2
-properties/2/path = NodePath("WeaponSprite:rotation")
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:player_id")
 properties/2/spawn = true
-properties/2/replication_mode = 1
-properties/3/path = NodePath(".:player_id")
-properties/3/spawn = true
-properties/3/replication_mode = 0
+properties/2/replication_mode = 0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input")]
 motion_mode = 1
@@ -116,6 +115,20 @@ one_shot = true
 [node name="RespawnTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="RollbackSynchronizer" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("13_wb5ey")
+root = NodePath("..")
+enable_prediction = true
+state_properties = Array[String]([":position"])
+input_properties = Array[String](["PlayerInput:direction", "PlayerInput:attacking", "PlayerInput:mousePosition", "PlayerInput:lookingLeft"])
+metadata/_custom_type_script = "uid://d350u8evihs1u"
+
+[node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("14_vjh8g")
+root = NodePath("..")
+properties = Array[String]([":position"])
+metadata/_custom_type_script = "uid://dour8fehaaugp"
 
 [node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_ykyjo")

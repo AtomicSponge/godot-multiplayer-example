@@ -71,7 +71,7 @@ func apply_animation(_delta: float) -> void:
 		PlayerSprite.play("Idle")
 
 func _enter_tree() -> void:
-	set_multiplayer_authority(player_id)
+	set_multiplayer_authority(1)
 
 func _ready() -> void:
 	#  Configure the player for the controlling client
@@ -83,11 +83,15 @@ func _ready() -> void:
 	#  Disable this player for other clients
 	else:
 		PlayerCamera.enabled = false
+	$RollbackSynchronizer.process_settings()
 
 func _process(delta: float) -> void:
 	apply_animation(delta)
 
-func _physics_process(_delta: float) -> void:
+#func _physics_process(_delta: float) -> void:
+	#pass
+
+func _rollback_tick(_delta: float, _tick, _is_fresh) -> void:
 	# Stop movement if the menu or console is opened
 	if GameState.GAME_MENU_OPENED or Console.is_opened() or not alive:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -105,4 +109,6 @@ func _physics_process(_delta: float) -> void:
 		fire_weapon.rpc()
 		ShotTimer.start()
 
+	velocity *= NetworkTime.physics_factor
 	move_and_slide()
+	velocity /= NetworkTime.physics_factor
