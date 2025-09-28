@@ -69,6 +69,7 @@ func apply_animation(_delta: float) -> void:
 	else:
 		PlayerSprite.play("Idle")
 
+##  Apply player input.
 func apply_input(_delta: float, _tick: float, _is_fresh: bool) -> void:
 	# Stop movement if the menu or console is opened
 	if GameState.GAME_MENU_OPENED or Console.is_opened() or not alive:
