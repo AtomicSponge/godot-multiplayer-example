@@ -30,6 +30,18 @@ func _ready() -> void:
 	moveState = MovementStates.WALKING
 	change_direction()
 
+func _process(_delta: float) -> void:
+	#  Play animations
+	if movingLeft:
+		MobSprite.flip_h = true
+	else:
+		MobSprite.flip_h = false
+	match moveState:
+		MovementStates.CHASING:
+			MobSprite.play("Fly", 4.0)  #  Quad speed
+		_:
+			MobSprite.play("Fly")
+
 func _physics_process(_delta: float) -> void:
 	#  Process moving on server only
 	if multiplayer.is_server():
@@ -58,14 +70,3 @@ func _physics_process(_delta: float) -> void:
 				velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
 				velocity.y = move_toward(velocity.y, 0, WALK_SPEED)
 		move_and_slide()
-
-	#  Play animations
-	if movingLeft:
-		MobSprite.flip_h = true
-	else:
-		MobSprite.flip_h = false
-	match moveState:
-		MovementStates.CHASING:
-			MobSprite.play("Fly", 4.0)  #  Quad speed
-		_:
-			MobSprite.play("Fly")

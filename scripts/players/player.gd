@@ -90,7 +90,7 @@ func _process(delta: float) -> void:
 #func _physics_process(_delta: float) -> void:
 	#pass
 
-func _rollback_tick(_delta: float, _tick, _is_fresh) -> void:
+func _rollback_tick(_delta: float, _tick, _is_fresh: bool) -> void:
 	# Stop movement if the menu or console is opened
 	if GameState.GAME_MENU_OPENED or Console.is_opened() or not alive:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
