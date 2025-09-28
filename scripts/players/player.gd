@@ -50,6 +50,26 @@ func fire_weapon() -> void:
 	b.global_position = FireLocation.global_position
 	b.rotation = WeaponSprite.rotation
 
+##  Run animations.
+func apply_animation(_delta: float) -> void:
+	if GameState.GAME_MENU_OPENED or Console.is_opened() or not alive:
+		PlayerSprite.play("Idle")
+		return
+
+	if input.lookingLeft:
+		PlayerSprite.flip_h = true
+		WeaponSprite.flip_v = true
+	else:
+		PlayerSprite.flip_h = false
+		WeaponSprite.flip_v = false
+
+	WeaponSprite.look_at(input.mousePosition)
+
+	if input.direction:
+		PlayerSprite.play("Move")
+	else:
+		PlayerSprite.play("Idle")
+
 func _enter_tree() -> void:
 	set_multiplayer_authority(player_id)
 
@@ -64,25 +84,8 @@ func _ready() -> void:
 	else:
 		PlayerCamera.enabled = false
 
-func _process(_delta: float) -> void:
-	if GameState.GAME_MENU_OPENED or Console.is_opened() or not alive:
-		PlayerSprite.play("Idle")
-		return
-	
-	#  Apply animations
-	if input.lookingLeft:
-		PlayerSprite.flip_h = true
-		WeaponSprite.flip_v = true
-	else:
-		PlayerSprite.flip_h = false
-		WeaponSprite.flip_v = false
-
-	WeaponSprite.look_at(input.mousePosition)
-
-	if input.direction:
-		PlayerSprite.play("Move")
-	else:
-		PlayerSprite.play("Idle")
+func _process(delta: float) -> void:
+	apply_animation(delta)
 
 func _physics_process(_delta: float) -> void:
 	# Stop movement if the menu or console is opened
