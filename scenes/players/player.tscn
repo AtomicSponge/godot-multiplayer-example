@@ -82,9 +82,8 @@ script = ExtResource("2_mh0hk")
 position = Vector2(1.375, -79.877)
 scale = Vector2(0.205688, 0.177854)
 sprite_frames = SubResource("SpriteFrames_qb7t6")
-animation = &"Move"
-frame = 7
-frame_progress = 0.231239
+animation = &"Idle"
+autoplay = "Idle"
 
 [node name="PlayerHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -5)

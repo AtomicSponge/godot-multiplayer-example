@@ -54,14 +54,15 @@ func _enter_tree() -> void:
 	set_multiplayer_authority(player_id)
 
 func _ready() -> void:
+	#  Configure the player for the controlling client
 	if multiplayer.get_unique_id() == player_id:
 		PlayerCamera.make_current()
 		EventBus.UpdatePlayerName.connect(update_player_name)
 		RespawnTimer.timeout.connect(respawn)
 		NameLabel.set_text(Globals.NAME)
+	#  Disable this player for other clients
 	else:
 		PlayerCamera.enabled = false
-	PlayerSprite.play("Idle")
 
 func _process(_delta: float) -> void:
 	if GameState.GAME_MENU_OPENED or Console.is_opened() or not alive:
