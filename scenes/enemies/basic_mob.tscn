@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bys7kf1ydhw6r"]
+[gd_scene load_steps=17 format=3 uid="uid://bys7kf1ydhw6r"]
 
 [ext_resource type="Script" uid="uid://cq4exn7hpg0ns" path="res://scripts/enemies/basic_mob.gd" id="1_hjk8o"]
 [ext_resource type="Texture2D" uid="uid://j2ccogxeykl3" path="res://gfx/basic_mob/fly_0.png" id="2_4a7r8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://clfjwqtld1tp1" path="res://gfx/basic_mob/fly_3.png" id="6_jou20"]
 [ext_resource type="Texture2D" uid="uid://yl84h4pr0wv" path="res://gfx/basic_mob/fly_5.png" id="7_gbpul"]
 [ext_resource type="Script" uid="uid://3lbngqcexe0l" path="res://addons/netfox/state-synchronizer.gd" id="8_6jiqk"]
+[ext_resource type="Script" uid="uid://dour8fehaaugp" path="res://addons/netfox/tick-interpolator.gd" id="8_wd3yg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2wyjh"]
 animations = [{
@@ -82,6 +83,12 @@ shape = SubResource("CircleShape2D_0tnuk")
 
 [node name="MovementTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("8_wd3yg")
+root = NodePath("..")
+properties = Array[String]([":position", ":movingLeft", ":moveState"])
+metadata/_custom_type_script = "uid://dour8fehaaugp"
 
 [node name="StateSynchronizer" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("8_6jiqk")

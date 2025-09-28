@@ -37,6 +37,7 @@ func die() -> void:
 func respawn() -> void:
 	var spawn_position: Area2D = GameState.find_player_spawn()
 	position = spawn_position.position
+	$TickInterpolator.teleport()
 	show()
 	PlayerHitbox.set_deferred("disabled", false)
 	alive = true
