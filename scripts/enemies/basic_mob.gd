@@ -26,6 +26,7 @@ func set_target_player(player: Player) -> void:
 
 func _ready() -> void:
 	if not multiplayer.is_server(): return
+	NetworkTime.on_tick.connect(_tick)
 	MovementTimer.timeout.connect(change_direction)
 	moveState = MovementStates.WALKING
 	change_direction()
@@ -42,32 +43,29 @@ func _process(_delta: float) -> void:
 		_:
 			MobSprite.play("Fly")
 
-#func _rollback_tick(_delta: float, _tick: float, _is_fresh: bool) -> void:
-func _physics_process(_delta: float) -> void:
-	#  Process moving on server only
-	if multiplayer.is_server():
-		if targetPlayer != null:
-			change_state(moveState, MovementStates.CHASING)
-		else:
-			change_state(moveState, MovementStates.WALKING)
+func _tick(_delta: float, _tick: float) -> void:
+	if targetPlayer != null:
+		change_state(moveState, MovementStates.CHASING)
+	else:
+		change_state(moveState, MovementStates.WALKING)
 
-		match moveState:
-			MovementStates.WALKING:
-				velocity.x = directionX * WALK_SPEED
-				velocity.y = directionY * WALK_SPEED
-				if directionX < 0:
-					movingLeft = true
-				else:
-					movingLeft = false
-			MovementStates.CHASING:
-				var pos: Vector2 = position.direction_to(targetPlayer.position)
-				velocity.x = pos.x * CHASE_SPEED
-				velocity.y = pos.y * CHASE_SPEED
-				if pos.x < 0:
-					movingLeft = true
-				else:
-					movingLeft = false
-			_:
-				velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
-				velocity.y = move_toward(velocity.y, 0, WALK_SPEED)
-		move_and_slide()
+	match moveState:
+		MovementStates.WALKING:
+			velocity.x = directionX * WALK_SPEED
+			velocity.y = directionY * WALK_SPEED
+			if directionX < 0:
+				movingLeft = true
+			else:
+				movingLeft = false
+		MovementStates.CHASING:
+			var pos: Vector2 = position.direction_to(targetPlayer.position)
+			velocity.x = pos.x * CHASE_SPEED
+			velocity.y = pos.y * CHASE_SPEED
+			if pos.x < 0:
+				movingLeft = true
+			else:
+				movingLeft = false
+		_:
+			velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
+			velocity.y = move_toward(velocity.y, 0, WALK_SPEED)
+	move_and_slide()
