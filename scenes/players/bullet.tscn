@@ -25,13 +25,13 @@ one_shot = true
 [node name="StateSynchronizer" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("3_d3sy4")
 root = NodePath("..")
-properties = Array[String]([":position"])
+properties = Array[String]([":global_position"])
 metadata/_custom_type_script = "uid://3lbngqcexe0l"
 
 [node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("4_gt4y2")
 root = NodePath("..")
-properties = Array[String]([":position"])
+properties = Array[String]([":global_position"])
 metadata/_custom_type_script = "uid://dour8fehaaugp"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
