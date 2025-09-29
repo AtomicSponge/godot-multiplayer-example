@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://jij4c73itgwo"]
+[gd_scene load_steps=6 format=3 uid="uid://jij4c73itgwo"]
 
 [ext_resource type="Script" uid="uid://dkrx5yor1ne6a" path="res://scripts/players/bullet.gd" id="1_6kkh3"]
 [ext_resource type="Texture2D" uid="uid://yuxr73f64xnl" path="res://gfx/weapon/bullet.png" id="1_8pgug"]
+[ext_resource type="Script" uid="uid://3lbngqcexe0l" path="res://addons/netfox/state-synchronizer.gd" id="3_d3sy4"]
+[ext_resource type="Script" uid="uid://dour8fehaaugp" path="res://addons/netfox/tick-interpolator.gd" id="4_gt4y2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6kkh3"]
 radius = 5.38516
@@ -19,5 +21,17 @@ shape = SubResource("CircleShape2D_6kkh3")
 [node name="LifeTimer" type="Timer" parent="."]
 wait_time = 3.5
 one_shot = true
+
+[node name="StateSynchronizer" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("3_d3sy4")
+root = NodePath("..")
+properties = Array[String]([":position"])
+metadata/_custom_type_script = "uid://3lbngqcexe0l"
+
+[node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("4_gt4y2")
+root = NodePath("..")
+properties = Array[String]([":position"])
+metadata/_custom_type_script = "uid://dour8fehaaugp"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
