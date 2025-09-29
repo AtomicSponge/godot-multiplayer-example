@@ -51,7 +51,8 @@ func fire_weapon() -> void:
 	b.rotation = WeaponSprite.rotation
 
 ##  Run animations.
-func apply_animation(_delta: float, _tick: float, _is_fresh: bool) -> void:
+func apply_animation(_delta: float, _tick: float, is_fresh: bool) -> void:
+	if not is_fresh: return
 	if GameState.GAME_MENU_OPENED or Console.is_opened() or not alive:
 		PlayerSprite.play("Idle")
 		return
