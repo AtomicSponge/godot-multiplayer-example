@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	position += transform.x * speed * delta
 
 func _on_body_entered(body: Node2D) -> void:
-	if not is_multiplayer_authority():
+	if not multiplayer.is_server():
 		return
 	if body is Player:
 		return
