@@ -4,7 +4,7 @@ class_name Bullet extends Area2D
 
 var speed = 750
 
-@rpc("any_peer", "call_local")
+@rpc("call_local")
 func remove_mob(body: Node2D) -> void:
 	if body == null: return
 	body.queue_free()
