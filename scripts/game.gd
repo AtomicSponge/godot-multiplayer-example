@@ -50,10 +50,12 @@ func end_game(why: String = ""):
 	for node in Players.get_children():
 		Players.remove_child(node)
 		node.queue_free()
+	await get_tree().process_frame
 	#  Remove all enemies
 	for node in Enemies.get_children():
 		Enemies.remove_child(node)
 		node.queue_free()
+	await get_tree().process_frame
 	#  Remove the level
 	for node in Level.get_children():
 		Level.remove_child(node)
