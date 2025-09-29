@@ -71,3 +71,7 @@ func _on_tick(_delta: float, _tick: float) -> void:
 	velocity *= NetworkTime.physics_factor
 	move_and_slide()
 	velocity /= NetworkTime.physics_factor
+
+func _exit_tree() -> void:
+	if NetworkTime.on_tick.is_connected(_on_tick):
+		NetworkTime.on_tick.disconnect(_on_tick)
