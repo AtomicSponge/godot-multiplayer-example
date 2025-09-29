@@ -15,7 +15,7 @@ func _gather() -> void:
 	if not is_inside_tree() or not multiplayer.has_multiplayer_peer() or not is_multiplayer_authority():
 		return
 	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	attacking = Input.is_action_pressed("attack")
+	#attacking = Input.is_action_pressed("attack")
 	mousePosition = get_global_mouse_position()
 	if get_local_mouse_position().x < 0:
 		lookingLeft = true
