@@ -95,12 +95,12 @@ func _ready() -> void:
 	set_multiplayer_authority(1)
 	input.set_multiplayer_authority(player_id)
 	$RollbackSynchronizer.process_settings()
-	NameLabel.set_text(Globals.NAME)
 	#  Configure the player for the controlling client
 	if multiplayer.get_unique_id() == player_id:
 		PlayerCamera.make_current()
 		EventBus.UpdatePlayerName.connect(update_player_name)
 		RespawnTimer.timeout.connect(respawn)
+		NameLabel.set_text(Globals.NAME)
 	#  Disable this player for other clients
 	else:
 		PlayerCamera.enabled = false
