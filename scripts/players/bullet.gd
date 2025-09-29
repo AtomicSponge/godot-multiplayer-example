@@ -6,6 +6,7 @@ var speed = 750
 
 @rpc("any_peer", "call_local")
 func remove_mob(body: Node2D) -> void:
+	if body == null: return
 	body.queue_free()
 
 func _ready() -> void:
