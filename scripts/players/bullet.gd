@@ -10,7 +10,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if LifeTimer.is_stopped():
 		queue_free()
-	position += transform.x * speed * delta
+	global_position += transform.x * speed * delta
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
