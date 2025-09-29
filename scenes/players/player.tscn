@@ -117,14 +117,14 @@ one_shot = true
 script = ExtResource("13_wb5ey")
 root = NodePath("..")
 enable_prediction = true
-state_properties = Array[String]([":position", "WeaponSprite:rotation"])
+state_properties = Array[String]([":position"])
 input_properties = Array[String](["PlayerInput:direction", "PlayerInput:attacking", "PlayerInput:mousePosition", "PlayerInput:lookingLeft"])
 metadata/_custom_type_script = "uid://d350u8evihs1u"
 
 [node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("14_vjh8g")
 root = NodePath("..")
-properties = Array[String]([":position", "WeaponSprite:rotation"])
+properties = Array[String]([":position"])
 metadata/_custom_type_script = "uid://dour8fehaaugp"
 
 [node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

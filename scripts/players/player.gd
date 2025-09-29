@@ -48,7 +48,6 @@ func fire_weapon() -> void:
 	var b: Bullet = bullet.instantiate()
 	add_child(b)
 	b.global_position = FireLocation.global_position
-	#b.rotation = WeaponSprite.rotation
 	b.look_at(input.mousePosition)
 
 ##  Run animations.
