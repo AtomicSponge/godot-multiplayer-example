@@ -26,7 +26,7 @@ func set_target_player(player: Player) -> void:
 
 func _ready() -> void:
 	if not multiplayer.is_server(): return
-	NetworkTime.on_tick.connect(_tick)
+	NetworkTime.on_tick.connect(_on_tick)
 	MovementTimer.timeout.connect(change_direction)
 	moveState = MovementStates.WALKING
 	change_direction()
@@ -43,7 +43,7 @@ func _process(_delta: float) -> void:
 		_:
 			MobSprite.play("Fly")
 
-func _tick(_delta: float, _tick: float) -> void:
+func _on_tick(_delta: float, _tick: float) -> void:
 	if targetPlayer != null:
 		change_state(moveState, MovementStates.CHASING)
 	else:
