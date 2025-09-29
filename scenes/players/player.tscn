@@ -62,12 +62,9 @@ size = Vector2(85, 108)
 properties/0/path = NodePath(".:player_id")
 properties/0/spawn = true
 properties/0/replication_mode = 0
-properties/1/path = NodePath("WeaponSprite:rotation")
+properties/1/path = NodePath("NameLabel:text")
 properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath("NameLabel:text")
-properties/2/spawn = true
-properties/2/replication_mode = 2
+properties/1/replication_mode = 2
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input")]
 motion_mode = 1
@@ -120,14 +117,14 @@ one_shot = true
 script = ExtResource("13_wb5ey")
 root = NodePath("..")
 enable_prediction = true
-state_properties = Array[String]([":position"])
+state_properties = Array[String]([":position", "WeaponSprite:rotation"])
 input_properties = Array[String](["PlayerInput:direction", "PlayerInput:attacking", "PlayerInput:mousePosition", "PlayerInput:lookingLeft"])
 metadata/_custom_type_script = "uid://d350u8evihs1u"
 
 [node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("14_vjh8g")
 root = NodePath("..")
-properties = Array[String]([":position"])
+properties = Array[String]([":position", "WeaponSprite:rotation"])
 metadata/_custom_type_script = "uid://dour8fehaaugp"
 
 [node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
