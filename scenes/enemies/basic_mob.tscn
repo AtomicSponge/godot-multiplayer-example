@@ -96,7 +96,6 @@ metadata/_custom_type_script = "uid://3lbngqcexe0l"
 [node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("8_wd3yg")
 root = NodePath("..")
-enabled = false
 properties = Array[String]([":position", ":movingLeft"])
 metadata/_custom_type_script = "uid://dour8fehaaugp"
 
