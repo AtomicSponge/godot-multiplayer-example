@@ -4,6 +4,10 @@ class_name Bullet extends Area2D
 
 var speed = 750
 
+@rpc("any_peer", "call_local")
+func remove_mob(body: Node2D) -> void:
+	body.queue_free()
+
 func _ready() -> void:
 	LifeTimer.start()
 
@@ -16,5 +20,5 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
 		return
 	if body is Enemy:
-		body.queue_free()
+		remove_mob.rpc(body)
 	queue_free()
