@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	position += transform.x * speed * delta
 
 func _on_body_entered(body: Node2D) -> void:
-	if not is_inside_tree() or not multiplayer.has_multiplayer_peer() or not is_multiplayer_authority():
+	if not is_inside_tree():
 		return
 	if body is Player:
 		return
