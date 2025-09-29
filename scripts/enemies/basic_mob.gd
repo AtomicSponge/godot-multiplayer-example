@@ -68,4 +68,6 @@ func _on_tick(_delta: float, _tick: float) -> void:
 		_:
 			velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
 			velocity.y = move_toward(velocity.y, 0, WALK_SPEED)
+	velocity *= NetworkTime.physics_factor
 	move_and_slide()
+	velocity /= NetworkTime.physics_factor
