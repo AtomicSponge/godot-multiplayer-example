@@ -15,11 +15,12 @@ func close_connection() -> void:
 	# If in a lobby, leave it
 	if Globals.LOBBY_ID != 0:
 		# Send leave request to Steam
+		NetworkTime.stop()
 		Steam.leaveLobby(Globals.LOBBY_ID)
 		multiplayer.multiplayer_peer.close()
 		multiplayer.multiplayer_peer = null
 
-		# Wipe the Steam lobby ID then display the default lobby ID and player list title
+		# Wipe the Steam lobby ID
 		Globals.LOBBY_ID = 0
 
 		# Close session with all users
