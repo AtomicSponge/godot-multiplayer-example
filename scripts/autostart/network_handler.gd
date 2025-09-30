@@ -16,8 +16,7 @@ func close_connection() -> void:
 	if Globals.LOBBY_ID != 0:
 		# Send leave request to Steam
 		Steam.leaveLobby(Globals.LOBBY_ID)
-		multiplayer.multiplayer_peer.close()
-		multiplayer.multiplayer_peer = null
+		multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 
 		# Wipe the Steam lobby ID
 		Globals.LOBBY_ID = 0
