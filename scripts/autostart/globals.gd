@@ -14,12 +14,6 @@ var LOBBY_NAME: String = ""			##  Lobby name
 var LOBBY_LIST: Array = []			##  List of players in the lobby
 const LOBBY_MEMBERS_MAX: int = 4	##  Max allowed lobby members
 
-##  Achievements list
-var achievements: Dictionary[String, bool] = {
-	"Test1": false,
-	"Test2": false
-}
-
 ## Display an alert
 func alert(text: String) -> void:
 	var dialog = AcceptDialog.new()
@@ -34,24 +28,6 @@ func alert(text: String) -> void:
 func quit_game() -> void:
 	NetworkHandler.close_connection()
 	get_tree().quit()
-
-##  Set an achievement locally and on Steam
-func set_achievement(this_achievement: String) -> void:
-	if not achievements.has(this_achievement):
-		print("This achievement does not exist locally: %s" % this_achievement)
-		return
-	achievements[this_achievement] = true
-
-	if not Steam.setAchievement(this_achievement):
-		print("Failed to set achievement: %s" % this_achievement)
-		return
-	print("Set acheivement: %s" % this_achievement)
-
-	# Pass the value to Steam then fire it
-	if not Steam.storeStats():
-		print("Failed to store data on Steam, should be stored locally")
-		return
-	print("Data successfully sent to Steam")
 
 func _check_command_line() -> void:
 	var arguments: Array = OS.get_cmdline_args()

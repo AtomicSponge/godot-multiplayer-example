@@ -55,6 +55,7 @@ func run() -> void:
 ## Called by [_NetworkTime], no need to call manually.
 func stop() -> void:
 	if multiplayer.is_server():
+	#if multiplayer.peer_connected.is_connected(_handle_new_peer):
 		multiplayer.peer_connected.disconnect(_handle_new_peer)
 
 func _ready() -> void:
