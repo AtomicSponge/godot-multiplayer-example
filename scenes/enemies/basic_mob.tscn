@@ -92,7 +92,7 @@ one_shot = true
 script = ExtResource("8_o3po7")
 root = NodePath("..")
 enable_prediction = true
-state_properties = Array[String]([":position", ":movingLeft", ":velocity"])
+state_properties = Array[String]([":position", ":movingLeft"])
 metadata/_custom_type_script = "uid://d350u8evihs1u"
 
 [node name="StateSynchronizer" type="Node" parent="." node_paths=PackedStringArray("root")]
