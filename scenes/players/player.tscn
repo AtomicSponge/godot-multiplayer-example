@@ -119,6 +119,7 @@ root = NodePath("..")
 enable_prediction = true
 state_properties = Array[String]([":position"])
 input_properties = Array[String](["PlayerInput:direction", "PlayerInput:attacking", "PlayerInput:mousePosition", "PlayerInput:lookingLeft"])
+enable_input_broadcast = false
 metadata/_custom_type_script = "uid://d350u8evihs1u"
 
 [node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]

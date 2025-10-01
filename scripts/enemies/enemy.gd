@@ -18,6 +18,3 @@ enum MovementStates {
 func change_state(old_state: MovementStates, new_state: MovementStates) -> MovementStates:
 	moveState = new_state
 	return old_state
-
-#func _enter_tree() -> void:
-	#set_multiplayer_authority(1, true)
