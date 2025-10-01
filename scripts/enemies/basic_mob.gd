@@ -37,7 +37,7 @@ func apply_animations(_delta: float) -> void:
 			MobSprite.play("Fly")
 
 func _ready() -> void:
-	$RollbackSynchronizer.process_settings()
+	#$RollbackSynchronizer.process_settings()
 	if not multiplayer.is_server(): return
 	MovementTimer.timeout.connect(change_direction)
 	moveState = MovementStates.WALKING
