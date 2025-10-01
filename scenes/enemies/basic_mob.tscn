@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bys7kf1ydhw6r"]
+[gd_scene load_steps=18 format=3 uid="uid://bys7kf1ydhw6r"]
 
 [ext_resource type="Script" uid="uid://cq4exn7hpg0ns" path="res://scripts/enemies/basic_mob.gd" id="1_hjk8o"]
 [ext_resource type="Texture2D" uid="uid://j2ccogxeykl3" path="res://gfx/basic_mob/fly_0.png" id="2_4a7r8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://5b3bqg7ismth" path="res://gfx/basic_mob/fly_4.png" id="5_o3po7"]
 [ext_resource type="Texture2D" uid="uid://clfjwqtld1tp1" path="res://gfx/basic_mob/fly_3.png" id="6_jou20"]
 [ext_resource type="Texture2D" uid="uid://yl84h4pr0wv" path="res://gfx/basic_mob/fly_5.png" id="7_gbpul"]
+[ext_resource type="Script" uid="uid://3lbngqcexe0l" path="res://addons/netfox/state-synchronizer.gd" id="8_6jiqk"]
 [ext_resource type="Script" uid="uid://d350u8evihs1u" path="res://addons/netfox/rollback/rollback-synchronizer.gd" id="8_o3po7"]
 [ext_resource type="Script" uid="uid://dour8fehaaugp" path="res://addons/netfox/tick-interpolator.gd" id="8_wd3yg"]
 
@@ -93,6 +94,12 @@ root = NodePath("..")
 enable_prediction = true
 state_properties = Array[String]([":position", ":movingLeft"])
 metadata/_custom_type_script = "uid://d350u8evihs1u"
+
+[node name="StateSynchronizer" type="Node" parent="." node_paths=PackedStringArray("root")]
+script = ExtResource("8_6jiqk")
+root = NodePath("..")
+properties = Array[String]([":position"])
+metadata/_custom_type_script = "uid://3lbngqcexe0l"
 
 [node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("8_wd3yg")
