@@ -33,10 +33,12 @@ func start_game():
 	#  Configure HUD and show custom mouse cursor
 	HUD.show()
 	Input.set_custom_mouse_cursor(crosshair, Input.CURSOR_ARROW, Vector2(32,32))
+	NetworkTime.start()
 
 ##  End the game and close the network connection.
 func end_game(why: String = ""):
 	GameState.GAME_RUNNING = false
+	NetworkTime.stop()
 	HUD.hide()
 	if multiplayer.is_server():
 		if multiplayer.peer_connected.is_connected(spawn_player):

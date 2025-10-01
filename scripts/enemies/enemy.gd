@@ -1,4 +1,5 @@
 ##  Base class for creating a new enemy scene.
+@abstract
 class_name Enemy extends CharacterBody2D
 
 ##  List of movement states.
