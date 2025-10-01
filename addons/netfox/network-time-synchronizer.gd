@@ -20,7 +20,7 @@ const MIN_SYNC_INTERVAL := 0.1
 var sync_interval: float:
 	get:
 		return maxf(
-			ProjectSettings.get_setting(&"netfox/time/sync_interval", 0.25),
+			_sync_interval,
 			MIN_SYNC_INTERVAL
 		)
 	set(v):
@@ -31,7 +31,7 @@ var sync_interval: float:
 ## [i]read-only[/i], you can change this in the Netfox project settings
 var sync_samples: int:
 	get:
-		return ProjectSettings.get_setting(&"netfox/time/sync_samples", 8)
+		return _sync_samples
 	set(v):
 		push_error("Trying to set read-only variable sync_samples")
 
@@ -44,7 +44,7 @@ var sync_samples: int:
 ## [i]read-only[/i], you can change this in the Netfox project settings
 var adjust_steps: int:
 	get:
-		return ProjectSettings.get_setting(&"netfox/time/sync_adjust_steps", 8)
+		return _adjust_steps
 	set(v):
 		push_error("Trying to set read-only variable adjust_steps")
 
@@ -56,7 +56,7 @@ var adjust_steps: int:
 ## [i]read-only[/i], you can change this in the Netfox project settings
 var panic_threshold: float:
 	get:
-		return ProjectSettings.get_setting(&"netfox/time/recalibrate_threshold", 2.)
+		return _panic_threshold
 	set(v):
 		push_error("Trying to set read-only variable panic_threshold")
 
@@ -95,6 +95,12 @@ var remote_offset: float:
 		return _offset
 	set(v):
 		push_error("Trying to set read-only variable remote_offset")
+		
+# Settings
+var _sync_interval: float = ProjectSettings.get_setting(&"netfox/time/sync_interval", 0.25)
+var _sync_samples: int = ProjectSettings.get_setting(&"netfox/time/sync_samples", 8)
+var _adjust_steps: int =ProjectSettings.get_setting(&"netfox/time/sync_adjust_steps", 8)
+var _panic_threshold: float = ProjectSettings.get_setting(&"netfox/time/recalibrate_threshold", 2.)
 
 var _active: bool = false
 static var _logger: _NetfoxLogger = _NetfoxLogger.for_netfox("NetworkTimeSynchronizer")
@@ -168,6 +174,10 @@ func _loop() -> void:
 
 func _discipline_clock() -> void:
 	var sorted_samples := _sample_buffer.get_data()
+	if sorted_samples.is_empty():
+		# Should never happen
+		_logger.warning("Trying to discipline the clock with no samples available!")
+		return
 	
 	# Sort samples by latency
 	sorted_samples.sort_custom(
@@ -194,7 +204,12 @@ func _discipline_clock() -> void:
 		offset += offsets[i] * w
 		offset_weight += w
 	
-	offset /= offset_weight
+	if not is_zero_approx(offset_weight):
+		offset /= offset_weight
+	else:
+		# RTT is so good it's basically zero, which means offset_weight is zero
+		# Use a simple average instead
+		offset /= sorted_samples.size()
 	
 	# Panic / Adjust
 	if abs(offset) > panic_threshold:

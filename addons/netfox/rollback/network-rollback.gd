@@ -25,7 +25,7 @@ var enable_diff_states: bool = ProjectSettings.get_setting(&"netfox/rollback/ena
 ## [i]read-only[/i], you can change this in the project settings
 var history_limit: int:
 	get:
-		return ProjectSettings.get_setting(&"netfox/rollback/history_limit", 64)
+		return _history_limit
 	set(v):
 		push_error("Trying to set read-only variable history_limit")
 
@@ -50,7 +50,7 @@ var history_start: int:
 ## [i]read-only[/i], you can change this in the project settings
 var display_offset: int:
 	get:
-		return ProjectSettings.get_setting(&"netfox/rollback/display_offset", 0)
+		return _display_offset
 	set(v):
 		push_error("Trying to set read-only variable display_offset")
 
@@ -85,9 +85,10 @@ var display_tick: int:
 ## with input latency higher than network latency.
 ## [br][br]
 ## [i]read-only[/i], you can change this in the project settings
+
 var input_delay: int:
 	get:
-		return ProjectSettings.get_setting(&"netfox/rollback/input_delay", 0)
+		return _input_delay
 	set(v):
 		push_error("Trying to set read-only variable input_delay")
 
@@ -99,10 +100,10 @@ var input_delay: int:
 ## in transmission, the next (n-1) packets will contain the data for it.
 ## [br][br]
 ## [i]read-only[/i], you can change this in the project settings
+
 var input_redundancy: int:
 	get:
-		var value := ProjectSettings.get_setting(&"netfox/rollback/input_redundancy", 3)
-		return max(1, value)
+		return max(1, _input_redundancy)
 	set(v):
 		push_error("Trying to set read-only variable input_redundancy")
 
@@ -116,7 +117,7 @@ var tick: int:
 	set(v):
 		push_error("Trying to set read-only variable tick")
 
-## Event emitted before running the network rollback loop
+## Event emitted before running the network rollback loop.
 signal before_loop()
 
 ## Event emitted in preparation of each rollback tick.
@@ -137,25 +138,36 @@ signal after_prepare_tick(tick: int)
 ## tick phase ).
 signal on_process_tick(tick: int)
 
+## Event emitted after the given rollback tick was processed.
+signal after_process_tick(tick: int)
+
 ## Event emitted to record the given rollback tick.
 ## [br][br]
 ## By this time, the tick is advanced from the simulation, handlers should save
 ## their resulting states for the given tick.
 signal on_record_tick(tick: int)
 
-## Event emitted after running the network rollback loop
+## Event emitted after running the network rollback loop.
 signal after_loop()
 
+# Settings
+var _history_limit: int = ProjectSettings.get_setting(&"netfox/rollback/history_limit", 64)
+var _display_offset: int = ProjectSettings.get_setting(&"netfox/rollback/display_offset", 0)
+var _input_delay: int = ProjectSettings.get_setting(&"netfox/rollback/input_delay", 0)
+var _input_redundancy: int = ProjectSettings.get_setting(&"netfox/rollback/input_redundancy", 3)
+
+# Timing
 var _tick: int = 0
 var _resim_from: int
-
-var _is_rollback: bool = false
-var _simulated_nodes: Dictionary = {}
-var _mutated_nodes: Dictionary = {}
 
 var _rollback_from: int = -1
 var _rollback_to: int = -1
 var _rollback_stage: String = ""
+
+# Resim + mutations
+var _is_rollback: bool = false
+var _simulated_nodes: _Set = _Set.new()
+var _mutated_nodes: Dictionary = {}
 
 const _STAGE_BEFORE := "B"
 const _STAGE_PREPARE := "P"
@@ -177,7 +189,7 @@ func notify_resimulation_start(tick: int) -> void:
 ## submit each affected node while preparing the tick, and then run only the
 ## nodes that need to be resimulated.
 func notify_simulated(node: Node) -> void:
-	_simulated_nodes[node] = true
+	_simulated_nodes.add(node)
 
 
 ## Check if node was submitted for simulation.
@@ -198,7 +210,7 @@ func is_rollback() -> bool:
 ## This is used by [RollbackSynchronizer] to see if it should simulate the
 ## given object during rollback.
 func is_rollback_aware(what: Object) -> bool:
-	return what.has_method("_rollback_tick")
+	return what.has_method(&"_rollback_tick")
 
 ## Calls the [code]_rollback_tick[/code] method on the target, running its
 ## simulation for the given rollback tick.
@@ -315,6 +327,7 @@ func _rollback() -> void:
 		#		If not: Latest input >= tick >= Earliest input
 		_rollback_stage = _STAGE_SIMULATE
 		on_process_tick.emit(tick)
+		after_process_tick.emit(tick)
 
 		# Record state for tick + 1
 		_rollback_stage = _STAGE_RECORD
