@@ -25,7 +25,8 @@ func set_target_player(player: Player) -> void:
 	targetPlayer = player
 
 ##  Play animations
-func apply_animations(_delta: float) -> void:
+func apply_animations(_delta: float, _tick: float, is_fresh: bool) -> void:
+	if not is_fresh: return
 	if movingLeft:
 		MobSprite.flip_h = true
 	else:
@@ -46,8 +47,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func _rollback_tick(delta: float, _tick: float, _is_fresh: bool) -> void:
-	apply_animations(delta)
+func _rollback_tick(delta: float, tick: float, is_fresh: bool) -> void:
+	apply_animations(delta, tick, is_fresh)
 	if targetPlayer != null:
 		change_state(moveState, MovementStates.CHASING)
 	else:
