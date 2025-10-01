@@ -109,7 +109,6 @@ fps={
 [netfox]
 
 time/sync_to_physics=true
-events/enabled=false
 
 [physics]
 
