@@ -92,13 +92,13 @@ one_shot = true
 script = ExtResource("8_o3po7")
 root = NodePath("..")
 enable_prediction = true
-state_properties = Array[String]([":position", ":movingLeft"])
+state_properties = Array[String]([":position"])
 metadata/_custom_type_script = "uid://d350u8evihs1u"
 
 [node name="StateSynchronizer" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("8_6jiqk")
 root = NodePath("..")
-properties = Array[String]([":position"])
+properties = Array[String]([":movingLeft"])
 metadata/_custom_type_script = "uid://3lbngqcexe0l"
 
 [node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
