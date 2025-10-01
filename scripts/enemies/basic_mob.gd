@@ -24,15 +24,8 @@ func change_direction() -> void:
 func set_target_player(player: Player) -> void:
 	targetPlayer = player
 
-func _ready() -> void:
-	$RollbackSynchronizer.process_settings()
-	if not multiplayer.is_server(): return
-	MovementTimer.timeout.connect(change_direction)
-	moveState = MovementStates.WALKING
-	change_direction()
-
-func _process(_delta: float) -> void:
-	#  Play animations
+##  Play animations
+func apply_animations(_delta: float) -> void:
 	if movingLeft:
 		MobSprite.flip_h = true
 	else:
@@ -43,7 +36,18 @@ func _process(_delta: float) -> void:
 		_:
 			MobSprite.play("Fly")
 
-func _rollback_tick(_delta: float, _tick: float, _is_fresh: bool) -> void:
+func _ready() -> void:
+	$RollbackSynchronizer.process_settings()
+	if not multiplayer.is_server(): return
+	MovementTimer.timeout.connect(change_direction)
+	moveState = MovementStates.WALKING
+	change_direction()
+
+func _process(_delta: float) -> void:
+	pass
+
+func _rollback_tick(delta: float, _tick: float, _is_fresh: bool) -> void:
+	apply_animations(delta)
 	if targetPlayer != null:
 		change_state(moveState, MovementStates.CHASING)
 	else:
