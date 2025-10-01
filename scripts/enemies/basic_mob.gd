@@ -26,6 +26,8 @@ func set_target_player(player: Player) -> void:
 
 ##  Play animations
 func apply_animations(_delta: float) -> void:
+	print(movingLeft)
+	print(moveState)
 	if movingLeft:
 		MobSprite.flip_h = true
 	else:
