@@ -27,6 +27,7 @@ func set_target_player(player: Player) -> void:
 func _ready() -> void:
 	if not multiplayer.is_server(): return
 	#NetworkTime.on_tick.connect(_on_tick)
+	$RollbackSynchronizer.process_settings()
 	MovementTimer.timeout.connect(change_direction)
 	moveState = MovementStates.WALKING
 	change_direction()
