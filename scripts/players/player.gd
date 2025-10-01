@@ -93,6 +93,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	set_multiplayer_authority(1)
 	input.set_multiplayer_authority(player_id)
+	$RollbackSynchronizer.process_settings()
 	#  Configure the player for the controlling client
 	if multiplayer.get_unique_id() == player_id:
 		PlayerCamera.make_current()
