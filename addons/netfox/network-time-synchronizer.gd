@@ -166,8 +166,7 @@ func _loop() -> void:
 		_awaiting_samples[_sample_idx] = sample
 		
 		sample.ping_sent = _clock.get_time()
-		if not multiplayer.is_server():
-			_send_ping.rpc_id(1, _sample_idx)
+		_send_ping.rpc_id(1, _sample_idx)
 		
 		_sample_idx += 1
 		
