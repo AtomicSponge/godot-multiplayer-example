@@ -27,7 +27,7 @@ func set_target_player(player: Player) -> void:
 ##  Play animations
 func apply_animations(_delta: float, _tick: float, is_fresh: bool) -> void:
 	if not is_fresh: return
-	if movingLeft:
+	if directionX < 0:
 		MobSprite.flip_h = true
 	else:
 		MobSprite.flip_h = false
