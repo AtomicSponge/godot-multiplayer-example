@@ -71,7 +71,7 @@ motion_mode = 1
 script = ExtResource("1_ykyjo")
 input = NodePath("PlayerInput")
 
-[node name="PlayerInput" type="Node" parent="."]
+[node name="PlayerInput" type="Node2D" parent="."]
 script = ExtResource("2_mh0hk")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
