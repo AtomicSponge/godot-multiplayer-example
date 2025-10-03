@@ -84,7 +84,7 @@ func apply_input(_delta: float, _tick: float, _is_fresh: bool) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
-	
+
 	if input.attacking and ShotTimer.is_stopped():
 		fire_weapon.rpc()
 		ShotTimer.start()
