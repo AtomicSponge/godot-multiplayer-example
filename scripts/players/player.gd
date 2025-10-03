@@ -15,7 +15,7 @@ var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 @onready var ShotTimer: Timer = $ShotTimer
 @onready var RespawnTimer: Timer = $RespawnTimer
 
-@export var player_id: int = 1:
+@export var player_id: int:
 	set(id):
 		player_id = id
 
