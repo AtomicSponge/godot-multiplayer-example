@@ -97,7 +97,7 @@ metadata/_custom_type_script = "uid://d350u8evihs1u"
 [node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("8_wd3yg")
 root = NodePath("..")
-properties = Array[String]([":position", ":movingLeft"])
+properties = Array[String]([":position"])
 metadata/_custom_type_script = "uid://dour8fehaaugp"
 
 [node name="BasicMobSynchronizer" type="MultiplayerSynchronizer" parent="."]
