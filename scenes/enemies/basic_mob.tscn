@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bys7kf1ydhw6r"]
+[gd_scene load_steps=17 format=3 uid="uid://bys7kf1ydhw6r"]
 
 [ext_resource type="Script" uid="uid://cq4exn7hpg0ns" path="res://scripts/enemies/basic_mob.gd" id="1_hjk8o"]
 [ext_resource type="Texture2D" uid="uid://j2ccogxeykl3" path="res://gfx/basic_mob/fly_0.png" id="2_4a7r8"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://yl84h4pr0wv" path="res://gfx/basic_mob/fly_5.png" id="7_gbpul"]
 [ext_resource type="Script" uid="uid://d350u8evihs1u" path="res://addons/netfox/rollback/rollback-synchronizer.gd" id="8_o3po7"]
 [ext_resource type="Script" uid="uid://dour8fehaaugp" path="res://addons/netfox/tick-interpolator.gd" id="8_wd3yg"]
-[ext_resource type="Script" uid="uid://3lbngqcexe0l" path="res://addons/netfox/state-synchronizer.gd" id="10_o3po7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2wyjh"]
 animations = [{
@@ -51,6 +50,12 @@ radius = 240.566
 radius = 492.001
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1um0f"]
+properties/0/path = NodePath(".:moveState")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:movingLeft")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [node name="BasicMob" type="CharacterBody2D"]
 motion_mode = 1
@@ -97,12 +102,6 @@ script = ExtResource("8_wd3yg")
 root = NodePath("..")
 properties = Array[String]([":position"])
 metadata/_custom_type_script = "uid://dour8fehaaugp"
-
-[node name="StateSynchronizer" type="Node" parent="." node_paths=PackedStringArray("root")]
-script = ExtResource("10_o3po7")
-root = NodePath("..")
-properties = Array[String]([":moveState", ":movingLeft"])
-metadata/_custom_type_script = "uid://3lbngqcexe0l"
 
 [node name="BasicMobSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_1um0f")
