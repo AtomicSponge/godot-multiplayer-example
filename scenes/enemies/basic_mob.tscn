@@ -53,6 +53,9 @@ radius = 492.001
 properties/0/path = NodePath(".:moveState")
 properties/0/spawn = true
 properties/0/replication_mode = 2
+properties/1/path = NodePath(".:movingLeft")
+properties/1/spawn = true
+properties/1/replication_mode = 2
 
 [node name="BasicMob" type="CharacterBody2D"]
 motion_mode = 1
@@ -91,7 +94,7 @@ one_shot = true
 script = ExtResource("8_o3po7")
 root = NodePath("..")
 enable_prediction = true
-state_properties = Array[String]([":position", ":movingLeft"])
+state_properties = Array[String]([":position"])
 metadata/_custom_type_script = "uid://d350u8evihs1u"
 
 [node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]

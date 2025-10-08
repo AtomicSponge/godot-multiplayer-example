@@ -42,11 +42,7 @@ func _ready() -> void:
 	moveState = MovementStates.WALKING
 	change_direction()
 
-#func _process(delta: float) -> void:
-#	apply_animations(delta)
-
-func _rollback_tick(delta: float, _tick: float, _is_fresh: bool) -> void:
-	apply_animations(delta)
+func _rollback_tick(_delta: float, _tick: float, _is_fresh: bool) -> void:
 	if targetPlayer != null:
 		change_state(moveState, MovementStates.CHASING)
 	else:
