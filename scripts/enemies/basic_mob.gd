@@ -12,7 +12,7 @@ var directionY: float = (randi() % 3) - 1
 
 var targetPlayer: Player = null
 
-##  Randomly change enemy direction durring its walk cycle.
+##  Randomly change enemy direction during its walk cycle.
 func change_direction() -> void:
 	if randf() >= 0.33:
 		directionX = (randi() % 3) - 1
