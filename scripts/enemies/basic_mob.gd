@@ -73,3 +73,15 @@ func _rollback_tick(_delta: float, _tick: float, _is_fresh: bool) -> void:
 	velocity *= NetworkTime.physics_factor
 	move_and_slide()
 	velocity /= NetworkTime.physics_factor
+
+func _on_attack_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		print(body.name)
+
+func _on_chase_area_body_entered(body: Node2D) -> void:
+	if targetPlayer == null and body is Player:
+		targetPlayer = body
+
+func _on_loss_area_body_exited(body: Node2D) -> void:
+	if body == targetPlayer:
+		targetPlayer = null

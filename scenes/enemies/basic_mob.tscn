@@ -107,6 +107,6 @@ metadata/_custom_type_script = "uid://dour8fehaaugp"
 replication_config = SubResource("SceneReplicationConfig_1um0f")
 script = ExtResource("3_0tnuk")
 
-[connection signal="body_entered" from="AttackArea" to="BasicMobSynchronizer" method="_on_attack_area_body_entered"]
-[connection signal="body_entered" from="ChaseArea" to="BasicMobSynchronizer" method="_on_chase_area_body_entered"]
-[connection signal="body_exited" from="LossArea" to="BasicMobSynchronizer" method="_on_loss_area_body_exited"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_entered" from="ChaseArea" to="." method="_on_chase_area_body_entered"]
+[connection signal="body_exited" from="LossArea" to="." method="_on_loss_area_body_exited"]
