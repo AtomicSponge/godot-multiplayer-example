@@ -20,10 +20,6 @@ func change_direction() -> void:
 		directionY = (randi() % 3) - 1
 	MovementTimer.start(randi() % 2)
 
-##  Set the player to chase.  Called in the synchronizer.
-func set_target_player(player: Player) -> void:
-	targetPlayer = player
-
 ##  Play animations
 func apply_animations(_delta: float) -> void:
 	if movingLeft:
