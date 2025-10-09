@@ -37,8 +37,6 @@ func apply_animations(_delta: float) -> void:
 			MobSprite.play("Fly")
 
 func _ready() -> void:
-	await get_tree().process_frame
-	set_multiplayer_authority(1)
 	if not multiplayer.is_server(): return
 	MovementTimer.timeout.connect(change_direction)
 	moveState = MovementStates.WALKING
