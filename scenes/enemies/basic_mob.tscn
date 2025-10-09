@@ -50,6 +50,12 @@ radius = 240.566
 radius = 492.001
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1um0f"]
+properties/0/path = NodePath(".:moveState")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:movingLeft")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [node name="BasicMob" type="CharacterBody2D"]
 motion_mode = 1

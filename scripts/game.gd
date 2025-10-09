@@ -25,7 +25,7 @@ func start_game():
 		#  Spawn the server (main) player
 		spawn_player.call_deferred(1)
 		#  SPAWN SOME MOBS FOR TESTING
-		for n in 1:
+		for n in 2:
 			spawn_enemy.call_deferred("basic_mob", "SpawnLocation1", randf())
 	#  We are not server
 	else:
