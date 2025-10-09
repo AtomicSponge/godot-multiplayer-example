@@ -18,3 +18,7 @@ enum MovementStates {
 func change_state(old_state: MovementStates, new_state: MovementStates) -> MovementStates:
 	moveState = new_state
 	return old_state
+
+func _ready() -> void:
+	await get_tree().process_frame
+	set_multiplayer_authority(1)
