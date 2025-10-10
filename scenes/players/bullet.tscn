@@ -20,7 +20,7 @@ shape = SubResource("CircleShape2D_6kkh3")
 [node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("3_ck6m5")
 root = NodePath("..")
-properties = Array[String]([":position"])
+properties = Array[String]([":global_position"])
 metadata/_custom_type_script = "uid://dour8fehaaugp"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

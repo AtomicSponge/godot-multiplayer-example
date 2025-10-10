@@ -13,8 +13,6 @@ var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 @onready var playerWeapon: Node2D = $PlayerWeapon
 @onready var WeaponSprite: Sprite2D = $WeaponSprite
 @onready var FireLocation: Marker2D = $WeaponSprite/FireLocation
-@onready var ShotTimer: Timer = $ShotTimer
-@onready var RespawnTimer: Timer = $RespawnTimer
 
 @export var player_id: int:
 	set(id):
@@ -27,29 +25,13 @@ const SPEED: float = 450.0
 func update_player_name() -> void:
 	NameLabel.set_text(Globals.NAME)
 
-##  Called when the player dies.
-func die() -> void:
-	alive = false
-	PlayerHitbox.set_deferred("disabled", true)
-	hide()
-	RespawnTimer.start()
-
-##  Called when the player respawns.
-func respawn() -> void:
-	var spawn_position: Area2D = GameState.find_player_spawn()
-	position = spawn_position.position
-	$TickInterpolator.teleport()
-	show()
-	PlayerHitbox.set_deferred("disabled", false)
-	alive = true
-
 ##  Fire weapon.  Called as an RPC.
-@rpc("any_peer", "call_local")
-func fire_weapon() -> void:
-	var b: Bullet = bullet.instantiate()
-	get_tree().root.add_child(b)
-	b.global_position = FireLocation.global_position
-	b.look_at(input.mousePosition)
+#@rpc("any_peer", "call_local")
+#func fire_weapon() -> void:
+	#var b: Bullet = bullet.instantiate()
+	#get_tree().root.add_child(b)
+	#b.global_position = FireLocation.global_position
+	#b.look_at(input.mousePosition)
 
 ##  Run animations.
 func apply_animation(_delta: float) -> void:
@@ -87,10 +69,6 @@ func apply_input(_delta: float, _tick: float, _is_fresh: bool) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
-	if input.attacking and ShotTimer.is_stopped():
-		fire_weapon.rpc()
-		ShotTimer.start()
-
 func _ready() -> void:
 	await get_tree().process_frame
 	set_multiplayer_authority(1)
@@ -99,7 +77,6 @@ func _ready() -> void:
 	if multiplayer.get_unique_id() == player_id:
 		PlayerCamera.make_current()
 		EventBus.UpdatePlayerName.connect(update_player_name)
-		RespawnTimer.timeout.connect(respawn)
 		NameLabel.set_text(Globals.NAME)
 	#  Disable this player for other clients
 	else:

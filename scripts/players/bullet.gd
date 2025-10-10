@@ -8,7 +8,7 @@ func _ready() -> void:
 	NetworkTime.on_tick.connect(_tick)
 	distance_left = distance
 
-func _tick(delta: float, _t: float) -> void:
+func _tick(delta: float, _t: int) -> void:
 	position += transform.x * speed * delta
 	distance_left -= speed
 
