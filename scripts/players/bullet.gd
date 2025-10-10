@@ -2,7 +2,6 @@ class_name Bullet extends Area2D
 
 var speed: float = 400.0
 var distance: float = 20000.0
-
 var distance_left: float = 0.0
 
 func _ready() -> void:
