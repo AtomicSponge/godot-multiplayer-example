@@ -12,7 +12,6 @@ var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 @onready var NameLabel: Label = $NameLabel
 @onready var playerWeapon: Node = $PlayerWeapon
 @onready var WeaponSprite: Sprite2D = $WeaponSprite
-@onready var FireLocation: Marker2D = $WeaponSprite/FireLocation
 
 @export var player_id: int:
 	set(id):
@@ -24,14 +23,6 @@ const SPEED: float = 450.0
 ##  Update the player display name
 func update_player_name() -> void:
 	NameLabel.set_text(Globals.NAME)
-
-##  Fire weapon.  Called as an RPC.
-#@rpc("any_peer", "call_local")
-#func fire_weapon() -> void:
-	#var b: Bullet = bullet.instantiate()
-	#get_tree().root.add_child(b)
-	#b.global_position = FireLocation.global_position
-	#b.look_at(input.mousePosition)
 
 ##  Run animations.
 func apply_animation(_delta: float) -> void:
@@ -47,7 +38,6 @@ func apply_animation(_delta: float) -> void:
 		WeaponSprite.flip_v = false
 
 	WeaponSprite.look_at(input.mousePosition)
-	playerWeapon.look_at(input.mousePosition)
 
 	if input.direction:
 		PlayerSprite.play("Move")

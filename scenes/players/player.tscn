@@ -101,7 +101,7 @@ text = "player name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayerWeapon" type="Node2D" parent="."]
+[node name="PlayerWeapon" type="Node" parent="."]
 script = ExtResource("12_vjh8g")
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]

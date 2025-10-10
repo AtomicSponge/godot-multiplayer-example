@@ -1,11 +1,11 @@
-class_name PlayerWeapon extends NetworkWeapon2D
+class_name PlayerWeapon extends NetworkWeapon
 
 var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 
 @onready var input = $"../PlayerInput"
 @onready var fireLocation: Marker2D = $"../WeaponSprite/FireLocation"
 
-var fire_cooldown: float = 0.15
+var fire_cooldown: float = 0.10
 var last_fire: int = -1
 
 func _ready() -> void:
@@ -17,7 +17,7 @@ func _can_fire() -> bool:
 func _can_peer_use(peer_id: int) -> bool:
 	return peer_id == input.get_multiplayer_authority()
 
-func _after_fire(projectile: Node2D):
+func _after_fire(projectile: Node):
 	last_fire = get_fired_tick()
 
 	for t in range(get_fired_tick(), NetworkTime.tick):
