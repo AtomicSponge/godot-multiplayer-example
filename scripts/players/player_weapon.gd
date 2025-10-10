@@ -17,8 +17,13 @@ func _can_fire() -> bool:
 func _can_peer_use(peer_id: int) -> bool:
 	return peer_id == input.get_multiplayer_authority()
 
-func _after_fire(_projectile: Node2D):
+func _after_fire(projectile: Node2D):
 	last_fire = get_fired_tick()
+
+	for t in range(get_fired_tick(), NetworkTime.tick):
+		if projectile.is_queued_for_deletion():
+			break
+		projectile._tick(NetworkTime.ticktime, t)
 
 func _spawn() -> Node2D:
 	var b: Bullet = bullet.instantiate() as Bullet

@@ -10,7 +10,7 @@ var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 @onready var PlayerHitbox: CollisionShape2D = $PlayerHitbox
 @onready var PlayerCamera: Camera2D = $PlayerCamera
 @onready var NameLabel: Label = $NameLabel
-@onready var playerWeapon: Node2D = $PlayerWeapon
+@onready var playerWeapon: Node = $PlayerWeapon
 @onready var WeaponSprite: Sprite2D = $WeaponSprite
 @onready var FireLocation: Marker2D = $WeaponSprite/FireLocation
 
