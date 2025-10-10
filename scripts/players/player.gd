@@ -10,8 +10,8 @@ var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 @onready var PlayerHitbox: CollisionShape2D = $PlayerHitbox
 @onready var PlayerCamera: Camera2D = $PlayerCamera
 @onready var NameLabel: Label = $NameLabel
-@onready var WeaponSprite: Sprite2D = $WeaponSprite
-@onready var FireLocation: Marker2D = $WeaponSprite/FireLocation
+@onready var WeaponSprite: Sprite2D = $PlayerWeapon/WeaponSprite
+@onready var FireLocation: Marker2D = $PlayerWeapon/WeaponSprite/FireLocation
 @onready var ShotTimer: Timer = $ShotTimer
 @onready var RespawnTimer: Timer = $RespawnTimer
 
@@ -46,7 +46,7 @@ func respawn() -> void:
 @rpc("any_peer", "call_local")
 func fire_weapon() -> void:
 	var b: Bullet = bullet.instantiate()
-	add_child(b)
+	get_tree().root.add_child(b)
 	b.global_position = FireLocation.global_position
 	b.look_at(input.mousePosition)
 

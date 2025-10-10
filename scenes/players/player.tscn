@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cjsdm848ojsr2"]
+[gd_scene load_steps=19 format=3 uid="uid://cjsdm848ojsr2"]
 
 [ext_resource type="Script" uid="uid://bu0y2wed2itqv" path="res://scripts/players/player.gd" id="1_ykyjo"]
 [ext_resource type="Texture2D" uid="uid://djb6yh323gkt2" path="res://gfx/player/idle_0.png" id="2_es4m5"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c7lau1yhbs5cr" path="res://gfx/player/walk_6.png" id="9_v7vuu"]
 [ext_resource type="Texture2D" uid="uid://rbu0xgrk22ch" path="res://gfx/player/walk_7.png" id="10_bdc4e"]
 [ext_resource type="Texture2D" uid="uid://ckqy1d4m4cu4k" path="res://gfx/weapon/weaponR1.png" id="11_fsrjl"]
+[ext_resource type="Script" uid="uid://dbjss0yq0ya3t" path="res://scripts/players/player_weapon.gd" id="12_vjh8g"]
 [ext_resource type="Script" uid="uid://d350u8evihs1u" path="res://addons/netfox/rollback/rollback-synchronizer.gd" id="13_wb5ey"]
 [ext_resource type="Script" uid="uid://dour8fehaaugp" path="res://addons/netfox/tick-interpolator.gd" id="14_vjh8g"]
 
@@ -97,12 +98,15 @@ text = "player name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WeaponSprite" type="Sprite2D" parent="."]
+[node name="PlayerWeapon" type="Node2D" parent="."]
+script = ExtResource("12_vjh8g")
+
+[node name="WeaponSprite" type="Sprite2D" parent="PlayerWeapon"]
 position = Vector2(-1.52588e-05, 18)
 scale = Vector2(0.06, 0.057)
 texture = ExtResource("11_fsrjl")
 
-[node name="FireLocation" type="Marker2D" parent="WeaponSprite"]
+[node name="FireLocation" type="Marker2D" parent="PlayerWeapon/WeaponSprite"]
 position = Vector2(633.334, -52.6316)
 
 [node name="ShotTimer" type="Timer" parent="."]
