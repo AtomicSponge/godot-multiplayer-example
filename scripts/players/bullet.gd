@@ -7,7 +7,8 @@ var speed = 750
 func _ready() -> void:
 	LifeTimer.start()
 
-func _process(delta: float) -> void:
+#func _process(delta: float) -> void:
+func _rollback_tick(delta: float, _tick: float, _is_fresh: bool) -> void:
 	if LifeTimer.is_stopped():
 		queue_free()
 	position += transform.x * speed * delta
