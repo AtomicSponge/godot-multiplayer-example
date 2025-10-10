@@ -1,8 +1,8 @@
 ##  An enemy that will wander around or chase the player if they come in range
 class_name BasicMob extends Enemy
 
-@onready var MobSprite: AnimatedSprite2D = $MobSprite
-@onready var MovementTimer: Timer = $MovementTimer
+@onready var mobSprite: AnimatedSprite2D = $MobSprite
+@onready var movementTimer: Timer = $MovementTimer
 
 const WALK_SPEED: float = 100.0
 const CHASE_SPEED: float = 450.0
@@ -18,30 +18,30 @@ func change_direction() -> void:
 		directionX = (randi() % 3) - 1
 	if randf() >= 0.33:
 		directionY = (randi() % 3) - 1
-	MovementTimer.start(randi() % 2)
+	movementTimer.start(randi() % 2)
 
 ##  Play animations
 func apply_animations(_delta: float) -> void:
 	if movingLeft:
-		MobSprite.flip_h = true
+		mobSprite.flip_h = true
 	else:
-		MobSprite.flip_h = false
+		mobSprite.flip_h = false
 	match moveState:
 		MovementStates.CHASING:
-			MobSprite.play("Fly", 4.0)  #  Quad speed
+			mobSprite.play("Fly", 4.0)  #  Quad speed
 		_:
-			MobSprite.play("Fly")
+			mobSprite.play("Fly")
 
 func _ready() -> void:
 	if not multiplayer.is_server(): return
-	MovementTimer.timeout.connect(change_direction)
+	movementTimer.timeout.connect(change_direction)
 	moveState = MovementStates.WALKING
 	change_direction()
 
 func _process(delta: float) -> void:
 	apply_animations(delta)
 
-func _rollback_tick(_delta: float, _tick: float, _is_fresh: bool) -> void:
+func _rollback_tick(_delta: float, _tick: int, _is_fresh: bool) -> void:
 	if targetPlayer != null:
 		change_state(moveState, MovementStates.CHASING)
 	else:

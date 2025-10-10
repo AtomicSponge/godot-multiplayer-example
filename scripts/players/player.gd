@@ -45,7 +45,7 @@ func apply_animation(_delta: float) -> void:
 		PlayerSprite.play("Idle")
 
 ##  Apply player input.
-func apply_input(_delta: float, _tick: float, _is_fresh: bool) -> void:
+func apply_input() -> void:
 	# Stop movement if the menu or console is opened
 	if GameState.GAME_MENU_OPENED or Console.is_opened() or not alive:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -75,8 +75,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	apply_animation(delta)
 
-func _rollback_tick(delta: float, tick: float, is_fresh: bool) -> void:
-	apply_input(delta, tick, is_fresh)
+func _rollback_tick(_delta: float, _tick: int, _is_fresh: bool) -> void:
+	apply_input()
 
 	velocity *= NetworkTime.physics_factor
 	move_and_slide()
