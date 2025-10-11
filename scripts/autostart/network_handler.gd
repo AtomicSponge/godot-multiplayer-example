@@ -1,14 +1,31 @@
 extends Node
 
+## TESTING VARIABLES
+var IP_ADDRESS: String = "127.0.0.1"
+var PORT: int = 42069
+var USE_ENET: bool = true
+
 ##  Start the multiplayer server and trigger a new game
 func start_server(this_name: String) -> void:
-	Globals.LOBBY_NAME = this_name
-	Steam.createLobby(Steam.LobbyType.LOBBY_TYPE_PUBLIC, Globals.LOBBY_MEMBERS_MAX)
+	if USE_ENET:
+		var peer = ENetMultiplayerPeer.new()
+		peer.create_server(PORT, 4)
+		multiplayer.multiplayer_peer = peer
+		EventBus.StartGame.emit()
+	else:
+		Globals.LOBBY_NAME = this_name
+		Steam.createLobby(Steam.LobbyType.LOBBY_TYPE_PUBLIC, Globals.LOBBY_MEMBERS_MAX)
 
 ##  Start the multiplayer client and trigger a new game
 func start_client(this_lobby_id: int) -> void:
-	Globals.LOBBY_MEMBERS.clear()
-	Steam.joinLobby(this_lobby_id)
+	if USE_ENET:
+		var peer = ENetMultiplayerPeer.new()
+		peer.create_client(IP_ADDRESS, PORT)
+		multiplayer.multiplayer_peer = peer
+		EventBus.StartGame.emit()
+	else:
+		Globals.LOBBY_MEMBERS.clear()
+		Steam.joinLobby(this_lobby_id)
 
 ##  Close network connection
 func close_connection() -> void:
