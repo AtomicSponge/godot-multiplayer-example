@@ -26,7 +26,7 @@ func _after_fire(projectile: Node):
 			break
 		projectile._tick(NetworkTime.ticktime, t)
 
-func _spawn() -> Node2D:
+func _spawn() -> Bullet:
 	var b: Bullet = bullet.instantiate() as Bullet
 	get_tree().root.add_child(b)
 	b.global_position = fireLocation.global_position
