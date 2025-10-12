@@ -16,9 +16,12 @@ var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 @export var player_id: int:
 	set(id):
 		player_id = id
+@export var alive: bool = true
+
+var lookingLeft: bool = false
+var mousePosition: Vector2 = Vector2.ZERO
 
 const SPEED: float = 450.0
-@export var alive: bool = true
 
 ##  Update the player display name
 func update_player_name() -> void:
@@ -30,14 +33,14 @@ func apply_animation(_delta: float) -> void:
 		PlayerSprite.play("Idle")
 		return
 
-	if input.lookingLeft:
+	if lookingLeft:
 		PlayerSprite.flip_h = true
 		WeaponSprite.flip_v = true
 	else:
 		PlayerSprite.flip_h = false
 		WeaponSprite.flip_v = false
 
-	WeaponSprite.look_at(input.mousePosition)
+	WeaponSprite.look_at(mousePosition)
 
 	if input.direction:
 		PlayerSprite.play("Move")
@@ -58,6 +61,9 @@ func apply_input() -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
+
+	lookingLeft = input.lookingLeft
+	mousePosition = input.mousePosition
 
 func _ready() -> void:
 	await get_tree().process_frame

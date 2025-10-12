@@ -71,8 +71,8 @@ func _ready() -> void:
 
 	_check_command_line()
 
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		if GameState.GAME_RUNNING:
-			EventBus.EndGame.emit()
-		get_tree().quit()
+#func _notification(what: int) -> void:
+	#if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		#if GameState.GAME_RUNNING:
+			#EventBus.EndGame.emit()
+		#get_tree().quit()

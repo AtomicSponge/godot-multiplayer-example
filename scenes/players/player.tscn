@@ -116,7 +116,7 @@ position = Vector2(633.334, -52.6316)
 script = ExtResource("13_wb5ey")
 root = NodePath("..")
 enable_prediction = true
-state_properties = Array[String]([":position"])
+state_properties = Array[String]([":position", ":lookingLeft", ":mousePosition"])
 input_properties = Array[String](["PlayerInput:direction", "PlayerInput:attacking", "PlayerInput:mousePosition", "PlayerInput:lookingLeft"])
 enable_input_broadcast = false
 metadata/_custom_type_script = "uid://d350u8evihs1u"
@@ -124,7 +124,7 @@ metadata/_custom_type_script = "uid://d350u8evihs1u"
 [node name="TickInterpolator" type="Node" parent="." node_paths=PackedStringArray("root")]
 script = ExtResource("14_vjh8g")
 root = NodePath("..")
-properties = Array[String]([":position"])
+properties = Array[String]([":position", ":lookingLeft", ":mousePosition"])
 metadata/_custom_type_script = "uid://dour8fehaaugp"
 
 [node name="PlayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

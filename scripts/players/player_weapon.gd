@@ -2,6 +2,7 @@ class_name PlayerWeapon extends NetworkWeapon
 
 var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 
+@onready var player = get_parent()
 @onready var input = $"../PlayerInput"
 @onready var fireLocation: Marker2D = $"../WeaponSprite/FireLocation"
 
@@ -29,7 +30,7 @@ func _spawn() -> Node2D:
 	var b: Bullet = bullet.instantiate() as Bullet
 	get_tree().root.add_child(b)
 	b.global_position = fireLocation.global_position
-	b.look_at(input.mousePosition)
+	b.look_at(player.mousePosition)
 	return b
 
 func _tick(_delta: float, _t: int) -> void:
