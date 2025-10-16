@@ -12,7 +12,7 @@ func find_player_spawn() -> Area2D:
 	if playerSpawners == null:  return null
 	var spawn_position: Area2D = null
 	#  Look for any overlapping bodies and pick an empty spawn location
-	for spawner in GameState.playerSpawners.get_children():
+	for spawner in playerSpawners.get_children():
 		if spawner is Area2D:
 			if spawner.has_overlapping_bodies():
 				continue
