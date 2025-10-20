@@ -103,7 +103,7 @@ func _on_lobby_created(connected: int, this_lobby_id: int) -> void:
 			peer.host_with_lobby(this_lobby_id)
 			multiplayer.multiplayer_peer = peer
 			# Allow P2P connections to fallback to being relayed through Steam if needed
-			var _set_relay: bool = Steam.allowP2PPacketRelay(true)
+			var _set_relay: bool = Steam.allowP2PPacketRelay(false)
 			EventBus.StartGame.emit()
 		_:
 			pass
