@@ -3,7 +3,7 @@ extends Node
 ## TESTING VARIABLES
 var IP_ADDRESS: String = "127.0.0.1"
 var PORT: int = 42069
-var USE_ENET: bool = true
+var USE_ENET: bool = false
 
 ##  Start the multiplayer server and trigger a new game
 func start_server(this_name: String) -> void:
