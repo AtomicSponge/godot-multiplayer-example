@@ -29,7 +29,7 @@ func update_player_name() -> void:
 
 ##  Run animations.
 func apply_animation(_delta: float) -> void:
-	if GameState.GAME_MENU_OPENED or Console.is_opened() or not alive:
+	if not alive:
 		PlayerSprite.play("Idle")
 		return
 
@@ -50,7 +50,7 @@ func apply_animation(_delta: float) -> void:
 ##  Apply player input.
 func apply_input() -> void:
 	# Stop movement if the menu or console is opened
-	if GameState.GAME_MENU_OPENED or Console.is_opened() or not alive:
+	if not alive:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 		return

@@ -72,20 +72,20 @@ func _on_lobby_chat_update(_this_lobby_id: int, change_id: int, _making_change_i
 	# Get the user who has made the lobby change
 	var changer_name: String = Steam.getFriendPersonaName(change_id)
 	# If a player has joined the lobby
-	if chat_state == Steam.CHAT_MEMBER_STATE_CHANGE_ENTERED:
-		Console.add_text("%s has joined the lobby." % changer_name)
+	#if chat_state == Steam.CHAT_MEMBER_STATE_CHANGE_ENTERED:
+		#Console.add_text("%s has joined the lobby." % changer_name)
 	# Else if a player has left the lobby
-	elif chat_state == Steam.CHAT_MEMBER_STATE_CHANGE_LEFT:
-		Console.add_text("%s has left the lobby." % changer_name)
+	#elif chat_state == Steam.CHAT_MEMBER_STATE_CHANGE_LEFT:
+		#Console.add_text("%s has left the lobby." % changer_name)
 	# Else if a player has been kicked
-	elif chat_state == Steam.CHAT_MEMBER_STATE_CHANGE_KICKED:
-		Console.add_text("%s has been kicked from the lobby." % changer_name)
+	#elif chat_state == Steam.CHAT_MEMBER_STATE_CHANGE_KICKED:
+		#Console.add_text("%s has been kicked from the lobby." % changer_name)
 	# Else if a player has been banned
-	elif chat_state == Steam.CHAT_MEMBER_STATE_CHANGE_BANNED:
-		Console.add_text("%s has been banned from the lobby." % changer_name)
+	#elif chat_state == Steam.CHAT_MEMBER_STATE_CHANGE_BANNED:
+		#Console.add_text("%s has been banned from the lobby." % changer_name)
 	# Else there was some unknown change
-	else:
-		Console.add_text("%s did... something." % changer_name)
+	#else:
+		#Console.add_text("%s did... something." % changer_name)
 
 	# Update the lobby now that a change has occurred
 	_get_lobby_members()
@@ -159,7 +159,7 @@ func _on_lobby_message(lobby_id: int, user: int, message: String, _chat_type: in
 	for member in Globals.LOBBY_MEMBERS:
 		if member.steam_id == user:
 			sender_name = member.steam_name
-	Console.add_text(sender_name + ":  " + message)
+	#Console.add_text(sender_name + ":  " + message)
 
 ##
 func _on_persona_change(this_steam_id: int, _flags: int) -> void:
