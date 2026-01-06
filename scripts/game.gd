@@ -9,23 +9,6 @@ var crosshair: CompressedTexture2D = load("res://gfx/weapon/crosshair.png")
 @onready var EnemySpawner: MultiplayerSpawner = $EnemySpawner
 
 @onready var HUD: CanvasLayer = $HUD
-@onready var Console: CanvasLayer = $HUD/Console
-
-################################################################################
-#   Console commands														   #
-################################################################################
-##  Broadcast a message to chat
-func say_command(text: String) -> void:
-	var sent: bool = Steam.sendLobbyChatMsg(Globals.LOBBY_ID, text)
-	if not sent:
-		Console.add_text("Your message was not sent!")
-	elif Globals.LOBBY_ID == 0:
-		Console.add_text("You are not in a lobby!")
-
-##  Quit the game from command
-func quit_command(_arg: String) -> void:
-	Globals.quit_game()
-################################################################################
 
 ##  Start a new game and if server replicate the level.
 func start_game():
@@ -141,12 +124,6 @@ func _ready() -> void:
 	#  Connect the event bus signals to start/end the game
 	EventBus.StartGame.connect(start_game)
 	EventBus.EndGame.connect(end_game)
-	
-	#  Configure the console
-	Console.set_console_size(Vector2(550, 200))
-	Console.set_position(Vector2(2, 482))
-	Console.add_command("say", say_command)
-	Console.add_command("quit", quit_command)
 	
 	#  Open main menu
 	UiController.open_menu("MainUI")
