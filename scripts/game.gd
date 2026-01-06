@@ -138,14 +138,17 @@ func handle_peer_disconnect(id: int) -> void:
 		end_game("Host has left the game!")
 
 func _ready() -> void:
+	#  Connect the event bus signals to start/end the game
 	EventBus.StartGame.connect(start_game)
 	EventBus.EndGame.connect(end_game)
 	
+	#  Configure the console
 	Console.set_console_size(Vector2(550, 200))
 	Console.set_position(Vector2(2, 482))
 	Console.add_command("say", say_command)
 	Console.add_command("quit", quit_command)
 	
+	#  Open main menu
 	UiController.open_menu("MainUI")
 
 func _process(_delta: float) -> void:
