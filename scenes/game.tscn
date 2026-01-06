@@ -39,7 +39,6 @@ spawn_path = NodePath("../Enemies")
 script = ExtResource("3_vtaks")
 
 [node name="HUD" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("4_dinhu")
 
 [node name="FPSLabel" type="Label" parent="HUD"]

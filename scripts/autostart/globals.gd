@@ -26,7 +26,8 @@ func alert(text: String) -> void:
 
 ##  Quit the game
 func quit_game() -> void:
-	NetworkHandler.close_connection()
+	if GameState.GAME_RUNNING:
+		EventBus.EndGame.emit()
 	get_tree().quit()
 
 func _check_command_line() -> void:

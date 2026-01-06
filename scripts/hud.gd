@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var Console: CanvasLayer = $Console
+@onready var LoadingStatus: ProgressBar = $LoadingStatus
 
 ##  Broadcast a message to chat
 func say_command(text: String) -> void:
