@@ -17,6 +17,8 @@ var _input_property_config: _PropertyConfig
 var _property_cache: PropertyCache
 var _skipset: _Set
 
+var _schema_handler: _NetworkSchema
+
 # Collaborators
 var _input_encoder: _RedundantHistoryEncoder
 var _full_state_encoder: _SnapshotHistoryEncoder
@@ -36,7 +38,7 @@ var _is_initialized: bool
 # Signals
 signal _on_transmit_state(state: Dictionary, tick: int)
 
-static var _logger: _NetfoxLogger = _NetfoxLogger.for_netfox("RollbackHistoryTransmitter")
+static var _logger: NetfoxLogger = NetfoxLogger._for_netfox("RollbackHistoryTransmitter")
 
 func get_earliest_input_tick() -> int:
 	return _earliest_input_tick
@@ -58,7 +60,8 @@ func configure(
 		p_state_property_config: _PropertyConfig, p_input_property_config: _PropertyConfig,
 		p_visibility_filter: PeerVisibilityFilter,
 		p_property_cache: PropertyCache,
-		p_skipset: _Set
+		p_skipset: _Set,
+		p_schema_handler: _NetworkSchema,
 	) -> void:
 	_state_history = p_state_history
 	_input_history = p_input_history
@@ -67,13 +70,13 @@ func configure(
 	_visibility_filter = p_visibility_filter
 	_property_cache = p_property_cache
 	_skipset = p_skipset
+	_schema_handler = p_schema_handler
 
-	_input_encoder = _RedundantHistoryEncoder.new(_input_history, _property_cache)
-	_full_state_encoder = _SnapshotHistoryEncoder.new(_state_history, _property_cache)
-	_diff_state_encoder = _DiffHistoryEncoder.new(_state_history, _property_cache)
+	_input_encoder = _RedundantHistoryEncoder.new(_input_history, _property_cache, _schema_handler)
+	_full_state_encoder = _SnapshotHistoryEncoder.new(_state_history, _property_cache, _schema_handler)
+	_diff_state_encoder = _DiffHistoryEncoder.new(_state_history, _property_cache, _schema_handler)
 
 	_is_initialized = true
-
 	reset()
 
 func reset() -> void:
@@ -103,6 +106,7 @@ func transmit_input(tick: int) -> void:
 		var input_tick: int = tick + NetworkRollback.input_delay
 		var input_data := _input_encoder.encode(input_tick, _get_owned_input_props())
 		var state_owning_peer := root.get_multiplayer_authority()
+		NetworkRollback.register_input_submission(root, tick)
 
 		if enable_input_broadcast:
 			for peer in _visibility_filter.get_rpc_target_peers():
@@ -134,7 +138,6 @@ func transmit_state(tick: int) -> void:
 		return
 
 	_latest_state_tick = max(_latest_state_tick, tick)
-	_state_history.merge(full_state, tick)
 
 	var is_sending_diffs := NetworkRollback.enable_diff_states
 	var is_full_state_tick := not is_sending_diffs or (full_state_interval > 0 and tick > _next_full_state_tick)
@@ -198,8 +201,12 @@ func _send_full_state(tick: int, peer: int = 0) -> void:
 		NetworkPerformance.push_full_state(full_state_snapshot)
 		NetworkPerformance.push_sent_state(full_state_snapshot)
 
+func _notification(what):
+	if what == NOTIFICATION_PREDELETE:
+		NetworkRollback.free_input_submission_data_for(root)
+
 @rpc("any_peer", "unreliable", "call_remote")
-func _submit_input(tick: int, data: Array) -> void:
+func _submit_input(tick: int, data: PackedByteArray) -> void:
 	if not _is_initialized:
 		# Settings not processed yet
 		return
@@ -209,10 +216,11 @@ func _submit_input(tick: int, data: Array) -> void:
 	var earliest_received_input = _input_encoder.apply(tick, snapshots, sender)
 	if earliest_received_input >= 0:
 		_earliest_input_tick = mini(_earliest_input_tick, earliest_received_input)
+		NetworkRollback.register_input_submission(root, tick)
 
 # `serialized_state` is a serialized _PropertySnapshot
 @rpc("any_peer", "unreliable_ordered", "call_remote")
-func _submit_full_state(data: Array, tick: int) -> void:
+func _submit_full_state(data: PackedByteArray, tick: int) -> void:
 	if not _is_initialized:
 		# Settings not processed yet
 		return
