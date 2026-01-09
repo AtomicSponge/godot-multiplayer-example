@@ -71,26 +71,6 @@ func end_game(why: String = ""):
 	if not why.is_empty():
 		Globals.alert(why)
 
-##  Continue the game to the next stage.
-func proceed_game() -> void:
-	HUD.hide()
-	#  Remove all enemies
-	for node in Enemies.get_children():
-		Enemies.remove_child(node)
-		node.queue_free()
-	#  Reset player list
-	for node in Players.get_children():
-		Players.remove_child(node)
-		node.queue_free()
-	#  Load the next level
-	load_level.call_deferred(load("res://scenes/levels/level1.tscn"))
-	#  Spawn already connected players
-	for id in multiplayer.get_peers():
-		spawn_player.call_deferred(id)
-	#  Spawn server (main) player
-	spawn_player.call_deferred(1)
-	HUD.show()
-
 ##  Load a level.  Call deferred.
 func load_level(scene: PackedScene) -> void:
 	for node in Level.get_children():
