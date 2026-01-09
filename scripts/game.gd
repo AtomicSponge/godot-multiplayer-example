@@ -5,6 +5,7 @@ var crosshair: CompressedTexture2D = load("res://gfx/weapon/crosshair.png")
 @onready var Level: Node = $Level
 @onready var Players: Node = $Players
 @onready var Enemies: Node = $Enemies
+@onready var Bullets: Node = $Bullets
 @onready var PlayerSpawner: MultiplayerSpawner = $PlayerSpawner
 @onready var EnemySpawner: MultiplayerSpawner = $EnemySpawner
 
@@ -47,6 +48,10 @@ func end_game(why: String = ""):
 	else:
 		if multiplayer.peer_disconnected.is_connected(handle_peer_disconnect):
 			multiplayer.peer_disconnected.disconnect(handle_peer_disconnect)
+	#  Remove bullets
+	for node in Bullets.get_children():
+		Bullets.remove_child(node)
+		node.queue_free()
 	#  Remove all players
 	for node in Players.get_children():
 		Players.remove_child(node)

@@ -38,6 +38,8 @@ _spawnable_scenes = PackedStringArray("uid://bys7kf1ydhw6r")
 spawn_path = NodePath("../Enemies")
 script = ExtResource("3_vtaks")
 
+[node name="Bullets" type="Node" parent="."]
+
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("4_dinhu")
 

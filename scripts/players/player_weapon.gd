@@ -28,7 +28,7 @@ func _after_fire(projectile: Node):
 
 func _spawn() -> Bullet:
 	var b: Bullet = bullet.instantiate() as Bullet
-	get_tree().root.add_child(b)
+	get_tree().current_scene.get_node("/root/Game/Bullets").add_child(b)
 	b.global_position = fireLocation.global_position
 	b.look_at(player.mousePosition)
 	return b
