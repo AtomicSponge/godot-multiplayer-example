@@ -40,14 +40,6 @@ func start_game():
 func end_game(why: String = ""):
 	GameState.GAME_RUNNING = false
 	HUD.hide()
-	if multiplayer.is_server():
-		if multiplayer.peer_connected.is_connected(spawn_player):
-			multiplayer.peer_connected.disconnect(spawn_player)
-		if multiplayer.peer_disconnected.is_connected(remove_player):
-			multiplayer.peer_disconnected.disconnect(remove_player)
-	else:
-		if multiplayer.peer_disconnected.is_connected(handle_peer_disconnect):
-			multiplayer.peer_disconnected.disconnect(handle_peer_disconnect)
 	#  Remove bullets
 	for node in Bullets.get_children():
 		Bullets.remove_child(node)
@@ -64,9 +56,17 @@ func end_game(why: String = ""):
 	for node in Level.get_children():
 		Level.remove_child(node)
 		node.queue_free()
-	await get_tree().process_frame
+	if multiplayer.is_server():
+		if multiplayer.peer_connected.is_connected(spawn_player):
+			multiplayer.peer_connected.disconnect(spawn_player)
+		if multiplayer.peer_disconnected.is_connected(remove_player):
+			multiplayer.peer_disconnected.disconnect(remove_player)
+	else:
+		if multiplayer.peer_disconnected.is_connected(handle_peer_disconnect):
+			multiplayer.peer_disconnected.disconnect(handle_peer_disconnect)
 	NetworkHandler.close_connection()
 	Input.set_custom_mouse_cursor(null)
+	await get_tree().process_frame
 	UiController.open_menu("MainUI")
 	if not why.is_empty():
 		Globals.alert(why)
