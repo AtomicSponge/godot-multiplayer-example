@@ -88,8 +88,11 @@ func spawn_player(id: int) -> void:
 
 ##  Remove a player.
 func remove_player(id: int) -> void:
+	print(str(id))
 	if not Players.has_node(str(id)): return
-	Players.get_node(str(id)).queue_free()
+	var node: Player = Players.get_node(str(id))
+	Players.remove_child(node)
+	node.queue_free()
 
 ##  Spawn a new enemy.  Call after the level loaded.
 func spawn_enemy(type: String, spawn_location: String, progress: float = 0.0) -> void:
