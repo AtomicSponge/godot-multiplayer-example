@@ -13,6 +13,7 @@ func start_server(this_name: String) -> void:
 		multiplayer.multiplayer_peer = peer
 		EventBus.StartGame.emit()
 	else:
+		Globals.LOBBY_MEMBERS.clear()
 		Globals.LOBBY_NAME = this_name
 		Steam.createLobby(Steam.LobbyType.LOBBY_TYPE_PUBLIC, Globals.LOBBY_MEMBERS_MAX)
 
