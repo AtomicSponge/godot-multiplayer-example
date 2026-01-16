@@ -70,7 +70,6 @@ func end_game(why: String = ""):
 	UiController.open_menu("MainUI")
 	if not why.is_empty():
 		Globals.alert(why)
-	print(NetworkHandler.is_network_connected())
 
 ##  Load a level.  Call deferred.
 func load_level(scene: PackedScene) -> void:
