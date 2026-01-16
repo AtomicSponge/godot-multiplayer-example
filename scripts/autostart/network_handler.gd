@@ -29,7 +29,6 @@ func start_client(this_lobby_id: int) -> void:
 
 ##  Close network connection
 func close_connection() -> void:
-	multiplayer.multiplayer_peer.close()
 	# If in a lobby, leave it
 	if Globals.LOBBY_ID != 0:
 		# Send leave request to Steam
@@ -46,6 +45,7 @@ func close_connection() -> void:
 				Steam.closeP2PSessionWithUser(this_member['steam_id'])
 		# Clear the local lobby list
 		Globals.LOBBY_MEMBERS.clear()
+	multiplayer.multiplayer_peer.close()
 
 ##  Check if the network connection is active
 func is_network_connected() -> bool:
