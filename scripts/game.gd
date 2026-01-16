@@ -42,19 +42,15 @@ func end_game(why: String = ""):
 	HUD.hide()
 	#  Remove bullets
 	for node in Bullets.get_children():
-		#Bullets.remove_child(node)
 		node.queue_free()
 	#  Remove all players
 	for node in Players.get_children():
-		#Players.remove_child(node)
 		node.queue_free()
 	#  Remove all enemies
 	for node in Enemies.get_children():
-		#Enemies.remove_child(node)
 		node.queue_free()
 	#  Remove the level
 	for node in Level.get_children():
-		#Level.remove_child(node)
 		node.queue_free()
 	if multiplayer.is_server():
 		if multiplayer.peer_connected.is_connected(spawn_player):
@@ -74,7 +70,6 @@ func end_game(why: String = ""):
 ##  Load a level.  Call deferred.
 func load_level(scene: PackedScene) -> void:
 	for node in Level.get_children():
-		Level.remove_child(node)
 		node.queue_free()
 	Level.add_child(scene.instantiate())
 	#  Find the spawn locations
