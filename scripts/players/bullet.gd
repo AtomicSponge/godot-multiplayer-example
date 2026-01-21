@@ -16,7 +16,7 @@ func _tick(delta: float, _t: int) -> void:
 		queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
-	if not is_inside_tree() or not multiplayer.has_multiplayer_peer() or not is_multiplayer_authority():
+	if not is_inside_tree() or not multiplayer.has_multiplayer_peer() or not multiplayer.is_server():
 		return
 	if body is Player:
 		return
