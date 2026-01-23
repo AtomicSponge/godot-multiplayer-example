@@ -1,9 +1,7 @@
 extends MultiplayerSpawner
 
-var ENEMIES: Dictionary[String, String] = { "basic_mob": "res://scenes/enemies/basic_mob.tscn" }
-
 func _make_enemy(data: Dictionary) -> Node:
-	var enemy: Node = load(ENEMIES[data.type]).instantiate()
+	var enemy: Node = load(Globals.Assets.basic_mob).instantiate()
 	enemy.position = data.position
 	return enemy
 

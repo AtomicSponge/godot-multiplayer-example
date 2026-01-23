@@ -3,8 +3,6 @@ class_name Player extends CharacterBody2D
 
 ##  Reference to the player input node
 @export var input: PlayerInput
-##  Reference to the player bullet scene
-var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
 
 @onready var PlayerSprite: AnimatedSprite2D = $PlayerSprite
 @onready var PlayerHitbox: CollisionShape2D = $PlayerHitbox

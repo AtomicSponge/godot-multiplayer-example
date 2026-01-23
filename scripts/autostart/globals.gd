@@ -14,6 +14,13 @@ var LOBBY_NAME: String = ""			##  Lobby name
 var LOBBY_LIST: Array = []			##  List of players in the lobby
 const LOBBY_MEMBERS_MAX: int = 4	##  Max allowed lobby members
 
+#  Assets
+const Assets: Dictionary = {
+	"player": "uid://cjsdm848ojsr2",
+	"basic_mob": "uid://bys7kf1ydhw6r",
+	"bullet": "uid://jij4c73itgwo"
+}
+
 ## Display an alert
 func alert(text: String) -> void:
 	var dialog = AcceptDialog.new()

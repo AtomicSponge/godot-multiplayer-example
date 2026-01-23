@@ -1,6 +1,6 @@
 class_name PlayerWeapon extends NetworkWeapon
 
-var bullet: PackedScene = preload("res://scenes/players/bullet.tscn")
+var bullet: PackedScene = preload(Globals.Assets.bullet)
 
 @onready var player = get_parent()
 @onready var input = $"../PlayerInput"
@@ -28,6 +28,7 @@ func _after_fire(projectile: Node):
 
 func _spawn() -> Bullet:
 	var b: Bullet = bullet.instantiate() as Bullet
+	#  Place bullets under their own node for easy cleanup
 	get_tree().current_scene.get_node("/root/Game/Bullets").add_child(b)
 	b.global_position = fireLocation.global_position
 	b.look_at(player.mousePosition)
