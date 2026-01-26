@@ -21,6 +21,10 @@ const Assets: Dictionary = {
 	"bullet": "uid://jij4c73itgwo"
 }
 
+const Levels: Dictionary = {
+	"level1": "uid://tauj6umdt5sc"
+}
+
 ## Display an alert
 func alert(text: String) -> void:
 	var dialog = AcceptDialog.new()

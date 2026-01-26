@@ -19,7 +19,7 @@ func start_game():
 		multiplayer.peer_connected.connect(spawn_player)
 		multiplayer.peer_disconnected.connect(remove_player)
 
-		load_level.call_deferred("res://scenes/levels/level1.tscn")
+		load_level.call_deferred(Globals.Levels.level1)
 
 		#  Spawn already connected players
 		for id in multiplayer.get_peers():
