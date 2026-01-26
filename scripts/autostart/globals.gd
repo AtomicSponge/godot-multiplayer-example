@@ -72,9 +72,9 @@ func _ready() -> void:
 		get_tree().quit()
 		return
 
+	Steam.lobby_created.connect(_on_lobby_created)
 	Steam.join_requested.connect(_on_lobby_join_requested)
 	Steam.lobby_chat_update.connect(_on_lobby_chat_update)
-	Steam.lobby_created.connect(_on_lobby_created)
 	Steam.lobby_data_update.connect(_on_lobby_data_update)
 	Steam.lobby_joined.connect(_on_lobby_joined)
 	Steam.lobby_match_list.connect(_on_lobby_match_list)
@@ -88,6 +88,25 @@ func _ready() -> void:
 		#if GameState.GAME_RUNNING:
 			#EventBus.EndGame.emit()
 		#get_tree().quit()
+
+##
+func _on_lobby_created(connected: int, this_lobby_id: int) -> void:
+	match connected:
+		Steam.Result.RESULT_OK:
+			Globals.LOBBY_ID = this_lobby_id
+			# Set this lobby as joinable, just in case, though this should be done by default
+			Steam.setLobbyJoinable(Globals.LOBBY_ID, true)
+			# Set some lobby data
+			Steam.setLobbyData(Globals.LOBBY_ID, "name", Globals.LOBBY_NAME)
+			var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
+			peer.host_with_lobby(this_lobby_id)
+			multiplayer.multiplayer_peer = peer
+			# Allow P2P connections to fallback to being relayed through Steam if needed
+			var _set_relay: bool = Steam.allowP2PPacketRelay(false)
+			EventBus.StartGame.emit()
+		_:
+			pass
+		#	 There was a problem, do something about it
 
 ##
 func _on_lobby_join_requested(this_lobby_id: int, friend_id: int) -> void:
@@ -117,25 +136,6 @@ func _on_lobby_chat_update(_this_lobby_id: int, change_id: int, _making_change_i
 
 	# Update the lobby now that a change has occurred
 	_get_lobby_members()
-
-##
-func _on_lobby_created(connected: int, this_lobby_id: int) -> void:
-	match connected:
-		Steam.Result.RESULT_OK:
-			Globals.LOBBY_ID = this_lobby_id
-			# Set this lobby as joinable, just in case, though this should be done by default
-			Steam.setLobbyJoinable(Globals.LOBBY_ID, true)
-			# Set some lobby data
-			Steam.setLobbyData(Globals.LOBBY_ID, "name", Globals.LOBBY_NAME)
-			var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
-			peer.host_with_lobby(this_lobby_id)
-			multiplayer.multiplayer_peer = peer
-			# Allow P2P connections to fallback to being relayed through Steam if needed
-			var _set_relay: bool = Steam.allowP2PPacketRelay(false)
-			EventBus.StartGame.emit()
-		_:
-			pass
-		#	 There was a problem, do something about it
 
 ##
 func _on_lobby_data_update(_success: int, _this_lobby_id: int, _this_member_id: int) -> void:
