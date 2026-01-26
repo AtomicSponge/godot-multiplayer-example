@@ -28,7 +28,7 @@ NetworkTimeSynchronizer="*res://addons/netfox/network-time-synchronizer.gd"
 NetworkRollback="*res://addons/netfox/rollback/network-rollback.gd"
 NetworkEvents="*res://addons/netfox/network-events.gd"
 NetworkPerformance="*res://addons/netfox/network-performance.gd"
-WindowTiler="*res://addons/netfox.extras/window-tiler.gd"
+WindowTiler="res://addons/netfox.extras/window-tiler.gd"
 NetworkSimulator="*res://addons/netfox.extras/network-simulator.gd"
 
 [debug]
@@ -104,6 +104,8 @@ fps={
 [netfox]
 
 time/sync_to_physics=false
+autoconnect/port=42069
+autoconnect/simulated_latency_ms=20
 
 [physics]
 

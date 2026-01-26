@@ -19,7 +19,7 @@ func start_game():
 		multiplayer.peer_connected.connect(spawn_player)
 		multiplayer.peer_disconnected.connect(remove_player)
 
-		load_level.call_deferred(load("res://scenes/levels/level1.tscn"))
+		load_level.call_deferred("res://scenes/levels/level1.tscn")
 
 		#  Spawn already connected players
 		for id in multiplayer.get_peers():
@@ -68,10 +68,10 @@ func end_game(why: String = ""):
 		Globals.alert(why)
 
 ##  Load a level.  Call deferred.
-func load_level(scene: PackedScene) -> void:
+func load_level(scene: String) -> void:
 	for node in Level.get_children():
 		node.queue_free()
-	Level.add_child(scene.instantiate())
+	Level.add_child(load(scene).instantiate())
 	#  Find the spawn locations
 	GameState.playerSpawners = Level.find_child("PlayerSpawners", true, false)
 
@@ -86,6 +86,11 @@ func remove_player(id: int) -> void:
 	if not Players.has_node(str(id)): return
 	Players.get_node(str(id)).queue_free()
 
+##  Handle a player leaving the game.
+func handle_peer_disconnect(id: int) -> void:
+	if id == 1:
+		end_game("Host has left the game!")
+
 ##  Spawn a new enemy.  Call after the level loaded.
 func spawn_enemy(type: String, spawn_location: String, progress: float = 0.0) -> void:
 	if not multiplayer.is_server(): return
@@ -94,11 +99,6 @@ func spawn_enemy(type: String, spawn_location: String, progress: float = 0.0) ->
 		if spawn_position is PathFollow2D:
 			spawn_position.progress_ratio = progress
 		EnemySpawner.spawn({ "type": type, "position": spawn_position.position })
-
-##  Handle a player leaving the game.
-func handle_peer_disconnect(id: int) -> void:
-	if id == 1:
-		end_game("Host has left the game!")
 
 func _ready() -> void:
 	#  Connect the event bus signals to start/end the game
