@@ -15,6 +15,7 @@ var PORT: int = 42069
 var USE_ENET: bool = false
 ```
 Set the __USE_ENET__ flag to __true__ and adjust the other variables if necessary.
+You would then connect to a game as if you were connecting through a Steam lobby, but it will use ENet instead.
 
 ## Using Steam
 
