@@ -24,6 +24,7 @@ The example uses Steam's public AppID of 480.  Because of this when starting a m
 ## Libraries Required
 - Godot Steam <https://godotsteam.com/>
 - Netfox <https://github.com/foxssake/netfox>
+- ThemeGen <https://github.com/Inspiaaa/ThemeGen>
 
 ## Assets Used
 - <https://rgsdev.itch.io/free-cc0-modular-animated-vector-characters-2d>
