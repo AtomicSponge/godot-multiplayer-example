@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Project Venus"
+config/name="Godot Multiplayer Example"
 run/main_scene="uid://w7ppkuj2u8xf"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/show_image=false
@@ -28,7 +28,7 @@ NetworkTimeSynchronizer="*res://addons/netfox/network-time-synchronizer.gd"
 NetworkRollback="*res://addons/netfox/rollback/network-rollback.gd"
 NetworkEvents="*res://addons/netfox/network-events.gd"
 NetworkPerformance="*res://addons/netfox/network-performance.gd"
-WindowTiler="res://addons/netfox.extras/window-tiler.gd"
+WindowTiler="*res://addons/netfox.extras/window-tiler.gd"
 NetworkSimulator="*res://addons/netfox.extras/network-simulator.gd"
 
 [debug]
