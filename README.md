@@ -16,6 +16,10 @@ var USE_ENET: bool = false
 ```
 Set the __USE_ENET__ flag to __true__ and adjust the other variables if necessary.
 
+## Using Steam
+
+The example uses Steam's public AppID of 480.  Because of this when starting a multiplayer game, *other lobbies will show up* and selecting one will cause the game to freeze.  Unfortunately there is no way around this unless you have purchased a Steam page and have your own AppID.
+
 ## Libraries Required
 - Godot Steam <https://godotsteam.com/>
 - Netfox <https://github.com/foxssake/netfox>
